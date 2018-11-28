@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/about', function () {
+Route::get('/bienvenue', function () {
     return view('pages.bienvenue');
 });
