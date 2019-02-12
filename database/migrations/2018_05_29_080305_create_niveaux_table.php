@@ -19,6 +19,7 @@ class CreateNiveauxTable extends Migration
             $table->string('description');
             $table->integer('nb_gyms');
             $table->integer('nb_notes');
+            $table->integer('competitif');
 
             $table->timestamps();
         });
