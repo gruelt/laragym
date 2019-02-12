@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNiveauxTable extends Migration
+class CreateSaisonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateNiveauxTable extends Migration
      */
     public function up()
     {
-        Schema::create('niveaux', function (Blueprint $table) {
+        Schema::create('saisons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
-            $table->integer('nb_gyms');
-            $table->integer('nb_notes');
-            $table->integer('competitif');
-
+            $table->integer('actif');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateNiveauxTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('niveaux');
+        Schema::dropIfExists('saisons');
     }
 }
