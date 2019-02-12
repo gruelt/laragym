@@ -27,4 +27,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+     * Retourne le(s) droits de l'utilisateur enregistré en base (n'inclue pas les droits auto).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function privileges()
+    {
+
+        return $this->belongsToMany(Privileges::class)->WithTimeStamps();
+
+    }
+
+
+
+
 }
