@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
 </button>
 
-<a class="navbar-brand" href="/"><img src='{{ asset('images/phoenix-logo.png') }}' alt=''> Phoenix Admin v1.0
+<a class="navbar-brand" href="/"><img src='{{ asset('images/fjep-logo.png') }}' alt=''> {{env('APP_NAME')}}
     </a>
 
 <div class="collapse navbar-collapse justify-content-end" id='navbarNavDropdown'>
