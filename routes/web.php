@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
-Route::middleware('privileges:guest')->get('/home', function () {
+Route::middleware('privileges:user')->get('/home', function () {
     return view('pages.bienvenue');
-})->name('home');
+});
+
+Route::get('/bienvenue', function () {
+    return view('pages.bienvenue')->name('bienvenue');
+});

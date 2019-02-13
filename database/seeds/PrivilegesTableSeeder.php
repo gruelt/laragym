@@ -40,6 +40,12 @@ class PrivilegesTableSeeder extends Seeder
         ]);
 
         DB::table('privileges')->insert([
+            'id' => 4,
+            'name' => 'guest',
+            'description' => 'Invite' ,
+        ]);
+
+        DB::table('privileges')->insert([
             'id' => 5,
             'name' => 'coach',
             'description' => 'Entraineur' ,

@@ -49,9 +49,9 @@ class privilegesController extends Controller
 
 
         /**
-         * Droit visiteur systématique
+         * Droit user systématique
          */
-        $droits[]=4;
+        $droits[]=3;
 
 
 
@@ -95,6 +95,7 @@ class privilegesController extends Controller
      */
     public function getPrivilegeId($droit)
     {
+
 
         $record = Privileges::where('name',$droit)->first();
 

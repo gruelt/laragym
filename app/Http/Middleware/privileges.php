@@ -72,10 +72,13 @@ class privileges
         //récupére le array des droits dans sesame de l'utilisateur courant
 
 
+        if($this->auth->user()) {
 
-
-        $id=$this->auth->user()->id;
-
+            $id = $this->auth->user()->id;
+        }
+        else{
+            return redirect('/zobi')->withErrors("Droits insuffisants pour /".$request->path());
+        }
 
 
         $IdDR = new PrivilegesController;
@@ -104,8 +107,8 @@ class privileges
             return $next($request);
         }
         else {
-            return back()->withErrors("Droits insuffisants pour /".$request->path());
-            //return redirect('/')->withErrors("Droits insuffisants pour /".$request->path());
+            //return back()->withErrors("Droits insuffisants pour /".$request->path());
+            return redirect('/')->withErrors("Droits insuffisants pour /".$request->path());
         }
 
     }
