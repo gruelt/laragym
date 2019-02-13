@@ -24,3 +24,12 @@ Route::middleware('privileges:user')->get('/home', function () {
 Route::get('/bienvenue', function () {
     return view('pages.bienvenue')->name('bienvenue');
 });
+
+
+Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function () {
+
+    Route::get('/adherents', function () {
+        return view('pages.admin.adherents');
+    });
+
+});
