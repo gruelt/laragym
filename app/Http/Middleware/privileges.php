@@ -71,6 +71,29 @@ class privileges
 
         //récupére le array des droits dans sesame de l'utilisateur courant
 
+
+
+
+        $id=$this->auth->user()->id;
+
+
+
+        $IdDR = new PrivilegesController;
+
+        $IdDroitsActifs=$IdDR->getPrivileges($id);
+
+        $possibleDroits=$IdDR->getPossiblePrivileges();
+
+
+        foreach($IdDroitsActifs as $iddroit )
+
+        {
+
+            $request->session()->put($possibleDroits[$iddroit], 1);
+            //session()->save();
+        }
+
+
         $IdDroitsActifs=$IdDR->getPrivileges($id);
 
 
