@@ -12,7 +12,7 @@
         <tr>
             <th>Nom</th>
             <th>Prénom</th>
-
+            <th>Equipe</th>
             <th>Genre</th>
             <th>Compétitif</th>
             <th>Modifier</th>
@@ -23,7 +23,7 @@
         <tr>
             <th>Nom</th>
             <th>Prénom</th>
-
+            <th>Equipe</th>
             <th>Genre</th>
             <th>Compétitif</th>
             <th>Modifier</th>
@@ -63,6 +63,7 @@
                 "columns": [
                     { "data": "nom" },
                     { "data": "prenom" },
+                    { "data": "niveaux" },
                     { "data": "genre",
                         "render": function(data, type, row, meta) {
                             if (row.genre_id === '1')
