@@ -28,7 +28,7 @@ Route::get('/bienvenue', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function () {
 
-    Route::get('/adherents', function () {
+    Route::get('/gymnastes', function () {
         return view('pages.admin.adherents');
     });
 

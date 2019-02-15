@@ -64,7 +64,7 @@
                     <li class="list-group-item sidebar-separator-title d-flex align-items-center menu-collapsed">
                         ADMINISTRATEUR
                     </li>
-                    <a href="/admin/adherents" class="bg-light list-group-item list-group-item-action">
+                    <a href="/admin/gymnastes" class="bg-light list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-users mr-3"></span>
                             <span class="menu-collapsed">Adhérents</span>
