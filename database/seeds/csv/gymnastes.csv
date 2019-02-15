@@ -61,16 +61,11 @@ id,nom,prenom,date_naissance,genre_id,competitif,commentaire
 60,faveyrial,jean,8/15/2015,1,0,1
 61,faveyrial,rose,6/4/2018,1,0,1
 62,TREVE,Clara,12/15/2014,2,0,1
-Adulte-Agrés,Chataing,Fred,,,Compétition,
-Annul,Sarzier ,Clara ,17/02/2011,,Compétition,
 63,Ravel,Maxence,9/30/2009,1,1,4
 64,sarritzu,ezzio,8/20/2011,1,1,4
 65,Yannacopoulos,Thibaud,12/15/2006,1,1,4
 66,Per,Robin,10/3/2011,2,1,4
 67,Dupuis,Vincent,3/31/2000,1,1,5
-G-N3,ARGAUD,Matthieu,11/10/2002,Masculin,Compétition,
-G-N3,Bicard,Eddie,6/13/2000,Masculin,Compétition,
-G-N3,Bruyere,Robin,8/3/2002,Masculin,Compétition,
 68,charroin,Yvan,1/17/2006,1,1,5
 69,Duport,Mathis,4/6/2005,1,1,5
 70,PRADIER,Corentin,11/17/2005,1,1,5
@@ -168,27 +163,12 @@ G-N3,Bruyere,Robin,8/3/2002,Masculin,Compétition,
 162,VERDIER,NINON,9/14/2005,2,1,17
 163,mangin,oceane,6/25/2006,2,1,17
 164,Cortes ,Alicia ,12/2/2010,2,1,18
-,Dupuis ,Farèl ,30/06/2014,Masculin,Compétition,
-,Robert,Noé ,8/1/2005,Masculin,Compétition,
-,BONHOMME,ANAE,3/16/2009,,Compétition,
-,BOURGIER,ELOISE,12/8/2010,,Compétition,
-,BRUNON ,Kassandra ,10/12/2008,,Compétition,
-,CONIL,Anna,1/28/2014,,Compétition,
-,Guillaumin ,Loïse ,6/6/2008,,Compétition,
-,Pereira,Zoé,11/26/2004,,Compétition,
-,Rassart,Heloise,12/18/2008,,Compétition,
-,ROCHE,ABIGAIL,8/16/2009,,Compétition,
-,Ubertini,Maloé,6/16/2011,,Compétition,
-,RAYNAUD,JACQUELINE,6/19/1957,,Gym adulte,
-,tissot,dominique ,6/14/1961,,Gym adulte,
 165,gruel,thomas,6/13/1981,1,0,6
 166,BOUTTE,NATHALIE,8/24/1975,2,0,6
 167,BREUIL,STEPHANIE,7/20/1978,2,0,6
 168,Debard,Lydie,11/8/1988,2,0,6
 169,DESMARTIN,Lucie,7/9/1997,2,0,6
 170,SYNOWSKI,Jessica,12/2/1992,2,0,6
-,Gissinger ,Gilles,11/2/1979,Masculin,Gym Adulte avec Agrès,
-,Pompey-Vincent,isabelle,11/8/1980,,Gym Adulte avec Agrès,
 171,BORNE,AXELLE,12/5/2004,2,0,8
 172,BORNE,SALOME,6/14/2002,2,0,8
 173,Trolio,Lorène,8/13/2007,2,0,8
@@ -201,10 +181,6 @@ G-N3,Bruyere,Robin,8/3/2002,Masculin,Compétition,
 180,Mourelon,Noémie ,3/13/2013,2,0,18
 181,Pompey,Louise,5/17/2011,2,0,18
 182,verdier ,ambre,9/15/2011,2,0,18
-,debayle-szczepanski,batiste,9/15/2010,Masculin,Je ne sais pas,
-,Jolivet,Jenny,6/27/2013,,Je ne sais pas,
-Baby,BURRICAND,Lény,9/5/2016,Masculin,Loisirs,
-Baby,PIERRON,ILAN,4/28/2016,Masculin,Loisirs,
 183,Champier,Louis,6/24/2011,1,0,4
 184,CHAVANNE,Corentin,10/26/2010,1,0,4
 185,crochet,gatien,8/5/2010,1,0,4
@@ -318,89 +294,6 @@ Baby,PIERRON,ILAN,4/28/2016,Masculin,Loisirs,
 293,Tardy,Lorylou,6/5/2012,2,0,18
 294,Verdun,Lilou,9/11/2011,2,0,18
 295,VERGNE,MARION,8/10/2012,2,0,18
-Parcours,SIX,Clémence,6/22/2011,,Loisirs,
-296,Pothier,Célia,5/30/2013,2,0,18
-,Jey,Elisa,2/8/2012,Feminin,Loisirs,
-,Belguerri,Noham,3/9/2019,Masculin,Loisirs,
-,BIFFAUD,ARTHUR,11/23/2009,Masculin,Loisirs,
-,CANTINOL - DEGUIN,DORYANN,24/03/2016,Masculin,Loisirs,
-,Chabanny,Côme ,10/18/2014,Masculin,Loisirs,
-,David Mazancieux,Maxence,5/18/2013,Masculin,Loisirs,
-,Favard,Jordan ,2/20/2012,Masculin,Loisirs,
-,GOUTAGNEUX ,Tom,3/26/2017,Masculin,Loisirs,
-,Koszyk,Leandre,6/12/2013,Masculin,Loisirs,
-,Laurent Clerjon,Célestin ,10/27/2013,Masculin,Loisirs,
-,RIBOT,Axel,8/18/2015,Masculin,Loisirs,
-,servanton,tiago,11/19/2015,Masculin,Loisirs,
-,Soulhat,noham,5/6/2015,Masculin,Loisirs,
-,Terrasse,Baptiste,12/8/2015,Masculin,Loisirs,
-,VIAL,Louis,7/18/2016,Masculin,Loisirs,
-,Alguacil,Jasmine,12/20/2011,,Loisirs,
-,Arnaud ,Alycia ,1/25/2015,,Loisirs,
-,Barra,Roseline,5/24/1960,,Loisirs,
-,Beal,Anaelle,10/29/2010,,Loisirs,
-,Belguerri,Shaïma,11/1/2016,,Loisirs,
-,BERCHOUX,AMY,12/18/2009,,Loisirs,
-,BERNARD,Lisa,5/19/2013,,Loisirs,
-,Blanc,Emie,10/14/2014,,Loisirs,
-,BOUIX,Emmie,6/27/2010,,Loisirs,
-,bruchet,cassandre,9/28/2009,,Loisirs,
-,Cagna ,Sahteene ,8/19/2016,,Loisirs,
-,CARTON,CLARA,10/23/2012,,Loisirs,
-,Cazenave,Françoise,2/12/1956,,Loisirs,
-,cesarini,clémence,4/26/2013,,Loisirs,
-,Chaverot,Eloane,19/10/2010,,Loisirs,
-,COIFFET,Lou-Ann,5/1/2012,,Loisirs,
-,Couble,Flavie,8/30/2011,,Loisirs,
-,DE Oliveira ,elena ,2/11/2011,,Loisirs,
-,FAURE,Nayah,5/4/2017,,Loisirs,
-,FAURE,VICTORINE,2/10/2014,,Loisirs,
-,FAURE,VICTORINE,2/10/2014,,Loisirs,
-,Frasile,Zoé ,11/5/2015,,Loisirs,
-,Gouttebel,Rosy,5/18/2015,,Loisirs,
-,Guilloteau,Coralie,7/28/1988,,Loisirs,
-,Ibrahimi,Nehila,2/5/2013,,Loisirs,
-,Lescot ,Jade,7/18/2008,,Loisirs,
-,LIOGER,Soline,8/16/2010,,Loisirs,
-,LOI,Tylia,8/15/2013,,Loisirs,
-,Lulka,Fanny,11/25/2014,,Loisirs,
-,Mallet,Genevieve,7/5/1965,,Loisirs,
-,Mallet,Jean Pascal,7/5/1965,,Loisirs,
-,Marcon,Ellyn,2/22/2009,,Loisirs,
-,Martos,Lola,3/4/2011,,Loisirs,
-,Martos,Zoé,3/4/2011,,Loisirs,
-,MASSARDIER,meline,9/10/2011,,Loisirs,
-,Mialon Liogier,Anouk,2/24/2008,,Loisirs,
-,Mogier,Maélie ,7/20/2015,,Loisirs,
-,Mondon,Mila,1/16/2014,,Loisirs,
-,Mondon,Mila,41655,,Loisirs,
-,Mondon,Mila,41655,,Loisirs,
-,moulin,Mélissa ,41454,,Loisirs,
-,Oufqih thien,Jade,41025,,Loisirs,
-,Pallandre,Antonia,4/12/2015,,Loisirs,
-,Rostoll,Joyce,11/8/2015,,Loisirs,
-,SANTINI,Charlyne,12/23/2014,,Loisirs,
-,sarritzu,angelina,41517,,Loisirs,
-,Tato,Laly,41411,,Loisirs,
-,Vacher,Kayliha ,41187,,Loisirs,
-,Merley,Annie,5/12/1955,,Loisirs,
-297,Gourlier,Luisa,1/5/2014,2,0,1
-298,Chevalier,Romain,,1,0,2
-299,Dechandon,Hervé,,1,0,2
-300,Oliver,Franck,,1,0,2
-301,Chevalier,Charléne,,2,0,2
-302,Robillard,Anne sophie,,2,0,2
-303,Grécu,Vlad,,1,0,3
-304,Grécu,Valentin,,1,0,3
-305,Viricel,Marion,,2,0,3
-306,Guyot,dominique ,,2,0,3
-307,Duffaux ,William ,12/17/2012,1,1,4
-308,KERNINON-COLSON,Louis,7/30/2012,1,1,4
-309,Nahouda,Soilihi,02/06/1991,1,0,6
-310,Barbarin,Agathe,4/15/1988,2,0,6
-311,Campo Paysaa,Cindy,,1,0,7
-312,Vey,Mia,12/30/2008,2,1,16
-313,Gourlier,Maeva,8/30/2005,2,1,17
-,Devigne,Estelle,3/26/1983,,,
-,Béduchaud,Jules,41914,,,
-,Béduchaud,Zoé,41914,,,
+296,ARGAUD,Matthieu,11/10/2002,1,1,1
+297,Bicard,Eddie,6/13/2000,1,1,1
+298,Bruyere,Robin,8/3/2002,1,1,1

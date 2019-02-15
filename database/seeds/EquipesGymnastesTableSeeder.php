@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use JeroenZwart\CsvSeeder\CsvSeeder;
 
-class EquipesTableSeeder extends CsvSeeder
+class EquipesGymnastesTableSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/seeds/csv/equipes.csv';
-        $this->tablename = 'equipes';
+        $this->file = '/database/seeds/csv/equipe_gymnaste.csv';
+        $this->tablename = 'equipe_gymnaste';
         $this->delimiter = ',';
     }
 

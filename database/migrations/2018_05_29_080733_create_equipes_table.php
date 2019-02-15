@@ -15,7 +15,7 @@ class CreateEquipesTable extends Migration
     {
         Schema::create('equipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Nom');
+            $table->string('nom');
 
             $table->integer('categorie_id')->unsigned();
             $table->integer('niveau_id')->unsigned();
