@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class completeController extends Controller
 {
@@ -19,7 +21,31 @@ class completeController extends Controller
 
         ]);
 
-        print "ça serait OK";
+        $user = User::find(Auth::user()->id);
+
+//dd($request);
+            $user->nom = $request->nom;
+            $user->prenom = $request->prenom;
+            $user->ville= $request->ville;
+            $user->cp = $request->cp;
+            $user->telephone1 = $request->telephone1;
+            $user->telephone2 = $request->telephone2;
+
+            $user->adresse = $request->adresse;
+            $user->complete =1;
+
+
+
+            $user->save();
+
+
+
+        return redirect('/home')->withMessage("Vos Informations sont complétées ! Vous pouvez Inscrire vos gymnastes");
+
+
+
+
+
 
     }
 }
