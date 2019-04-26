@@ -25,13 +25,13 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{ Auth::user()->firstname }} {{ Auth::user()->name }}
+                {{ Auth::user()->email }}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"><i class="fas fa-user"></i> {{__('navbar.informations')}}</a>
-                <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> {{__('navbar.preferences')}}</a>
+                <a class="dropdown-item" href="/myaccount"><i class="fas fa-user"></i> Mes Informations</a>
+
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> {{__('navbar.deconnexion')}}</a>
+                <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
             </div>
         </li>
 

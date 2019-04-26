@@ -13,7 +13,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-layout row align-center style="max-width: 650px">
-            <v-button v-if="logged" >Se déconnecter</v-button>
+            <v-btn flat v-if="logged" href="/logout">Se déconnecter {{user}}</v-btn>
 
             <v-button v-if="logged === false" >Se Connecter</v-button>
         </v-layout>
@@ -32,6 +32,10 @@
             title:{
                 type: String,
                 default: "Titre"
+            },
+            user:{
+                type: String,
+                default: "Pinpin"
             }
         }
     }

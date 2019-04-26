@@ -1,23 +1,50 @@
-//@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons");
-//@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
 // Variables
-//@import "variables";
+@import "variables";
 
 //components
 //@import "widget";
-//@import "sidebarNavbar";
-//@import "~datatables/media/css/jquery.dataTables.css";
+@import "sidebarNavbar";
+@import "~datatables/media/css/jquery.dataTables.css";
 //@import "_radioButton.scss";
 
-@import '~vuetify/dist/vuetify.min.css';
+//@import '~vuetify/dist/vuetify.min.css';
 
 //Vue Components
 @import "vuetransitions";
 
 
+body {
+  background-color: #f8f9fa;
+}
 
+
+#wrapper {
+  width: 100%;
+
+}
+
+#page-wrapper {
+  position: inherit;
+  padding-top: 95px;
+  background-color: white;
+  height: 100vh;
+
+}
+
+/*gestion grands ecrans*/
+@media (min-width: 768px) {
+  #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 250px;
+    padding: 95px 2vw;
+    border-left: 1px solid #e7e7e7;
+    background-color: white;
+  }
+}
 

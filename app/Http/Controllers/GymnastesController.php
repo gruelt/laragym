@@ -12,7 +12,11 @@ class GymnastesController extends Controller
     //retourne les gyms avec leur groupe
     public function getall()
     {
+        $return=array();
+
         $all =  Gymnaste::all();
+
+
 
         foreach ($all as $key => $gymnaste)
         {

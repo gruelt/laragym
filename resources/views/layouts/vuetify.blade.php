@@ -32,12 +32,15 @@
 
 
     <!-- Page content -->
-
+            <v-content>
+                <v-container fill-height>
 
             @yield('title')
 
 
         @yield('content')
+                </v-container>
+            </v-content>
 
     </v-app>
 </div>

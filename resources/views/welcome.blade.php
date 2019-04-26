@@ -1,4 +1,4 @@
-@extends('layouts.vuetify')
+@extends('layouts.default')
 
 
 @section('title')
@@ -12,7 +12,7 @@
 
 
 
-        <v-content>
+
             @auth
                 <a href="{{ url('/home') }}">Homeaaaaaaaaaaaaaaaaaaaa</a>
             @else
@@ -22,7 +22,7 @@
                     <a href="{{ route('register') }}">Enregistrer un nouveau compte</a>
                 @endif
             @endauth
-        </v-content>
+
 
 
 

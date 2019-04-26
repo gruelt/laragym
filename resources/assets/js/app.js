@@ -18,9 +18,9 @@ Vue.component('navbar', require('./components/layout/navbarComponent.vue'));
 
 
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+/*import Vuetify from 'vuetify';
 
-Vue.use(Vuetify);
+Vue.use(Vuetify);*/
 
 
 
