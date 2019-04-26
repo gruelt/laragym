@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PratiquesTableSeeder::class);
         $this->call(PrivilegesTableSeeder::class);
         $this->call(EquipesTableSeeder::class);
-        $this->call(GymnastesTableSeeder::class);
-        $this->call(EquipesGymnastesTableSeeder::class);
+        //$this->call(GymnastesTableSeeder::class);
+        //$this->call(EquipesGymnastesTableSeeder::class);
     }
 }
