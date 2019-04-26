@@ -45,3 +45,10 @@ Route::group(['prefix' => 'responsable', 'middleware' => 'verified'], function (
 
 });
 
+
+
+
+//test
+Route::get('/test', function () {
+    return view('pages.test');
+});

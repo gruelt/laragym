@@ -20,7 +20,7 @@
                 <img width="25" height="25" alt="{{ session('locale') }}"
                      src="{!! asset('images/' . session('locale') . '.png') !!}"/>
             </a>
-            
+
             </div>
         </li>
         <li class="nav-item dropdown">
