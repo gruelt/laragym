@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.5.0",
-        "datatables": "^1.10.18"
+        "datatables": "^1.10.18",
+        "vuetify": "^1.5.13"
     }
 }

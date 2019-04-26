@@ -11,13 +11,15 @@
 |
 */
 
+/*ANciennes routes*/
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::middleware('privileges:user')->get('/home', function () {
+Route::middleware('privileges:user')->middleware('verified')->get('/home', function () {
     return view('pages.bienvenue');
 });
 
@@ -25,7 +27,7 @@ Route::get('/bienvenue', function () {
     return view('pages.bienvenue')->name('bienvenue');
 });
 
-
+//Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function () {
 
     Route::get('/gymnastes', function () {
@@ -33,3 +35,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     });
 
 });
+
+//Responsables
+Route::group(['prefix' => 'responsable', 'middleware' => 'verified'], function () {
+
+    Route::get('/gymnastes', function () {
+        return view('pages.admin.adherents');
+    });
+
+});
+

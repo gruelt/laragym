@@ -24,7 +24,7 @@ class GymnastesController extends Controller
 
             foreach($niveaux as $niveau)
             {
-                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>";
+                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
             }
 
             $return[$key]['niveaux']=$returnniv;

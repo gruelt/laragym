@@ -14,6 +14,9 @@ window.Vue = require('vue');
 // Gestion de l'internationalisation
 
 import Vue from 'vue';
+import Vuetify from 'vuetify';
+
+Vue.use(Vuetify);
 
 
 
