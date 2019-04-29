@@ -7,7 +7,7 @@
 
 @section('content')
 <div id="app">
-<gymnastes-card></gymnastes-card>
+<gymnastes-list></gymnastes-list>
 </div>
 @stop
 

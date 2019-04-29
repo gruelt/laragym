@@ -7,7 +7,7 @@ use App\Gymnaste;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Array_;
 use App\User;
-use Illuminate\Contracts\Auth\Guard;
+
 
 class GymnastesController extends Controller
 {
@@ -47,15 +47,15 @@ class GymnastesController extends Controller
 
 
     //retourne les gyms avec leur groupe
-    public function getMy()
+    public function getMy($id=1)
     {
         $return=array();
 
 
 
-        return $this->currentUser;
 
-        $mygym =  User::find(Auth::user()->id)->gymnastes();
+
+        $mygym =  User::find(1)->gymnastes()->get();
 
 
 

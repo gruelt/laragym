@@ -17,8 +17,9 @@ window.Vue = require('vue');
 
 
 
-Vue.component('GymnastesCard', require('./components/gymnastesCardComponent.vue'));
+Vue.component('gymnastes-list', require('./components/GymnastesListComponent.vue'));
 
+Vue.component('gymnaste-card', require('./components/GymnasteCardComponent.vue'));
 
 
 Vue.component('passport-clients',require('./components/passport/Clients.vue'));
