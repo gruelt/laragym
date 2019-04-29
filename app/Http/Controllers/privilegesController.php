@@ -29,7 +29,7 @@ class privilegesController extends Controller
 
         if(is_null($iduser))
         {
-            $droits[]=4;
+            $droits[]=3;
 
             return $droits;
         }

@@ -5,36 +5,29 @@
         <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
         <!-- Bootstrap List Group -->
         <ul class="list-group">
+
+
+
+
+
+
             <!-- Separator with title -->
             <li class="list-group-item sidebar-separator-title menu-collapsed">
-                Mon menu
+                Responsable/Parent
             </li>
             <!-- /END Separator -->
             <!-- Menu with submenu -->
-            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action ">
 
-            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-user fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Profile</span>
-                    <span class="submenu-icon ml-auto"></span>
-                </div>
-            </a>
-            <!-- Submenu content -->
-            <div id='submenu2' class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">Settings</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">Password</span>
-                </a>
-            </div>
-            <a href="#" class="bg-light list-group-item list-group-item-action">
+
+
+            <a href="/responsable/gymnastes" class="bg-light list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-tasks fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Tasks</span>
+                    <span class="menu-collapsed">Mes Gymnastes</span>
                 </div>
             </a>
+
+
             <!-- Separator with title -->
             <li class="list-group-item sidebar-separator-title d-flex align-items-center menu-collapsed">
                 OPTIONS

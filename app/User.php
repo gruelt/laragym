@@ -41,10 +41,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
-    public function complete()
+    public function gymnastes()
     {
-
-
+        return $this->hasMany(Gymnaste::class);
     }
 
 

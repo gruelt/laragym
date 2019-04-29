@@ -24,7 +24,7 @@ class CreateEquipeGymnasteTable extends Migration
 
             $table->timestamps();
 
-            #Fk vers la table users
+            #Fk vers la table gymnastes
             $table->foreign('gymnaste_id')->references('id')->on('gymnastes')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');

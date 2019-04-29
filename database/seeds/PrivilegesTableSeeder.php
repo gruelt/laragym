@@ -58,5 +58,70 @@ class PrivilegesTableSeeder extends Seeder
         ]);
 
 
+        //User par défaut
+        DB::table('users')->insert([
+            'id' => 1 ,
+            'name' => 'gruel',
+            'email' => 'gruelt@gmail.com',
+            'password' => '$2y$10$14TsjoIX9WnHpjhzAQMYfeaN532g0gfe3oMJzCV1QQc6te26UYJtW',
+            'nom' => 'GRUEL',
+            'prenom' => 'Thomas',
+            'adresse' => '1 rue du mont',
+            'cp' => '42160',
+            'ville' => 'Bonson',
+            'complete' => 1,
+            'email_verified_at' => '2019-04-29 09:35:39',
+            'telephone1' => '0661468315',
+            'telephone2' => '0675870751'
+            
+            
+        ]);
+
+        //User par défaut
+        DB::table('users')->insert([
+            'id' => 0 ,
+            'name' => 'FJEP',
+            'email' => 'gruelt+fjep@gmail.com',
+            'password' => '$2y$10$14TsjoIX9WnHpjhzAQMYfeaN532g0gfe3oMJzCV1QQc6te26UYJtW',
+            'nom' => 'FJEP',
+            'prenom' => 'Gymnastique',
+            'adresse' => '1 rue du mont',
+            'cp' => '42160',
+            'ville' => 'St Just St Rambert',
+            'complete' => 1,
+            'email_verified_at' => '2019-04-29 09:35:39',
+            'telephone1' => '0661468315',
+            'telephone2' => '0675870751'
+
+
+        ]);
+
+
+
+        DB::table('privileges_user')->insert([
+            'id' => 1,
+            'user_id' => 1,
+            'privileges_id' => 1
+        ]);
+
+        DB::table('privileges_user')->insert([
+            'id' => 2,
+            'user_id' => 1,
+            'privileges_id' => 2
+        ]);
+
+        DB::table('privileges_user')->insert([
+            'id' => 3,
+            'user_id' => 1,
+            'privileges_id' => 5
+        ]);
+
+        DB::table('privileges_user')->insert([
+            'id' => 4,
+            'user_id' => 1,
+            'privileges_id' => 6
+        ]);
+
+
     }
 }

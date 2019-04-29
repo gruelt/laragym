@@ -21,11 +21,17 @@ class CreateGymnasteTable extends Migration
             $table->boolean('competitif')->default('0');
             $table->date('date_naissance');
             $table->String('commentaire');
+            $table->integer('user_id')->default('0');
             $table->timestamps();
 
 
-            #Fk vers la table users
+            #Fk vers la table genres
             $table->foreign('genre_id')->references('id')->on('genres')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            #Fk vers la table genres
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 

@@ -49,10 +49,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 });
 
 //Responsables
-Route::group(['prefix' => 'responsable', 'middleware' => 'verified'], function () {
+Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges:user']], function () {
 
     Route::get('/gymnastes', function () {
-        return view('pages.admin.adherents');
+        return view('pages.responsables.adherents');
     });
 
 });

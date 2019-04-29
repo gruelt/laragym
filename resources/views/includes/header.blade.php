@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
 </button>
 
-<a class="navbar-brand" href="/"><img src='{{ asset('images/fjep-logo.png') }}' alt=''> {{env('APP_NAME')}}
+<a class="navbar-brand" href="/home"><img src='{{ asset('images/fjep-logo.png') }}' alt=''> {{env('APP_NAME')}}
     </a>
 
 <div class="collapse navbar-collapse justify-content-end" id='navbarNavDropdown'>

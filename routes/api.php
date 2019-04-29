@@ -27,3 +27,17 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 });
+
+
+
+
+
+Route::group(['prefix' => 'responsables'], function () {
+
+
+
+    //Gets all users
+    Route::get('/gymnastes', 'GymnastesController@getMy');
+
+
+});
