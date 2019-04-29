@@ -1,6 +1,6 @@
 <template>
     <div>
-       <gymnaste-card></gymnaste-card>
+       <!--<gymnaste-card></gymnaste-card>-->
     </div>
 </template>
 
@@ -31,7 +31,7 @@
             return {
 
                 gyms: 'rien',
-                test: 'qqch'
+
 
             }
         },

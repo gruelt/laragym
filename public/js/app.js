@@ -22780,7 +22780,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 });
 
 window.axios.defaults.headers.common = {
-    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+
     'X-Requested-With': 'XMLHttpRequest'
 };
 
@@ -65276,8 +65276,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
 
-            gyms: 'rien',
-            test: 'qqch'
+            gyms: 'rien'
 
         };
     },
@@ -65294,7 +65293,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("gymnaste-card")], 1)
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -62,6 +62,6 @@ var app = new Vue({
 
 
 window.axios.defaults.headers.common = {
-    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+
     'X-Requested-With': 'XMLHttpRequest'
 };
