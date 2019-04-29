@@ -10,10 +10,15 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+//
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('sidebar', require('./components/layout/sidebarComponent.vue'));
+// Vue.component('navbar', require('./components/layout/navbarComponent.vue'));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('sidebar', require('./components/layout/sidebarComponent.vue'));
-Vue.component('navbar', require('./components/layout/navbarComponent.vue'));
+
+
+Vue.component('GymnastesCard', require('./components/gymnastesCardComponent.vue'));
+
 
 
 Vue.component('passport-clients',require('./components/passport/Clients.vue'));
@@ -53,3 +58,9 @@ Vue.use(Vuetify);*/
 var app = new Vue({
     el: '#app'
 });
+
+
+window.axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};

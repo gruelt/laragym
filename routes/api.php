@@ -18,7 +18,7 @@ Route::get('/user', function (Request $request) {
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
+Route::group(['prefix' => 'admin'], function () {
 
 
 

@@ -19,6 +19,26 @@
     export default {
         mounted() {
             console.log('Component mounted.')
+        },
+        methods: {
+
+            toggle(form){
+                console.log(form);
+            },
+
+            update: function() {
+                axios
+                    .get('/api/responsables/gymnastes'+ this.idaccount)
+                    .then(response => (this.fields = response.data));
+                console.log('Chargement du type de compte '+this.idaccount);
+            },
+
+
+
+        },
+
+        mounted(){
+            this.update();
         }
     }
 </script>
