@@ -11,12 +11,16 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-// Gestion de l'internationalisation
+Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('sidebar', require('./components/layout/sidebarComponent.vue'));
+Vue.component('navbar', require('./components/layout/navbarComponent.vue'));
+
+
 
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+/*import Vuetify from 'vuetify';
 
-Vue.use(Vuetify);
+Vue.use(Vuetify);*/
 
 
 
@@ -34,6 +38,5 @@ Vue.use(Vuetify);
 
 
 var app = new Vue({
-    el: '#app',
-    i18n,
+    el: '#app'
 });

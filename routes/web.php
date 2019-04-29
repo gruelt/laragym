@@ -14,18 +14,30 @@
 /*ANciennes routes*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome-bs');
 });
 
+
+
+
+
+/*******  Verification Logins / Mail / complets */
 Auth::routes(['verify' => true]);
 
-Route::middleware('privileges:user')->middleware('verified')->get('/home', function () {
+Route::middleware('privileges:user')->middleware('verified')->middleware('complete')->get('/home', function () {
     return view('pages.bienvenue');
 });
 
-Route::get('/bienvenue', function () {
-    return view('pages.bienvenue')->name('bienvenue');
+
+Route::middleware('verified')->get('/formcomplete',function()
+{
+    return view('forms.complete');
 });
+Route::middleware('verified')->post('/formcomplete','completeController@store');
+
+
+/****      Fin verif logins ******///
+
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function () {
@@ -44,4 +56,10 @@ Route::group(['prefix' => 'responsable', 'middleware' => 'verified'], function (
     });
 
 });
+
+
+Route::get('/logout', 'Auth\LoginController@logout');
+
+
+
 

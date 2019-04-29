@@ -77,7 +77,7 @@ class privileges
             $id = $this->auth->user()->id;
         }
         else{
-            return redirect('/zobi')->withErrors("Droits insuffisants pour /".$request->path());
+            return redirect('/home')->withErrors("Droits insuffisants pour /".$request->path());
         }
 
 
@@ -107,8 +107,8 @@ class privileges
             return $next($request);
         }
         else {
-            //return back()->withErrors("Droits insuffisants pour /".$request->path());
-            return redirect('/')->withErrors("Droits insuffisants pour /".$request->path());
+            return back()->withErrors("Droits insuffisants pour /".$request->path());
+            //return redirect('/')->withErrors("Droits insuffisants pour /".$request->path());
         }
 
     }
