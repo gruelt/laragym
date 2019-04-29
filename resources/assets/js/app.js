@@ -53,11 +53,15 @@ Vue.use(Vuetify);*/
 //Demo Gestion des Utilisateurs
 //Vue.component('user-list', require('./components/users/UserListComponent.vue'));
 
+import Datepicker from 'vuejs-datepicker';
 
 
 
 var app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {
+        Datepicker
+    }
 });
 
 

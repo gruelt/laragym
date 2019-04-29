@@ -24,6 +24,7 @@
         "@fortawesome/fontawesome-free": "^5.8.1",
         "datatables": "^1.10.18",
         "material-design-icons-iconfont": "^4.0.5",
+        "vuejs-datepicker": "^1.5.4",
         "vuetify": "^1.5.13"
     }
 }

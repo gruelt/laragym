@@ -1,6 +1,7 @@
 <template>
     <div>
-       <!--<gymnaste-card></gymnaste-card>-->
+       <gymnaste-card :gyms="gyms"></gymnaste-card>
+        <a href="/responsable/gymnastes/add/" type="button" class="btn btn-success btn-lg btn-block">+ Ajouter un gymnaste</a>       {{gyms}}
     </div>
 </template>
 

@@ -60,6 +60,11 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
         return view('pages.responsables.adherents');
     });
 
+    Route::get('/gymnastes/add', function () {
+        return view('forms.gymnaste');
+    });
+
+
 });
 
 
