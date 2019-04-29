@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/js/app.js
+/public/css/app.scss
 /storage/*.key
 /vendor
 /.idea
@@ -14,3 +16,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 gymnastes.csv
+
