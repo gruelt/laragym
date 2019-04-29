@@ -4,16 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gymnaste;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Array_;
 use App\User;
 use Illuminate\Contracts\Auth\Guard;
 
 class GymnastesController extends Controller
 {
-    public function __construct(Guard $auth)
-    {
-        $this->currentUser = $auth->user();
-    }
+
 
     //retourne les gyms avec leur groupe
     public function getall()
@@ -57,7 +55,7 @@ class GymnastesController extends Controller
 
         return $this->currentUser;
 
-        $mygym =  User::find()->gymnastes();
+        $mygym =  User::find(Auth::user()->id)->gymnastes();
 
 
 

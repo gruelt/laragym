@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-Route::group(['prefix' => 'responsables'], function () {
+Route::group(['prefix' => 'responsables', 'middleware' => 'auth:api'], function () {
 
 
 
