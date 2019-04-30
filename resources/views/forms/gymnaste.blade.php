@@ -10,6 +10,7 @@
 
 <div id="app">
     <div class="container">
+        @{{test}}
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -54,7 +55,7 @@
 
                                 <div class="col-md-6">
 
-                                    <select id=genre class="form-control{{ $errors->has('genre') ? ' is-invalid' : '' }}" name="genre">
+                                    <select id='genre' class="form-control{{ $errors->has('genre') ? ' is-invalid' : '' }}" name="genre">
                                         <option value="2">Feminin</option>
                                         <option value="1">Masculin</option>
 
@@ -69,7 +70,49 @@
                             </div>
 
 
-                            <datepicker></datepicker>
+
+
+
+
+                            <div class="form-group row">
+                                <label for="date_naissance" class="col-md-4 col-form-label text-md-right">{{ __('Date de Naissance') }}</label>
+
+                                <div class="col-md-6">@if ($errors->has('date_naissance'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('date_naissance') }}</strong>
+                                    </span>
+                                    @endif
+
+                                    <datepicker value="{{old('date_naissance')}}" name="date_naissance"  format="dd-MM-yyyy" :language="fr"></datepicker>
+
+
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="commentaire" class="col-md-4 col-form-label text-md-right">{{ __('Allergies/points médicaux particuliers.') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="commentaire" type="text" class="form-control{{ $errors->has('commentaire') ? ' is-invalid' : '' }}" name="commentaire" value="{{ old('commentaire') }}"  autofocus></textarea>
+
+                                    @if ($errors->has('commentaire'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('commentaire') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+
+
 
 
 
@@ -95,5 +138,7 @@
 @stop
 
 @section('script')
-
+<script>
+    import {fr} from 'vuejs-datepicker/dist/locale'
+</script>
 @stop

@@ -10,7 +10,7 @@ class completeController extends Controller
 {
     public function store(Request $request)
     {
-        //TODO ajouter controles
+
 
         $this->validate($request, [
             'nom' => 'required|string|max:50|min:3',

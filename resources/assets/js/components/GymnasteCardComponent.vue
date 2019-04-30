@@ -52,7 +52,7 @@
                         </td>
 
                         <td style="vertical-align: middle;">
-                            {{ gym.date_naissance}}
+                            {{ gym.date_naissance_fr}}
                         </td>
 
                         <td v-html="gym.niveaux" style="vertical-align: middle;">

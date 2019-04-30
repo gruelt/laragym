@@ -55,13 +55,23 @@ Vue.use(Vuetify);*/
 
 import Datepicker from 'vuejs-datepicker';
 
+import { fr } from 'vuejs-datepicker/dist/locale';
+
 
 
 var app = new Vue({
     el: '#app',
+
     components: {
         Datepicker
+    },
+    data () {
+        return {
+            fr: fr
+
+        }
     }
+
 });
 
 

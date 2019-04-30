@@ -53,7 +53,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 
 });
 
-//Responsables
+///////////////////////////////////
+///
+///  Responsables
+///
+/// /////////////////////////////////////////////
 Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges:user']], function () {
 
     Route::get('/gymnastes', function () {
@@ -63,6 +67,9 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
     Route::get('/gymnastes/add', function () {
         return view('forms.gymnaste');
     });
+
+    Route::post('/gymnastes/add', 'GymnastesController@store');
+
 
 
 });

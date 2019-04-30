@@ -93,7 +93,7 @@ class privileges
         {
 
             $request->session()->put($possibleDroits[$iddroit], 1);
-            session()->save();
+            //session()->save();
         }
 
 
