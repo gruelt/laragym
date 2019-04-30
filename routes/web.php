@@ -70,6 +70,9 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
 
     Route::post('/gymnastes/add', 'GymnastesController@store');
 
+    //Montre le Gymnaste
+    Route::get('/gymnastes/{id}', 'GymnastesController@show');
+
 
 
 });

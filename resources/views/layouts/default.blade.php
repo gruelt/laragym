@@ -21,6 +21,7 @@
     <div id="page-wrapper">
 
 
+
         @if(isset($message))
             <div class="row col-lg-12">
                 <div class="alert alert-info">
@@ -28,6 +29,14 @@
                 </div>
             </div>
         @endif
+
+            @if(isset($error))
+                <div class="row col-lg-12">
+                    <div class="alert alert-info">
+                        <span>{!! $errors !!}</span>
+                    </div>
+                </div>
+            @endif
 
             @yield('title')
 

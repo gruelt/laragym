@@ -50,7 +50,7 @@ class GymnastesController extends Controller
 
 
     //retourne les gyms avec leur groupe
-    public function getMy($id=1)
+    public function getMy()
     {
         $return=array();
 
@@ -58,7 +58,7 @@ class GymnastesController extends Controller
 
 
 
-        $mygym =  User::find(1)->gymnastes()->get();
+        $mygym =  User::find(Auth::user()->id)->gymnastes()->get();
 
 
 
@@ -120,13 +120,32 @@ class GymnastesController extends Controller
 
 
 
-        return redirect('/responsable/gymnastes')->withMessage("Gymnaste ajouté !");
+        return redirect('/responsable/gymnastes/'.$gym->id)->withMessage("Gymnaste ajouté !");
 
 
 
 
 
 
+    }
+
+
+
+
+    public function show($id)
+    {
+        $gym =  Gymnaste::find($id);
+
+        //verifie qu ele gym appartient bien
+
+        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id)
+        {
+            return view('pages.responsables.adherents')->withMessage('Ce gymnaste n\'est pas sous votre responsabilité');
+        }
+
+
+
+        return view('pages.responsables.viewgymnaste')->with('gym',$gym);
     }
 
 

@@ -20,7 +20,7 @@ class CreateGymnasteTable extends Migration
             $table->integer('genre_id');
             $table->boolean('competitif')->default('0');
             $table->date('date_naissance');
-            $table->String('commentaire');
+            $table->String('commentaire')->nullable();
             $table->integer('user_id')->default('0');
             $table->timestamps();
 
