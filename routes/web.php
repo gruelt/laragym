@@ -68,10 +68,16 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
         return view('forms.gymnaste');
     });
 
+
     Route::post('/gymnastes/add', 'GymnastesController@store');
 
     //Montre le Gymnaste
     Route::get('/gymnastes/{id}', 'GymnastesController@show');
+
+    //Montre le formulaire photo Gymnaste
+    Route::get('/gymnastes/{id}/photo', 'GymnastesController@photoform');
+
+
 
 
 
@@ -82,4 +88,4 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 
 
-
+Route::post('/gymnastes/{id}/photo', 'GymnastesController@uploadPhoto');

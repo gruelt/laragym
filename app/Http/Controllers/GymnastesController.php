@@ -8,7 +8,7 @@ use App\Gymnaste;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Array_;
 use App\User;
-
+use Illuminate\Support\Facades\Storage;
 
 class GymnastesController extends Controller
 {
@@ -147,7 +147,16 @@ class GymnastesController extends Controller
             //Date de Naissanc En Français
             $date = Carbon::parse($gymnaste['date_naissance'])->format('d-m-Y');
 
+            $age = Carbon::parse($gymnaste['date_naissance'])->age;
+
             $return[$key]['date_naissance_fr']=$date;
+
+            $return[$key]['age']=$age;
+
+            //Gestion Photo
+            $photo_url=Storage::disk('public')->url($gymnaste['photo']);
+
+            $return[$key]['photo_url']=$photo_url;
 
         }
 
@@ -156,6 +165,38 @@ class GymnastesController extends Controller
     }
 
 
+
+    /**
+     * Upload File
+     **/
+    public function uploadPhoto($id,Request $request) {
+        $request->validate([
+
+            'laphoto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        //récupère la photo
+        $photo= $request->laphoto;
+        //récupère l'extension
+        $ext = $photo->getClientOriginalExtension();
+
+        //Infos dy gym :
+        $gym = Gymnaste::find($id);
+        //dd($gym.$id);
+        $filename = $id."_".$gym->nom."_".$gym->prenom.".".$ext;
+
+        //Stocke en local
+        $path = $request->laphoto->storeAs('', $filename, 'public');
+
+        $gym->photo=$filename;
+
+        $gym->save();
+
+        //enregistre le path de la photo
+
+        return back();
+
+    }
 
 
 }

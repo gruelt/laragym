@@ -22,6 +22,8 @@ class CreateGymnasteTable extends Migration
             $table->date('date_naissance');
             $table->String('commentaire')->nullable();
             $table->integer('user_id')->default('0');
+            $table->String('photo')->nullable();
+
             $table->timestamps();
 
 

@@ -10,7 +10,23 @@
 
                         <!--    On affiche les photos des comptes users - si aucun résultat on affiche une photo standard => Format préformaté en 120X160       -->
 
-                        <img  src="/images/anonym.jpg" alt="" width="120" height="160">
+                        <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
+                        <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
+
+
+                        <!--<a :href="'/responsable/gymnastes/'+ gym.id +'/photo'" type="button" class="btn btn-success btn-block">Envoyer une photo</a>-->
+                        <form method="post" :action="'/gymnastes/'+gym.id+'/photo'" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" :value="csrf">
+                            <input id="laphoto" name="laphoto" type="file"  data-filename-placement="inside">
+
+
+
+
+
+
+
+                            <input type="submit" class="btn btn-success" value="Envoyer">
+                        </form>
 
                     </div>
                     <div class="col-md-8 col-sm-8">
@@ -21,28 +37,28 @@
                         </h2>
 
                         <!--    Mail       -->
-                        <p class="card-text">
+                        <p  class="card-text">
                             <span class="fa fa-envelope mr-3"></span>
-                            <span v-for="(niveau) in gym.niveau_tab">{{niveau}}</span>
+                            <span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau}}</a>&nbsp;</span>
                         </p>
 
-                        <!--&lt;!&ndash;    Business Category       &ndash;&gt;-->
-                        <!--<p class="card-text">-->
-                            <!--<span class="fab fa-fort-awesome mr-3"></span>-->
-                            <!--<span v-for="(businesscategory) in paul.businesscategory">{{businesscategory}}</span>-->
-                        <!--</p>-->
+                        <!--&lt; Date de Naissance-->
+                        <p class="card-text">
+                            <span class="fab fa-fort-awesome mr-3"></span>
+                            <span >{{gym.date_naissance_fr}}</span>
+                        </p>
 
-                        <!--&lt;!&ndash;    Service       &ndash;&gt;-->
-                        <!--<p class="card-text">-->
-                            <!--<span class="fa fa-envelope mr-3"></span>-->
-                            <!--<span v-for="(departmentnumber) in paul.departmentnumber">{{departmentnumber}}</span>-->
-                        <!--</p>-->
+                        <!--    Service       -->
+                        <p class="card-text">
+                            <span class="fa fa-envelope mr-3"></span>
+                            <span >{{gym.age}} ans</span>
+                        </p>
 
-                        <!--&lt;!&ndash;    Localisation       &ndash;&gt;-->
-                        <!--<p class="card-text">-->
-                            <!--<span class="fa fa-home mr-3"></span>-->
-                            <!--<span v-for="(l) in paul.l">{{l}}</span>-->
-                        <!--</p>-->
+
+                        <p class="card-text">
+                            <span class="fa fa-home mr-3"></span>
+                            <span >{{gym.commentaire}}</span>
+                        </p>
 
                         <!--&lt;!&ndash;    Profil(s) Phoenix       &ndash;&gt;-->
                         <!--<p class="card-text">-->
@@ -85,6 +101,9 @@
             },
             gym:{
                 type: Object
+            },
+            csrf:{
+                type: String
             },
             debug:
                 {

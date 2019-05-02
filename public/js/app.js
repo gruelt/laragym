@@ -65023,7 +65023,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65034,6 +65034,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -65152,10 +65160,30 @@ var render = function() {
               return _c("tr", [
                 _c("td", { staticStyle: { "vertical-align": "middle" } }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n                    " +
                       _vm._s(gym.id) +
                       "\n                    "
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                  gym.photo
+                    ? _c("img", {
+                        attrs: {
+                          src: gym.photo_url,
+                          width: "120",
+                          height: "160",
+                          alt: ""
+                        }
+                      })
+                    : _c("img", {
+                        attrs: {
+                          src: "/images/anonym.jpg",
+                          alt: "",
+                          width: "120",
+                          height: "160"
+                        }
+                      })
                 ]),
                 _vm._v(" "),
                 _c("td", { staticStyle: { "vertical-align": "middle" } }, [
@@ -65236,6 +65264,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Photo")]),
         _vm._v(" "),
         _c("th", [_vm._v("Nom")]),
@@ -65388,6 +65418,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65399,6 +65445,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         gym: {
             type: Object
+        },
+        csrf: {
+            type: String
         },
         debug: {
             type: Boolean,
@@ -65461,7 +65510,56 @@ var render = function() {
       [
         _c("div", { staticClass: "card-block" }, [
           _c("div", { staticClass: "row" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "col-md-2 col-sm-2 text-center" }, [
+              _vm.gym.photo
+                ? _c("img", {
+                    attrs: {
+                      src: _vm.gym.photo_url,
+                      width: "120",
+                      height: "160",
+                      alt: ""
+                    }
+                  })
+                : _c("img", {
+                    attrs: {
+                      src: "/images/anonym.jpg",
+                      alt: "",
+                      width: "120",
+                      height: "160"
+                    }
+                  }),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  attrs: {
+                    method: "post",
+                    action: "/gymnastes/" + _vm.gym.id + "/photo",
+                    enctype: "multipart/form-data"
+                  }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_token" },
+                    domProps: { value: _vm.csrf }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: {
+                      id: "laphoto",
+                      name: "laphoto",
+                      type: "file",
+                      "data-filename-placement": "inside"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit", value: "Envoyer" }
+                  })
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-8 col-sm-8" }, [
               _c("h2", { staticClass: "card-title" }, [
@@ -65480,18 +65578,46 @@ var render = function() {
                 [
                   _c("span", { staticClass: "fa fa-envelope mr-3" }),
                   _vm._v(" "),
-                  _vm._l(_vm.gym.niveau_tab, function(niveau) {
-                    return _c("span", [_vm._v(_vm._s(niveau))])
+                  _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
+                    return _c("span", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "badge badge-primary",
+                          attrs: { href: "/equipes/" + id }
+                        },
+                        [_vm._v(_vm._s(niveau))]
+                      ),
+                      _vm._v(" ")
+                    ])
                   })
                 ],
                 2
               ),
               _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _c("span", { staticClass: "fab fa-fort-awesome mr-3" }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _c("span", { staticClass: "fa fa-envelope mr-3" }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.gym.age) + " ans")])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _c("span", { staticClass: "fa fa-home mr-3" }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.gym.commentaire))])
+              ]),
+              _vm._v(" "),
               _c("br"),
               _c("br")
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _vm._m(0)
           ])
         ])
       ]
@@ -65501,21 +65627,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-sm-2 text-center" }, [
-      _c("img", {
-        attrs: {
-          src: "/images/anonym.jpg",
-          alt: "",
-          width: "120",
-          height: "160"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

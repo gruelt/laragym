@@ -2,13 +2,13 @@
 
 
 @section('title')
-    Mes Gymnastes
+    Mes Gymnastes @csrf
 @stop
 
 @section('content')
 <div id="app">
-    {{json_encode($gym)}}
-<gymnaste-info :gym="{{json_encode($gym)}}"></gymnaste-info>
+    <br> {{json_encode($gym)}}
+<gymnaste-info csrf="{{ csrf_token() }}" :gym="{{json_encode($gym)}}"></gymnaste-info>
 </div>
 @stop
 

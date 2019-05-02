@@ -20,6 +20,7 @@
                 <table class="table table-borderless mb-0" >
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>Photo</th>
                         <th>Nom</th>
                         <th>Prenom</th>
@@ -38,7 +39,14 @@
                     <tr v-for="gym in gyms">
                         <!-- ID -->
                         <td style="vertical-align: middle;">
-                            {{ gym.id }}
+                        {{ gym.id }}
+                        </td>
+                        <td style="vertical-align: middle;">
+
+                            <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
+                            <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
+
+
                         </td>
 
                         <!-- Name -->
