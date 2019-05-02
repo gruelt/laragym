@@ -10,45 +10,45 @@
 
                         <!--    On affiche les photos des comptes users - si aucun résultat on affiche une photo standard => Format préformaté en 120X160       -->
 
-                        <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
+                        <img  src="/images/anonym.jpg" alt="" width="120" height="160">
 
                     </div>
                     <div class="col-md-8 col-sm-8">
 
                         <!--    Name / givenname       -->
                         <h2 class="card-title">
-                            {{json.name}} {{json.firstname}}
+                            {{gym.nom}} {{gym.prenom}}
                         </h2>
 
                         <!--    Mail       -->
                         <p class="card-text">
                             <span class="fa fa-envelope mr-3"></span>
-                            <span v-for="(mail) in paul.mail">{{mail}}</span>
+                            <span v-for="(niveau) in gym.niveau_tab">{{niveau}}</span>
                         </p>
 
-                        <!--    Business Category       -->
-                        <p class="card-text">
-                            <span class="fab fa-fort-awesome mr-3"></span>
-                            <span v-for="(businesscategory) in paul.businesscategory">{{businesscategory}}</span>
-                        </p>
+                        <!--&lt;!&ndash;    Business Category       &ndash;&gt;-->
+                        <!--<p class="card-text">-->
+                            <!--<span class="fab fa-fort-awesome mr-3"></span>-->
+                            <!--<span v-for="(businesscategory) in paul.businesscategory">{{businesscategory}}</span>-->
+                        <!--</p>-->
 
-                        <!--    Service       -->
-                        <p class="card-text">
-                            <span class="fa fa-envelope mr-3"></span>
-                            <span v-for="(departmentnumber) in paul.departmentnumber">{{departmentnumber}}</span>
-                        </p>
+                        <!--&lt;!&ndash;    Service       &ndash;&gt;-->
+                        <!--<p class="card-text">-->
+                            <!--<span class="fa fa-envelope mr-3"></span>-->
+                            <!--<span v-for="(departmentnumber) in paul.departmentnumber">{{departmentnumber}}</span>-->
+                        <!--</p>-->
 
-                        <!--    Localisation       -->
-                        <p class="card-text">
-                            <span class="fa fa-home mr-3"></span>
-                            <span v-for="(l) in paul.l">{{l}}</span>
-                        </p>
+                        <!--&lt;!&ndash;    Localisation       &ndash;&gt;-->
+                        <!--<p class="card-text">-->
+                            <!--<span class="fa fa-home mr-3"></span>-->
+                            <!--<span v-for="(l) in paul.l">{{l}}</span>-->
+                        <!--</p>-->
 
-                        <!--    Profil(s) Phoenix       -->
-                        <p class="card-text">
-                            <span class="fa fa-home mr-3"></span>
-                            <span v-for="(profile) in json.profiles"><a v-bind:href="'/admin/profile/'+profile.id" class="btn btn-info" role="button">{{profile.name}}</a>&nbsp;</span>
-                        </p>
+                        <!--&lt;!&ndash;    Profil(s) Phoenix       &ndash;&gt;-->
+                        <!--<p class="card-text">-->
+                            <!--<span class="fa fa-home mr-3"></span>-->
+                            <!--<span v-for="(profile) in json.profiles"><a v-bind:href="'/admin/profile/'+profile.id" class="btn btn-info" role="button">{{profile.name}}</a>&nbsp;</span>-->
+                        <!--</p>-->
 
                         <br><br>
 
@@ -56,7 +56,7 @@
 
                     <!--    Etat du compte       -->
                     <div class="col-md-2 col-sm-2 text-center">
-                        <span class="badge badge-success badge-pill float-md-right"> {{json.etat}}</span>
+                        <span class="badge badge-success badge-pill float-md-right"> </span>
                     </div>
 
                 </div>
@@ -83,6 +83,9 @@
                 type: Number
 
             },
+            gym:{
+                type: Object
+            },
             debug:
                 {
                     type: Boolean,
@@ -93,13 +96,13 @@
         },
         data() {
             return {
-                gym: {
-                    id: '',
-                    nom: '',
-                    prenom: '',
-                    niveaux: '',
-                    date_naissance: ''
-                }
+                // gym: {
+                //     id: '',
+                //     nom: '',
+                //     prenom: '',
+                //     niveaux: '',
+                //     date_naissance: ''
+                // }
 
 
 
@@ -122,7 +125,7 @@
         },
 
         mounted() {
-            this.update();
+            //this.update();
 
 
         },

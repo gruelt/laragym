@@ -7,8 +7,8 @@
 
 @section('content')
 <div id="app">
-
-<gymnaste-info ></gymnaste-info>
+    {{json_encode($gym)}}
+<gymnaste-info :gym="{{json_encode($gym)}}"></gymnaste-info>
 </div>
 @stop
 

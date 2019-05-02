@@ -39,5 +39,8 @@ Route::group(['prefix' => 'responsables', 'middleware' => 'auth:api'], function 
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getMy');
 
+    //Gets one user
+    Route::get('/gymnastes', 'GymnastesController@getMy');
+
 
 });

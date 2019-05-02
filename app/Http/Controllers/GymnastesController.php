@@ -23,24 +23,8 @@ class GymnastesController extends Controller
 
 
 
-        foreach ($all as $key => $gymnaste)
-        {
-            $return[$key]=$gymnaste;
+        $return = $this->formatGyms($all);
 
-            $niveaux=Gymnaste::find($gymnaste->id)->equipes()->get();
-
-            $returnniv='';
-
-            foreach($niveaux as $niveau)
-            {
-                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
-            }
-
-            $return[$key]['niveaux']=$returnniv;
-
-
-
-        }
         return $return;
 
     }
@@ -52,7 +36,7 @@ class GymnastesController extends Controller
     //retourne les gyms avec leur groupe
     public function getMy()
     {
-        $return=array();
+
 
 
 
@@ -61,27 +45,9 @@ class GymnastesController extends Controller
         $mygym =  User::find(Auth::user()->id)->gymnastes()->get();
 
 
+        $return = $this->formatGyms($mygym);
 
-        foreach ($mygym as $key => $gymnaste)
-        {
-            $return[$key]=$gymnaste;
 
-            $niveaux=Gymnaste::find($gymnaste->id)->equipes()->get();
-
-            $returnniv='';
-
-            foreach($niveaux as $niveau)
-            {
-                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
-            }
-
-            $return[$key]['niveaux']=$returnniv;
-
-            $date = Carbon::parse($gymnaste['date_naissance'])->format('d-m-Y');
-
-            $return[$key]['date_naissance_fr']=$date;
-
-        }
         return $return;
 
     }
@@ -134,22 +100,60 @@ class GymnastesController extends Controller
 
     public function show($id)
     {
-        $gym =  Gymnaste::find($id);
+          //$gym = Gymnaste::where('id',$id)->get();
+
+        $gym = Gymnaste::where('id',$id)->get();
 
         //verifie qu ele gym appartient bien
 
-        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id)
+        //Si ce n'est pas un des gymns du responsable , et qu'il n'à aucun droit.
+        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id && User::find(Auth::user()->id)->count()==0)
         {
             return view('pages.responsables.adherents')->withMessage('Ce gymnaste n\'est pas sous votre responsabilité');
         }
 
+        $gym = $this->formatGyms($gym);
 
 
-        return view('pages.responsables.viewgymnaste')->with('gym',$gym);
+        return view('pages.responsables.viewgymnaste')->with('gym',$gym[0]);
     }
 
 
+    /**
+     * Récupère un Modèle gym , et l'étend pour l'affichage Commun
+     * @param $gyms
+     * @return mixed
+     */
+    private function formatGyms($gyms)
+    {
+        foreach ($gyms as $key => $gymnaste)
+        {
+            //dd($gymnaste);
+            $return[$key]=$gymnaste->toArray();
 
+            $niveaux=Gymnaste::find($gymnaste->id)->equipes()->get();
+
+            $returnniv='';
+
+            //Gestion des Niveaux en display html et brut
+            foreach($niveaux as $niveau)
+            {
+                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
+                $return[$key]['niveaux_tab'][$niveau['id']]=$niveau->nom;
+            }
+
+            $return[$key]['niveaux']=$returnniv;
+
+            //Date de Naissanc En Français
+            $date = Carbon::parse($gymnaste['date_naissance'])->format('d-m-Y');
+
+            $return[$key]['date_naissance_fr']=$date;
+
+        }
+
+        return $return;
+
+    }
 
 
 
