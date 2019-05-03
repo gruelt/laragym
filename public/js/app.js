@@ -65510,7 +65510,7 @@ var render = function() {
       [
         _c("div", { staticClass: "card-block" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-2 col-sm-2 text-center" }, [
+            _c("div", { staticClass: "col-md-4 col-sm-2 text-center" }, [
               _vm.gym.photo
                 ? _c("img", {
                     attrs: {

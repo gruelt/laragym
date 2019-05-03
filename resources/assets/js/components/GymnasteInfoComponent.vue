@@ -6,7 +6,7 @@
         <div class="card card-inverse" style="background-color: #f5f5f5; border-color: #BFC0C0;padding:5px;">
             <div class="card-block">
                 <div class="row">
-                    <div class="col-md-2 col-sm-2 text-center">
+                    <div class="col-md-4 col-sm-2 text-center">
 
                         <!--    On affiche les photos des comptes users - si aucun résultat on affiche une photo standard => Format préformaté en 120X160       -->
 
