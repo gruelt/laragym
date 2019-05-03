@@ -15,8 +15,12 @@ class CreateSaisonsTable extends Migration
     {
         Schema::create('saisons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('actif');
+            $table->string('nom');
+            $table->integer('an1');
+            $table->integer('an2');
+            $table->integer('actuelle')->comment('saison en cours =1');
+            $table->integer('inscription')->comment('inscription ouverte =1 , fermé =0');
+
             $table->timestamps();
         });
     }

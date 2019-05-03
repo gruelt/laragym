@@ -17,4 +17,11 @@ class Gymnaste extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
+
+    //récupère les saisons du gym
+    public function saisons()
+    {
+        return $this->belongsToMany(Saison::class);
+    }
+
 }
