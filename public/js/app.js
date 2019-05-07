@@ -65434,6 +65434,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65612,6 +65618,29 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", [_vm._v(_vm._s(_vm.gym.commentaire))])
               ]),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "card-text" },
+                [
+                  _c("span", { staticClass: "fa fa-envelope mr-3" }),
+                  _vm._v(" "),
+                  _vm._l(_vm.gym.saisons, function(saison, id) {
+                    return _c("span", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "badge badge-primary",
+                          attrs: { href: "/saison/" + id }
+                        },
+                        [_vm._v(_vm._s(saison.nom) + " ")]
+                      ),
+                      _vm._v(" ")
+                    ])
+                  })
+                ],
+                2
+              ),
               _vm._v(" "),
               _c("br"),
               _c("br")

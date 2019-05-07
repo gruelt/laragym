@@ -11,6 +11,10 @@ class Saison extends Model
      */
 
     public function gymnastes(){
-        $this->belongsToMany(Gymnaste::class);
+        return $this->belongsToMany(Gymnaste::class); //
+    }
+
+    public function actuelle(){
+        return $this->where('actuelle',1)->first();
     }
 }

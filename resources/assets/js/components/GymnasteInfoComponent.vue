@@ -60,6 +60,12 @@
                             <span >{{gym.commentaire}}</span>
                         </p>
 
+                        <!--    Saisons d'inscription       -->
+                        <p  class="card-text">
+                            <span class="fa fa-envelope mr-3"></span>
+                            <span v-for="(saison, id) in gym.saisons"><a :href="'/saison/' + id " class="badge badge-primary">{{saison.nom}} </a>&nbsp;</span>
+                        </p>
+
                         <!--&lt;!&ndash;    Profil(s) Phoenix       &ndash;&gt;-->
                         <!--<p class="card-text">-->
                             <!--<span class="fa fa-home mr-3"></span>-->

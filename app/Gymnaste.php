@@ -18,6 +18,7 @@ class Gymnaste extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
+    //TODO: Ajouter les pivots
     //récupère les saisons du gym
     public function saisons()
     {

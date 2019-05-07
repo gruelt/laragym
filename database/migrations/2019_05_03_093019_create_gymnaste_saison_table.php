@@ -21,11 +21,12 @@ class CreateGymnasteSaisonTable extends Migration
 
             $table->integer('prix')->default(0);
             $table->integer('paye')->default(0);
+            $table->integer('complet')->default(0);
 
 
             $table->timestamps();
 
-            #Fk vers la table users
+            #Fk vers la table use
             $table->foreign('gymnaste_id')->references('id')->on('gymnastes')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');

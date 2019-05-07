@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Saison;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Gymnaste;
@@ -143,6 +144,16 @@ class GymnastesController extends Controller
             }
 
             $return[$key]['niveaux']=$returnniv;
+
+
+            //Gestion des saisons
+
+
+
+            $saisons= Gymnaste::find($gymnaste->id)->saisons()->get();
+
+            $return[$key]['saisons']=$saisons;
+
 
             //Date de Naissanc En Français
             $date = Carbon::parse($gymnaste['date_naissance'])->format('d-m-Y');
