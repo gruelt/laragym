@@ -4,6 +4,7 @@
 /public/js/app.js
 /public/css/app.scss
 /storage/*.key
+/storage/photos/*
 /vendor
 /.idea
 /.vscode

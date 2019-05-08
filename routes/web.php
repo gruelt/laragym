@@ -75,7 +75,7 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
     Route::get('/gymnastes/{id}', 'GymnastesController@show');
 
     //Montre le formulaire photo Gymnaste
-    Route::get('/gymnastes/{id}/photo', 'GymnastesController@photoform');
+    //Route::get('/gymnastes/{id}/photo', 'GymnastesController@photoform');
 
 
 
@@ -89,3 +89,4 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 
 Route::post('/gymnastes/{id}/photo', 'GymnastesController@uploadPhoto');
+Route::post('/gymnastes/{id}/certif', 'GymnastesController@uploadCertif');

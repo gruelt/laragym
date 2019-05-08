@@ -125,7 +125,7 @@ class GymnastesController extends Controller
      * @param $gyms
      * @return mixed
      */
-    private function formatGyms($gyms)
+    private function formatGyms($gyms,$extend=1)
     {
         foreach ($gyms as $key => $gymnaste)
         {
@@ -150,9 +150,14 @@ class GymnastesController extends Controller
 
 
 
-            $saisons= Gymnaste::find($gymnaste->id)->saisons()->get();
+            $saisons= $gymnaste->saisons()->get();
 
             $return[$key]['saisons']=$saisons;
+
+
+
+
+
 
 
             //Date de Naissanc En Français
@@ -167,7 +172,54 @@ class GymnastesController extends Controller
             //Gestion Photo
             $photo_url=Storage::disk('public')->url($gymnaste['photo']);
 
+
+
             $return[$key]['photo_url']=$photo_url;
+
+
+
+
+
+            //Infos Etendues
+            if($extend==1)
+            {
+                //Gestion Certificat
+                $certif_url=Storage::disk('public')->url($gymnaste['certificat_medical']);
+
+
+
+                $datecertif = Carbon::parse($gymnaste['certificat_medical_date'])->format('d-m-Y');
+
+                $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
+
+                $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
+
+                $return[$key]['certificat_medical_date_fr']=$datecertif;
+
+                $return[$key]['certificat_medical_url']=$certif_url;
+
+                $return[$key]['certificat_medical_age']=$agecertif;
+
+                $return[$key]['certificat_medical_fin_fr']=$datecertif;
+
+
+                //Responsable
+
+                $responsable= $gymnaste->responsable()->first();
+
+                $return[$key]['responsable']=$responsable;
+
+                //Genres
+
+                $genre= $gymnaste->genre->first();
+
+                $return[$key]['genre']=$genre;
+
+
+
+            }
+
+
 
         }
 
@@ -200,6 +252,50 @@ class GymnastesController extends Controller
         $path = $request->laphoto->storeAs('', $filename, 'public');
 
         $gym->photo=$filename;
+
+        $gym->save();
+
+        //enregistre le path de la photo
+
+        return back();
+
+    }
+
+    /**
+     * Upload File
+     **/
+    public function uploadCertif($id,Request $request) {
+
+
+
+        $request->validate([
+
+            'lecertif' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            'certificat_medical_date' => 'required|date'
+        ]);
+
+
+
+        //récupère la photo
+        $certif= $request->lecertif;
+        //récupère l'extension
+        $ext = $certif->getClientOriginalExtension();
+
+        //Infos dy gym :
+        $gym = Gymnaste::find($id);
+        //dd($gym.$id);
+        $filename = $id."_".$gym->nom."_".$gym->prenom.".".$ext;
+
+        //Stocke en local
+        $path = $request->lecertif->storeAs('certificats', $filename, 'public');
+
+
+
+
+
+        $gym->certificat_medical='certificats/'.$filename;
+
+        $gym->certificat_medical_date=$request->certificat_medical_date;
 
         $gym->save();
 

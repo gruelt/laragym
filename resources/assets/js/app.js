@@ -43,6 +43,10 @@ import Vue from 'vue';
 
 Vue.use(Vuetify);*/
 
+import BootstrapVue from 'bootstrap-vue';
+
+Vue.use(BootstrapVue);
+
 
 
 /**

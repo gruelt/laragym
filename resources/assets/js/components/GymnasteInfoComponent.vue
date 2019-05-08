@@ -3,85 +3,141 @@
     <div class="container">
 
 
-        <div class="card card-inverse" style="background-color: #f5f5f5; border-color: #BFC0C0;padding:5px;">
-            <div class="card-block">
+               <!-- 2nde card -->
+
+
+        <div class="card">
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 col-sm-2 text-center">
 
                         <!--    On affiche les photos des comptes users - si aucun résultat on affiche une photo standard => Format préformaté en 120X160       -->
 
-                        <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
-                        <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
+                        <div class="row text-center">
+                            <div class="col-md-12 col-sm-2 text-center">
+                            <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
+                            <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
+                            </div>
+                        </div>
 
 
-                        <!--<a :href="'/responsable/gymnastes/'+ gym.id +'/photo'" type="button" class="btn btn-success btn-block">Envoyer une photo</a>-->
-                        <form method="post" :action="'/gymnastes/'+gym.id+'/photo'" enctype="multipart/form-data">
-                            <input type="hidden" name="_token" :value="csrf">
-                            <input id="laphoto" name="laphoto" type="file"  data-filename-placement="inside">
-
-
-
+                        <b-button v-b-modal.photoupload variant="success">Envoyer Une Photo</b-button>
 
 
 
 
-                            <input type="submit" class="btn btn-success" value="Envoyer">
-                        </form>
+                        <b-modal id="photoupload" hide-footer>
+                                <form method="post" :action="'/gymnastes/'+gym.id+'/photo'" enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input id="laphoto" name="laphoto" type="file"  data-filename-placement="inside">
+
+                                    <input type="submit" class="btn btn-success" value="Envoyer">
+
+                                </form>
+                        </b-modal>
+
+
+
+
+                        <hr>
+
+                        <!-- Si pas de certificat -->
+                        <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
+                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url">Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}}</a></b-alert></b-alert>
+
+
+                        <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
+
+
+                        <b-button v-b-modal.certifupload variant="success">Envoyer Un certificat Medical</b-button>
+
+
+
+
+                        <b-modal id="certifupload" hide-footer title="Envoyer un Certificat Médical">
+
+                            <form method="post" :action="'/gymnastes/'+gym.id+'/certif'" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <b-form-file
+                                        v-model="file"
+                                        :state="Boolean(file)"
+                                        placeholder="Choisir un fichier"
+                                        id="lecertif"
+                                        name="lecertif"
+                                        drop-placeholder="Drop file here..."
+                                        accept=".png, .jpg, .pdf"
+
+                                ></b-form-file>
+                                <label for="certificat_medical_date">Date du Certificat Medical:</label>
+                                <b-form-input id="certificat_medical_date" name="certificat_medical_date" type="date"></b-form-input>
+
+                                <input type="submit" class="btn btn-success" value="Envoyer">
+
+                            </form>
+                        </b-modal>
+
+
+
+
 
                     </div>
-                    <div class="col-md-8 col-sm-8">
-
-                        <!--    Name / givenname       -->
-                        <h2 class="card-title">
-                            {{gym.nom}} {{gym.prenom}}
-                        </h2>
-
-                        <!--    Mail       -->
-                        <p  class="card-text">
-                            <span class="fa fa-envelope mr-3"></span>
-                            <span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau}}</a>&nbsp;</span>
-                        </p>
-
-                        <!--&lt; Date de Naissance-->
-                        <p class="card-text">
-                            <span class="fab fa-fort-awesome mr-3"></span>
-                            <span >{{gym.date_naissance_fr}}</span>
-                        </p>
-
-                        <!--    Service       -->
-                        <p class="card-text">
-                            <span class="fa fa-envelope mr-3"></span>
-                            <span >{{gym.age}} ans</span>
-                        </p>
 
 
-                        <p class="card-text">
-                            <span class="fa fa-home mr-3"></span>
-                            <span >{{gym.commentaire}}</span>
-                        </p>
 
-                        <!--    Saisons d'inscription       -->
-                        <p  class="card-text">
-                            <span class="fa fa-envelope mr-3"></span>
-                            <span v-for="(saison, id) in gym.saisons"><a :href="'/saison/' + id " class="badge badge-primary">{{saison.nom}} </a>&nbsp;</span>
-                        </p>
 
-                        <!--&lt;!&ndash;    Profil(s) Phoenix       &ndash;&gt;-->
-                        <!--<p class="card-text">-->
-                            <!--<span class="fa fa-home mr-3"></span>-->
-                            <!--<span v-for="(profile) in json.profiles"><a v-bind:href="'/admin/profile/'+profile.id" class="btn btn-info" role="button">{{profile.name}}</a>&nbsp;</span>-->
-                        <!--</p>-->
 
-                        <br><br>
+                    <div class="col-md-4 col-sm-2 text-left">
+                    <h2 class="card-title">
+                        {{gym.nom}} {{gym.prenom}}
+                    </h2>
+                        <H3><span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau}}</a>&nbsp;</span></H3>
+                        <H3>{{gym.age}} ans</H3>
+                        <h5>{{gym.date_naissance_fr}}</h5>
+                        <H3>
+                            <b-badge v-if="gym.genre.id === 1" variant="info">{{gym.genre.description}}</b-badge>
+                            <b-badge v-if="gym.genre.id === 2" variant="warning">{{gym.genre.description}}</b-badge>
+                        </H3>
+
+
 
                     </div>
 
-                    <!--    Etat du compte       -->
-                    <div class="col-md-2 col-sm-2 text-center">
-                        <span class="badge badge-success badge-pill float-md-right"> </span>
+
+
+
+
+
+
+
+
+                    <div v-if="contact" class="col-md-4 col-sm-2 text-right">
+                        {{gym.responsable.nom}} {{gym.responsable.prenom}} &nbsp;<span class="fa fa-user mr-3"></span><br>
+                        {{gym.responsable.adresse}} {{gym.responsable.cp}} {{gym.responsable.ville}}&nbsp;<span class="fa fa-home mr-3"></span><br>
+                        {{gym.responsable.email}} &nbsp;<span class="fa fa-envelope mr-3"></span><br>
+                        0{{gym.responsable.telephone1}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
+                        0{{gym.responsable.telephone2}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
+
                     </div>
+
+
+
+
 
                 </div>
+
+
+                <hr>
+
+
+
+                <div class="row justify-content-center">
+                    <div class="col-md1"></div>
+                    <div class="col-md-12">
+
+
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -116,6 +172,14 @@
                     type: Boolean,
                     default: false
                 },
+            write:{
+                type: Boolean,
+                default:false
+            },
+            contact:{
+                type: Boolean,
+                default: true
+            }
 
 
         },
