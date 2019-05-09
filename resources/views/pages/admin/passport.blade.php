@@ -3,6 +3,7 @@
 
 @section('title')
     Oauth
+    @stop
 
 @section('content')
 <div id="app">

@@ -1,53 +1,26 @@
 <!DOCTYPE html>
-
-<html lang="fr">
+<html lang="en">
 <head>
-@include('includes.head')
-<!-- Style -->
-@yield('style')
-
+    @include('includes.head')
 </head>
-
 <body>
-<div id="wrapper">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light" role="navigation">
-        @include('includes.header')
-        @include('sidebars.sidebar')
-    </nav>
+<div id="app">
+    <b-container>
 
-    <!-- Page content -->
-    <div id="page-wrapper">
+        @include('includes.navbarbv')
 
-
-
-        @if(isset($message))
-            <div class="row col-lg-12">
-                <div class="alert alert-info">
-                    <span>{!! $message !!}</span>
-                </div>
-            </div>
-        @endif
-
-            @if(isset($error))
-                <div class="row col-lg-12">
-                    <div class="alert alert-info">
-                        <span>{!! $errors !!}</span>
-                    </div>
-                </div>
-            @endif
-
-            @yield('title')
-
+        <b-breadcrumb items="items">
+            <h5>@yield('title')</h5>
+        </b-breadcrumb>
 
         @yield('content')
 
-    </div>
+
+    </b-container>
 </div>
 
 @include('includes.foot')
-<!-- Scripts -->
-@yield('script')
+
 </body>
 </html>
