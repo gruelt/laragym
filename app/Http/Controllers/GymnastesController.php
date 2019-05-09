@@ -85,6 +85,12 @@ class GymnastesController extends Controller
 
         $gym->save();
 
+        //Insciption pour la saison ouverte aux inscriptions actuelle
+        $saison = new Saison;
+
+        $gym->saisons()->attach($saison->inscriptionOuverte()->id);
+
+
 
 
         return redirect('/responsable/gymnastes/'.$gym->id)->withMessage("Gymnaste ajouté !");
@@ -200,7 +206,7 @@ class GymnastesController extends Controller
 
                 $return[$key]['certificat_medical_age']=$agecertif;
 
-                $return[$key]['certificat_medical_fin_fr']=$datecertif;
+                $return[$key]['certificat_medical_fin_fr']=$datefincertif;
 
 
                 //Responsable

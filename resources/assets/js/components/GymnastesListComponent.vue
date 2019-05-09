@@ -1,7 +1,8 @@
 <template>
     <div>
        <gymnaste-card :gyms="gyms"></gymnaste-card>
-        <a href="/responsable/gymnastes/add/" type="button" class="btn btn-success btn-lg btn-block">+ Ajouter un gymnaste</a>       {{gyms}}
+        <a href="/responsable/gymnastes/add/" type="button" class="btn btn-success btn-lg btn-block">+ Ajouter un gymnaste</a>
+        <span v-if="debug">{{gyms}}</span>
     </div>
 </template>
 
@@ -9,7 +10,13 @@
     export default {
         name: "gymnastesListComponent"
 
-    ,
+        ,
+        props:{
+            debug:{
+                type: Boolean,
+                default:false
+            }
+        },
     methods: {
 
         toggle(form){
@@ -31,7 +38,7 @@
         data() {
             return {
 
-                gyms: 'rien',
+                gyms: [],
 
 
             }

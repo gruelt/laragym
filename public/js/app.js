@@ -27429,7 +27429,8 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     },
     data: function data() {
         return {
-            fr: __WEBPACK_IMPORTED_MODULE_3_vuejs_datepicker_dist_locale__["a" /* fr */]
+            fr: __WEBPACK_IMPORTED_MODULE_3_vuejs_datepicker_dist_locale__["a" /* fr */],
+            breadcrumb: ['Accueil']
 
         };
     }
@@ -77575,7 +77576,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77626,10 +77627,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "gymnastesListComponent",
 
+    props: {
+        debug: {
+            type: Boolean,
+            default: false
+        }
+    },
     methods: {
         toggle: function toggle(form) {
             console.log(form);
@@ -77649,7 +77657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
 
-            gyms: 'rien'
+            gyms: []
 
         };
     },
@@ -77679,7 +77687,8 @@ var render = function() {
         },
         [_vm._v("+ Ajouter un gymnaste")]
       ),
-      _vm._v("       " + _vm._s(_vm.gyms) + "\n")
+      _vm._v(" "),
+      _vm.debug ? _c("span", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
     ],
     1
   )
@@ -77891,7 +77900,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserCardComponent",
     props: {
-        gyms: []
+        gyms: {}
     }
 });
 

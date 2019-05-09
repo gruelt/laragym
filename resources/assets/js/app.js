@@ -73,7 +73,8 @@ var app = new Vue({
     },
     data () {
         return {
-            fr: fr
+            fr: fr,
+            breadcrumb:['Accueil']
 
         }
     }

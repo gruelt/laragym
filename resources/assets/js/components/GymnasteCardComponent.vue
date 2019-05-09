@@ -98,7 +98,7 @@
     export default {
         name: "UserCardComponent",
         props:{
-            gyms: []
+            gyms:{}
         }
     }
 </script>

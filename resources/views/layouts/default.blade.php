@@ -10,9 +10,7 @@
 
         @include('includes.navbarbv')
 
-        <b-breadcrumb items="items">
-            <h5>@yield('title')</h5>
-        </b-breadcrumb>
+        @yield('title')
 
         @yield('content')
 

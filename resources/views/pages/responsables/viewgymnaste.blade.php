@@ -2,14 +2,17 @@
 
 
 @section('title')
-    Mes Gymnastes @csrf
+    <H5><a href="/responsable/gymnastes">Retour Liste</a>  </H5>
 @stop
 
 @section('content')
 <div id="app">
     <br>
 <gymnaste-info csrf="{{ csrf_token() }}" :gym="{{json_encode($gym)}}" :write=false :contact=false></gymnaste-info>
-    {{json_encode($gym)}}
+
+    @if(env('APP_DEBUG')==true)
+        {{json_encode($gym)}}
+        @endif
 </div>
 @stop
 

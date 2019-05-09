@@ -17,4 +17,8 @@ class Saison extends Model
     public function actuelle(){
         return $this->where('actuelle',1)->first();
     }
+
+    public function inscriptionOuverte(){
+        return $this->where('inscription',1)->first();
+    }
 }
