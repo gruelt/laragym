@@ -15,6 +15,7 @@
 
                         <div class="row text-center">
                             <div class="col-md-12 col-sm-2 text-center">
+                                <h3>Photo</h3>
                             <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
                             <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
                             </div>
@@ -42,6 +43,7 @@
                         <hr>
 
                         <!-- Si pas de certificat -->
+                        <h4>Certificat Médical</h4>
                         <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
                         <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url">Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}}</a></b-alert></b-alert>
 
@@ -151,7 +153,7 @@
 
 
                         </div>
-                        <b-button v-if="gym.reinscrit.statut ==0"  variant="warning">
+                        <b-button v-if="gym.reinscrit.statut ==0 && gym.reinscrit.saison !=0 "  variant="warning">
                             + Re-inscrire pour {{gym.reinscrit.saison.nom}}
                         </b-button>
                     </div>

@@ -78056,7 +78056,7 @@ var render = function() {
                       0
                     ),
                     _vm._v(" "),
-                    gym.reinscrit.statut == 0
+                    gym.reinscrit.statut == 0 && gym.reinscrit.saison != 0
                       ? _c("b-button", { attrs: { variant: "warning" } }, [
                           _vm._v(
                             "\n                            + Re-inscrire pour " +
@@ -78371,6 +78371,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78451,6 +78453,8 @@ var render = function() {
             [
               _c("div", { staticClass: "row text-center" }, [
                 _c("div", { staticClass: "col-md-12 col-sm-2 text-center" }, [
+                  _c("h3", [_vm._v("Photo")]),
+                  _vm._v(" "),
                   _vm.gym.photo
                     ? _c("img", {
                         attrs: {
@@ -78524,6 +78528,8 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("hr"),
+              _vm._v(" "),
+              _c("h4", [_vm._v("Certificat Médical")]),
               _vm._v(" "),
               _vm.gym.certificat_medical == null
                 ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
@@ -78792,7 +78798,7 @@ var render = function() {
                 0
               ),
               _vm._v(" "),
-              _vm.gym.reinscrit.statut == 0
+              _vm.gym.reinscrit.statut == 0 && _vm.gym.reinscrit.saison != 0
                 ? _c("b-button", { attrs: { variant: "warning" } }, [
                     _vm._v(
                       "\n                        + Re-inscrire pour " +

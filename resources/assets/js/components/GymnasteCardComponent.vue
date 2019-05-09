@@ -84,7 +84,7 @@
 
 
                                 </div>
-                            <b-button v-if="gym.reinscrit.statut ==0"  variant="warning">
+                            <b-button v-if="gym.reinscrit.statut ==0 && gym.reinscrit.saison !=0 "  variant="warning">
                                 + Re-inscrire pour {{gym.reinscrit.saison.nom}}
                             </b-button>
                         </td>
