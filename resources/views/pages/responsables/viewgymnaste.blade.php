@@ -1,4 +1,4 @@
-@extends('layouts.phoenix')
+@extends('layouts.default')
 
 
 @section('title')
@@ -7,8 +7,9 @@
 
 @section('content')
 <div id="app">
-    <br> {{json_encode($gym)}}
+    <br>
 <gymnaste-info csrf="{{ csrf_token() }}" :gym="{{json_encode($gym)}}" :write=false :contact=false></gymnaste-info>
+    {{json_encode($gym)}}
 </div>
 @stop
 

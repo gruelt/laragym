@@ -1,4 +1,4 @@
-@extends('layouts.phoenix')
+@extends('layouts.default')
 
 
 @section('title')
