@@ -2,7 +2,7 @@
     <div>
        <gymnaste-card :gyms="gyms"></gymnaste-card>
         <a href="/responsable/gymnastes/add/" type="button" class="btn btn-success btn-lg btn-block">+ Ajouter un gymnaste</a>
-        <span v-if="debug">{{gyms}}</span>
+        {{gyms}}
     </div>
 </template>
 
@@ -14,7 +14,7 @@
         props:{
             debug:{
                 type: Boolean,
-                default:false
+                default:true
             }
         },
     methods: {

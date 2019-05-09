@@ -221,6 +221,28 @@ class GymnastesController extends Controller
 
                 $return[$key]['genre']=$genre;
 
+                //A reinscrire
+
+                $saisonInscription = new Saison;
+
+                $saisoni= $saisonInscription->inscriptionOuverte();
+
+                $reinscrire = $gymnaste->saisons()->find($saisoni->id);
+
+                if($reinscrire == null)
+                {
+                    $return[$key]['reinscrit']['statut']=0;
+                    $return[$key]['reinscrit']['saison']=$saisoni;
+
+                }
+                else{
+                    $return[$key]['reinscrit']['statut']=1;
+                    $return[$key]['reinscrit']['saison']=$saisoni;
+                }
+
+
+
+
 
 
             }

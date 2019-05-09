@@ -26,6 +26,7 @@
                         <th>Prenom</th>
                         <th>Date Naissance</th>
                         <th>Equipe</th>
+                        <th>Inscription</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -65,6 +66,27 @@
 
                         <td v-html="gym.niveaux" style="vertical-align: middle;">
 
+                        </td>
+
+                        <td  style="vertical-align: middle;">
+                                <div class="list-group" >
+
+                                    <li class="list-inline" v-for="saison in gym.saisons ">
+                                        <b-button v-if="saison.pivot.complet ==1"  variant="success">
+                                            {{saison.nom}} <b-badge variant="light">Complet</b-badge>
+                                        </b-button>
+                                        <b-button v-else  variant="info">
+                                            {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
+                                        </b-button>
+
+                                    </li>
+
+
+
+                                </div>
+                            <b-button v-if="gym.reinscrit.statut ==0"  variant="warning">
+                                + Re-inscrire pour {{gym.reinscrit.saison.nom}}
+                            </b-button>
                         </td>
 
                         <!-- Delete Button -->

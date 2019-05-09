@@ -130,11 +130,30 @@
 
 
 
+
                 <div class="row justify-content-center">
-                    <div class="col-md1"></div>
+
                     <div class="col-md-12">
 
+                        <h1>Saisons</h1>
+                        <div class="list-group" >
 
+                            <li class="list-inline" v-for="saison in gym.saisons ">
+                                <b-button v-if="saison.pivot.complet ==1"  variant="success">
+                                    {{saison.nom}} <b-badge variant="light">Complet</b-badge>
+                                </b-button>
+                                <b-button v-else  variant="info">
+                                    {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
+                                </b-button>
+
+                            </li>
+
+
+
+                        </div>
+                        <b-button v-if="gym.reinscrit.statut ==0"  variant="warning">
+                            + Re-inscrire pour {{gym.reinscrit.saison.nom}}
+                        </b-button>
                     </div>
                 </div>
 

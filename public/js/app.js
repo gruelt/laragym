@@ -77635,7 +77635,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         debug: {
             type: Boolean,
-            default: false
+            default: true
         }
     },
     methods: {
@@ -77687,8 +77687,7 @@ var render = function() {
         },
         [_vm._v("+ Ajouter un gymnaste")]
       ),
-      _vm._v(" "),
-      _vm.debug ? _c("span", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
+      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
     ],
     1
   )
@@ -77789,7 +77788,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77800,6 +77799,28 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -77981,6 +78002,73 @@ var render = function() {
                   domProps: { innerHTML: _vm._s(gym.niveaux) }
                 }),
                 _vm._v(" "),
+                _c(
+                  "td",
+                  { staticStyle: { "vertical-align": "middle" } },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "list-group" },
+                      _vm._l(gym.saisons, function(saison) {
+                        return _c(
+                          "li",
+                          { staticClass: "list-inline" },
+                          [
+                            saison.pivot.complet == 1
+                              ? _c(
+                                  "b-button",
+                                  { attrs: { variant: "success" } },
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(saison.nom) +
+                                        " "
+                                    ),
+                                    _c(
+                                      "b-badge",
+                                      { attrs: { variant: "light" } },
+                                      [_vm._v("Complet")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _c(
+                                  "b-button",
+                                  { attrs: { variant: "info" } },
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(saison.nom) +
+                                        " "
+                                    ),
+                                    _c(
+                                      "b-badge",
+                                      { attrs: { variant: "light" } },
+                                      [_vm._v("Préinscrit")]
+                                    )
+                                  ],
+                                  1
+                                )
+                          ],
+                          1
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    gym.reinscrit.statut == 0
+                      ? _c("b-button", { attrs: { variant: "warning" } }, [
+                          _vm._v(
+                            "\n                            + Re-inscrire pour " +
+                              _vm._s(gym.reinscrit.saison.nom) +
+                              "\n                        "
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
                 _c("td", { staticStyle: { "vertical-align": "middle" } }, [
                   _c(
                     "a",
@@ -78041,6 +78129,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date Naissance")]),
         _vm._v(" "),
         _c("th", [_vm._v("Equipe")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Inscription")]),
         _vm._v(" "),
         _c("th")
       ])
@@ -78109,6 +78199,25 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -78630,25 +78739,79 @@ var render = function() {
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "row justify-content-center" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-12" },
+            [
+              _c("h1", [_vm._v("Saisons")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "list-group" },
+                _vm._l(_vm.gym.saisons, function(saison) {
+                  return _c(
+                    "li",
+                    { staticClass: "list-inline" },
+                    [
+                      saison.pivot.complet == 1
+                        ? _c(
+                            "b-button",
+                            { attrs: { variant: "success" } },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(saison.nom) +
+                                  " "
+                              ),
+                              _c("b-badge", { attrs: { variant: "light" } }, [
+                                _vm._v("Complet")
+                              ])
+                            ],
+                            1
+                          )
+                        : _c(
+                            "b-button",
+                            { attrs: { variant: "info" } },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(saison.nom) +
+                                  " "
+                              ),
+                              _c("b-badge", { attrs: { variant: "light" } }, [
+                                _vm._v("Préinscrit")
+                              ])
+                            ],
+                            1
+                          )
+                    ],
+                    1
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm.gym.reinscrit.statut == 0
+                ? _c("b-button", { attrs: { variant: "warning" } }, [
+                    _vm._v(
+                      "\n                        + Re-inscrire pour " +
+                        _vm._s(_vm.gym.reinscrit.saison.nom) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
+            ],
+            1
+          )
+        ])
       ])
     ]),
     _vm._v(" "),
     _c("hr")
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md1" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
