@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div class="container-fluid d-flex h-100">
 
 
                <!-- 2nde card -->
@@ -15,7 +15,7 @@
 
                         <div class="row text-center">
                             <div class="col-md-12 col-sm-2 text-center">
-                                <h3>Photo</h3>
+
                             <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
                             <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
                             </div>
@@ -40,43 +40,8 @@
 
 
 
-                        <hr>
-
-                        <!-- Si pas de certificat -->
-                        <h4>Certificat Médical</h4>
-                        <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
-                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url">Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}}</a></b-alert></b-alert>
 
 
-                        <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
-
-
-                        <b-button v-b-modal.certifupload variant="success">Envoyer Un certificat Medical</b-button>
-
-
-
-
-                        <b-modal id="certifupload" hide-footer title="Envoyer un Certificat Médical">
-
-                            <form method="post" :action="'/gymnastes/'+gym.id+'/certif'" enctype="multipart/form-data">
-                                <input type="hidden" name="_token" :value="csrf">
-                                <b-form-file
-                                        v-model="file"
-                                        :state="Boolean(file)"
-                                        placeholder="Choisir un fichier"
-                                        id="lecertif"
-                                        name="lecertif"
-                                        drop-placeholder="Drop file here..."
-                                        accept=".png, .jpg, .pdf"
-
-                                ></b-form-file>
-                                <label for="certificat_medical_date">Date du Certificat Medical:</label>
-                                <b-form-input id="certificat_medical_date" name="certificat_medical_date" type="date"></b-form-input>
-
-                                <input type="submit" class="btn btn-success" value="Envoyer">
-
-                            </form>
-                        </b-modal>
 
 
 
@@ -88,7 +53,7 @@
 
 
 
-                    <div class="col-md-4 col-sm-2 text-left">
+                    <div class="col-md-4 col-sm-2 text-left flex-fill">
                     <h2 class="card-title">
                         {{gym.nom}} {{gym.prenom}}
                     </h2>
@@ -128,16 +93,66 @@
                 </div>
 
 
-                <hr>
+
+<hr>
+
+                <div class="row justify-content ">
+
+                    <div class="col-md-4 bg-info align-self-center text-center  mh-100">
+                        <h1 >Certificat Médical</h1>
+                    </div>
+
+                    <div class="col-md-8 text-right">
+                        <!-- Si pas de certificat -->
+
+                        <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
+                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}}</a></b-alert></b-alert>
+
+
+                        <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
+
+
+                        <b-button v-b-modal.certifupload variant="success">Envoyer Un certificat Medical</b-button>
 
 
 
 
-                <div class="row justify-content-center">
+                        <b-modal id="certifupload" hide-footer title="Envoyer un Certificat Médical">
 
-                    <div class="col-md-12">
+                            <form method="post" :action="'/gymnastes/'+gym.id+'/certif'" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <b-form-file
+                                        v-model="file"
+                                        :state="Boolean(file)"
+                                        placeholder="Choisir un fichier"
+                                        id="lecertif"
+                                        name="lecertif"
+                                        drop-placeholder="Drop file here..."
+                                        accept=".png, .jpg, .pdf"
+
+                                ></b-form-file>
+                                <label for="certificat_medical_date">Date du Certificat Medical:</label>
+                                <b-form-input id="certificat_medical_date" name="certificat_medical_date" type="date"></b-form-input>
+
+                                <input type="submit" class="btn btn-success" value="Envoyer">
+
+                            </form>
+                        </b-modal>
+                    </div>
+
+
+
+                </div>
+<hr>
+
+                <div class="row justify-content-center ">
+
+                    <div class="col-md-4 bg-info text-center">
 
                         <h1>Saisons</h1>
+
+                    </div>
+                    <div class="col-md-8">
                         <div class="list-group" >
 
                             <li class="list-inline" v-for="saison in gym.saisons ">

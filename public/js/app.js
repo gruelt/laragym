@@ -78373,6 +78373,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78443,7 +78458,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "row" }, [
@@ -78453,8 +78468,6 @@ var render = function() {
             [
               _c("div", { staticClass: "row text-center" }, [
                 _c("div", { staticClass: "col-md-12 col-sm-2 text-center" }, [
-                  _c("h3", [_vm._v("Photo")]),
-                  _vm._v(" "),
                   _vm.gym.photo
                     ? _c("img", {
                         attrs: {
@@ -78525,12 +78538,124 @@ var render = function() {
                     ]
                   )
                 ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-4 col-sm-2 text-left flex-fill" },
+            [
+              _c("h2", { staticClass: "card-title" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.gym.nom) +
+                    " " +
+                    _vm._s(_vm.gym.prenom) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "H3",
+                _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
+                  return _c("span", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "badge badge-primary",
+                        attrs: { href: "/equipes/" + id }
+                      },
+                      [_vm._v(_vm._s(niveau))]
+                    ),
+                    _vm._v(" ")
+                  ])
+                }),
+                0
               ),
               _vm._v(" "),
-              _c("hr"),
+              _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
               _vm._v(" "),
-              _c("h4", [_vm._v("Certificat Médical")]),
+              _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
               _vm._v(" "),
+              _c(
+                "H3",
+                [
+                  _vm.gym.genre.id === 1
+                    ? _c("b-badge", { attrs: { variant: "info" } }, [
+                        _vm._v(_vm._s(_vm.gym.genre.description))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.gym.genre.id === 2
+                    ? _c("b-badge", { attrs: { variant: "warning" } }, [
+                        _vm._v(_vm._s(_vm.gym.genre.description))
+                      ])
+                    : _vm._e()
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.contact
+            ? _c("div", { staticClass: "col-md-4 col-sm-2 text-right" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.gym.responsable.nom) +
+                    " " +
+                    _vm._s(_vm.gym.responsable.prenom) +
+                    "  "
+                ),
+                _c("span", { staticClass: "fa fa-user mr-3" }),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.gym.responsable.adresse) +
+                    " " +
+                    _vm._s(_vm.gym.responsable.cp) +
+                    " " +
+                    _vm._s(_vm.gym.responsable.ville) +
+                    " "
+                ),
+                _c("span", { staticClass: "fa fa-home mr-3" }),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.gym.responsable.email) +
+                    "  "
+                ),
+                _c("span", { staticClass: "fa fa-envelope mr-3" }),
+                _c("br"),
+                _vm._v(
+                  "\n                        0" +
+                    _vm._s(_vm.gym.responsable.telephone1) +
+                    "  "
+                ),
+                _c("span", { staticClass: "fa fa-phone mr-3" }),
+                _c("br"),
+                _vm._v(
+                  "\n                        0" +
+                    _vm._s(_vm.gym.responsable.telephone2) +
+                    "  "
+                ),
+                _c("span", { staticClass: "fa fa-phone mr-3" }),
+                _c("br")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row justify-content " }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-8 text-right" },
+            [
               _vm.gym.certificat_medical == null
                 ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
                     _vm._v("Aucun Certificat Medical")
@@ -78540,8 +78665,9 @@ var render = function() {
                       "a",
                       { attrs: { href: _vm.gym.certificat_medical_url } },
                       [
+                        _c("i", { staticClass: "fas fa-file-alt" }),
                         _vm._v(
-                          "Certificat Medical valable jusqu'au " +
+                          " Certificat Medical valable jusqu'au " +
                             _vm._s(_vm.gym.certificat_medical_fin_fr)
                         )
                       ]
@@ -78637,121 +78763,18 @@ var render = function() {
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-4 col-sm-2 text-left" },
-            [
-              _c("h2", { staticClass: "card-title" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.gym.nom) +
-                    " " +
-                    _vm._s(_vm.gym.prenom) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "H3",
-                _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
-                  return _c("span", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "badge badge-primary",
-                        attrs: { href: "/equipes/" + id }
-                      },
-                      [_vm._v(_vm._s(niveau))]
-                    ),
-                    _vm._v(" ")
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
-              _vm._v(" "),
-              _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
-              _vm._v(" "),
-              _c(
-                "H3",
-                [
-                  _vm.gym.genre.id === 1
-                    ? _c("b-badge", { attrs: { variant: "info" } }, [
-                        _vm._v(_vm._s(_vm.gym.genre.description))
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.gym.genre.id === 2
-                    ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                        _vm._v(_vm._s(_vm.gym.genre.description))
-                      ])
-                    : _vm._e()
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.contact
-            ? _c("div", { staticClass: "col-md-4 col-sm-2 text-right" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.gym.responsable.nom) +
-                    " " +
-                    _vm._s(_vm.gym.responsable.prenom) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-user mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.gym.responsable.adresse) +
-                    " " +
-                    _vm._s(_vm.gym.responsable.cp) +
-                    " " +
-                    _vm._s(_vm.gym.responsable.ville) +
-                    " "
-                ),
-                _c("span", { staticClass: "fa fa-home mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.gym.responsable.email) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-envelope mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                    0" +
-                    _vm._s(_vm.gym.responsable.telephone1) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-phone mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                    0" +
-                    _vm._s(_vm.gym.responsable.telephone2) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-phone mr-3" }),
-                _c("br")
-              ])
-            : _vm._e()
+          )
         ]),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "row justify-content-center " }, [
+          _vm._m(1),
+          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-12" },
+            { staticClass: "col-md-8" },
             [
-              _c("h1", [_vm._v("Saisons")]),
-              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "list-group" },
@@ -78766,7 +78789,7 @@ var render = function() {
                             { attrs: { variant: "success" } },
                             [
                               _vm._v(
-                                "\n                                " +
+                                "\n                                    " +
                                   _vm._s(saison.nom) +
                                   " "
                               ),
@@ -78781,7 +78804,7 @@ var render = function() {
                             { attrs: { variant: "info" } },
                             [
                               _vm._v(
-                                "\n                                " +
+                                "\n                                    " +
                                   _vm._s(saison.nom) +
                                   " "
                               ),
@@ -78801,9 +78824,9 @@ var render = function() {
               _vm.gym.reinscrit.statut == 0 && _vm.gym.reinscrit.saison != 0
                 ? _c("b-button", { attrs: { variant: "warning" } }, [
                     _vm._v(
-                      "\n                        + Re-inscrire pour " +
+                      "\n                            + Re-inscrire pour " +
                         _vm._s(_vm.gym.reinscrit.saison.nom) +
-                        "\n                    "
+                        "\n                        "
                     )
                   ])
                 : _vm._e()
@@ -78817,7 +78840,26 @@ var render = function() {
     _c("hr")
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-md-4 bg-info align-self-center text-center  mh-100" },
+      [_c("h1", [_vm._v("Certificat Médical")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4 bg-info text-center" }, [
+      _c("h1", [_vm._v("Saisons")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
