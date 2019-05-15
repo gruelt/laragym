@@ -24,6 +24,7 @@ class CreateGymnasteTable extends Migration
             $table->integer('user_id')->default('0');
             $table->String('photo')->nullable();
             $table->String('certificat_medical')->nullable();
+            $table->integer('certificat_medical_check')->default(0);
             $table->date('certificat_medical_date')->nullable();
 
             $table->timestamps();

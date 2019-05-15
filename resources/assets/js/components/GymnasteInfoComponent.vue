@@ -3,10 +3,24 @@
     <div class="container-fluid d-flex h-100">
 
 
-               <!-- 2nde card -->
 
 
-        <div class="card">
+
+        <div class="card col-md-12">
+            <div class="col-md-12" id="problemes">
+
+                <div v-for="probleme in gym.problemes " >
+                    <div v-for="subprobleme in probleme " >
+                        <div :class="'alert alert-dismissible alert-'+subprobleme.class" role="alert">
+                            {{subprobleme.text}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 col-sm-2 text-center">
@@ -106,7 +120,13 @@
                         <!-- Si pas de certificat -->
 
                         <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
-                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}}</a></b-alert></b-alert>
+                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}} </a>
+
+
+                            <b-badge v-if="gym.certificat_medical_check == 0" variant="warning">En attente de vérification</b-badge>
+                            <b-badge v-else variant="success">Vérifié</b-badge>
+
+                        </b-alert>
 
 
                         <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
@@ -132,7 +152,11 @@
 
                                 ></b-form-file>
                                 <label for="certificat_medical_date">Date du Certificat Medical:</label>
-                                <b-form-input id="certificat_medical_date" name="certificat_medical_date" type="date"></b-form-input>
+                                <b-form-input id="certificat_medical_date" name="certificat_medical_date" type="date">
+
+
+
+                                </b-form-input>
 
                                 <input type="submit" class="btn btn-success" value="Envoyer">
 
@@ -176,6 +200,8 @@
 
             </div>
         </div>
+
+
 
 
         <hr>

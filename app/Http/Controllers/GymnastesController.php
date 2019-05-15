@@ -135,6 +135,9 @@ class GymnastesController extends Controller
     {
         foreach ($gyms as $key => $gymnaste)
         {
+
+            $problemes=array();
+
             //dd($gymnaste);
             $return[$key]=$gymnaste->toArray();
 
@@ -178,6 +181,13 @@ class GymnastesController extends Controller
             //Gestion Photo
             $photo_url=Storage::disk('public')->url($gymnaste['photo']);
 
+            //Photo basente
+            if($gymnaste['photo'] == null)
+            {
+                $problemes['photo']['none']["text"]="Aucune photo";
+                $problemes['photo']['none']["class"]="warning";
+            }
+
 
 
             $return[$key]['photo_url']=$photo_url;
@@ -207,6 +217,22 @@ class GymnastesController extends Controller
                 $return[$key]['certificat_medical_age']=$agecertif;
 
                 $return[$key]['certificat_medical_fin_fr']=$datefincertif;
+
+                //Certificat dépassé
+                if($agecertif >= 3)
+                {
+                    $problemes['certificat']['age']["text"]="Certificat médical expiré";
+                    $problemes['certificat']['age']["class"]="warning";
+                }
+
+                //Certificat absent
+                if($gymnaste['certificat_medical'] === null)
+                {
+                    $problemes['certificat']['none']["text"]="Aucun Certificat médical";
+                    $problemes['certificat']['none']["class"]="warning";
+                }
+
+
 
 
                 //Responsable
@@ -247,6 +273,9 @@ class GymnastesController extends Controller
 
                 }
 
+                #récupère les problèmes pour le dossier
+
+                $return[$key]['problemes']=$problemes;
 
 
 
@@ -331,6 +360,8 @@ class GymnastesController extends Controller
         $gym->certificat_medical='certificats/'.$filename;
 
         $gym->certificat_medical_date=$request->certificat_medical_date;
+
+        $gym->certificat_medical_check=0;
 
         $gym->save();
 

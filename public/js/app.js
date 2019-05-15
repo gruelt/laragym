@@ -78401,6 +78401,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78472,7 +78498,38 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card col-md-12" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12", attrs: { id: "problemes" } },
+        _vm._l(_vm.gym.problemes, function(probleme) {
+          return _c(
+            "div",
+            _vm._l(probleme, function(subprobleme) {
+              return _c("div", [
+                _c(
+                  "div",
+                  {
+                    class: "alert alert-dismissible alert-" + subprobleme.class,
+                    attrs: { role: "alert" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(subprobleme.text) +
+                        "\n                            "
+                    ),
+                    _vm._m(0, true)
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "row" }, [
           _c(
@@ -78663,7 +78720,7 @@ var render = function() {
         _c("hr"),
         _vm._v(" "),
         _c("div", { staticClass: "row justify-content " }, [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "div",
@@ -78673,19 +78730,33 @@ var render = function() {
                 ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
                     _vm._v("Aucun Certificat Medical")
                   ])
-                : _c("b-alert", { attrs: { show: "", variant: "info" } }, [
-                    _c(
-                      "a",
-                      { attrs: { href: _vm.gym.certificat_medical_url } },
-                      [
-                        _c("i", { staticClass: "fas fa-file-alt" }),
-                        _vm._v(
-                          " Certificat Medical valable jusqu'au " +
-                            _vm._s(_vm.gym.certificat_medical_fin_fr)
-                        )
-                      ]
-                    )
-                  ]),
+                : _c(
+                    "b-alert",
+                    { attrs: { show: "", variant: "info" } },
+                    [
+                      _c(
+                        "a",
+                        { attrs: { href: _vm.gym.certificat_medical_url } },
+                        [
+                          _c("i", { staticClass: "fas fa-file-alt" }),
+                          _vm._v(
+                            " Certificat Medical valable jusqu'au " +
+                              _vm._s(_vm.gym.certificat_medical_fin_fr) +
+                              " "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.gym.certificat_medical_check == 0
+                        ? _c("b-badge", { attrs: { variant: "warning" } }, [
+                            _vm._v("En attente de vérification")
+                          ])
+                        : _c("b-badge", { attrs: { variant: "success" } }, [
+                            _vm._v("Vérifié")
+                          ])
+                    ],
+                    1
+                  ),
               _vm._v(" "),
               _vm.gym.certificat_medical_age >= 3
                 ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
@@ -78782,7 +78853,7 @@ var render = function() {
         _c("hr"),
         _vm._v(" "),
         _c("div", { staticClass: "row justify-content-center " }, [
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
           _c(
             "div",
@@ -78867,6 +78938,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "alert",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
