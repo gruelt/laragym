@@ -78057,13 +78057,26 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     gym.reinscrit.statut == 0 && gym.reinscrit.saison != 0
-                      ? _c("b-button", { attrs: { variant: "warning" } }, [
-                          _vm._v(
-                            "\n                            + Re-inscrire pour " +
-                              _vm._s(gym.reinscrit.saison.nom) +
-                              "\n                        "
-                          )
-                        ])
+                      ? _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              href:
+                                "/responsable/gymnaste/" +
+                                gym.id +
+                                "/reinscrire/" +
+                                gym.reinscrit.saison.id,
+                              variant: "warning"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            + Re-inscrire pour " +
+                                _vm._s(gym.reinscrit.saison.nom) +
+                                "\n                        "
+                            )
+                          ]
+                        )
                       : _vm._e()
                   ],
                   1
@@ -78773,7 +78786,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-8" },
+            { staticClass: "col-md-8 text-right" },
             [
               _c(
                 "div",
@@ -78822,13 +78835,26 @@ var render = function() {
               ),
               _vm._v(" "),
               _vm.gym.reinscrit.statut == 0 && _vm.gym.reinscrit.saison != 0
-                ? _c("b-button", { attrs: { variant: "warning" } }, [
-                    _vm._v(
-                      "\n                            + Re-inscrire pour " +
-                        _vm._s(_vm.gym.reinscrit.saison.nom) +
-                        "\n                        "
-                    )
-                  ])
+                ? _c(
+                    "b-button",
+                    {
+                      attrs: {
+                        href:
+                          "/responsable/gymnaste/" +
+                          _vm.gym.id +
+                          "/reinscrire/" +
+                          _vm.gym.reinscrit.saison.id,
+                        variant: "warning"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            + Re-inscrire pour " +
+                          _vm._s(_vm.gym.reinscrit.saison.nom) +
+                          "\n                        "
+                      )
+                    ]
+                  )
                 : _vm._e()
             ],
             1

@@ -77,6 +77,9 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
     //Montre le formulaire photo Gymnaste
     //Route::get('/gymnastes/{id}/photo', 'GymnastesController@photoform');
 
+    //Inscrit le gym à une saison
+    Route::get('/gymnaste/{gymnasteid}/reinscrire/{saisonid}','GymnastesController@inscrire');
+
 
 
 

@@ -340,5 +340,20 @@ class GymnastesController extends Controller
 
     }
 
+    /**
+     * Inscrit le gym à la saison
+     * @param $gymnasteId
+     * @param $saisonId
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function inscrire($gymnasteId,$saisonId)
+    {
+        $gym = new Gymnaste;
+
+        $inscription = $gym->find($gymnasteId)->saisons()->attach($saisonId);
+
+        return back();
+    }
+
 
 }
