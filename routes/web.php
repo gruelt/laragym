@@ -39,24 +39,17 @@ Route::middleware('verified')->post('/formcomplete','completeController@store');
 /****      Fin verif logins ******///
 
 
-//Admin
-Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function () {
 
-    Route::get('/gymnastes', function () {
-        return view('pages.admin.adherents');
-    });
-
-    Route::get('/passport', function () {
-        return view('pages.admin.passport');
-    });
-
-
-});
 
 ///////////////////////////////////
 ///
-///  Responsables
-///
+//  ______                                          _     _
+// (_____ \                                        | |   | |
+//  _____) )_____  ___ ____   ___  ____   ___ _____| |__ | | _____
+// |  __  /| ___ |/___)  _ \ / _ \|  _ \ /___)____ |  _ \| || ___ |
+// | |  \ \| ____|___ | |_| | |_| | | | |___ / ___ | |_) ) || ____|
+// |_|   |_|_____)___/|  __/ \___/|_| |_(___/\_____|____/ \_)_____)
+//                    |_|                                          ///
 /// /////////////////////////////////////////////
 Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges:user']], function () {
 
@@ -85,6 +78,44 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
 
 
 });
+
+
+//  _______     _       _
+// (_______)   | |     (_)
+//  _______  __| |____  _ ____
+// |  ___  |/ _  |    \| |  _ \
+// | |   | ( (_| | | | | | | | |
+// |_|   |_|\____|_|_|_|_|_| |_|
+//
+
+//Admin
+Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function () {
+
+    Route::get('/gymnastes', function () {
+        return view('pages.admin.adherents');
+    });
+
+    Route::get('/passport', function () {
+        return view('pages.admin.passport');
+    });
+
+    Route::get('/equipes', function () {
+        return view('pages.admin.equipes');
+    });
+
+
+
+});
+
+
+//  _______
+// (_______)
+//  _       ___  ____  ____  _   _ ____
+// | |     / _ \|    \|    \| | | |  _ \
+// | |_____ |_| | | | | | | | |_| | | | |
+//  \______)___/|_|_|_|_|_|_|____/|_| |_|
+//
+
 
 
 Route::get('/logout', 'Auth\LoginController@logout');

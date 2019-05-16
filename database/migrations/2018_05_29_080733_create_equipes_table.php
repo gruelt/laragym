@@ -21,6 +21,7 @@ class CreateEquipesTable extends Migration
             $table->integer('niveau_id')->unsigned();
             $table->integer('genre_id')->unsigned();
             $table->integer('individuel')->default(0);
+            $table->integer('saison_id')->default(0);
 
 
             $table->foreign('categorie_id','cat_equ_fk')->references('id')->on('categories')

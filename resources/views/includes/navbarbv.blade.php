@@ -28,10 +28,19 @@
 
                 @if (session()->has('admin'))
                     <b-nav-item-dropdown text="Admin" right>
-                        <b-dropdown-item href="/admin/gymnastes/">Liste</b-dropdown-item>
+                        <b-dropdown-header>Gymnastes</b-dropdown-header>
+                        <b-dropdown-item href="/admin/gymnastes/">Consulter</b-dropdown-item>
+
+
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-header>Equipes</b-dropdown-header>
+                        <b-dropdown-item href="/admin/equipes/">Consulter</b-dropdown-item>
+
+
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-header>Technique</b-dropdown-header>
                         <b-dropdown-item href="/admin/passport">API</b-dropdown-item>
-                        <b-dropdown-item href="#">RU</b-dropdown-item>
-                        <b-dropdown-item href="#">FA</b-dropdown-item>
+
                     </b-nav-item-dropdown>
                 @endif
 
@@ -47,9 +56,9 @@
 
                 <b-nav-item-dropdown right>
                     <!-- Using 'button-content' slot -->
-                    <template slot="button-content"><em>User</em></template>
+                    <template slot="button-content"><em>{{ Auth::user()->email }}</em></template>
                     <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+                    <b-dropdown-item href="{{route('logout')}}">Déconnexion</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
         </b-collapse>
