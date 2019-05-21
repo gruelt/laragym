@@ -120,10 +120,12 @@
                         <!-- Si pas de certificat -->
 
                         <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
-                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical valable jusqu'au {{gym.certificat_medical_fin_fr}} </a>
+                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical du {{gym.certificat_medical_date_fr}} valable jusqu'au {{gym.certificat_medical_fin_fr}} </a>
 
 
-                            <b-badge v-if="gym.certificat_medical_check == 0" variant="warning">En attente de vérification</b-badge>
+
+                            <b-badge v-if="(gym.certificat_medical_check == 0 && admin)" v-on:click="validcertif" variant="success">Valider le certificat</b-badge>
+                            <b-badge v-if="gym.certificat_medical_check == 0" variant="warning">Attente Validation</b-badge>
                             <b-badge v-else variant="success">Vérifié</b-badge>
 
                         </b-alert>
@@ -219,6 +221,10 @@
 
 
         props: {
+            admin:{
+                type: Boolean,
+                default: false
+            },
             idgym: {
                 type: Number
 
@@ -265,14 +271,23 @@
         methods: {
 
             update: function () {
-                console.log('Mise à jour DB pour ' + this.idgym);
+                console.log('Mise à jour DB pour ' + this.gym.id);
                 axios
-                    .get('/api/responsable/gymnastes/' + this.idgym)
+                    .get('/api/admin/gymnastes/' + this.gym.id)
                     .then(response => (this.gym = response.data))
                 ;
 
 
+            },
+            validcertif: function(){
+                console.log('clic le certif ');
+                axios
+                    .get('/api/admin/gymnastes/' + this.gym.id+ '/certificatmedical/valid')
+
+                ;
+                //location.reload();
             }
+
         },
 
         mounted() {

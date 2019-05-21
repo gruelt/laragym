@@ -11,7 +11,7 @@
         >
             <span slot="niveaux" slot-scope="data" v-html="data.value"></span>
             <span slot="url" slot-scope="data" >
-                <a :href="'admin/gymnastes/'+ data.item.id">Consulter</a>
+                <a :href="'/admin/gymnastes/'+ data.item.id">Consulter</a>
             </span>
 
         </b-table>

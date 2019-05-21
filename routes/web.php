@@ -103,6 +103,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
         return view('pages.admin.equipes');
     });
 
+    //Montre le Gymnaste
+    Route::get('/gymnastes/{id}', 'GymnastesController@showadmin');
 
 
 });

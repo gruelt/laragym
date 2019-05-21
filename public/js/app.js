@@ -78429,11 +78429,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     props: {
+        admin: {
+            type: Boolean,
+            default: false
+        },
         idgym: {
             type: Number
 
@@ -78477,11 +78483,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            console.log('Mise à jour DB pour ' + this.idgym);
-            axios.get('/api/responsable/gymnastes/' + this.idgym).then(function (response) {
+            console.log('Mise à jour DB pour ' + this.gym.id);
+            axios.get('/api/admin/gymnastes/' + this.gym.id).then(function (response) {
                 return _this.gym = response.data;
             });
+        },
+        validcertif: function validcertif() {
+            console.log('clic le certif ');
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/certificatmedical/valid');
+            //location.reload();
         }
+
     },
 
     mounted: function mounted() {
@@ -78742,16 +78754,29 @@ var render = function() {
                         [
                           _c("i", { staticClass: "fas fa-file-alt" }),
                           _vm._v(
-                            " Certificat Medical valable jusqu'au " +
+                            " Certificat Medical du " +
+                              _vm._s(_vm.gym.certificat_medical_date_fr) +
+                              " valable jusqu'au " +
                               _vm._s(_vm.gym.certificat_medical_fin_fr) +
                               " "
                           )
                         ]
                       ),
                       _vm._v(" "),
+                      _vm.gym.certificat_medical_check == 0 && _vm.admin
+                        ? _c(
+                            "b-badge",
+                            {
+                              attrs: { variant: "success" },
+                              on: { click: _vm.validcertif }
+                            },
+                            [_vm._v("Valider le certificat")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
                       _vm.gym.certificat_medical_check == 0
                         ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                            _vm._v("En attente de vérification")
+                            _vm._v("Attente Validation")
                           ])
                         : _c("b-badge", { attrs: { variant: "success" } }, [
                             _vm._v("Vérifié")
@@ -79212,7 +79237,7 @@ var render = function() {
               return _c("span", {}, [
                 _c(
                   "a",
-                  { attrs: { href: "admin/gymnastes/" + data.item.id } },
+                  { attrs: { href: "/admin/gymnastes/" + data.item.id } },
                   [_vm._v("Consulter")]
                 )
               ])
