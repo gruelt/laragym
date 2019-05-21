@@ -247,6 +247,8 @@ class GymnastesController extends Controller
 
                 $return[$key]['genre']=$genre;
 
+                $return[$key]['genre_libelle']=$genre->name;
+
                 //A reinscrire
 
                 $saisonInscription = new Saison;

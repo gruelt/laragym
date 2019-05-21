@@ -79071,7 +79071,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79082,6 +79082,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79116,7 +79123,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            axios.get('/api/responsables/gymnastes').then(function (response) {
+            axios.get('/api/admin/gymnastes').then(function (response) {
                 return _this.gyms = response.data;
             });
         }
@@ -79126,7 +79133,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
 
-            gyms: []
+            gyms: [],
+            fields: [{
+                key: 'id',
+                sortable: true
+            }, {
+                key: 'nom',
+                label: 'Nom',
+                sortable: true
+            }, {
+                key: 'prenom',
+                label: 'Prénom',
+                sortable: true
+            }, {
+                key: 'age',
+                label: 'Age',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
+                key: 'niveaux',
+                label: '',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
+                key: 'genre_libelle',
+                label: 'Genre',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
+                key: 'url',
+                label: 'Consulter'
+
+                // Variant applies to the whole column, including the header and footer
+
+            }]
 
         };
     },
@@ -79155,8 +79198,29 @@ var render = function() {
           small: "",
           "primary-key": "a",
           "tbody-transition-props": _vm.transProps
-        }
-      })
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "niveaux",
+            fn: function(data) {
+              return _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
+            }
+          },
+          {
+            key: "url",
+            fn: function(data) {
+              return _c("span", {}, [
+                _c(
+                  "a",
+                  { attrs: { href: "admin/gymnastes/" + data.item.id } },
+                  [_vm._v("Consulter")]
+                )
+              ])
+            }
+          }
+        ])
+      }),
+      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
     ],
     1
   )
