@@ -27395,6 +27395,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-info', __webpack
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-table', __webpack_require__(180));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('saison-select', __webpack_require__(394));
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('passport-clients', __webpack_require__(185));
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('passport-authorized-clients', __webpack_require__(190));
@@ -78475,7 +78477,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //     niveaux: '',
             //     date_naissance: ''
             // }
-
+            filters: {
+                id: '',
+                issuedBy: '',
+                issuedTo: ''
+            }
 
         };
     },
@@ -78514,10 +78520,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
-    _c("div", { staticClass: "card col-md-12" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12", attrs: { id: "problemes" } },
+    _c(
+      "div",
+      { staticClass: "card col-md-12" },
+      [
         _vm._l(_vm.gym.problemes, function(probleme) {
           return _c(
             "div",
@@ -78543,425 +78549,427 @@ var render = function() {
             0
           )
         }),
-        0
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-md-4 col-sm-2 text-center" },
-            [
-              _c("div", { staticClass: "row text-center" }, [
-                _c("div", { staticClass: "col-md-12 col-sm-2 text-center" }, [
-                  _vm.gym.photo
-                    ? _c("img", {
-                        attrs: {
-                          src: _vm.gym.photo_url,
-                          width: "120",
-                          height: "160",
-                          alt: ""
-                        }
-                      })
-                    : _c("img", {
-                        attrs: {
-                          src: "/images/anonym.jpg",
-                          alt: "",
-                          width: "120",
-                          height: "160"
-                        }
-                      })
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  directives: [
-                    {
-                      name: "b-modal",
-                      rawName: "v-b-modal.photoupload",
-                      modifiers: { photoupload: true }
-                    }
-                  ],
-                  attrs: { variant: "success" }
-                },
-                [_vm._v("Envoyer Une Photo")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-modal",
-                { attrs: { id: "photoupload", "hide-footer": "" } },
-                [
-                  _c(
-                    "form",
-                    {
-                      attrs: {
-                        method: "post",
-                        action: "/gymnastes/" + _vm.gym.id + "/photo",
-                        enctype: "multipart/form-data"
-                      }
-                    },
-                    [
-                      _c("input", {
-                        attrs: { type: "hidden", name: "_token" },
-                        domProps: { value: _vm.csrf }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        attrs: {
-                          id: "laphoto",
-                          name: "laphoto",
-                          type: "file",
-                          "data-filename-placement": "inside"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "submit", value: "Envoyer" }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-4 col-sm-2 text-left flex-fill" },
-            [
-              _c("h2", { staticClass: "card-title" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.gym.nom) +
-                    " " +
-                    _vm._s(_vm.gym.prenom) +
-                    "\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "H3",
-                _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
-                  return _c("span", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "badge badge-primary",
-                        attrs: { href: "/equipes/" + id }
-                      },
-                      [_vm._v(_vm._s(niveau))]
-                    ),
-                    _vm._v(" ")
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
-              _vm._v(" "),
-              _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
-              _vm._v(" "),
-              _c(
-                "H3",
-                [
-                  _vm.gym.genre.id === 1
-                    ? _c("b-badge", { attrs: { variant: "info" } }, [
-                        _vm._v(_vm._s(_vm.gym.genre.description))
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.gym.genre.id === 2
-                    ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                        _vm._v(_vm._s(_vm.gym.genre.description))
-                      ])
-                    : _vm._e()
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.contact
-            ? _c("div", { staticClass: "col-md-4 col-sm-2 text-right" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.gym.responsable.nom) +
-                    " " +
-                    _vm._s(_vm.gym.responsable.prenom) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-user mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.gym.responsable.adresse) +
-                    " " +
-                    _vm._s(_vm.gym.responsable.cp) +
-                    " " +
-                    _vm._s(_vm.gym.responsable.ville) +
-                    " "
-                ),
-                _c("span", { staticClass: "fa fa-home mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.gym.responsable.email) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-envelope mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                        0" +
-                    _vm._s(_vm.gym.responsable.telephone1) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-phone mr-3" }),
-                _c("br"),
-                _vm._v(
-                  "\n                        0" +
-                    _vm._s(_vm.gym.responsable.telephone2) +
-                    "  "
-                ),
-                _c("span", { staticClass: "fa fa-phone mr-3" }),
-                _c("br")
-              ])
-            : _vm._e()
-        ]),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "row justify-content " }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-8 text-right" },
-            [
-              _vm.gym.certificat_medical == null
-                ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
-                    _vm._v("Aucun Certificat Medical")
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-4 col-sm-2 text-center" },
+              [
+                _c("div", { staticClass: "row text-center" }, [
+                  _c("div", { staticClass: "col-md-12 col-sm-2 text-center" }, [
+                    _vm.gym.photo
+                      ? _c("img", {
+                          attrs: {
+                            src: _vm.gym.photo_url,
+                            width: "120",
+                            height: "160",
+                            alt: ""
+                          }
+                        })
+                      : _c("img", {
+                          attrs: {
+                            src: "/images/anonym.jpg",
+                            alt: "",
+                            width: "120",
+                            height: "160"
+                          }
+                        })
                   ])
-                : _c(
-                    "b-alert",
-                    { attrs: { show: "", variant: "info" } },
-                    [
+                ]),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    directives: [
+                      {
+                        name: "b-modal",
+                        rawName: "v-b-modal.photoupload",
+                        modifiers: { photoupload: true }
+                      }
+                    ],
+                    attrs: { variant: "success" }
+                  },
+                  [_vm._v("Envoyer Une Photo")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-modal",
+                  { attrs: { id: "photoupload", "hide-footer": "" } },
+                  [
+                    _c(
+                      "form",
+                      {
+                        attrs: {
+                          method: "post",
+                          action: "/gymnastes/" + _vm.gym.id + "/photo",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrf }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: {
+                            id: "laphoto",
+                            name: "laphoto",
+                            type: "file",
+                            "data-filename-placement": "inside"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "btn btn-success",
+                          attrs: { type: "submit", value: "Envoyer" }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-4 col-sm-2 text-left flex-fill" },
+              [
+                _c("h2", { staticClass: "card-title" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.gym.nom) +
+                      " " +
+                      _vm._s(_vm.gym.prenom) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "H3",
+                  _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
+                    return _c("span", [
                       _c(
                         "a",
-                        { attrs: { href: _vm.gym.certificat_medical_url } },
-                        [
-                          _c("i", { staticClass: "fas fa-file-alt" }),
-                          _vm._v(
-                            " Certificat Medical du " +
-                              _vm._s(_vm.gym.certificat_medical_date_fr) +
-                              " valable jusqu'au " +
-                              _vm._s(_vm.gym.certificat_medical_fin_fr) +
-                              " "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.gym.certificat_medical_check == 0 && _vm.admin
-                        ? _c(
-                            "b-badge",
-                            {
-                              attrs: { variant: "success" },
-                              on: { click: _vm.validcertif }
-                            },
-                            [_vm._v("Valider le certificat")]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.gym.certificat_medical_check == 0
-                        ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                            _vm._v("Attente Validation")
-                          ])
-                        : _c("b-badge", { attrs: { variant: "success" } }, [
-                            _vm._v("Vérifié")
-                          ])
-                    ],
-                    1
-                  ),
-              _vm._v(" "),
-              _vm.gym.certificat_medical_age >= 3
-                ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
-                    _vm._v("Certificat dépassé")
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  directives: [
-                    {
-                      name: "b-modal",
-                      rawName: "v-b-modal.certifupload",
-                      modifiers: { certifupload: true }
-                    }
-                  ],
-                  attrs: { variant: "success" }
-                },
-                [_vm._v("Envoyer Un certificat Medical")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-modal",
-                {
-                  attrs: {
-                    id: "certifupload",
-                    "hide-footer": "",
-                    title: "Envoyer un Certificat Médical"
-                  }
-                },
-                [
-                  _c(
-                    "form",
-                    {
-                      attrs: {
-                        method: "post",
-                        action: "/gymnastes/" + _vm.gym.id + "/certif",
-                        enctype: "multipart/form-data"
-                      }
-                    },
-                    [
-                      _c("input", {
-                        attrs: { type: "hidden", name: "_token" },
-                        domProps: { value: _vm.csrf }
-                      }),
-                      _vm._v(" "),
-                      _c("b-form-file", {
-                        attrs: {
-                          state: Boolean(_vm.file),
-                          placeholder: "Choisir un fichier",
-                          id: "lecertif",
-                          name: "lecertif",
-                          "drop-placeholder": "Drop file here...",
-                          accept: ".png, .jpg, .pdf"
+                        {
+                          staticClass: "badge badge-primary",
+                          attrs: { href: "/equipes/" + id }
                         },
-                        model: {
-                          value: _vm.file,
-                          callback: function($$v) {
-                            _vm.file = $$v
-                          },
-                          expression: "file"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        { attrs: { for: "certificat_medical_date" } },
-                        [_vm._v("Date du Certificat Medical:")]
+                        [_vm._v(_vm._s(niveau))]
                       ),
-                      _vm._v(" "),
-                      _c("b-form-input", {
-                        attrs: {
-                          id: "certificat_medical_date",
-                          name: "certificat_medical_date",
-                          type: "date"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "submit", value: "Envoyer" }
-                      })
-                    ],
-                    1
-                  )
-                ]
-              )
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("div", { staticClass: "row justify-content-center " }, [
-          _vm._m(2),
+                      _vm._v(" ")
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
+                _vm._v(" "),
+                _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
+                _vm._v(" "),
+                _c(
+                  "H3",
+                  [
+                    _vm.gym.genre.id === 1
+                      ? _c("b-badge", { attrs: { variant: "info" } }, [
+                          _vm._v(_vm._s(_vm.gym.genre.description))
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.gym.genre.id === 2
+                      ? _c("b-badge", { attrs: { variant: "warning" } }, [
+                          _vm._v(_vm._s(_vm.gym.genre.description))
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm.contact
+              ? _c("div", { staticClass: "col-md-4 col-sm-2 text-right" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.gym.responsable.nom) +
+                      " " +
+                      _vm._s(_vm.gym.responsable.prenom) +
+                      "  "
+                  ),
+                  _c("span", { staticClass: "fa fa-user mr-3" }),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.gym.responsable.adresse) +
+                      " " +
+                      _vm._s(_vm.gym.responsable.cp) +
+                      " " +
+                      _vm._s(_vm.gym.responsable.ville) +
+                      " "
+                  ),
+                  _c("span", { staticClass: "fa fa-home mr-3" }),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.gym.responsable.email) +
+                      "  "
+                  ),
+                  _c("span", { staticClass: "fa fa-envelope mr-3" }),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        0" +
+                      _vm._s(_vm.gym.responsable.telephone1) +
+                      "  "
+                  ),
+                  _c("span", { staticClass: "fa fa-phone mr-3" }),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        0" +
+                      _vm._s(_vm.gym.responsable.telephone2) +
+                      "  "
+                  ),
+                  _c("span", { staticClass: "fa fa-phone mr-3" }),
+                  _c("br")
+                ])
+              : _vm._e()
+          ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-8 text-right" },
-            [
-              _c(
-                "div",
-                { staticClass: "list-group" },
-                _vm._l(_vm.gym.saisons, function(saison) {
-                  return _c(
-                    "li",
-                    { staticClass: "list-inline" },
-                    [
-                      saison.pivot.complet == 1
-                        ? _c(
-                            "b-button",
-                            { attrs: { variant: "success" } },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(saison.nom) +
-                                  " "
-                              ),
-                              _c("b-badge", { attrs: { variant: "light" } }, [
-                                _vm._v("Complet")
-                              ])
-                            ],
-                            1
-                          )
-                        : _c(
-                            "b-button",
-                            { attrs: { variant: "info" } },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(saison.nom) +
-                                  " "
-                              ),
-                              _c("b-badge", { attrs: { variant: "light" } }, [
-                                _vm._v("Préinscrit")
-                              ])
-                            ],
-                            1
-                          )
-                    ],
-                    1
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _vm.gym.reinscrit.statut == 0 && _vm.gym.reinscrit.saison != 0
-                ? _c(
-                    "b-button",
-                    {
-                      attrs: {
-                        href:
-                          "/responsable/gymnaste/" +
-                          _vm.gym.id +
-                          "/reinscrire/" +
-                          _vm.gym.reinscrit.saison.id,
-                        variant: "warning"
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row justify-content " }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-8 text-right" },
+              [
+                _vm.gym.certificat_medical == null
+                  ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
+                      _vm._v("Aucun Certificat Medical")
+                    ])
+                  : _c(
+                      "b-alert",
+                      { attrs: { show: "", variant: "info" } },
+                      [
+                        _c(
+                          "a",
+                          { attrs: { href: _vm.gym.certificat_medical_url } },
+                          [
+                            _c("i", { staticClass: "fas fa-file-alt" }),
+                            _vm._v(
+                              " Certificat Medical du " +
+                                _vm._s(_vm.gym.certificat_medical_date_fr) +
+                                " valable jusqu'au " +
+                                _vm._s(_vm.gym.certificat_medical_fin_fr) +
+                                " "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.gym.certificat_medical_check == 0 && _vm.admin
+                          ? _c(
+                              "b-badge",
+                              {
+                                attrs: { variant: "success" },
+                                on: { click: _vm.validcertif }
+                              },
+                              [_vm._v("Valider le certificat")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.gym.certificat_medical_check == 0
+                          ? _c("b-badge", { attrs: { variant: "warning" } }, [
+                              _vm._v("Attente Validation")
+                            ])
+                          : _c("b-badge", { attrs: { variant: "success" } }, [
+                              _vm._v("Vérifié")
+                            ])
+                      ],
+                      1
+                    ),
+                _vm._v(" "),
+                _vm.gym.certificat_medical_age >= 3
+                  ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
+                      _vm._v("Certificat dépassé")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    directives: [
+                      {
+                        name: "b-modal",
+                        rawName: "v-b-modal.certifupload",
+                        modifiers: { certifupload: true }
                       }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            + Re-inscrire pour " +
-                          _vm._s(_vm.gym.reinscrit.saison.nom) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ],
-            1
-          )
+                    ],
+                    attrs: { variant: "success" }
+                  },
+                  [_vm._v("Envoyer Un certificat Medical")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-modal",
+                  {
+                    attrs: {
+                      id: "certifupload",
+                      "hide-footer": "",
+                      title: "Envoyer un Certificat Médical"
+                    }
+                  },
+                  [
+                    _c(
+                      "form",
+                      {
+                        attrs: {
+                          method: "post",
+                          action: "/gymnastes/" + _vm.gym.id + "/certif",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrf }
+                        }),
+                        _vm._v(" "),
+                        _c("b-form-file", {
+                          attrs: {
+                            state: Boolean(_vm.file),
+                            placeholder: "Choisir un fichier",
+                            id: "lecertif",
+                            name: "lecertif",
+                            "drop-placeholder": "Drop file here...",
+                            accept: ".png, .jpg, .pdf"
+                          },
+                          model: {
+                            value: _vm.file,
+                            callback: function($$v) {
+                              _vm.file = $$v
+                            },
+                            expression: "file"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          { attrs: { for: "certificat_medical_date" } },
+                          [_vm._v("Date du Certificat Medical:")]
+                        ),
+                        _vm._v(" "),
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "certificat_medical_date",
+                            name: "certificat_medical_date",
+                            type: "date"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "btn btn-success",
+                          attrs: { type: "submit", value: "Envoyer" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row justify-content-center " }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-8 text-right" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.gym.saisons, function(saison) {
+                    return _c(
+                      "li",
+                      { staticClass: "list-inline" },
+                      [
+                        saison.pivot.complet == 1
+                          ? _c(
+                              "b-button",
+                              { attrs: { variant: "success" } },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(saison.nom) +
+                                    " "
+                                ),
+                                _c("b-badge", { attrs: { variant: "light" } }, [
+                                  _vm._v("Complet")
+                                ])
+                              ],
+                              1
+                            )
+                          : _c(
+                              "b-button",
+                              { attrs: { variant: "info" } },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(saison.nom) +
+                                    " "
+                                ),
+                                _c("b-badge", { attrs: { variant: "light" } }, [
+                                  _vm._v("Préinscrit")
+                                ])
+                              ],
+                              1
+                            )
+                      ],
+                      1
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _vm.gym.reinscrit.statut == 0 && _vm.gym.reinscrit.saison != 0
+                  ? _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href:
+                            "/responsable/gymnaste/" +
+                            _vm.gym.id +
+                            "/reinscrire/" +
+                            _vm.gym.reinscrit.saison.id,
+                          variant: "warning"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            + Re-inscrire pour " +
+                            _vm._s(_vm.gym.reinscrit.saison.nom) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ],
+              1
+            )
+          ])
         ])
-      ])
-    ]),
+      ],
+      2
+    ),
     _vm._v(" "),
     _c("hr")
   ])
@@ -79098,7 +79106,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79109,6 +79117,23 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79161,6 +79186,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
 
             gyms: [],
+            filters: {
+                id: '',
+                issuedBy: '',
+                issuedTo: ''
+            },
             fields: [{
                 key: 'id',
                 sortable: true
@@ -79180,13 +79210,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             }, {
                 key: 'niveaux',
-                label: '',
+                label: 'Equipes',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
             }, {
                 key: 'genre_libelle',
                 label: 'Genre',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
+                key: 'problemes_short',
+                label: 'Problèmes',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -79202,7 +79238,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.update();
+    },
+
+
+    computed: {
+        filteredgyms: function filteredgyms() {
+            var _this2 = this;
+
+            var filtered = this.gyms.filter(function (item) {
+                return Object.keys(_this2.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this2.filters[key].toLowerCase());
+                });
+            });
+            return filtered.length > 0 ? filtered : [{
+                id: '',
+                issuedBy: '',
+                issuedTo: ''
+            }];
+        }
     }
+
 });
 
 /***/ }),
@@ -79216,10 +79271,12 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("saison-select"),
+      _vm._v(" "),
       _c("b-table", {
         attrs: {
           id: "table-transition-example",
-          items: _vm.gyms,
+          items: _vm.filteredgyms,
           fields: _vm.fields,
           striped: "",
           small: "",
@@ -79227,6 +79284,57 @@ var render = function() {
           "tbody-transition-props": _vm.transProps
         },
         scopedSlots: _vm._u([
+          {
+            key: "top-row",
+            fn: function(ref) {
+              var fields = ref.fields
+              return _vm._l(fields, function(field) {
+                return _c("td", { key: field.key }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.filters[field.key],
+                        expression: "filters[field.key]"
+                      }
+                    ],
+                    attrs: { placeholder: field.label },
+                    domProps: { value: _vm.filters[field.key] },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.filters, field.key, $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              })
+            }
+          },
+          {
+            key: "problemes",
+            fn: function(data) {
+              return _c(
+                "span",
+                {},
+                [
+                  _vm._l(data.value, function(prob, index) {
+                    return _c("b-button", { attrs: { variant: "danger" } }, [
+                      _vm._v(_vm._s(index))
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _vm._l(data.value, function(prob, index) {
+                    return _c("h1", [_vm._v(_vm._s(index))])
+                  })
+                ],
+                2
+              )
+            }
+          },
           {
             key: "niveaux",
             fn: function(data) {
@@ -96461,6 +96569,126 @@ var Language=function(e,a,r,n){this.language=e,this.months=a,this.monthsAbbr=r,t
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(19)
+/* script */
+var __vue_script__ = __webpack_require__(395)
+/* template */
+var __vue_template__ = __webpack_require__(396)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/SaisonSelectComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e926183a", Component.options)
+  } else {
+    hotAPI.reload("data-v-e926183a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 395 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+
+    methods: {}
+
+}, 'mounted', function mounted() {}));
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _vm._v("\n    Choisis une saison avec moi !\n")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e926183a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -202,6 +202,7 @@ class GymnastesController extends Controller
             {
                 $problemes['photo']['none']["text"]="Aucune photo";
                 $problemes['photo']['none']["class"]="warning";
+
             }
 
 
@@ -295,6 +296,13 @@ class GymnastesController extends Controller
 
                 $return[$key]['problemes']=$problemes;
 
+                $problemes_short="";
+
+                foreach($problemes as $lokey => $probleme )
+                {
+                    $problemes_short.=$lokey." ";
+                }
+                $return[$key]['problemes_short']=$problemes_short;
 
 
 

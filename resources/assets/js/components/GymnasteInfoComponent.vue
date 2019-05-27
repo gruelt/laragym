@@ -7,7 +7,7 @@
 
 
         <div class="card col-md-12">
-            <div class="col-md-12" id="problemes">
+            <!--<div class="col-md-12" id="problemes">-->
 
                 <div v-for="probleme in gym.problemes " >
                     <div v-for="subprobleme in probleme " >
@@ -19,8 +19,8 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
+            <hr>
+            <!--</div>-->
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 col-sm-2 text-center">
@@ -260,6 +260,11 @@
                 //     niveaux: '',
                 //     date_naissance: ''
                 // }
+                filters: {
+                    id: '',
+                    issuedBy: '',
+                    issuedTo: ''
+                },
 
 
 
@@ -295,6 +300,8 @@
 
 
         },
+
+
 
 
 

@@ -25,6 +25,7 @@ Vue.component('gymnaste-info', require('./components/GymnasteInfoComponent.vue')
 
 Vue.component('gymnaste-table', require('./components/GymnasteTableComponent.vue'));
 
+Vue.component('saison-select', require('./components/SaisonSelectComponent.vue'));
 
 Vue.component('passport-clients',require('./components/passport/Clients.vue'));
 
