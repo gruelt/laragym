@@ -77578,7 +77578,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77630,6 +77630,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "gymnastesListComponent",
@@ -77637,7 +77638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         debug: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     methods: {
@@ -77689,7 +77690,8 @@ var render = function() {
         },
         [_vm._v("+ Ajouter un gymnaste")]
       ),
-      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
+      _vm._v(" "),
+      _vm.debug ? _c("div", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
     ],
     1
   )
