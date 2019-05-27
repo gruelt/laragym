@@ -25,6 +25,8 @@ Route::group(['prefix' => 'admin'], function () {
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getall');
 
+    Route::get('/gymnastes/{id}/certificatmedical/valid', 'GymnastesController@validcertif');
+
 
 });
 

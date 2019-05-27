@@ -126,6 +126,22 @@ class GymnastesController extends Controller
     }
 
 
+    public function showadmin($id)
+    {
+        //$gym = Gymnaste::where('id',$id)->get();
+
+        $gym = Gymnaste::where('id',$id)->get();
+
+        //verifie qu ele gym appartient bien
+
+
+        $gym = $this->formatGyms($gym);
+
+
+        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
+    }
+
+
     /**
      * Récupère un Modèle gym , et l'étend pour l'affichage Commun
      * @param $gyms
@@ -386,6 +402,13 @@ class GymnastesController extends Controller
         $inscription = $gym->find($gymnasteId)->saisons()->attach($saisonId);
 
         return back();
+    }
+
+    public function validcertif($uid)
+    {
+        $gym = Gymnaste::find($uid);
+        $gym->certificat_medical_check =1;
+        $gym->save();
     }
 
 
