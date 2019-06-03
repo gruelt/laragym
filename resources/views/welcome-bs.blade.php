@@ -88,19 +88,18 @@
                     </div>
                 @endif
                 <div class="title m-b-md">
-                    FJEP Gymnastique
+                    {{--FJEP Gymnastique--}}
+                    <img src="/images/full.png">
                 </div>
                 <div class="subtitle m-b-md">
                     Saint Just - Saint Rambert
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="http://fjepgym.fr">Site</a>
+                    <a href="https://www.facebook.com/FjepGym/">Facebook</a>
+                    <a href="https://www.facebook.com/pages/category/Nonprofit-Organization/Gymnastique-Ufolep-Loire-1024528947672542/">UFOLEP Loire</a>
+
                 </div>
             </div>
         </div>

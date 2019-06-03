@@ -1,6 +1,6 @@
 <template>
     <v-toolbar
-            color="red"
+            color="blue"
             dense
             fixed
             clipped-left

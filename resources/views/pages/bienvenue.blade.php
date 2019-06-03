@@ -7,14 +7,44 @@
 @section('content')
     <div class="container">
 
+        <div id="app">
 
 
-                     <div class="card-body">
-                <h5 class="card-title">
-                    {{env('APP_NAME')}}</h5>
-                <p class="card-text">Bienvenue</p>
-                <a href="/about/" class="btn btn-primary">Hello</a>
-            </div>
+
+            <v-app id="inspire">
+                <v-jumbotron>
+                    <v-container fill-height>
+                        <v-layout align-center>
+                            <v-flex>
+                                <h3 class="display-3">FJEP Gymnastique</h3>
+
+                                <span class="subheading">.</span>
+
+                                <v-divider class="my-3"></v-divider>
+
+
+
+                                <a href="/responsable/gymnastes" class="btn btn-primary">Voir/Ajouter un Gymnaste</a>
+
+                                <v-btn
+                                        class="mx-0"
+                                        color="primary"
+                                        large
+                                >
+
+                                </v-btn>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-jumbotron>
+            </v-app>
+
+
+
+        </div>
+
+
+
         </div>
 
     </div>

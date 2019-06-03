@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <img src="/images/full.png">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Creer un Compte') }}</div>

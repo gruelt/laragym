@@ -1,6 +1,6 @@
 <div>
-    <b-navbar toggleable="lg" type="light" style="background-color: #e74c3c;">
-        <b-navbar-brand href="/home">{{env('APP_NAME')}}</b-navbar-brand>
+    <b-navbar toggleable="lg"  type="light" style="background-color: #e74c3c;" > <!--  #e74c3c; -->
+        <b-navbar-brand href="/home"><img src="/images/gamn.png" class="h-100">{{env('APP_NAME')}}<img src="/images/gafn.png" class="h-100"></b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
