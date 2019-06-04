@@ -32,6 +32,8 @@
                 <a :href="'/admin/gymnastes/'+ data.item.id">Consulter</a>
             </span>
 
+            <span slot="nbgyms" slot-scope="data" ><b-button>{{data.value.length}}</b-button></span>
+
 
         </b-table>
         {{equipes}}
@@ -93,8 +95,8 @@
                         sortable: true
                     },
                     {
-                        key: 'age',
-                        label: 'Age',
+                        key: 'nbgyms',
+                        label: 'Effectif',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
@@ -113,15 +115,7 @@
                         // Variant applies to the whole column, including the header and footer
 
                     }
-                    ,
-                    {
-                        key: 'problemes_short',
-                        label: 'Problèmes',
-                        sortable: true,
-                        // Variant applies to the whole column, including the header and footer
-
-                    }
-                    ,
+                                        ,
                     {
                         key: 'url',
                         label: 'Consulter',

@@ -96778,7 +96778,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96789,6 +96789,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -96877,8 +96879,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: 'Niveau',
                 sortable: true
             }, {
-                key: 'age',
-                label: 'Age',
+                key: 'nbgyms',
+                label: 'Effectif',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -96891,12 +96893,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 key: 'genre_libelle',
                 label: 'Genre',
-                sortable: true
-                // Variant applies to the whole column, including the header and footer
-
-            }, {
-                key: 'problemes_short',
-                label: 'Problèmes',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -97031,6 +97027,17 @@ var render = function() {
                   [_vm._v("Consulter")]
                 )
               ])
+            }
+          },
+          {
+            key: "nbgyms",
+            fn: function(data) {
+              return _c(
+                "span",
+                {},
+                [_c("b-button", [_vm._v(_vm._s(data.value.length))])],
+                1
+              )
             }
           }
         ])

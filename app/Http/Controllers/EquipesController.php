@@ -46,7 +46,10 @@ class EquipesController extends Controller
             $returnniv="<a href=\"/admin/niveau/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->description."</a>&nbsp;";
             $return[$key]['niveau_libelle']=$returnniv;
 
+            /** Nombre de Gyms */
 
+            //$return[$key]['nbgyms']=Equipe::find($key)->gymnastes();
+            $return[$key]['nbgyms']=$equipe->gymnastes;
 
 
         }
