@@ -79108,7 +79108,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79119,6 +79119,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -79177,16 +79178,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            axios.get('/api/admin/gymnastes').then(function (response) {
+            axios.get('/api/admin/gymnastes/saison/' + this.saison_id).then(function (response) {
                 return _this.gyms = response.data;
             });
+        },
+        updatesaison: function updatesaison(saison_id) {
+            this.saison_id = saison_id;
+            this.update();
         }
-
     },
 
     data: function data() {
         return {
-
+            saison_id: "9999",
             gyms: [],
             filters: {
                 id: '',
@@ -79274,7 +79278,7 @@ var render = function() {
     "div",
     [
       _c("saison-select"),
-      _vm._v(" "),
+      _vm._v("\n    " + _vm._s(_vm.saison_id) + "\n    "),
       _c("b-table", {
         attrs: {
           id: "table-transition-example",
@@ -79823,6 +79827,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _mounted$props$method;
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -79832,14 +79838,54 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+/* harmony default export */ __webpack_exports__["default"] = (_mounted$props$method = {
     mounted: function mounted() {
         console.log('Component mounted.');
     },
 
-    methods: {}
+    props: {
+        saison_id: ""
+    },
+    methods: {
+        update: function update() {
+            var _this = this;
 
-}, 'mounted', function mounted() {}));
+            axios.get('/api/saisons').then(function (response) {
+                return _this.options = response.data;
+            });
+        },
+        getcurrent: function getcurrent() {
+            var _this2 = this;
+
+            axios.get('/api/saisons/actuelle').then(function (response) {
+                return _this2.selected = response.data;
+            });
+        },
+        getopened: function getopened() {
+            var _this3 = this;
+
+            axios.get('/api/saisons/ouverte').then(function (response) {
+                return _this3.selected = response.data;
+            });
+        }
+
+    },
+
+    data: function data() {
+        return {
+            selected: null,
+            options: [{ value: null, text: 'Chargement en cours' }]
+        };
+    }
+}, _defineProperty(_mounted$props$method, 'mounted', function mounted() {
+    this.getcurrent();
+    this.update();
+}), _defineProperty(_mounted$props$method, 'watch', {
+    selected: function selected(val) {
+        this.$parent.updatesaison(val);
+        console.log('changement' + val);
+    }
+}), _mounted$props$method);
 
 /***/ }),
 /* 192 */
@@ -79849,9 +79895,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _vm._v("\n    Choisis une saison avec moi !\n")
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm._v("\n    Saison "),
+      _c("b-form-select", {
+        attrs: { options: _vm.options },
+        model: {
+          value: _vm.selected,
+          callback: function($$v) {
+            _vm.selected = $$v
+          },
+          expression: "selected"
+        }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

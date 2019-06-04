@@ -38,7 +38,7 @@
                                 </b>
                                     <br>
                                 <table>
-                                @for ($i = 0; $i < 10; $i++)
+                                @for ($i = 0; $i < 30; $i++)
                                         <tr><td>{{exec("git log -$i --pretty=format:'%h - %s (%ci)' --abbrev-commit")}}</td></tr>
                                     @endfor
                                 </table>

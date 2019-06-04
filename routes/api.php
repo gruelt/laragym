@@ -18,6 +18,7 @@ Route::get('/user', function (Request $request) {
 });
 
 
+
 Route::group(['prefix' => 'admin'], function () {
 
 
@@ -25,9 +26,17 @@ Route::group(['prefix' => 'admin'], function () {
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getall');
 
+    Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason');
+
+
     Route::get('/gymnastes/{id}/certificatmedical/valid', 'GymnastesController@validcertif');
 
+
+
+
     Route::get('/equipes', 'EquipesController@getall');
+
+
 
 
 });
@@ -48,3 +57,11 @@ Route::group(['prefix' => 'responsables', 'middleware' => 'auth:api'], function 
 
 
 });
+
+
+//Commun //////////////////////////////////
+
+Route::get('/saisons','SaisonsController@allplucked');
+
+Route::get('/saisons/actuelle','SaisonsController@current');
+Route::get('/saisons/ouverte','SaisonsController@opened');

@@ -42,11 +42,27 @@
                         <b-dropdown-item href="/admin/passport">API</b-dropdown-item>
 
                     </b-nav-item-dropdown>
-                    <b-nav-item href="/about">About</b-nav-item>
+
 
                 @endif
 
+                @if (session()->has('manager'))
+                    <b-nav-item-dropdown text="Inscriptions" right>
+                        <b-dropdown-header>Gymnastes</b-dropdown-header>
+                        <b-dropdown-item href="/manager/gymnastes/">Consulter</b-dropdown-item>
 
+
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-header>Equipes</b-dropdown-header>
+                        <b-dropdown-item href="/manager/equipes/">Consulter</b-dropdown-item>
+
+
+                    </b-nav-item-dropdown>
+
+
+                @endif
+
+                <b-nav-item href="/about">Updates</b-nav-item>
 
             </b-navbar-nav>
 
@@ -57,6 +73,7 @@
 
 
                 <b-nav-item-dropdown right>
+
                     <!-- Using 'button-content' slot -->
                     <template slot="button-content"><em>{{ Auth::user()->email }}</em></template>
                     <b-dropdown-item href="#">Profile</b-dropdown-item>

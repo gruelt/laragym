@@ -1,6 +1,7 @@
 <template>
     <div>
         <saison-select ></saison-select>
+        {{saison_id}}
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
@@ -56,10 +57,14 @@
 
             update: function() {
                 axios
-                    .get('/api/admin/gymnastes')
+                    .get('/api/admin/gymnastes/saison/'+this.saison_id)
                     .then(response => (this.gyms = response.data));
 
             },
+            updatesaison(saison_id) {
+                this.saison_id = saison_id;
+                this.update();
+            }
 
 
 
@@ -68,7 +73,7 @@
 
         data() {
             return {
-
+                saison_id: "9999",
                 gyms: [],
                 filters: {
                     id: '',

@@ -11,7 +11,7 @@ class Saison extends Model
      */
 
     public function gymnastes(){
-        return $this->belongsToMany(Gymnaste::class); //
+        return $this->belongsToMany('App\Gymnaste'); //
     }
 
     public function actuelle(){
