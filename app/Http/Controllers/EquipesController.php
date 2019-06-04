@@ -35,7 +35,7 @@ class EquipesController extends Controller
 
 
 
-            $return[$key]['genre_libelle']="<a href class=\"badge badge-".$genre->color()."\">".$genre->description."</b-badge>";
+            $return[$key]['genre_libelle']="<span class=\"badge badge-".$genre->color()."\">".$genre->description."</span>";
 
             /** Niveau */
 
@@ -50,6 +50,14 @@ class EquipesController extends Controller
 
             //$return[$key]['nbgyms']=Equipe::find($key)->gymnastes();
             $return[$key]['nbgyms']=$equipe->gymnastes;
+
+            /** Categorie  */
+            $return[$key]['categorie']=$equipe->categorie->name;
+            $return[$key]['filiere']=$equipe->categorie->filiere->name;
+
+            /** Coach  */
+            $return[$key]['coach']=$equipe->coach;
+
 
 
         }

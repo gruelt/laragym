@@ -96778,7 +96778,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96789,6 +96789,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -96879,20 +96882,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: 'Niveau',
                 sortable: true
             }, {
+                key: 'categorie',
+                label: 'Catégorie',
+                sortable: true
+            }, {
+                key: 'filiere',
+                label: 'Filière',
+                sortable: true
+            }, {
                 key: 'nbgyms',
                 label: 'Effectif',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
             }, {
-                key: 'niveaux',
-                label: 'Equipes',
+                key: 'genre_libelle',
+                label: 'Genre',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
             }, {
-                key: 'genre_libelle',
-                label: 'Genre',
+                key: 'coach',
+                label: 'Coach',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -97038,6 +97049,23 @@ var render = function() {
                 [_c("b-button", [_vm._v(_vm._s(data.value.length))])],
                 1
               )
+            }
+          },
+          {
+            key: "categorie",
+            fn: function(data) {
+              return _c(
+                "span",
+                {},
+                [_c("b-button", [_vm._v(_vm._s(data.value))])],
+                1
+              )
+            }
+          },
+          {
+            key: "filiere",
+            fn: function(data) {
+              return _c("span", {}, [_vm._v(_vm._s(data.value))])
             }
           }
         ])

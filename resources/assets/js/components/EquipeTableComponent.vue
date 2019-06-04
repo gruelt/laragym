@@ -34,6 +34,9 @@
 
             <span slot="nbgyms" slot-scope="data" ><b-button>{{data.value.length}}</b-button></span>
 
+            <span slot="categorie" slot-scope="data" ><b-button>{{data.value}}</b-button></span>
+            <span slot="filiere" slot-scope="data" >{{data.value}}</span>
+
 
         </b-table>
         {{equipes}}
@@ -95,19 +98,23 @@
                         sortable: true
                     },
                     {
+                        key: 'categorie',
+                        label: 'Catégorie',
+                        sortable: true
+                    },
+                    {
+                        key: 'filiere',
+                        label: 'Filière',
+                        sortable: true
+                    },
+                    {
                         key: 'nbgyms',
                         label: 'Effectif',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
                     },
-                    {
-                        key: 'niveaux',
-                        label: 'Equipes',
-                        sortable: true,
-                        // Variant applies to the whole column, including the header and footer
 
-                    },
                     {
                         key: 'genre_libelle',
                         label: 'Genre',
@@ -116,6 +123,14 @@
 
                     }
                                         ,
+                    {
+                        key: 'coach',
+                        label: 'Coach',
+                        sortable: true,
+                        // Variant applies to the whole column, including the header and footer
+
+                    }
+                    ,
                     {
                         key: 'url',
                         label: 'Consulter',
