@@ -28,4 +28,9 @@ class Equipe extends Model
         return $this->belongsTo('App\Niveau');
     }
 
+    public function coach()
+    {
+        return $this->belongsToMany('App\User','coach_equipe');
+    }
+
 }
