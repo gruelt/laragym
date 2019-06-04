@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/gymnastes/{id}/certificatmedical/valid', 'GymnastesController@validcertif');
 
+    Route::get('/equipes', 'EquipesController@getall');
+
 
 });
 

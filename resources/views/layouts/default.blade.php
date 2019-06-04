@@ -6,7 +6,7 @@
 <body>
 
 <div id="app">
-    <b-container>
+    <b-container fluid>
 
         @include('includes.navbarbv')
 

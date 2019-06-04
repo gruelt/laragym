@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-    <equipes-table></equipes-table>
+    <equipe-table></equipe-table>
 
 
 @stop

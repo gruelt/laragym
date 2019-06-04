@@ -24,8 +24,14 @@ Route::get('/', function () {
 /*******  Verification Logins / Mail / complets */
 Auth::routes(['verify' => true]);
 
-Route::middleware('privileges:user')->middleware('verified')->middleware('complete')->get('/home', function () {
-    return view('pages.bienvenue');
+//Route::middleware('privileges:user')->middleware('verified')->middleware('complete')->get('/home', function () {
+//    return view('pages.bienvenue');
+//});
+
+Route::group([ 'middleware' => ['verified','privileges:user']], function () {
+    Route::get('/home', function () {
+        return view('pages.bienvenue');
+    });
 });
 
 
