@@ -42,6 +42,8 @@
                         <b-dropdown-item href="/admin/passport">API</b-dropdown-item>
 
                     </b-nav-item-dropdown>
+                    <b-nav-item href="/about">About</b-nav-item>
+
                 @endif
 
 

@@ -128,6 +128,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
+Route::get('/about',  function () {
+    return view('about');
+});
+
 
 
 Route::post('/gymnastes/{id}/photo', 'GymnastesController@uploadPhoto');
