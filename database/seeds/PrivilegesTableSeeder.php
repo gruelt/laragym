@@ -96,6 +96,30 @@ class PrivilegesTableSeeder extends Seeder
 
         ]);
 
+        //User par défaut
+        DB::table('users')->insert([
+            'id' => 3 ,
+            'name' => 'Pradier',
+            'email' => 'luc.pradier@club-internet.fr',
+            'password' => '$2y$10$oYSK/.R/hXycoSVgskXSA.IMf2S/zkzkhAVe/Zn/V.H4SZPNRCL2S',
+            'nom' => 'Pradier',
+            'prenom' => 'Luc',
+            'adresse' => '97 impasse des lagunes',
+            'cp' => '42380',
+            'ville' => 'Luriecq',
+            'complete' => 1,
+            'email_verified_at' => '2019-06-03 09:35:39',
+            'telephone1' => '683313821',
+            'telephone2' => '688545203'
+
+
+        ]);
+
+        DB::table('privileges_user')->insert([
+            'id' => 5,
+            'user_id' => 3,
+            'privileges_id' => 1
+        ]);
 
 
         DB::table('privileges_user')->insert([

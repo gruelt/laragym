@@ -3,3 +3,5 @@ id,nom,prenom,date_naissance,genre_id,competitif,commentaire,user_id
 2,GRUEL,Benjamin,2015-03-04,1,0,,1
 3,GRUEL,Thomas,1981-06-13,1,0,,1
 4,CHAVANNE,Corentin,2010-10-04,1,0,,0
+5,Pradier,Luc,1976-11-11,1,0,,3
+6,Pradier,Corentin,2005-11-17,1,0,,3
