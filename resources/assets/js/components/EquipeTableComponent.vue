@@ -29,10 +29,11 @@
 
 
             <span slot="url" slot-scope="data" >
-                <a :href="'/admin/gymnastes/'+ data.item.id">Consulter</a>
+                <a :href="'/admin/equipes/'+ data.item.id">Consulter</a>
             </span>
 
             <span slot="nbgyms" slot-scope="data" ><b-button>{{data.value.length}}</b-button></span>
+            <span slot="coach" slot-scope="data" v-html="data.value"></span>
 
             <span slot="categorie" slot-scope="data" ><b-button>{{data.value}}</b-button></span>
             <span slot="filiere" slot-scope="data" >{{data.value}}</span>

@@ -56,7 +56,13 @@ class EquipesController extends Controller
             $return[$key]['filiere']=$equipe->categorie->filiere->name;
 
             /** Coach  */
-            $return[$key]['coach']=$equipe->coach;
+            $coachz="";
+            foreach($equipe->coach as $coach)
+            {
+               $coachz .="<a href=\"/admin/coach/".$coach['id']."\" class=\"badge badge-primary\">".$coach['prenom']." ".$coach['nom']. "</a>&nbsp;";
+            }
+            $return[$key]['coach']=$coachz;
+
 
 
 
