@@ -260,7 +260,7 @@ class GymnastesController extends Controller
 
                 //Genres
 
-                $genre= $gymnaste->genre->first();
+                $genre= $gymnaste->genre;
 
                 $return[$key]['genre']=$genre;
 
