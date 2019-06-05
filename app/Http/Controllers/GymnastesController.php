@@ -321,12 +321,12 @@ class GymnastesController extends Controller
 
                 $return[$key]['tarif']=$tarif;
 
-                if(($reinscrire->pivot->paye==0 ) && $tarif != null)
-                {
-                    $problemes['paiement']['none']["text"]="Paiement ".$tarif."€";
-                    $problemes['paiement']['none']["class"]="warning";
+                if($reinscrire != null) {
+                    if (($reinscrire->pivot->paye == 0) && $tarif != null) {
+                        $problemes['paiement']['none']["text"] = "Paiement " . $tarif . "€";
+                        $problemes['paiement']['none']["class"] = "warning";
+                    }
                 }
-
 
 
 
