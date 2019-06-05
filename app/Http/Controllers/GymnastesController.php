@@ -177,13 +177,21 @@ class GymnastesController extends Controller
             $returnniv='';
 
             //Gestion des Niveaux en display html et brut
+            $noniv=1;
             foreach($niveaux as $niveau)
             {
                 $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
                 $return[$key]['niveaux_tab'][$niveau['id']]=$niveau->nom;
+                $noniv=0;
             }
 
             $return[$key]['niveaux']=$returnniv;
+
+            if($noniv==1)
+            {
+                $problemes['Groupe']['none']["text"]="Attente affectation groupe";
+                $problemes['Groupe']['none']["class"]="secondary";
+            }
 
 
             //Gestion des saisons
@@ -306,6 +314,21 @@ class GymnastesController extends Controller
                     $return[$key]['reinscrit']['statut']=1;
 
                 }
+
+                /** Gestion des tarifs et paiements */
+
+                $tarif= $gymnaste->tarif();
+
+                $return[$key]['tarif']=$tarif;
+
+                if(($reinscrire->pivot->paye==0 ) && $tarif != null)
+                {
+                    $problemes['paiement']['none']["text"]="Paiement ".$tarif."€";
+                    $problemes['paiement']['none']["class"]="warning";
+                }
+
+
+
 
                 #récupère les problèmes pour le dossier
 
@@ -476,7 +499,6 @@ class GymnastesController extends Controller
 
     {
         return Gymnaste::find($gym_id)->equipes->pluck('id');
-
     }
 
     public function setgymequipesbyseason($gym_id,$saison_id,Request $request)
@@ -485,6 +507,8 @@ class GymnastesController extends Controller
 
         return 1;
     }
+
+
 
 
 }

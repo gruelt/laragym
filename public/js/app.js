@@ -78446,6 +78446,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78823,6 +78858,69 @@ var render = function() {
               "div",
               { staticClass: "col-md-8 text-right" },
               [
+                _vm.admin && _vm.gym.problemes.paiement
+                  ? _c(
+                      "span",
+                      [
+                        _c(
+                          "b-button",
+                          {
+                            attrs: { variant: "success" },
+                            on: {
+                              click: function($event) {
+                                return _vm.validpaiement()
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "Valider le paiement de " +
+                                _vm._s(_vm.gym.tarif) +
+                                "€"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            attrs: { variant: "success" },
+                            on: {
+                              click: function($event) {
+                                return _vm.validpaiement()
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "Valider le paiement de " +
+                                _vm._s(_vm.gym.tarif - 5) +
+                                "€ (Réduction Familiale)"
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm.admin && !_vm.gym.problemes.Groupe
+                  ? _c("b-button", { attrs: { variant: "info" } }, [
+                      _vm._v("Annuler le paiement")
+                    ])
+                  : _vm._e()
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row justify-content " }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-8 text-right" },
+              [
                 _vm.gym.certificat_medical == null
                   ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
                       _vm._v("Aucun Certificat Medical")
@@ -78963,7 +79061,7 @@ var render = function() {
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "row justify-content-center " }, [
-            _vm._m(2),
+            _vm._m(3),
             _vm._v(" "),
             _c(
               "div",
@@ -79004,9 +79102,32 @@ var render = function() {
                                 ),
                                 _c("b-badge", { attrs: { variant: "light" } }, [
                                   _vm._v("Préinscrit")
-                                ])
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(_vm.gym.problemes, function(
+                                  probleme,
+                                  index
+                                ) {
+                                  return _c(
+                                    "span",
+                                    { attrs: { variant: "light" } },
+                                    _vm._l(probleme, function(
+                                      subprobleme,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "b-badge",
+                                        {
+                                          attrs: { variant: subprobleme.class }
+                                        },
+                                        [_vm._v(_vm._s(subprobleme.text))]
+                                      )
+                                    }),
+                                    1
+                                  )
+                                })
                               ],
-                              1
+                              2
                             )
                       ],
                       1
@@ -79065,6 +79186,18 @@ var staticRenderFns = [
         }
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "col-md-4 bg-warning align-self-center text-center  mh-100"
+      },
+      [_c("h1", [_vm._v("Validations")])]
     )
   },
   function() {

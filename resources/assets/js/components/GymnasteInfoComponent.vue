@@ -116,6 +116,38 @@
 
 
 <hr>
+                <!--debut admin-->
+                <div class="row justify-content ">
+
+                    <div class="col-md-4 bg-warning align-self-center text-center  mh-100">
+                        <h1 >Validations</h1>
+                    </div>
+
+                    <div class="col-md-8 text-right">
+
+                            <span  v-if="admin && gym.problemes.paiement">
+                                <b-button  variant="success" v-on:click="validpaiement()">Valider le paiement de {{gym.tarif}}€</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement()">Valider le paiement de {{gym.tarif-5}}€ (Réduction Familiale)</b-button>
+                            </span>
+                            <b-button v-else-if="admin && !gym.problemes.Groupe" variant="info">Annuler le paiement</b-button>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!--Fin admin -->
+                <hr>
 
                 <div class="row justify-content ">
 
@@ -194,6 +226,9 @@
                                 </b-button>
                                 <b-button v-else  variant="info">
                                     {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
+                                    <span v-for="(probleme, index) in gym.problemes" variant="light">
+                                        <b-badge  v-for="(subprobleme, index) in probleme" :variant="subprobleme.class">{{subprobleme.text}}</b-badge>
+                                    </span>
                                 </b-button>
 
                             </li>

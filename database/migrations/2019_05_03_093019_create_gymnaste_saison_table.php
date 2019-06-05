@@ -21,7 +21,9 @@ class CreateGymnasteSaisonTable extends Migration
 
             $table->integer('prix')->default(0);
             $table->integer('paye')->default(0);
+            $table->integer('paye_tresorier')->default(0);
             $table->integer('complet')->default(0);
+            $table->integer('affiligue')->default(0);
 
 
             $table->timestamps();

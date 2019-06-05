@@ -40,4 +40,11 @@ class Gymnaste extends Model
         return $this->belongsToMany(Saison::class)->withPivot(['prix','paye','complet']);
     }
 
+    public function tarif()
+    {
+        $tarif = $this->equipes()->max('tarif');
+
+        return $tarif;
+    }
+
 }

@@ -1,21 +1,21 @@
-nom,id,niveau_id,categorie_id,genre_id,saison_id
-Baby Lundi,1,13,10,3,2
-Bureau,2,17,11,3,2
-Entraineur,3,16,11,3,2
-G-ME,4,9,1,1,2
-G-N3,5,3,7,1,2
-Gym adulte Agres,6,15,10,3,2
-Juge,7,18,11,3,2
-Loisirs,8,12,10,3,2
-ME2,9,10,1,2,2
-ME1,10,9,1,2,2
-N3,11,3,1,2,2
-N5,12,5,1,2,2
-N6,13,6,1,2,2
-N7,14,7,1,2,2
-N7 11+,15,7,1,2,2
-N8,16,8,1,2,2
-N8 11+,17,8,1,2,2
-Parcours GAF,18,11,10,2,2
-Parcours GAM,19,11,10,1,2
-N7 indiv,20,7,10,2,2
+nom,id,niveau_id,categorie_id,genre_id,saison_id,tarif
+Baby Lundi,1,13,10,3,2,160
+Bureau,2,17,11,3,2,0
+Entraineur,3,16,11,3,2,0
+G-ME,4,9,1,1,2,260
+G-N3,5,3,7,1,2,260
+Gym adulte Agres,6,15,10,3,2,120
+Juge,7,18,11,3,2,0
+Loisirs,8,12,10,3,2,180
+ME2,9,10,1,2,2,260
+ME1,10,9,1,2,2,260
+N3,11,3,1,2,2,260
+N5,12,5,1,2,2,260
+N6,13,6,1,2,2,260
+N7,14,7,1,2,2,260
+N7 11+,15,7,1,2,2,260
+N8,16,8,1,2,2,260
+N8 11+,17,8,1,2,2,260
+Parcours GAF,18,11,10,2,2,180
+Parcours GAM,19,11,10,1,2,180
+Gym adulte entretien,20,15,10,3,2,120

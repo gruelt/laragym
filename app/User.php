@@ -51,6 +51,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Gymnaste::class);
     }
 
+
+
     /**
      * Récupère les équipes du coach
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
