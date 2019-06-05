@@ -141,6 +141,21 @@ class GymnastesController extends Controller
         return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
     }
 
+    public function get($id)
+    {
+        //$gym = Gymnaste::where('id',$id)->get();
+
+        $gym = Gymnaste::where('id',$id)->get();
+
+        //verifie qu ele gym appartient bien
+
+
+        return $this->formatGyms($gym);
+
+
+
+    }
+
 
     /**
      * Récupère un Modèle gym , et l'étend pour l'affichage Commun
@@ -451,6 +466,24 @@ class GymnastesController extends Controller
         return $return;
 
         //return $gymnastes;
+    }
+
+
+    /**
+     * Récupère les équipes pour une saison précise d'un gym
+     */
+    public function getgymequipesbyseason($gym_id,$saison_id)
+
+    {
+        return Gymnaste::find($gym_id)->equipes->pluck('id');
+
+    }
+
+    public function setgymequipesbyseason($gym_id,$saison_id,Request $request)
+    {
+        Gymnaste::find($gym_id)->equipesall()->sync($request->equipes);
+
+        return 1;
     }
 
 

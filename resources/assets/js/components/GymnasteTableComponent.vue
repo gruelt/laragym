@@ -64,7 +64,13 @@
             updatesaison(saison_id) {
                 this.saison_id = saison_id;
                 this.update();
-            }
+            },
+            getcurrentseason: function() {
+                axios
+                    .get('/api/saisons/actuelle')
+                    .then(response => (this.saison_id = response.data));
+
+            },
 
 
 
@@ -138,6 +144,7 @@
         },
 
         mounted(){
+            this.getcurrentseason();
             this.update();
         },
 

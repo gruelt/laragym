@@ -71,7 +71,9 @@
                     <h2 class="card-title">
                         {{gym.nom}} {{gym.prenom}}
                     </h2>
+
                         <H3><span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau}}</a>&nbsp;</span></H3>
+                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span></H3>
                         <H3>{{gym.age}} ans</H3>
                         <h5>{{gym.date_naissance_fr}}</h5>
                         <H3>
@@ -82,6 +84,11 @@
 
 
                     </div>
+
+                    <b-modal id="equipes" hide-header-close hide-footer title="Equipes du Gymnaste Pour la saison Actuelle">
+                        <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
+                        <b-button @click="hideModalTeam">Fermer</b-button>
+                    </b-modal>
 
 
 
@@ -229,9 +236,9 @@
                 type: Number
 
             },
-            gym:{
-                type: Object
-            },
+             gym:{
+                 type: Object
+             },
             csrf:{
                 type: String
             },
@@ -247,19 +254,19 @@
             contact:{
                 type: Boolean,
                 default: true
+            },
+            saison_id:{
+                type: Number
             }
+
 
 
         },
         data() {
             return {
-                // gym: {
-                //     id: '',
-                //     nom: '',
-                //     prenom: '',
-                //     niveaux: '',
-                //     date_naissance: ''
-                // }
+
+
+
                 filters: {
                     id: '',
                     issuedBy: '',
@@ -276,11 +283,11 @@
         methods: {
 
             update: function () {
-                console.log('Mise à jour DB pour ' + this.gym.id);
-                axios
-                    .get('/api/admin/gymnastes/' + this.gym.id)
-                    .then(response => (this.gym = response.data))
-                ;
+                 console.log('Mise à jour DB pour ' + this.idgym);
+                 axios
+                     .get('/api/admin/gymnastes/' + this.idgym)
+                     .then(response => (this.gym = response.data))
+                 ;
 
 
             },
@@ -291,12 +298,25 @@
 
                 ;
                 //location.reload();
-            }
+            },
+
+            getcurrent: function() {
+                axios
+                    .get('/api/saisons/actuelle')
+                    .then(response => (this.saison_id = response.data));
+
+            },
+            hideModalTeam() {
+                this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
+                location.reload();
+            },
 
         },
 
         mounted() {
+            this.getcurrent();
             //this.update();
+
 
 
         },

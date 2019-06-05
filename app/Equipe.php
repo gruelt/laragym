@@ -23,6 +23,11 @@ class Equipe extends Model
         return $this->belongsTo('App\Genre');
     }
 
+    public function saison()
+    {
+        return $this->belongsTo('App\Saison');
+    }
+
     public function niveau()
     {
         return $this->belongsTo('App\Niveau');

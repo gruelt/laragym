@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Equipe;
+use App\Saison;
 
 class EquipesController extends Controller
 {
@@ -71,4 +72,48 @@ class EquipesController extends Controller
         return $return;
 
     }
+
+    /**
+     * Récpère les équipes d'un saison
+     * @param $saison_id
+     */
+    public function getbyseason($saison_id,$pluck=0)
+    {
+        $return=array();
+
+        //Si toutes les saisons confondues
+        if($saison_id == 9999)
+        {
+            return $this->getall();
+        }
+
+
+        $saison=  Saison::find($saison_id);
+
+        $equipes = $saison->equipes()->get();
+
+        if($equipes->count() == 0)
+        {
+            return $equipes;
+        }
+
+        if($pluck == 1)
+        {
+            return $equipes->pluck('nom','id');
+        }
+
+
+        $return = $this->formatEquipes($equipes);
+
+        return $return;
+
+        //return $gymnastes;
+    }
+
+    public function getbyseasonpluck($saison_id)
+    {
+       $return = $this->getbyseason($saison_id)->orderBy('nom','asc')->pluck('id','nom');
+        return json_encode($return);
+    }
+
 }

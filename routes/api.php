@@ -26,15 +26,26 @@ Route::group(['prefix' => 'admin'], function () {
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getall');
 
+    Route::get('/gymnastes/{id}', 'GymnastesController@get');
+
     Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason');
 
 
     Route::get('/gymnastes/{id}/certificatmedical/valid', 'GymnastesController@validcertif');
 
+    //Récupère toutes les équipes possibles + celles ou il est inscrit
+    Route::get('/gymnastes/{gym_id}/saison/{saison_id}/equipes', 'GymnastesController@getgymequipesbyseason');
+
+    Route::post('/gymnastes/{gym_id}/saison/{saison_id}/equipes', 'GymnastesController@setgymequipesbyseason');
+
 
 
 
     Route::get('/equipes', 'EquipesController@getall');
+
+    Route::get('/equipes/saison/{id}', 'EquipesController@getbyseason');
+
+    Route::get('/equipes/saison/{id}/{pluck}', 'EquipesController@getbyseason');
 
 
 

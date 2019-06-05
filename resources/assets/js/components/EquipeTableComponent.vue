@@ -64,8 +64,18 @@
 
             update: function() {
                 axios
-                    .get('/api/admin/equipes')
+                    .get('/api/admin/equipes/saison/'+this.saison_id)
                     .then(response => (this.equipes = response.data));
+
+            },
+            updatesaison(saison_id) {
+                this.saison_id = saison_id;
+                this.update();
+            },
+            getcurrentseason: function() {
+                axios
+                    .get('/api/saisons/actuelle')
+                    .then(response => (this.saison_id = response.data));
 
             },
 
@@ -76,7 +86,7 @@
 
         data() {
             return {
-
+                saison_id: "999",
                 equipes: [],
                 filters: {
                     id: '',
@@ -145,7 +155,10 @@
         },
 
         mounted(){
+            this.getcurrentseason();
+
             this.update();
+
         },
 
         computed: {

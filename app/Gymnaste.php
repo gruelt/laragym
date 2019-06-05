@@ -6,8 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gymnaste extends Model
 {
-    //récupère les équipes du gymnaste
+    //récupère les équipes du gymnaste pour la saison actuelle
     public function equipes()
+    {
+        $saison= new Saison;
+        $saison_id = $saison->actuelle()->id;
+
+        return $this->equipesall()->where('saison_id',$saison_id);
+    }
+
+    //Récupère toutes les équipes d'un gymnaste
+    public function equipesall()
     {
         return $this->belongsToMany('App\Equipe');
     }

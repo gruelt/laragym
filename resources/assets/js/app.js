@@ -25,6 +25,7 @@ Vue.component('gymnaste-info', require('./components/GymnasteInfoComponent.vue')
 
 Vue.component('gymnaste-table', require('./components/GymnasteTableComponent.vue'));
 
+Vue.component('gymnaste-equipe', require('./components/GymnasteEquipeComponent.vue'));
 
 
 Vue.component('equipe-table', require('./components/EquipeTableComponent.vue'));

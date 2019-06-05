@@ -27395,6 +27395,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-info', __webpack
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-table', __webpack_require__(180));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-equipe', __webpack_require__(402));
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('equipe-table', __webpack_require__(185));
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('saison-select', __webpack_require__(190));
@@ -78437,6 +78439,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78467,18 +78476,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         contact: {
             type: Boolean,
             default: true
+        },
+        saison_id: {
+            type: Number
         }
 
     },
     data: function data() {
         return {
-            // gym: {
-            //     id: '',
-            //     nom: '',
-            //     prenom: '',
-            //     niveaux: '',
-            //     date_naissance: ''
-            // }
+
             filters: {
                 id: '',
                 issuedBy: '',
@@ -78493,8 +78499,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            console.log('Mise à jour DB pour ' + this.gym.id);
-            axios.get('/api/admin/gymnastes/' + this.gym.id).then(function (response) {
+            console.log('Mise à jour DB pour ' + this.idgym);
+            axios.get('/api/admin/gymnastes/' + this.idgym).then(function (response) {
                 return _this.gym = response.data;
             });
         },
@@ -78502,13 +78508,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log('clic le certif ');
             axios.get('/api/admin/gymnastes/' + this.gym.id + '/certificatmedical/valid');
             //location.reload();
-        }
+        },
 
+        getcurrent: function getcurrent() {
+            var _this2 = this;
+
+            axios.get('/api/saisons/actuelle').then(function (response) {
+                return _this2.saison_id = response.data;
+            });
+        },
+        hideModalTeam: function hideModalTeam() {
+            this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
+            location.reload();
+        }
     },
 
     mounted: function mounted() {
+        this.getcurrent();
         //this.update();
-
 
     }
 });
@@ -78555,191 +78572,247 @@ var render = function() {
         _c("hr"),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-4 col-sm-2 text-center" },
-              [
-                _c("div", { staticClass: "row text-center" }, [
-                  _c("div", { staticClass: "col-md-12 col-sm-2 text-center" }, [
-                    _vm.gym.photo
-                      ? _c("img", {
-                          attrs: {
-                            src: _vm.gym.photo_url,
-                            width: "120",
-                            height: "160",
-                            alt: ""
-                          }
-                        })
-                      : _c("img", {
-                          attrs: {
-                            src: "/images/anonym.jpg",
-                            alt: "",
-                            width: "120",
-                            height: "160"
-                          }
-                        })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  {
-                    directives: [
-                      {
-                        name: "b-modal",
-                        rawName: "v-b-modal.photoupload",
-                        modifiers: { photoupload: true }
-                      }
-                    ],
-                    attrs: { variant: "success" }
-                  },
-                  [_vm._v("Envoyer Une Photo")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-modal",
-                  { attrs: { id: "photoupload", "hide-footer": "" } },
-                  [
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _c(
+                "div",
+                { staticClass: "col-md-4 col-sm-2 text-center" },
+                [
+                  _c("div", { staticClass: "row text-center" }, [
                     _c(
-                      "form",
-                      {
-                        attrs: {
-                          method: "post",
-                          action: "/gymnastes/" + _vm.gym.id + "/photo",
-                          enctype: "multipart/form-data"
-                        }
-                      },
+                      "div",
+                      { staticClass: "col-md-12 col-sm-2 text-center" },
                       [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "_token" },
-                          domProps: { value: _vm.csrf }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: {
-                            id: "laphoto",
-                            name: "laphoto",
-                            type: "file",
-                            "data-filename-placement": "inside"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "btn btn-success",
-                          attrs: { type: "submit", value: "Envoyer" }
-                        })
+                        _vm.gym.photo
+                          ? _c("img", {
+                              attrs: {
+                                src: _vm.gym.photo_url,
+                                width: "120",
+                                height: "160",
+                                alt: ""
+                              }
+                            })
+                          : _c("img", {
+                              attrs: {
+                                src: "/images/anonym.jpg",
+                                alt: "",
+                                width: "120",
+                                height: "160"
+                              }
+                            })
                       ]
                     )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-4 col-sm-2 text-left flex-fill" },
-              [
-                _c("h2", { staticClass: "card-title" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.gym.nom) +
-                      " " +
-                      _vm._s(_vm.gym.prenom) +
-                      "\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "H3",
-                  _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
-                    return _c("span", [
-                      _c(
-                        "a",
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-button",
+                    {
+                      directives: [
                         {
-                          staticClass: "badge badge-primary",
-                          attrs: { href: "/equipes/" + id }
+                          name: "b-modal",
+                          rawName: "v-b-modal.photoupload",
+                          modifiers: { photoupload: true }
+                        }
+                      ],
+                      attrs: { variant: "success" }
+                    },
+                    [_vm._v("Envoyer Une Photo")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-modal",
+                    { attrs: { id: "photoupload", "hide-footer": "" } },
+                    [
+                      _c(
+                        "form",
+                        {
+                          attrs: {
+                            method: "post",
+                            action: "/gymnastes/" + _vm.gym.id + "/photo",
+                            enctype: "multipart/form-data"
+                          }
                         },
-                        [_vm._v(_vm._s(niveau))]
-                      ),
-                      _vm._v(" ")
-                    ])
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
-                _vm._v(" "),
-                _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
-                _vm._v(" "),
-                _c(
-                  "H3",
-                  [
-                    _vm.gym.genre.id === 1
-                      ? _c("b-badge", { attrs: { variant: "info" } }, [
-                          _vm._v(_vm._s(_vm.gym.genre.description))
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.gym.genre.id === 2
-                      ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                          _vm._v(_vm._s(_vm.gym.genre.description))
-                        ])
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "_token" },
+                            domProps: { value: _vm.csrf }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: {
+                              id: "laphoto",
+                              name: "laphoto",
+                              type: "file",
+                              "data-filename-placement": "inside"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "btn btn-success",
+                            attrs: { type: "submit", value: "Envoyer" }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-4 col-sm-2 text-left flex-fill" },
+                [
+                  _c("h2", { staticClass: "card-title" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.gym.nom) +
+                        " " +
+                        _vm._s(_vm.gym.prenom) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "H3",
+                    _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
+                      return _c("span", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "badge badge-primary",
+                            attrs: { href: "/equipes/" + id }
+                          },
+                          [_vm._v(_vm._s(niveau))]
+                        ),
+                        _vm._v(" ")
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("H3", [
+                    _vm.admin
+                      ? _c(
+                          "span",
+                          [
+                            _c(
+                              "b-button",
+                              {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName: "v-b-modal.equipes",
+                                    modifiers: { equipes: true }
+                                  }
+                                ],
+                                attrs: { variant: "success" }
+                              },
+                              [_vm._v("Gérer Equipes")]
+                            )
+                          ],
+                          1
+                        )
                       : _vm._e()
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _vm.contact
-              ? _c("div", { staticClass: "col-md-4 col-sm-2 text-right" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.gym.responsable.nom) +
-                      " " +
-                      _vm._s(_vm.gym.responsable.prenom) +
-                      "  "
-                  ),
-                  _c("span", { staticClass: "fa fa-user mr-3" }),
-                  _c("br"),
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.gym.responsable.adresse) +
-                      " " +
-                      _vm._s(_vm.gym.responsable.cp) +
-                      " " +
-                      _vm._s(_vm.gym.responsable.ville) +
-                      " "
-                  ),
-                  _c("span", { staticClass: "fa fa-home mr-3" }),
-                  _c("br"),
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.gym.responsable.email) +
-                      "  "
-                  ),
-                  _c("span", { staticClass: "fa fa-envelope mr-3" }),
-                  _c("br"),
-                  _vm._v(
-                    "\n                        0" +
-                      _vm._s(_vm.gym.responsable.telephone1) +
-                      "  "
-                  ),
-                  _c("span", { staticClass: "fa fa-phone mr-3" }),
-                  _c("br"),
-                  _vm._v(
-                    "\n                        0" +
-                      _vm._s(_vm.gym.responsable.telephone2) +
-                      "  "
-                  ),
-                  _c("span", { staticClass: "fa fa-phone mr-3" }),
-                  _c("br")
-                ])
-              : _vm._e()
-          ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
+                  _vm._v(" "),
+                  _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
+                  _vm._v(" "),
+                  _c(
+                    "H3",
+                    [
+                      _vm.gym.genre.id === 1
+                        ? _c("b-badge", { attrs: { variant: "info" } }, [
+                            _vm._v(_vm._s(_vm.gym.genre.description))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.gym.genre.id === 2
+                        ? _c("b-badge", { attrs: { variant: "warning" } }, [
+                            _vm._v(_vm._s(_vm.gym.genre.description))
+                          ])
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-modal",
+                {
+                  attrs: {
+                    id: "equipes",
+                    "hide-header-close": "",
+                    "hide-footer": "",
+                    title: "Equipes du Gymnaste Pour la saison Actuelle"
+                  }
+                },
+                [
+                  _c("gymnaste-equipe", {
+                    attrs: { gymnaste_id: _vm.gym.id, saison_id: _vm.saison_id }
+                  }),
+                  _vm._v(" "),
+                  _c("b-button", { on: { click: _vm.hideModalTeam } }, [
+                    _vm._v("Fermer")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.contact
+                ? _c("div", { staticClass: "col-md-4 col-sm-2 text-right" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.gym.responsable.nom) +
+                        " " +
+                        _vm._s(_vm.gym.responsable.prenom) +
+                        "  "
+                    ),
+                    _c("span", { staticClass: "fa fa-user mr-3" }),
+                    _c("br"),
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.gym.responsable.adresse) +
+                        " " +
+                        _vm._s(_vm.gym.responsable.cp) +
+                        " " +
+                        _vm._s(_vm.gym.responsable.ville) +
+                        " "
+                    ),
+                    _c("span", { staticClass: "fa fa-home mr-3" }),
+                    _c("br"),
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.gym.responsable.email) +
+                        "  "
+                    ),
+                    _c("span", { staticClass: "fa fa-envelope mr-3" }),
+                    _c("br"),
+                    _vm._v(
+                      "\n                        0" +
+                        _vm._s(_vm.gym.responsable.telephone1) +
+                        "  "
+                    ),
+                    _c("span", { staticClass: "fa fa-phone mr-3" }),
+                    _c("br"),
+                    _vm._v(
+                      "\n                        0" +
+                        _vm._s(_vm.gym.responsable.telephone2) +
+                        "  "
+                    ),
+                    _c("span", { staticClass: "fa fa-phone mr-3" }),
+                    _c("br")
+                  ])
+                : _vm._e()
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -79108,7 +79181,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79185,7 +79258,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updatesaison: function updatesaison(saison_id) {
             this.saison_id = saison_id;
             this.update();
+        },
+
+        getcurrentseason: function getcurrentseason() {
+            var _this2 = this;
+
+            axios.get('/api/saisons/actuelle').then(function (response) {
+                return _this2.saison_id = response.data;
+            });
         }
+
     },
 
     data: function data() {
@@ -79243,17 +79325,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+        this.getcurrentseason();
         this.update();
     },
 
 
     computed: {
         filteredgyms: function filteredgyms() {
-            var _this2 = this;
+            var _this3 = this;
 
             var filtered = this.gyms.filter(function (item) {
-                return Object.keys(_this2.filters).every(function (key) {
-                    return String(item[key]).toLowerCase().includes(_this2.filters[key].toLowerCase());
+                return Object.keys(_this3.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this3.filters[key].toLowerCase());
                 });
             });
             return filtered.length > 0 ? filtered : [{
@@ -79462,7 +79545,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79539,8 +79622,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            axios.get('/api/admin/equipes').then(function (response) {
+            axios.get('/api/admin/equipes/saison/' + this.saison_id).then(function (response) {
                 return _this.equipes = response.data;
+            });
+        },
+        updatesaison: function updatesaison(saison_id) {
+            this.saison_id = saison_id;
+            this.update();
+        },
+
+        getcurrentseason: function getcurrentseason() {
+            var _this2 = this;
+
+            axios.get('/api/saisons/actuelle').then(function (response) {
+                return _this2.saison_id = response.data;
             });
         }
 
@@ -79548,7 +79643,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-
+            saison_id: "999",
             equipes: [],
             filters: {
                 id: '',
@@ -79603,17 +79698,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+        this.getcurrentseason();
+
         this.update();
     },
 
 
     computed: {
         filteredequipes: function filteredequipes() {
-            var _this2 = this;
+            var _this3 = this;
 
             var filtered = this.equipes.filter(function (item) {
-                return Object.keys(_this2.filters).every(function (key) {
-                    return String(item[key]).toLowerCase().includes(_this2.filters[key].toLowerCase());
+                return Object.keys(_this3.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this3.filters[key].toLowerCase());
                 });
             });
             return filtered.length > 0 ? filtered : [{
@@ -97123,6 +97220,198 @@ var Language=function(e,a,r,n){this.language=e,this.months=a,this.monthsAbbr=r,t
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(14)
+/* script */
+var __vue_script__ = __webpack_require__(403)
+/* template */
+var __vue_template__ = __webpack_require__(404)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/GymnasteEquipeComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7fbbd46a", Component.options)
+  } else {
+    hotAPI.reload("data-v-7fbbd46a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 403 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _mounted$props$method;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = (_mounted$props$method = {
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+
+    props: {
+        gymnaste_id: "",
+        saison_id: ""
+    },
+    methods: {
+        getselected: function getselected() {
+            var _this = this;
+
+            axios.get('/api/admin/gymnastes/' + this.gymnaste_id + '/saison/' + this.saison_id + '/equipes').then(function (response) {
+                return _this.selected = response.data;
+            });
+        },
+        getlist: function getlist() {
+            var _this2 = this;
+
+            axios.get('/api/admin/equipes/saison/' + this.saison_id + "/1").then(function (response) {
+                return _this2.options = response.data;
+            });
+        },
+        save: function save() {
+            axios.post('/api/admin/gymnastes/' + this.gymnaste_id + '/saison/' + this.saison_id + '/equipes', { equipes: this.selected });
+        },
+
+        reload: function reload() {
+            location.reload();
+        }
+
+    },
+
+    data: function data() {
+        return {
+            selected: null,
+            options: [{ value: null, text: 'Chargement en cours' }]
+        };
+    }
+}, _defineProperty(_mounted$props$method, "mounted", function mounted() {}), _defineProperty(_mounted$props$method, "watch", {
+    saison_id: function saison_id(val) {
+        this.getselected();
+        this.getlist();
+    },
+    selected: function selected(val) {
+        this.save();
+    }
+
+}), _mounted$props$method);
+
+/***/ }),
+/* 404 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("b-form-checkbox-group", {
+        attrs: {
+          id: "checkbox-group-1",
+          options: _vm.options,
+          name: "flavour-1",
+          stacked: ""
+        },
+        model: {
+          value: _vm.selected,
+          callback: function($$v) {
+            _vm.selected = $$v
+          },
+          expression: "selected"
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7fbbd46a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
