@@ -119,7 +119,7 @@
                 <!--debut admin-->
                 <div class="row justify-content ">
 
-                    <div class="col-md-4 bg-warning align-self-center text-center  mh-100">
+                    <div v-if="admin" class="col-md-4 bg-warning align-self-center text-center  mh-100">
                         <h1 >Validations</h1>
                     </div>
 
@@ -130,6 +130,10 @@
                                 <b-button  variant="success" v-on:click="validpaiement()">Valider le paiement de {{gym.tarif-5}}€ (Réduction Familiale)</b-button>
                             </span>
                             <b-button v-else-if="admin && !gym.problemes.Groupe" variant="info">Annuler le paiement</b-button>
+
+                        <span  v-if="admin && gym.problemes.Groupe">
+                            <b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button>
+                        </span>
 
 
 

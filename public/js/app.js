@@ -78481,6 +78481,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78852,7 +78856,16 @@ var render = function() {
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "row justify-content " }, [
-            _vm._m(1),
+            _vm.admin
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-md-4 bg-warning align-self-center text-center  mh-100"
+                  },
+                  [_c("h1", [_vm._v("Validations")])]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "div",
@@ -78906,6 +78919,29 @@ var render = function() {
                   ? _c("b-button", { attrs: { variant: "info" } }, [
                       _vm._v("Annuler le paiement")
                     ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.admin && _vm.gym.problemes.Groupe
+                  ? _c(
+                      "span",
+                      [
+                        _c(
+                          "b-button",
+                          {
+                            directives: [
+                              {
+                                name: "b-modal",
+                                rawName: "v-b-modal.equipes",
+                                modifiers: { equipes: true }
+                              }
+                            ],
+                            attrs: { variant: "success" }
+                          },
+                          [_vm._v("Gérer Equipes")]
+                        )
+                      ],
+                      1
+                    )
                   : _vm._e()
               ],
               1
@@ -78915,7 +78951,7 @@ var render = function() {
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "row justify-content " }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c(
               "div",
@@ -79061,7 +79097,7 @@ var render = function() {
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "row justify-content-center " }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c(
               "div",
@@ -79186,18 +79222,6 @@ var staticRenderFns = [
         }
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "col-md-4 bg-warning align-self-center text-center  mh-100"
-      },
-      [_c("h1", [_vm._v("Validations")])]
     )
   },
   function() {
