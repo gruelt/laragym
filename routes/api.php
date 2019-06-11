@@ -50,6 +50,20 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
+
+});
+
+Route::group(['prefix' => 'inscription'], function () {
+
+    Route::get('/gymnastes/{gym_id}/saison/{saison_id}/paiement/valid/{montant}','SaisonsController@payesaison');
+
+
+
+
+
+
+
+
 });
 
 

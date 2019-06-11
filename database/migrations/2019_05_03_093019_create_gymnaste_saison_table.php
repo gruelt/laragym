@@ -21,6 +21,8 @@ class CreateGymnasteSaisonTable extends Migration
 
             $table->integer('prix')->default(0);
             $table->integer('paye')->default(0);
+            $table->integer('responsable_paye_id')->nullable();
+            $table->timestamp('date_paiement')->nullable();
             $table->integer('paye_tresorier')->default(0);
             $table->integer('complet')->default(0);
             $table->integer('affiligue')->default(0);
@@ -35,6 +37,11 @@ class CreateGymnasteSaisonTable extends Migration
 
             #Fk vers la table privileges
             $table->foreign('saison_id')->references('id')->on('saisons')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            #Fk vers la table user pour le user (personne de l'inscription ) du paiement
+            $table->foreign('responsable_paye_id')->references('id')->on('users')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

@@ -37,7 +37,7 @@ class Gymnaste extends Model
     //récupère les saisons du gym
     public function saisons()
     {
-        return $this->belongsToMany(Saison::class)->withPivot(['prix','paye','complet']);
+        return $this->belongsToMany(Saison::class)->withPivot(['prix','paye','complet','responsable_paye_id','date_paiement']);
     }
 
     public function tarif()

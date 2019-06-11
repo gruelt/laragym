@@ -326,6 +326,7 @@ class GymnastesController extends Controller
                         $problemes['paiement']['nonepaiement']["text"] = "Paiement " . $tarif . "€";
                         $problemes['paiement']['nonepaiement']["class"] = "warning";
                     }
+
                 }
 
 

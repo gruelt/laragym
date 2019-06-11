@@ -126,8 +126,8 @@
                     <div class="col-md-8 text-right">
 
                             <span  v-if="admin && gym.problemes.paiement">
-                                <b-button  variant="success" v-on:click="validpaiement()">Valider le paiement de {{gym.tarif}}€</b-button>
-                                <b-button  variant="success" v-on:click="validpaiement()">Valider le paiement de {{gym.tarif-5}}€ (Réduction Familiale)</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le paiement de {{gym.tarif}}€</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-5)">Valider le paiement de {{gym.tarif-5}}€ (Réduction Familiale)</b-button>
                             </span>
                             <b-button v-else-if="admin && !gym.problemes.Groupe" variant="info">Annuler le paiement</b-button>
 
@@ -337,6 +337,14 @@
 
                 ;
                 //location.reload();
+            },
+            validpaiement: function(montant,saison_id){
+                console.log('clic le paiement pour '+ montant + ' pour saison ' + this.saison_id);
+                 axios
+                     .get('/api/inscription/gymnastes/' + this.gym.id +  '/saison/'+ this.saison_id + '/paiement/valid/' + montant);
+
+
+                location.reload();
             },
 
             getcurrent: function() {

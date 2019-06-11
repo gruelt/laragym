@@ -78584,6 +78584,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/admin/gymnastes/' + this.gym.id + '/certificatmedical/valid');
             //location.reload();
         },
+        validpaiement: function validpaiement(montant, saison_id) {
+            console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
+            axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + montant);
+
+            location.reload();
+        },
 
         getcurrent: function getcurrent() {
             var _this2 = this;
@@ -78917,7 +78923,7 @@ var render = function() {
                             attrs: { variant: "success" },
                             on: {
                               click: function($event) {
-                                return _vm.validpaiement()
+                                return _vm.validpaiement(_vm.gym.tarif)
                               }
                             }
                           },
@@ -78936,7 +78942,7 @@ var render = function() {
                             attrs: { variant: "success" },
                             on: {
                               click: function($event) {
-                                return _vm.validpaiement()
+                                return _vm.validpaiement(_vm.gym.tarif - 5)
                               }
                             }
                           },

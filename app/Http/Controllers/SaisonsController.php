@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Gymnaste;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Saison;
 
@@ -40,6 +42,24 @@ class SaisonsController extends Controller
     {
         $saison = new Saison;
         return $saison->inscriptionOuverte()->id;
+    }
+
+    public function payesaison($gymnaste_id,$saison_id,$montant)
+    {
+        $update['paye']=$montant;
+        $update['responsable_paye_id']=3;
+        $update['date_paiement']=Carbon::now();
+
+        $gym =  Gymnaste::find($gymnaste_id)->saisons()->updateExistingPivot($saison_id,$update);
+
+
+
+
+        //$gym->save();
+
+
+
+        return $gym;
     }
 
 }
