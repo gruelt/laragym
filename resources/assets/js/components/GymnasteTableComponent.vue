@@ -19,9 +19,13 @@
 
             <span slot="problemes" slot-scope="data" >
 
-                <b-button variant="danger" v-for="(prob, index) in data.value">{{index}}</b-button>
-                <h1 v-for="(prob, index) in data.value">{{index}}</h1>
+                <b-button variant="danger" v-for="(prob, index) in data.value" :key="index">{{index}}</b-button>
+                <h1 v-for="(prob, index2) in data.value" :key="index2">{{index2}}</h1>
+
+
+
             </span>
+
 
             <span slot="niveaux" slot-scope="data" v-html="data.value"></span>
 
@@ -33,7 +37,7 @@
 
 
         </b-table>
-        {{gyms}}
+        <span v-if="debug">{{gyms}}</span>
     </div>
 </template>
 
@@ -46,7 +50,7 @@
         props:{
             debug:{
                 type: Boolean,
-                default:true
+                default:false
             }
         },
         methods: {

@@ -77798,7 +77798,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77809,6 +77809,15 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -78014,6 +78023,31 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "td",
+                  _vm._l(gym.problemes, function(probleme, index) {
+                    return _c(
+                      "span",
+                      { key: probleme, attrs: { variant: "light" } },
+                      [
+                        _vm._l(probleme, function(subprobleme, index2) {
+                          return _c(
+                            "b-badge",
+                            {
+                              key: subprobleme,
+                              attrs: { variant: subprobleme.class }
+                            },
+                            [_vm._v(_vm._s(subprobleme.text))]
+                          )
+                        }),
+                        _c("br")
+                      ],
+                      2
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
                   { staticStyle: { "vertical-align": "middle" } },
                   [
                     _c(
@@ -78152,6 +78186,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date Naissance")]),
         _vm._v(" "),
         _c("th", [_vm._v("Equipe")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Statut")]),
         _vm._v(" "),
         _c("th", [_vm._v("Inscription")]),
         _vm._v(" "),
@@ -79146,14 +79182,18 @@ var render = function() {
                                 ) {
                                   return _c(
                                     "span",
-                                    { attrs: { variant: "light" } },
+                                    {
+                                      key: probleme,
+                                      attrs: { variant: "light" }
+                                    },
                                     _vm._l(probleme, function(
                                       subprobleme,
-                                      index
+                                      index2
                                     ) {
                                       return _c(
                                         "b-badge",
                                         {
+                                          key: subprobleme,
                                           attrs: { variant: subprobleme.class }
                                         },
                                         [_vm._v(_vm._s(subprobleme.text))]
@@ -79338,7 +79378,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79388,6 +79428,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -79396,7 +79440,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         debug: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     methods: {
@@ -79568,13 +79612,15 @@ var render = function() {
                 {},
                 [
                   _vm._l(data.value, function(prob, index) {
-                    return _c("b-button", { attrs: { variant: "danger" } }, [
-                      _vm._v(_vm._s(index))
-                    ])
+                    return _c(
+                      "b-button",
+                      { key: index, attrs: { variant: "danger" } },
+                      [_vm._v(_vm._s(index))]
+                    )
                   }),
                   _vm._v(" "),
-                  _vm._l(data.value, function(prob, index) {
-                    return _c("h1", [_vm._v(_vm._s(index))])
+                  _vm._l(data.value, function(prob, index2) {
+                    return _c("h1", { key: index2 }, [_vm._v(_vm._s(index2))])
                   })
                 ],
                 2
@@ -79601,7 +79647,8 @@ var render = function() {
           }
         ])
       }),
-      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
+      _vm._v(" "),
+      _vm.debug ? _c("span", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
     ],
     1
   )
@@ -80107,9 +80154,11 @@ var render = function() {
                 {},
                 [
                   _vm._l(data.value, function(prob, index) {
-                    return _c("b-button", { attrs: { variant: "danger" } }, [
-                      _vm._v(_vm._s(index))
-                    ])
+                    return _c(
+                      "b-button",
+                      { key: index, attrs: { variant: "danger" } },
+                      [_vm._v(_vm._s(index))]
+                    )
                   }),
                   _vm._v(" "),
                   _vm._l(data.value, function(prob, index) {

@@ -189,8 +189,8 @@ class GymnastesController extends Controller
 
             if($noniv==1)
             {
-                $problemes['Groupe']['none']["text"]="Attente affectation groupe";
-                $problemes['Groupe']['none']["class"]="secondary";
+                $problemes['Groupe']['nonegroup']["text"]="Attente affectation groupe";
+                $problemes['Groupe']['nonegroup']["class"]="secondary";
             }
 
 
@@ -223,8 +223,8 @@ class GymnastesController extends Controller
             //Photo basente
             if($gymnaste['photo'] == null)
             {
-                $problemes['photo']['none']["text"]="Aucune photo";
-                $problemes['photo']['none']["class"]="warning";
+                $problemes['photo']['nonephoto']["text"]="Aucune photo";
+                $problemes['photo']['nonephoto']["class"]="warning";
 
             }
 
@@ -268,8 +268,8 @@ class GymnastesController extends Controller
                 //Certificat absent
                 if($gymnaste['certificat_medical'] === null)
                 {
-                    $problemes['certificat']['none']["text"]="Aucun Certificat médical";
-                    $problemes['certificat']['none']["class"]="warning";
+                    $problemes['certificat']['nonecertif']["text"]="Aucun Certificat médical";
+                    $problemes['certificat']['nonecertif']["class"]="warning";
                 }
 
 
@@ -323,8 +323,8 @@ class GymnastesController extends Controller
 
                 if($reinscrire != null) {
                     if (($reinscrire->pivot->paye == 0) && $tarif != null) {
-                        $problemes['paiement']['none']["text"] = "Paiement " . $tarif . "€";
-                        $problemes['paiement']['none']["class"] = "warning";
+                        $problemes['paiement']['nonepaiement']["text"] = "Paiement " . $tarif . "€";
+                        $problemes['paiement']['nonepaiement']["class"] = "warning";
                     }
                 }
 
@@ -340,6 +340,12 @@ class GymnastesController extends Controller
                 {
                     $problemes_short.=$lokey." ";
                 }
+
+                if(count($problemes)==0)
+                {
+                    $problemes_short="OK";
+                }
+
                 $return[$key]['problemes_short']=$problemes_short;
 
 

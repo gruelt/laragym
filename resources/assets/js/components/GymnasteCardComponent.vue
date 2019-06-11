@@ -26,7 +26,9 @@
                         <th>Prenom</th>
                         <th>Date Naissance</th>
                         <th>Equipe</th>
+                        <th>Statut</th>
                         <th>Inscription</th>
+
                         <th></th>
                     </tr>
                     </thead>
@@ -66,6 +68,13 @@
 
                         <td v-html="gym.niveaux" style="vertical-align: middle;">
 
+                        </td>
+
+                        <td >
+                            <span v-for="(probleme, index) in gym.problemes" variant="light" v-bind:key="probleme">
+
+                                        <b-badge  v-for="(subprobleme, index2) in probleme" :variant="subprobleme.class" :key="subprobleme">{{subprobleme.text}}</b-badge><br>
+                                    </span>
                         </td>
 
                         <td  style="vertical-align: middle;">

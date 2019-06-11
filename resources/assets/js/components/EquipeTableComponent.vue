@@ -18,7 +18,7 @@
 
             <span slot="problemes" slot-scope="data" >
 
-                <b-button variant="danger" v-for="(prob, index) in data.value">{{index}}</b-button>
+                <b-button variant="danger" v-for="(prob, index) in data.value" :key="index">{{index}}</b-button>
                 <h1 v-for="(prob, index) in data.value">{{index}}</h1>
             </span>
 

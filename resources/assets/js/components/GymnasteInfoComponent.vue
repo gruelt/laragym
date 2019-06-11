@@ -230,13 +230,13 @@
                                 </b-button>
                                 <b-button v-else  variant="info">
                                     {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
-                                    <span v-for="(probleme, index) in gym.problemes" variant="light">
-                                        <b-badge  v-for="(subprobleme, index) in probleme" :variant="subprobleme.class">{{subprobleme.text}}</b-badge>
+                                    <span v-for="(probleme, index) in gym.problemes" variant="light" v-bind:key="probleme">
+
+                                        <b-badge  v-for="(subprobleme, index2) in probleme" :variant="subprobleme.class" :key="subprobleme">{{subprobleme.text}}</b-badge>
                                     </span>
                                 </b-button>
 
                             </li>
-
 
 
                         </div>
