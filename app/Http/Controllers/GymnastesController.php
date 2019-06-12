@@ -423,7 +423,7 @@ class GymnastesController extends Controller
 
         //Stocke en local
         //$path = $data->storeAs('', $filename, 'public');
-        Storage::put("/public/".$filename,$data,);
+        Storage::put("/public/".$filename,$data);
 
         $gym->photo=$filename;
 
