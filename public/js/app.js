@@ -77799,7 +77799,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77810,6 +77810,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -77958,18 +77960,18 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("table", { staticClass: "table table-borderless mb-0" }, [
+        _c("table", { staticClass: "table  " }, [
           _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
             _vm._l(_vm.gyms, function(gym) {
               return _c("tr", [
-                _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                _c("th", { attrs: { scope: "row" } }, [
                   _vm._v(
                     "\n                    " +
                       _vm._s(gym.id) +
-                      "\n                    "
+                      "\n                "
                   )
                 ]),
                 _vm._v(" "),
@@ -79421,7 +79423,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79432,6 +79434,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79490,6 +79500,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         toggle: function toggle(form) {
             console.log(form);
         },
+        togglephotos: function togglephotos() {
+            this.withphotos = !this.withphotos;
+        },
 
 
         update: function update() {
@@ -79518,13 +79531,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             saison_id: "9999",
             gyms: [],
+            withphotos: false,
             filters: {
                 id: '',
                 issuedBy: '',
                 issuedTo: ''
             },
             fields: [{
-                key: 'id',
+                key: 'photo_url',
+                label: 'Photo',
                 sortable: true
             }, {
                 key: 'nom',
@@ -79605,7 +79620,20 @@ var render = function() {
     "div",
     [
       _c("saison-select"),
-      _vm._v("\n    " + _vm._s(_vm.saison_id) + "\n    "),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          class: {
+            "btn-primary": _vm.withphotos,
+            "btn-secondary": !_vm.withphotos
+          },
+          on: { click: _vm.togglephotos }
+        },
+        [_vm._v("Affichage Photos")]
+      ),
+      _vm._v(" "),
       _c("b-table", {
         attrs: {
           id: "table-transition-example",
@@ -79645,6 +79673,29 @@ var render = function() {
                   })
                 ])
               })
+            }
+          },
+          {
+            key: "photo_url",
+            fn: function(data) {
+              return _c("span", {}, [
+                _c(
+                  "a",
+                  { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                  [
+                    _vm.withphotos
+                      ? _c("img", {
+                          attrs: {
+                            src: data.value,
+                            width: "120",
+                            height: "160",
+                            alt: ""
+                          }
+                        })
+                      : _vm._e()
+                  ]
+                )
+              ])
             }
           },
           {

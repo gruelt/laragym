@@ -1,7 +1,8 @@
 <template>
     <div>
+
         <saison-select ></saison-select>
-        {{saison_id}}
+        <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Affichage Photos</button>
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
@@ -16,6 +17,13 @@
                     <input v-model="filters[field.key]" :placeholder="field.label">
                 </td>
             </template>
+
+
+            <span slot="photo_url" slot-scope="data" >
+                <a :href="'/admin/gymnastes/'+ data.item.id">
+                    <img v-if="withphotos" :src="data.value"  width="120" height="160" alt="">
+                </a>
+            </span>
 
             <span slot="problemes" slot-scope="data" >
 
@@ -58,6 +66,9 @@
             toggle(form){
                 console.log(form);
             },
+            togglephotos(){
+                this.withphotos = ! this.withphotos;
+            },
 
             update: function() {
                 axios
@@ -88,14 +99,17 @@
             return {
                 saison_id: "9999",
                 gyms: [],
+                withphotos: false,
                 filters: {
                     id: '',
                     issuedBy: '',
                     issuedTo: ''
                 },
                 fields: [
+
                     {
-                        key: 'id',
+                        key: 'photo_url',
+                        label: 'Photo',
                         sortable: true
                     },
                     {

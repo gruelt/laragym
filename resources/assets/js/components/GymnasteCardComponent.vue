@@ -17,7 +17,7 @@
                 <!--You have not created any OAuth clients.-->
                 <!--</p>-->
 
-                <table class="table table-borderless mb-0" >
+                <table class="table  " >
                     <thead>
                     <tr>
                         <th>#</th>
@@ -41,9 +41,11 @@
 
                     <tr v-for="gym in gyms">
                         <!-- ID -->
-                        <td style="vertical-align: middle;">
+                        <!--<td style="vertical-align: middle;">-->
+                        <th scope="row">
                         {{ gym.id }}
-                        </td>
+                    </th>
+                        <!--</td>-->
                         <td style="vertical-align: middle;">
 
                             <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">

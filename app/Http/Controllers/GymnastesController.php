@@ -218,7 +218,14 @@ class GymnastesController extends Controller
             $return[$key]['age']=$age;
 
             //Gestion Photo
-            $photo_url=Storage::disk('public')->url($gymnaste['photo']);
+            if($gymnaste['photo']!= null)
+            {
+                $photo_url=Storage::disk('public')->url($gymnaste['photo']);
+            }
+            else{
+                $photo_url="/images/anonym.jpg";
+            }
+
 
             //Photo basente
             if($gymnaste['photo'] == null)
