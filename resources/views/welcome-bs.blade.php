@@ -89,7 +89,7 @@
                 @endif
                 <div class="title m-b-md">
                     {{--FJEP Gymnastique--}}
-                    <img src="/images/full.png">
+                    <b-img src="/images/full.png" fluid alt="Responsive image"></b-img>
                 </div>
                 <div class="subtitle m-b-md">
                     Saint Just - Saint Rambert

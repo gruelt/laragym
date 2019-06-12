@@ -67,7 +67,7 @@
 
 
 
-                    <div class="col-md-4 col-sm-2 text-left flex-fill">
+                    <div class="col-md-4 col-sm-12 text-left flex-fill">
                     <h2 class="card-title">
                         {{gym.nom}} {{gym.prenom}}
                     </h2>
@@ -98,7 +98,9 @@
 
 
 
-                    <div v-if="contact" class="col-md-4 col-sm-2 text-right">
+                    <div v-if="contact" class="col-md-4 col-sm-12 text-right">
+                        <hr>
+                        <h3>Responsable</h3>
                         {{gym.responsable.nom}} {{gym.responsable.prenom}} &nbsp;<span class="fa fa-user mr-3"></span><br>
                         {{gym.responsable.adresse}} {{gym.responsable.cp}} {{gym.responsable.ville}}&nbsp;<span class="fa fa-home mr-3"></span><br>
                         {{gym.responsable.email}} &nbsp;<span class="fa fa-envelope mr-3"></span><br>
@@ -221,7 +223,7 @@
                         <h1>Saisons</h1>
 
                     </div>
-                    <div class="col-md-8 text-right">
+                    <div class="col-md-8 col-sm-12 text-right">
                         <div class="list-group" >
 
                             <li class="list-inline" v-for="saison in gym.saisons ">

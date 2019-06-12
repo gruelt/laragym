@@ -7,6 +7,8 @@
                 :fields="fields"
                 striped
                 small
+                responsive
+                stacked
                 primary-key="a"
                 :tbody-transition-props="transProps"
         >

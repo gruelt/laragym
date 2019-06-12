@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <img src="/images/full.png">
+            {{--<img src="/images/full.png">--}}
+            <b-img src="/images/full.png" fluid alt="Responsive image"></b-img>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Connexion') }}</div>

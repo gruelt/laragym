@@ -9,9 +9,15 @@
                 :fields="fields"
                 striped
                 small
+                responsive
+
                 primary-key="a"
                 :tbody-transition-props="transProps"
         >
+            <span slot="nom" slot-scope="data" >
+                <a :href="'/admin/gymnastes/'+ data.item.id">{{data.value}}</a>
+            </span>
+
             <template slot="top-row" slot-scope="{ fields }">
                 <td v-for="field in fields" :key="field.key">
                     <input v-model="filters[field.key]" :placeholder="field.label">
