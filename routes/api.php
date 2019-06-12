@@ -74,7 +74,7 @@ Route::group(['prefix' => 'responsables', 'middleware' => 'auth:api'], function 
 
 
 
-    //Gets all users
+    //Gets all usersge
     Route::get('/gymnastes', 'GymnastesController@getMy');
 
     //Gets one user

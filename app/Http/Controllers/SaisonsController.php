@@ -6,6 +6,7 @@ use App\Gymnaste;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Saison;
+use Illuminate\Support\Facades\Auth;
 
 class SaisonsController extends Controller
 {
@@ -47,7 +48,7 @@ class SaisonsController extends Controller
     public function payesaison($gymnaste_id,$saison_id,$montant)
     {
         $update['paye']=$montant;
-        $update['responsable_paye_id']=3;
+        $update['responsable_paye_id']=1;
         $update['date_paiement']=Carbon::now();
 
         $gym =  Gymnaste::find($gymnaste_id)->saisons()->updateExistingPivot($saison_id,$update);
@@ -57,7 +58,7 @@ class SaisonsController extends Controller
 
         //$gym->save();
 
-
+        //return Auth::user();
 
         return $gym;
     }

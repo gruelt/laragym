@@ -129,7 +129,7 @@
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le paiement de {{gym.tarif}}€</b-button>
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif-5)">Valider le paiement de {{gym.tarif-5}}€ (Réduction Familiale)</b-button>
                             </span>
-                            <b-button v-else-if="admin && !gym.problemes.Groupe" variant="info">Annuler le paiement</b-button>
+                            <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le paiement</b-button>
 
                         <span  v-if="admin && gym.problemes.Groupe">
                             <b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button>
@@ -304,7 +304,7 @@
         data() {
             return {
 
-
+                update:"",
 
                 filters: {
                     id: '',
@@ -341,10 +341,20 @@
             validpaiement: function(montant,saison_id){
                 console.log('clic le paiement pour '+ montant + ' pour saison ' + this.saison_id);
                  axios
-                     .get('/api/inscription/gymnastes/' + this.gym.id +  '/saison/'+ this.saison_id + '/paiement/valid/' + montant);
+                     .get('/api/inscription/gymnastes/' + this.gym.id +  '/saison/'+ this.saison_id + '/paiement/valid/' + montant)
+                     .then(response => (this.update= response.data));
 
 
-                location.reload();
+                //location.reload();
+            },
+            annulpaiement: function(montant,saison_id){
+                console.log('clic le paiement pour '+ montant + ' pour saison ' + this.saison_id);
+                axios
+                    .get('/api/inscription/gymnastes/' + this.gym.id +  '/saison/'+ this.saison_id + '/paiement/valid/' + 0)
+                    .then(response => (this.update= response.data));;
+
+
+                //location.reload();
             },
 
             getcurrent: function() {
@@ -367,6 +377,16 @@
 
 
         },
+
+        watch: {
+            update: function (val) {
+                if(val != "")
+                {
+                    console.log('update forcée');
+                    location.reload();
+                }
+            }
+        }
 
 
 

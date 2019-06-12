@@ -27,7 +27,8 @@ window.axios = require('axios');
 window.axios.defaults.headers.common = {
     'Content-Type': 'application/json',
     'Accept' : 'Application/json',
-    'X-Requested-With': 'XMLHttpRequest'
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': window.csrf_token
 };
 
 

@@ -27480,7 +27480,8 @@ window.axios = __webpack_require__(144);
 window.axios.defaults.headers.common = {
   'Content-Type': 'application/json',
   'Accept': 'Application/json',
-  'X-Requested-With': 'XMLHttpRequest'
+  'X-Requested-With': 'XMLHttpRequest',
+  'X-CSRF-TOKEN': window.csrf_token
 };
 
 /**
@@ -78560,6 +78561,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
 
+            update: "",
+
             filters: {
                 id: '',
                 issuedBy: '',
@@ -78585,17 +78588,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //location.reload();
         },
         validpaiement: function validpaiement(montant, saison_id) {
-            console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
-            axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + montant);
+            var _this2 = this;
 
-            location.reload();
+            console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
+            axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + montant).then(function (response) {
+                return _this2.update = response.data;
+            });
+
+            //location.reload();
+        },
+        annulpaiement: function annulpaiement(montant, saison_id) {
+            var _this3 = this;
+
+            console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
+            axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + 0).then(function (response) {
+                return _this3.update = response.data;
+            });;
+
+            //location.reload();
         },
 
         getcurrent: function getcurrent() {
-            var _this2 = this;
+            var _this4 = this;
 
             axios.get('/api/saisons/actuelle').then(function (response) {
-                return _this2.saison_id = response.data;
+                return _this4.saison_id = response.data;
             });
         },
         hideModalTeam: function hideModalTeam() {
@@ -78608,7 +78625,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getcurrent();
         //this.update();
 
+    },
+
+
+    watch: {
+        update: function update(val) {
+            if (val != "") {
+                console.log('update forcée');
+                location.reload();
+            }
+        }
     }
+
 });
 
 /***/ }),
@@ -78958,9 +78986,18 @@ var render = function() {
                       1
                     )
                   : _vm.admin && !_vm.gym.problemes.Groupe
-                  ? _c("b-button", { attrs: { variant: "info" } }, [
-                      _vm._v("Annuler le paiement")
-                    ])
+                  ? _c(
+                      "b-button",
+                      {
+                        attrs: { variant: "info" },
+                        on: {
+                          click: function($event) {
+                            return _vm.annulpaiement()
+                          }
+                        }
+                      },
+                      [_vm._v("Annuler le paiement")]
+                    )
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.admin && _vm.gym.problemes.Groupe
@@ -79384,7 +79421,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
