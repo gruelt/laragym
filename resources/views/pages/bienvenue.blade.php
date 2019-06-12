@@ -16,23 +16,50 @@
                     <v-container fill-height>
                         <v-layout align-center>
                             <v-flex>
-                                <h3 class="display-3">FJEP Gymnastique</h3>
-
-                                <span class="subheading">.</span>
-
-                                <v-divider class="my-3"></v-divider>
 
 
 
-                                <a href="/responsable/gymnastes" class="btn btn-primary">Voir/Ajouter un Gymnaste</a>
+                                @if (session()->has('user'))
+                                        <h3 >Gérer mes inscrits</h3>
 
-                                <v-btn
-                                        class="mx-0"
-                                        color="primary"
-                                        large
-                                >
+                                        <span class="subheading">.</span>
 
-                                </v-btn>
+                                        <v-divider class="my-3"></v-divider>
+
+
+
+                                        <a href="/responsable/gymnastes" class="btn btn-primary">Voir/Ajouter un Gymnaste</a>
+
+                                        <v-btn
+                                                class="mx-0"
+                                                color="primary"
+                                                large
+                                        >
+
+                                        </v-btn>
+                                    <hr>
+                                 @endif
+
+                                    @if (session()->has('admin'))
+                                        <h3 >Administrateur</h3>
+
+                                        <span class="subheading">.</span>
+
+                                        <v-divider class="my-3"></v-divider>
+
+
+
+                                        <a href="/admin/gymnastes" class="btn btn-primary">Voir les Gymnastes</a>
+
+                                        <v-btn
+                                                class="mx-0"
+                                                color="primary"
+                                                large
+                                        >
+
+                                        </v-btn>
+                                    @endif
+
                             </v-flex>
                         </v-layout>
                     </v-container>
