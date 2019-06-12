@@ -54,6 +54,10 @@ import Vue from 'vue';
 
 Vue.use(Vuetify);*/
 
+
+
+
+
 import BootstrapVue from 'bootstrap-vue';
 
 Vue.use(BootstrapVue);
@@ -80,7 +84,8 @@ var app = new Vue({
     el: '#app',
 
     components: {
-        Datepicker
+        Datepicker,
+
     },
     data () {
         return {

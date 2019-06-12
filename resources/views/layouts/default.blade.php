@@ -19,6 +19,6 @@
 </div>
 
 @include('includes.foot')
-
+@yield('script')
 </body>
 </html>

@@ -116,6 +116,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 });
 
 
+//  _                        _            _
+// | |                      (_)       _  (_)
+// | |____   ___  ____  ____ _ ____ _| |_ _  ___  ____   ___
+// | |  _ \ /___)/ ___)/ ___) |  _ (_   _) |/ _ \|  _ \ /___)
+// | | | | |___ ( (___| |   | | |_| || |_| | |_| | | | |___ |
+// |_|_| |_(___/ \____)_|   |_|  __/  \__)_|\___/|_| |_(___/
+//                            |_|
+Route::group(['prefix' => 'inscription', 'middleware' => 'privileges:admin'], function () {
+
+    Route::get('/gymnastes/{gym_id}/photo/take', 'PhotoController@takephoto');
+
+});
+
+
+
 //  _______
 // (_______)
 //  _       ___  ____  ____  _   _ ____
@@ -135,4 +150,5 @@ Route::get('/about',  function () {
 
 
 Route::post('/gymnastes/{id}/photo', 'GymnastesController@uploadPhoto');
+Route::post('/gymnastes/{id}/photo64', 'GymnastesController@uploadPhoto64');
 Route::post('/gymnastes/{id}/certif', 'GymnastesController@uploadCertif');

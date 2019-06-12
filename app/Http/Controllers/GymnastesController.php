@@ -403,6 +403,37 @@ class GymnastesController extends Controller
 
     }
 
+
+    /**
+     * Upload File
+     **/
+    public function uploadPhoto64($id,Request $request) {
+
+        $ext = "png";
+
+        $img = $request->laphoto;
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+
+        //Infos dy gym :
+        $gym = Gymnaste::find($id);
+        //dd($gym.$id);
+        $filename = $id."_".$gym->nom."_".$gym->prenom.".".$ext;
+
+        //Stocke en local
+        //$path = $data->storeAs('', $filename, 'public');
+        Storage::put("/public/".$filename,$data,);
+
+        $gym->photo=$filename;
+
+        $gym->save();
+
+        //récupère l'extension
+         return 1;    }
+
+
+
     /**
      * Upload File
      **/

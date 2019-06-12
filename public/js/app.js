@@ -27434,6 +27434,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
     components: {
         Datepicker: __WEBPACK_IMPORTED_MODULE_2_vuejs_datepicker__["a" /* default */]
+
     },
     data: function data() {
         return {
@@ -78526,6 +78527,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78732,6 +78734,18 @@ var render = function() {
                       attrs: { variant: "success" }
                     },
                     [_vm._v("Envoyer Une Photo")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-button",
+                    {
+                      attrs: {
+                        variant: "success",
+                        href:
+                          "/inscription/gymnastes/" + _vm.gym.id + "/photo/take"
+                      }
+                    },
+                    [_vm._v("Prendre Une Photo")]
                   ),
                   _vm._v(" "),
                   _c(

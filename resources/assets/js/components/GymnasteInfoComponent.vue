@@ -37,6 +37,7 @@
 
 
                         <b-button v-b-modal.photoupload variant="success">Envoyer Une Photo</b-button>
+                        <b-button variant="success" :href="'/inscription/gymnastes/'+ gym.id+'/photo/take'">Prendre Une Photo</b-button>
 
 
 
