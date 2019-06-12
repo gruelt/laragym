@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <!-- Styles -->
         <style>
             html, body {
@@ -89,7 +89,9 @@
                 @endif
                 <div class="title m-b-md">
                     {{--FJEP Gymnastique--}}
+                    <div id="app">
                     <b-img src="/images/full.png" fluid alt="Responsive image"></b-img>
+                    </div>
                 </div>
                 <div class="subtitle m-b-md">
                     Saint Just - Saint Rambert
@@ -103,5 +105,7 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
