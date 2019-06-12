@@ -51,7 +51,7 @@
             {
                 $.post( api_url, { '_token': csrf_token, 'laphoto': data } )
                     .done(function( data ) {
-                        //window.location.href = "/sesame/porteurs/photo6/{{$gym_id}}/crop";
+                        window.history.back();
                     });
 
             }

@@ -30,7 +30,7 @@
                         <div class="row text-center">
                             <div class="col-md-12 col-sm-2 text-center">
 
-                            <img v-if="gym.photo" :src="gym.photo_url"  width="120" height="160" alt="">
+                            <img v-if="gym.photo" :src="gym.photo_url"  width="180" height="" alt="">
                             <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
                             </div>
                         </div>

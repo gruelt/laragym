@@ -78704,8 +78704,8 @@ var render = function() {
                           ? _c("img", {
                               attrs: {
                                 src: _vm.gym.photo_url,
-                                width: "120",
-                                height: "160",
+                                width: "180",
+                                height: "",
                                 alt: ""
                               }
                             })

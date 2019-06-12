@@ -430,7 +430,7 @@ class GymnastesController extends Controller
         $gym->save();
 
         //récupère l'extension
-         return 1;    }
+        return 1;   }
 
 
 
