@@ -433,7 +433,7 @@ class GymnastesController extends Controller
     //return $redirect;
         if($redirect != "")
         {
-            return back();
+            return redirect('/admin/gymnastes/'.$id);
         }
         else {
             return 1;
