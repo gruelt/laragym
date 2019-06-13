@@ -407,7 +407,7 @@ class GymnastesController extends Controller
     /**
      * Upload File
      **/
-    public function uploadPhoto64($id,Request $request) {
+    public function uploadPhoto64($id,$redirect="",Request $request) {
 
         $ext = "png";
 
@@ -430,7 +430,15 @@ class GymnastesController extends Controller
         $gym->save();
 
         //récupère l'extension
-        return 1;   }
+    //return $redirect;
+        if($redirect != "")
+        {
+            return back();
+        }
+        else {
+            return 1;
+        }
+    }
 
 
 

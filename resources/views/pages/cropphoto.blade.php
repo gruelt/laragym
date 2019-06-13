@@ -2,7 +2,30 @@
 
 @section('script')
 
+    <script>
 
+        const api_url = "/gymnastes/{{$gym->id}}/photo64";
+
+        const uploadButton = document.querySelector('#screenshot-upload-btn');
+        uploadButton.onclick = function() {
+
+            const canvas = this.$refs.clipper.clip();//call component's clip method
+            var photo64 = canvas.toDataURL("image/jpg", 1);
+
+            upload(api_url, "{{ csrf_token() }}", photo64);
+
+        }
+
+        function upload(api_url, csrf_token, data)
+        {
+
+            $.post( api_url, { '_token': csrf_token, 'laphoto': data } )
+                .done(function( data ) {
+                    //window.history.back();
+                });
+
+        }
+    </script>
 
     <style type=text/css>
 
@@ -38,7 +61,7 @@
 @stop
 
 @section ('title')
-    Prise de photo pour {{ $porteur->prenom }} {{ $porteur->nom }}
+    Prise de photo pour {{ $gym->prenom }} {{ $gym->nom }}
 @stop
 
 @section('content')
@@ -48,7 +71,7 @@
             <div class="row">
                 <div class="col-6">
                     <div id="overlay"><img src='/images/photo_template.png'></div>
-                    <clipper-fixed src="/storage/photos/{{$porteur->id}}.jpg"
+                    <clipper-fixed src="/storage/{{$gym->photo}}"
                                    class="sesame_clipper"
                                    :min-scale=0.6
                                    ref="clipper"></clipper-fixed>
@@ -64,10 +87,12 @@
                 <div class="col-4">
                     <div>Resultat:</div>
                     <img class="result" :src="resultURL" alt="">
-                    {{ Form::open(array('route' => array('uploadCrop', $porteur->id)))}}
-                    {{ Form::hidden('cropPhoto', null, ['id' => 'hidden_base64']) }}
-                    {{ Form::submit('valider', ['class' => 'btn btn-success', 'id' => 'valid']) }}
-                    {{ Form::close() }}
+                    <form method="POST" action="/gymnastes/{{$gym->id}}/photo64/redirect" accept-charset="UTF-8"><input name="_token" type="hidden" value="{{csrf_token()}}">
+                        <input id="hidden_base64" name="laphoto" type="hidden">
+                        <input class="btn btn-success" id="valid" type="submit" value="valider">
+                        <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Couic !</b-button>
+                        <button id="screenshot-upload-btn" class='btn btn-info' ><i class="fa fa-photo"></i> GOajax</button></p>
+
                 </div>
             </div>
         </div>

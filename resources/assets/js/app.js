@@ -79,6 +79,16 @@ import Datepicker from 'vuejs-datepicker';
 import { fr } from 'vuejs-datepicker/dist/locale';
 
 
+// CLipper des photos
+
+import VuejsClipper from 'vuejs-clipper';
+
+Vue.use(VuejsClipper);
+
+
+
+
+
 
 var app = new Vue({
     el: '#app',
@@ -90,8 +100,19 @@ var app = new Vue({
     data () {
         return {
             fr: fr,
-            breadcrumb:['Accueil']
+            breadcrumb:['Accueil'],
+            imgURL: '',
+            resultURL: ''
 
+        }
+    },
+    methods: {
+        getResult: function () {
+            const canvas = this.$refs.clipper.clip();//call component's clip method
+            this.resultURL = canvas.toDataURL("image/jpg", 1);//canvas->image
+            document.getElementById('hidden_base64').value=this.resultURL;
+            var img= this.resultURL;
+            console.log(document.getElementById('hidden_base64').value);
         }
     }
 

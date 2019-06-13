@@ -25,6 +25,7 @@
         "bootstrap-vue": "^2.0.0-rc.19",
         "datatables": "^1.10.18",
         "material-design-icons-iconfont": "^4.0.5",
+        "vuejs-clipper": "^1.0.0",
         "vuejs-datepicker": "^1.5.4",
         "vuetify": "^1.5.13"
     }

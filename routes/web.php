@@ -126,6 +126,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 Route::group(['prefix' => 'inscription', 'middleware' => 'privileges:admin'], function () {
 
     Route::get('/gymnastes/{gym_id}/photo/take', 'PhotoController@takephoto');
+    Route::get('/gymnastes/{gym_id}/photo/crop', 'PhotoController@cropphoto');
 
 });
 
@@ -151,4 +152,5 @@ Route::get('/about',  function () {
 
 Route::post('/gymnastes/{id}/photo', 'GymnastesController@uploadPhoto');
 Route::post('/gymnastes/{id}/photo64', 'GymnastesController@uploadPhoto64');
+Route::post('/gymnastes/{id}/photo64/{redirect}', 'GymnastesController@uploadPhoto64');
 Route::post('/gymnastes/{id}/certif', 'GymnastesController@uploadCertif');
