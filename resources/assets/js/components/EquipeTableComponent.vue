@@ -8,7 +8,7 @@
                 striped
                 small
                 responsive
-                stacked
+
                 primary-key="a"
                 :tbody-transition-props="transProps"
         >
@@ -88,6 +88,7 @@
 
         data() {
             return {
+                autoupdate:true,
                 saison_id: "999",
                 equipes: [],
                 filters: {
@@ -160,6 +161,14 @@
             this.getcurrentseason();
 
             this.update();
+
+            this.interval = setInterval(function () {
+                if(this.autoupdate==true ) {
+
+                    this.update();
+
+                }
+            }.bind(this),  6000);
 
         },
 

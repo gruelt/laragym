@@ -128,6 +128,28 @@ Route::group(['prefix' => 'inscription', 'middleware' => 'privileges:admin'], fu
     Route::get('/gymnastes/{gym_id}/photo/take', 'PhotoController@takephoto');
     Route::get('/gymnastes/{gym_id}/photo/crop', 'PhotoController@cropphoto');
 
+
+
+        Route::get('/gymnastes', function () {
+            return view('pages.admin.adherents');
+        });
+
+        Route::get('/passport', function () {
+            return view('pages.admin.passport');
+        });
+
+        Route::get('/equipes', function () {
+            return view('pages.admin.equipes');
+        });
+
+        //Montre le Gymnaste
+        Route::get('/gymnastes/{id}', 'GymnastesController@showadmin');
+
+
+
+
+
+
 });
 
 
