@@ -130,10 +130,10 @@
                     <div class="col-md-8 text-right">
 
                             <span  v-if="admin && gym.problemes.paiement">
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le paiement de {{gym.tarif}}€</b-button>
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-5)">Valider le paiement de {{gym.tarif-5}}€ (Réduction Familiale)</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-5)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
                             </span>
-                            <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le paiement</b-button>
+                            <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré</b-button>
 
                         <span  v-if="admin && gym.problemes.Groupe">
                             <b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button>

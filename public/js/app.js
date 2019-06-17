@@ -32653,6 +32653,8 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
             this.resultURL = canvas.toDataURL("image/jpg", 1); //canvas->image
             document.getElementById('hidden_base64').value = this.resultURL;
             var img = this.resultURL;
+            var screenshotButton = document.querySelector('#validbutton');
+            screenshotButton.disabled = false;
             console.log(document.getElementById('hidden_base64').value);
         }
     }
@@ -84217,7 +84219,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "Valider le paiement de " +
+                              "Valider le tarif de " +
                                 _vm._s(_vm.gym.tarif) +
                                 "€"
                             )
@@ -84236,9 +84238,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "Valider le paiement de " +
-                                _vm._s(_vm.gym.tarif - 5) +
-                                "€ (Réduction Familiale)"
+                              "Valider le tarif de " +
+                                _vm._s(_vm.gym.tarif - 10) +
+                                "€ (Réduction Familiale à partir du 2eme inscrit)"
                             )
                           ]
                         )
@@ -84256,7 +84258,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Annuler le paiement")]
+                      [_vm._v("Annuler le tarif enregistré")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -85285,7 +85287,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85385,6 +85387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+            autoupdate: true,
             saison_id: "999",
             equipes: [],
             filters: {
@@ -85443,6 +85446,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getcurrentseason();
 
         this.update();
+
+        this.interval = setInterval(function () {
+            if (this.autoupdate == true) {
+
+                this.update();
+            }
+        }.bind(this), 6000);
     },
 
 
@@ -85486,7 +85496,6 @@ var render = function() {
           striped: "",
           small: "",
           responsive: "",
-          stacked: "",
           "primary-key": "a",
           "tbody-transition-props": _vm.transProps
         },

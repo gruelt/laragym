@@ -49,12 +49,12 @@
                 @if (session()->has('manager'))
                     <b-nav-item-dropdown text="Inscriptions" right>
                         <b-dropdown-header>Gymnastes</b-dropdown-header>
-                        <b-dropdown-item href="/manager/gymnastes/">Consulter</b-dropdown-item>
+                        <b-dropdown-item href="/inscription/gymnastes/">Consulter</b-dropdown-item>
 
 
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-header>Equipes</b-dropdown-header>
-                        <b-dropdown-item href="/manager/equipes/">Consulter</b-dropdown-item>
+                        <b-dropdown-item href="/inscription/equipes/">Consulter</b-dropdown-item>
 
 
                     </b-nav-item-dropdown>

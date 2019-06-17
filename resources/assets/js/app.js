@@ -112,6 +112,8 @@ var app = new Vue({
             this.resultURL = canvas.toDataURL("image/jpg", 1);//canvas->image
             document.getElementById('hidden_base64').value=this.resultURL;
             var img= this.resultURL;
+            const screenshotButton = document.querySelector('#validbutton');
+            screenshotButton.disabled = false;
             console.log(document.getElementById('hidden_base64').value);
         }
     }

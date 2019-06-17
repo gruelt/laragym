@@ -76,8 +76,9 @@
                                    :min-scale=0.6
                                    ref="clipper"></clipper-fixed>
 
-
-                    <button @click="getResult" class="btn btn-primary">clip image</button>
+                    Molette souris = zoom<br>
+                    déplacer avec la souris pour correspondre au gabarit<br>
+                    <button @click="getResult" class="btn btn-primary">Recadrer l'image</button>
                 </div>
 
 
@@ -89,9 +90,8 @@
                     <img class="result" :src="resultURL" alt="">
                     <form method="POST" action="/gymnastes/{{$gym->id}}/photo64/redirect" accept-charset="UTF-8"><input name="_token" type="hidden" value="{{csrf_token()}}">
                         <input id="hidden_base64" name="laphoto" type="hidden">
-                        <input class="btn btn-success" id="valid" type="submit" value="valider">
-                        <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Couic !</b-button>
-                        <button id="screenshot-upload-btn" class='btn btn-info' ><i class="fa fa-photo"></i> GOajax</button></p>
+                        <input class="btn btn-success" id="validbutton" type="submit" value="valider" disabled="">
+
 
                 </div>
             </div>
