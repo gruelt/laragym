@@ -17,11 +17,11 @@ class CreateGymnasteTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
-            $table->integer('genre_id');
+            $table->integer('genre_id')->unsigned();
             $table->boolean('competitif')->default('0');
             $table->date('date_naissance');
             $table->String('commentaire')->nullable();
-            $table->integer('user_id')->default('0');
+            $table->integer('user_id')->unsigned()->default('0');
             $table->String('photo')->nullable();
             $table->String('certificat_medical')->nullable();
             $table->integer('certificat_medical_check')->default(0);
