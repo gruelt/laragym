@@ -28,7 +28,7 @@ Auth::routes(['verify' => true]);
 //    return view('pages.bienvenue');
 //});
 
-Route::group([ 'middleware' => ['verified','privileges:user']], function () {
+Route::group([ 'middleware' => ['verified','complete','privileges:user']], function () {
     Route::get('/home', function () {
         return view('pages.bienvenue');
     });
