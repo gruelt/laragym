@@ -11,6 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if(env('DB_CONNECTION')!='sqlite') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            // Recommended when importing larger CSVs
+            DB::disableQueryLog();
+
+        }
+
+
+
         // $this->call(UsersTableSeeder::class);
         $this->call(NiveauTableSeeder::class);
         $this->call(FiliereTableSeeder::class);
@@ -22,5 +31,11 @@ class DatabaseSeeder extends Seeder
         $this->call(GymnastesTableSeeder::class);
         $this->call(SaisonTableSeeder::class);
         //$this->call(EquipesGymnastesTableSeeder::class);
+
+        if(env('DB_CONNECTION')!='sqlite') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
+
+
     }
 }
