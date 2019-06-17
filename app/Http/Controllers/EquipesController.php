@@ -116,4 +116,13 @@ class EquipesController extends Controller
         return json_encode($return);
     }
 
+    public function showequipe($equipe_id)
+    {
+        $return =array();
+
+        $equipe = Equipe::find($equipe_id);
+
+        return view('pages.admin.viewequipe')->with('equipe_id',$equipe_id);
+    }
+
 }

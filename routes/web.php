@@ -112,6 +112,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //Montre le Gymnaste
     Route::get('/gymnastes/{id}', 'GymnastesController@showadmin');
 
+    //Montre l'equipe
+    Route::get('/equipes/{id}', 'EquipesController@showequipe');
+
 
 });
 
@@ -142,8 +145,13 @@ Route::group(['prefix' => 'inscription', 'middleware' => 'privileges:admin'], fu
             return view('pages.admin.equipes');
         });
 
+        //Montre l'equipe
+        Route::get('/equipes/{id}', 'EquipesController@showequipe');
+
         //Montre le Gymnaste
         Route::get('/gymnastes/{id}', 'GymnastesController@showadmin');
+
+
 
 
 
