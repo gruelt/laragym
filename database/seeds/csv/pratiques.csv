@@ -1,8 +1,8 @@
 id,nom,description
-0,A Deter,A déterminer
+0,A Deter,A determiner
 1,Gym Compet,Gymnastique Competitive
 2,Gym Loisirs,Gymnastique Loisirs
 3,Bureau,Membre du Bureau
-4,Coach Bene,Entraineur Bénévole
-5,Coach Sala,Entraineur Salarié
+4,Coach Bene,Entraineur Benevole
+5,Coach Sala,Entraineur Salarie
 6,Juge,Juge
