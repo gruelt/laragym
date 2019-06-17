@@ -21,7 +21,7 @@ class CreateGymnasteSaisonTable extends Migration
 
             $table->integer('prix')->default(0);
             $table->integer('paye')->default(0);
-            $table->integer('responsable_paye_id')->nullable();
+            $table->integer('responsable_paye_id')->unsigned()->nullable();
             $table->timestamp('date_paiement')->nullable();
             $table->integer('paye_tresorier')->default(0);
             $table->integer('complet')->default(0);
