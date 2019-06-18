@@ -451,7 +451,7 @@ class GymnastesController extends Controller
 
         $request->validate([
 
-            'lecertif' => 'required|mimes:jpeg,png,jpg,pdf|max:5120',
+            'lecertif' => 'required|mimes:jpeg,png,jpg,pdf|max:10120',
             'certificat_medical_date' => 'required|date'
         ]);
 
