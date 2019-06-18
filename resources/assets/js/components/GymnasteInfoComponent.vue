@@ -37,7 +37,7 @@
 
 
                         <b-button v-b-modal.photoupload variant="success">Envoyer Une Photo</b-button>
-                        <b-button variant="success" :href="'/inscription/gymnastes/'+ gym.id+'/photo/take'">Prendre Une Photo</b-button>
+                        <b-button v-if="admin" variant="success" :href="'/inscription/gymnastes/'+ gym.id+'/photo/take'">Prendre Une Photo</b-button>
                         <H3><span v-if="(admin)"><b-button :href="'/inscription/gymnastes/'+ gym.id+'/photo/crop'" variant="info">Recadrer</b-button></span></H3>
 
 

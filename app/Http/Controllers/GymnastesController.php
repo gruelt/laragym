@@ -377,7 +377,7 @@ class GymnastesController extends Controller
     public function uploadPhoto($id,Request $request) {
         $request->validate([
 
-            'laphoto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'laphoto' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
 
         //récupère la photo
@@ -451,7 +451,7 @@ class GymnastesController extends Controller
 
         $request->validate([
 
-            'lecertif' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            'lecertif' => 'required|mimes:jpeg,png,jpg,pdf|max:5120',
             'certificat_medical_date' => 'required|date'
         ]);
 
