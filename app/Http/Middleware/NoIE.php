@@ -15,7 +15,9 @@ class NoIE
      */
     public function handle($request, Closure $next)
     {
-        print "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+
+        print_r($_SERVER['HTTP_USER_AGENT']);
+
 
 	return $next($request);
     }
