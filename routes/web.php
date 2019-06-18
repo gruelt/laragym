@@ -180,7 +180,12 @@ Route::get('/about',  function () {
 
 
 
+
 Route::post('/gymnastes/{id}/photo', 'GymnastesController@uploadPhoto');
 Route::post('/gymnastes/{id}/photo64', 'GymnastesController@uploadPhoto64');
 Route::post('/gymnastes/{id}/photo64/{redirect}', 'GymnastesController@uploadPhoto64');
 Route::post('/gymnastes/{id}/certif', 'GymnastesController@uploadCertif');
+
+Route::get('/noie',  function () {
+    return view('pages.noie');
+});
