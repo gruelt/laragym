@@ -16,7 +16,10 @@ class NoIE
     public function handle($request, Closure $next)
     {
 
-        print_r($_SERVER['HTTP_USER_AGENT']);
+        if(strstr($_SERVER['HTTP_USER_AGENT'],'Trident'))
+        {
+            return redirect('/noie');
+        }
 
 
 	return $next($request);
