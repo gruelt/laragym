@@ -1,47 +1,84 @@
 <template>
 
+
+
+
+
     <div class="container-fluid d-flex h-100">
 
 
 
 
-        <!--Info synthèse groupe-->
-        <div class="card col-md-4 col-xs-12">
-
-
-            <div class="col-md-4 col-sm-12 text-left flex-fill">
-                <h2 class="card-title">
-                    {{equipe.nom}}
-                </h2>
-
-                <h5 v-html="equipe.genre_libelle"></h5>
-                <h5>{{equipe.categorie}}</h5>
-
-
-                <H3>{{equipe.nbgyms.length}} Gyms</H3>
 
 
 
+                        <!--Horaires groupe-->
+                        <div class="card col-md-4 col-sm-12">
 
 
-            </div>
+                            <div class="col-md-4 col-sm-12 text-left flex-fill">
+                                <h3 class="card-title">
+                                    Horaires
+                                </h3>
+
+                                <span>Lundi</span><br>
+                                <span>Lundi</span><br>
+                                <span>Lundi</span><br>
 
 
 
 
 
 
-        </div>
+                            </div>
 
-        <!--Fin Info synthèse groupe-->
 
-        <!--Horaires groupe-->
-        <div class="card col-md-4 col-xs-12">
+
+
+
+
+                        </div>
+
+                        <!--Fin horaires groupe-->
+
+                        <!--Coach-->
+                        <div class="card col-md-4 col-sm-12">
+
+
+                            <div class="col-md-4 col-sm-12 text-left flex-fill">
+                                <h3 class="card-title">
+                                    Coach
+                                </h3>
+
+                                <span>Lundi</span><br>
+                                <span>Lundi</span><br>
+                                <span>Lundi</span><br>
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                        <!--Fin Coach-->
+
+
+        <!--Liste Gyms-->
+
+        <div class="card col-md-12">
 
 
             <div class="col-md-4 col-sm-12 text-left flex-fill">
                 <h3 class="card-title">
-                    Horaires
+                    Coach
                 </h3>
 
                 <span>Lundi</span><br>
@@ -62,7 +99,11 @@
 
         </div>
 
-        <!--Fin horaires groupe-->
+
+                                    <
+
+
+        </div>
 
 
 
@@ -72,8 +113,6 @@
 
 
 
-        {{equipe}}
-    </div>
 </template>
 
 <script>
