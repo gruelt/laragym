@@ -30,6 +30,8 @@ Vue.component('gymnaste-equipe', require('./components/GymnasteEquipeComponent.v
 
 Vue.component('equipe-table', require('./components/EquipeTableComponent.vue'));
 
+Vue.component('equipe-info', require('./components/EquipeInfoComponent.vue'));
+
 
 
 

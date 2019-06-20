@@ -125,4 +125,15 @@ class EquipesController extends Controller
         return view('pages.admin.viewequipe')->with('equipe_id',$equipe_id);
     }
 
+    //retourne une equipe par API
+    public  function get($equipe_id)
+    {
+        $return=array();
+
+        $equipe = Equipe::where('id',$equipe_id)->get();
+
+
+        return $this->formatEquipes($equipe)[0];
+    }
+
 }
