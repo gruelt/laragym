@@ -7,7 +7,35 @@
     <div class="container-fluid d-flex h-100">
 
 
+                        <!--Info synthèse groupe-->
+                        <div class="card col-md-4 col-xs-12">
 
+
+                            <div class="col-md-4 col-sm-12 text-left flex-fill">
+                                <h2 class="card-title">
+                                    {{equipe.nom}}
+                                </h2>
+
+                                <h5 v-html="equipe.genre_libelle"></h5>
+                                <h5>{{equipe.categorie}}</h5>
+
+
+                                <H3>{{equipe.nbgyms.length}} Gyms</H3>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                        <!--Fin Info synthèse groupe-->
 
 
 

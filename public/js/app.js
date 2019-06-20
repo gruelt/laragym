@@ -113273,6 +113273,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -113324,69 +113352,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
+    _c("div", { staticClass: "card col-md-4 col-xs-12" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-4 col-sm-12 text-left flex-fill" },
+        [
+          _c("h2", { staticClass: "card-title" }, [
+            _vm._v(
+              "\n                                " +
+                _vm._s(_vm.equipe.nom) +
+                "\n                            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("h5", {
+            domProps: { innerHTML: _vm._s(_vm.equipe.genre_libelle) }
+          }),
+          _vm._v(" "),
+          _c("h5", [_vm._v(_vm._s(_vm.equipe.categorie))]),
+          _vm._v(" "),
+          _c("H3", [_vm._v(_vm._s(_vm.equipe.nbgyms.length) + " Gyms")])
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v("\n\n\n                                <\n\n\n    ")
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
-      _c("div", { staticClass: "card col-md-4 col-sm-12" }, [
-        _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
-          _c("h3", { staticClass: "card-title" }, [
-            _vm._v(
-              "\n                                Horaires\n                            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card col-md-4 col-sm-12" }, [
-        _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
-          _c("h3", { staticClass: "card-title" }, [
-            _vm._v(
-              "\n                                Coach\n                            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card col-md-12" }, [
-        _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
-          _c("h3", { staticClass: "card-title" }, [
-            _vm._v("\n                Coach\n            ")
-          ]),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", [_vm._v("Lundi")]),
-          _c("br")
-        ])
-      ]),
-      _vm._v("\n\n\n                                <\n\n\n    ")
+    return _c("div", { staticClass: "card col-md-4 col-sm-12" }, [
+      _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
+        _c("h3", { staticClass: "card-title" }, [
+          _vm._v(
+            "\n                                Horaires\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card col-md-4 col-sm-12" }, [
+      _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
+        _c("h3", { staticClass: "card-title" }, [
+          _vm._v(
+            "\n                                Coach\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card col-md-12" }, [
+      _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
+        _c("h3", { staticClass: "card-title" }, [
+          _vm._v("\n                Coach\n            ")
+        ]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", [_vm._v("Lundi")]),
+        _c("br")
+      ])
     ])
   }
 ]
