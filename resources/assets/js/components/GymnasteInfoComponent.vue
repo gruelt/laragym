@@ -5,11 +5,30 @@
 
 
     <b-container fluid class="bv-example-row">
+
         <b-row>
+            <b-col>
+                <div v-for="probleme in gym.problemes " >
+                    <div v-for="subprobleme in probleme " >
+                        <div :class="'alert alert-dismissible alert-'+subprobleme.class" role="alert">
+                            {{subprobleme.text}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </b-col>
+        </b-row>
+
+
+
+        <b-row>
+
             <!--Photo-->
             <b-col sm="12" lg="2">
-                <b-card tag="article"
-
+                <b-card tag="photo"
+                        title="Photo"
                         class="mb-12 text-center"
                 >
                     <b-card-text>
@@ -26,7 +45,171 @@
 
 
                 </b-card>
+
+                <b-card tag="certificat"
+                        title="Certificat Medical"
+                        class="mb-12 text-center"
+                >
+                    <b-card-text>
+
+                        <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
+                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical du {{gym.certificat_medical_date_fr}} valable jusqu'au {{gym.certificat_medical_fin_fr}} </a>
+
+
+
+                            <b-badge v-if="(gym.certificat_medical_check == 0 && admin)" v-on:click="validcertif" variant="success">Valider le certificat</b-badge>
+                            <b-badge v-if="gym.certificat_medical_check == 0" variant="warning">Attente Validation</b-badge>
+                            <b-badge v-else variant="success">Vérifié</b-badge>
+
+                        </b-alert>
+
+
+                        <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
+
+
+                        <b-button v-b-modal.certifupload variant="success">Envoyer</b-button>
+
+
+
+
+                        <b-modal id="certifupload" hide-footer title="Envoyer un Certificat Médical">
+
+                            <form method="post" :action="'/gymnastes/'+gym.id+'/certif'" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <b-form-file
+                                        v-model="file"
+                                        :state="Boolean(file)"
+                                        placeholder="Choisir un fichier"
+                                        id="lecertif"
+                                        name="lecertif"
+                                        drop-placeholder="Drop file here..."
+                                        accept=".png, .jpg, .pdf"
+
+                                ></b-form-file>
+                                <label for="certificat_medical_date">Date du Certificat Medical:</label>
+                                <b-form-input id="certificat_medical_date" name="certificat_medical_date" type="date">
+
+
+
+                                </b-form-input>
+
+                                <input type="submit" class="btn btn-success" value="Envoyer">
+
+                            </form>
+                        </b-modal>
+
+                    </b-card-text>
+
+
+                </b-card>
+
+
+
             </b-col>
+
+
+
+
+            <!--Fin Photo-->
+
+            <!-- Fiche synthese -->
+            <b-col lg="3" xs="12">
+                        <b-card tag="article"
+
+                                class="mb-12 "
+                        >
+                            <b-card-text>
+                                <h2 >
+                                    {{gym.nom}} {{gym.prenom}}
+                                </h2>
+
+
+                                <H3>{{gym.age}} ans</H3>
+                                <h5>{{gym.date_naissance_fr}}</h5>
+                                <H3>
+                                    <b-badge v-if="gym.genre.id === 1" variant="info">{{gym.genre.description}}</b-badge>
+                                    <b-badge v-if="gym.genre.id === 2" variant="warning">{{gym.genre.description}}</b-badge>
+                                </H3>
+
+                            </b-card-text>
+
+
+                        </b-card>
+
+                        <b-card v-if="admin" tag="validations"
+
+                                class="mb-12 "
+                        >
+                            <b-card-text>
+                                <h2 >
+                                    Tarifs/Paiements
+                                </h2>
+
+                                <span  v-if="admin && gym.problemes.paiement">
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
+                            </span>
+                                <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré : {{gym.paye}} €</b-button>
+<br>
+                                <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
+
+
+
+                            </b-card-text>
+
+
+                </b-card>
+            </b-col>
+
+            <!--Fin  Fiche synthese -->
+
+            <!-- fiche niveau/groupe -->
+            <b-col lg="3" xs="12">
+                <b-card tag="article"
+
+                        class="mb-12 "
+                >
+                    <b-card-text>
+                        <h5 >
+                            Groupes / Niveaux
+                        </h5>
+
+                        <H3><span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau}}</a>&nbsp;</span></H3>
+                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span></H3>
+                        <b-modal id="equipes" hide-header-close hide-footer title="Equipes du Gymnaste Pour la saison Actuelle">
+                            <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
+                            <b-button @click="hideModalTeam">Fermer</b-button>
+                        </b-modal>
+                    </b-card-text>
+
+
+                </b-card>
+            </b-col>
+            <!-- fin fiche niveau/groupe-->
+
+
+            <!-- fiche contact responsable -->
+            <b-col v-if="admin" lg="3" xs="12">
+                <b-card tag="article"
+
+                        class="mb-12 text-right"
+                >
+                    <b-card-text>
+
+                        <h3>Responsable</h3>
+                        {{gym.responsable.nom}} {{gym.responsable.prenom}} &nbsp;<span class="fa fa-user mr-3"></span><br>
+                        {{gym.responsable.adresse}} {{gym.responsable.cp}} {{gym.responsable.ville}}&nbsp;<span class="fa fa-home mr-3"></span><br>
+                        {{gym.responsable.email}} &nbsp;<span class="fa fa-envelope mr-3"></span><br>
+                        0{{gym.responsable.telephone1}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
+                        0{{gym.responsable.telephone2}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
+
+                    </b-card-text>
+
+
+                </b-card>
+            </b-col>
+            <!-- fin contact responsable-->
+
 
         </b-row>
         test col 2

@@ -42,9 +42,39 @@ class Gymnaste extends Model
 
     public function tarif()
     {
-        $tarif = $this->equipes()->max('tarif');
+        $s = new Saison;
+        $saison = $s->inscriptionOuverte();
+
+        $tarif = $this->equipes()->where('saison_id',$saison->id)->max('tarif');
 
         return $tarif;
+    }
+
+    public function paye()
+    {
+        $s = new Saison;
+        $saison = $s->inscriptionOuverte();
+
+        $tarif = $this->saisons()->find($saison->id)->pivot->paye;
+
+        return $tarif;
+    }
+
+    //pour un gymnaste , on retoruve combien doit être paye par le responsable pour tous ces gymnastes
+    public function totalapayer()
+    {
+        $mesgyms = Gymnaste::find(1)->responsable()->first()->gymnastes()->get();
+
+        $total=0;
+
+        foreach ($mesgyms as $gym)
+        {
+            $total += $gym->paye();
+
+        }
+
+        return $total;
+
     }
 
 }

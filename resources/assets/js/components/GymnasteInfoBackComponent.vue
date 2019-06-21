@@ -131,9 +131,9 @@
 
                             <span  v-if="admin && gym.problemes.paiement">
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-5)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
                             </span>
-                            <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré</b-button>
+                            <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif de </b-button>
 
                         <span  v-if="admin && gym.problemes.Groupe">
                             <b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button>
@@ -325,7 +325,7 @@
         },
         methods: {
 
-            update: function () {
+            updatedata: function () {
                  console.log('Mise à jour DB pour ' + this.idgym);
                  axios
                      .get('/api/admin/gymnastes/' + this.idgym)

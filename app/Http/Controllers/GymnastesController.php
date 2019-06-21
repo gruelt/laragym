@@ -336,6 +336,21 @@ class GymnastesController extends Controller
 
                 }
 
+                // montant validé pour le gymnaste
+                $paye= $gymnaste->paye();
+
+                $return[$key]['paye']=$paye;
+
+                // montant total pour la famille du gymnaste
+                $totalapayer= $gymnaste->totalapayer();
+
+                $return[$key]['totalapayer']=$totalapayer;
+
+
+
+
+
+
 
 
                 #récupère les problèmes pour le dossier
