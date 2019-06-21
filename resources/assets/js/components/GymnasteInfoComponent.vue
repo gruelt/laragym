@@ -1,4 +1,56 @@
 <template>
+<div>
+
+
+
+
+    <b-container fluid class="bv-example-row">
+        <b-row>
+            <!--Photo-->
+            <b-col sm="12" lg="2">
+                <b-card
+
+
+
+                        img-alt="Image"
+                        img-top
+                        tag="article"
+
+                        class="mb-12 text-center"
+                >
+                    <b-card-text>
+                        <b-img thumbnail fluid :src="gym.photo_url" alt="ID" width="180"></b-img>
+                        <b-button v-b-modal.photoupload variant="success">Envoyer</b-button>
+                        <b-button v-if="admin" variant="success" :href="'/inscription/gymnastes/'+ gym.id+'/photo/take'">Webcam</b-button>
+                        <H3><span v-if="(admin)"><b-button :href="'/inscription/gymnastes/'+ gym.id+'/photo/crop'" variant="info">Recadrer</b-button></span></H3>
+
+
+
+
+                        <b-modal id="photoupload" hide-footer>
+                            <form method="post" :action="'/gymnastes/'+gym.id+'/photo'" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <input id="laphoto" name="laphoto" type="file"  data-filename-placement="inside">
+
+                                <input type="submit" class="btn btn-success" value="Envoyer">
+
+                            </form>
+                        </b-modal>
+
+
+
+                    </b-card-text>
+
+
+                </b-card>
+            </b-col>
+
+        </b-row>
+    </b-container>
+
+
+
+
 
     <div class="container-fluid d-flex h-100">
 
@@ -9,16 +61,16 @@
         <div class="card col-md-12">
             <!--<div class="col-md-12" id="problemes">-->
 
-                <div v-for="probleme in gym.problemes " >
-                    <div v-for="subprobleme in probleme " >
-                        <div :class="'alert alert-dismissible alert-'+subprobleme.class" role="alert">
-                            {{subprobleme.text}}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+            <div v-for="probleme in gym.problemes " >
+                <div v-for="subprobleme in probleme " >
+                    <div :class="'alert alert-dismissible alert-'+subprobleme.class" role="alert">
+                        {{subprobleme.text}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
+            </div>
             <hr>
             <!--</div>-->
             <div class="card-body">
@@ -30,8 +82,8 @@
                         <div class="row text-center">
                             <div class="col-md-12 col-sm-2 text-center">
 
-                            <img v-if="gym.photo" :src="gym.photo_url"  width="180" height="" alt="">
-                            <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
+                                <img v-if="gym.photo" :src="gym.photo_url"  width="180" height="" alt="">
+                                <img v-else src="/images/anonym.jpg" alt="" width="120" height="160">
                             </div>
                         </div>
 
@@ -44,13 +96,13 @@
 
 
                         <b-modal id="photoupload" hide-footer>
-                                <form method="post" :action="'/gymnastes/'+gym.id+'/photo'" enctype="multipart/form-data">
-                                    <input type="hidden" name="_token" :value="csrf">
-                                    <input id="laphoto" name="laphoto" type="file"  data-filename-placement="inside">
+                            <form method="post" :action="'/gymnastes/'+gym.id+'/photo'" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <input id="laphoto" name="laphoto" type="file"  data-filename-placement="inside">
 
-                                    <input type="submit" class="btn btn-success" value="Envoyer">
+                                <input type="submit" class="btn btn-success" value="Envoyer">
 
-                                </form>
+                            </form>
                         </b-modal>
 
 
@@ -70,9 +122,9 @@
 
 
                     <div class="col-md-4 col-sm-12 text-left flex-fill">
-                    <h2 class="card-title">
-                        {{gym.nom}} {{gym.prenom}}
-                    </h2>
+                        <h2 class="card-title">
+                            {{gym.nom}} {{gym.prenom}}
+                        </h2>
 
                         <H3><span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau}}</a>&nbsp;</span></H3>
                         <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span></H3>
@@ -119,7 +171,7 @@
 
 
 
-<hr>
+                <hr>
                 <!--debut admin-->
                 <div class="row justify-content ">
 
@@ -133,7 +185,7 @@
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif-5)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
                             </span>
-                            <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré</b-button>
+                        <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré</b-button>
 
                         <span  v-if="admin && gym.problemes.Groupe">
                             <b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button>
@@ -216,7 +268,7 @@
 
 
                 </div>
-<hr>
+                <hr>
 
                 <div class="row justify-content-center ">
 
@@ -263,6 +315,7 @@
 
 
     </div>
+</div>
 </template>
 
 <script>
@@ -279,9 +332,9 @@
                 type: Number
 
             },
-             gym:{
-                 type: Object
-             },
+            gym:{
+                type: Object
+            },
             csrf:{
                 type: String
             },
@@ -326,11 +379,11 @@
         methods: {
 
             update: function () {
-                 console.log('Mise à jour DB pour ' + this.idgym);
-                 axios
-                     .get('/api/admin/gymnastes/' + this.idgym)
-                     .then(response => (this.gym = response.data))
-                 ;
+                console.log('Mise à jour DB pour ' + this.idgym);
+                axios
+                    .get('/api/admin/gymnastes/' + this.idgym)
+                    .then(response => (this.gym = response.data))
+                ;
 
 
             },
@@ -344,9 +397,9 @@
             },
             validpaiement: function(montant,saison_id){
                 console.log('clic le paiement pour '+ montant + ' pour saison ' + this.saison_id);
-                 axios
-                     .get('/api/inscription/gymnastes/' + this.gym.id +  '/saison/'+ this.saison_id + '/paiement/valid/' + montant)
-                     .then(response => (this.update= response.data));
+                axios
+                    .get('/api/inscription/gymnastes/' + this.gym.id +  '/saison/'+ this.saison_id + '/paiement/valid/' + montant)
+                    .then(response => (this.update= response.data));
 
 
                 //location.reload();

@@ -83747,6 +83747,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -83872,203 +83925,557 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
-    _c(
-      "div",
-      { staticClass: "card col-md-12" },
-      [
-        _vm._l(_vm.gym.problemes, function(probleme) {
-          return _c(
-            "div",
-            _vm._l(probleme, function(subprobleme) {
-              return _c("div", [
-                _c(
-                  "div",
-                  {
-                    class: "alert alert-dismissible alert-" + subprobleme.class,
-                    attrs: { role: "alert" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(subprobleme.text) +
-                        "\n                            "
-                    ),
-                    _vm._m(0, true)
-                  ]
-                )
-              ])
-            }),
-            0
-          )
-        }),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
+  return _c(
+    "div",
+    [
+      _c(
+        "b-container",
+        { staticClass: "bv-example-row", attrs: { fluid: "" } },
+        [
           _c(
-            "div",
-            { staticClass: "row" },
+            "b-row",
             [
               _c(
-                "div",
-                { staticClass: "col-md-4 col-sm-2 text-center" },
+                "b-col",
+                { attrs: { sm: "12", lg: "2" } },
                 [
-                  _c("div", { staticClass: "row text-center" }, [
+                  _c(
+                    "b-card",
+                    {
+                      staticClass: "mb-12 text-center",
+                      attrs: {
+                        "img-alt": "Image",
+                        "img-top": "",
+                        tag: "article"
+                      }
+                    },
+                    [
+                      _c(
+                        "b-card-text",
+                        [
+                          _c("b-img", {
+                            attrs: {
+                              thumbnail: "",
+                              fluid: "",
+                              src: _vm.gym.photo_url,
+                              alt: "ID",
+                              width: "180"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              directives: [
+                                {
+                                  name: "b-modal",
+                                  rawName: "v-b-modal.photoupload",
+                                  modifiers: { photoupload: true }
+                                }
+                              ],
+                              attrs: { variant: "success" }
+                            },
+                            [_vm._v("Envoyer")]
+                          ),
+                          _vm._v(" "),
+                          _vm.admin
+                            ? _c(
+                                "b-button",
+                                {
+                                  attrs: {
+                                    variant: "success",
+                                    href:
+                                      "/inscription/gymnastes/" +
+                                      _vm.gym.id +
+                                      "/photo/take"
+                                  }
+                                },
+                                [_vm._v("Webcam")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("H3", [
+                            _vm.admin
+                              ? _c(
+                                  "span",
+                                  [
+                                    _c(
+                                      "b-button",
+                                      {
+                                        attrs: {
+                                          href:
+                                            "/inscription/gymnastes/" +
+                                            _vm.gym.id +
+                                            "/photo/crop",
+                                          variant: "info"
+                                        }
+                                      },
+                                      [_vm._v("Recadrer")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "b-modal",
+                            { attrs: { id: "photoupload", "hide-footer": "" } },
+                            [
+                              _c(
+                                "form",
+                                {
+                                  attrs: {
+                                    method: "post",
+                                    action:
+                                      "/gymnastes/" + _vm.gym.id + "/photo",
+                                    enctype: "multipart/form-data"
+                                  }
+                                },
+                                [
+                                  _c("input", {
+                                    attrs: { type: "hidden", name: "_token" },
+                                    domProps: { value: _vm.csrf }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: {
+                                      id: "laphoto",
+                                      name: "laphoto",
+                                      type: "file",
+                                      "data-filename-placement": "inside"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "btn btn-success",
+                                    attrs: { type: "submit", value: "Envoyer" }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid d-flex h-100" }, [
+        _c(
+          "div",
+          { staticClass: "card col-md-12" },
+          [
+            _vm._l(_vm.gym.problemes, function(probleme) {
+              return _c(
+                "div",
+                _vm._l(probleme, function(subprobleme) {
+                  return _c("div", [
                     _c(
                       "div",
-                      { staticClass: "col-md-12 col-sm-2 text-center" },
+                      {
+                        class:
+                          "alert alert-dismissible alert-" + subprobleme.class,
+                        attrs: { role: "alert" }
+                      },
                       [
-                        _vm.gym.photo
-                          ? _c("img", {
-                              attrs: {
-                                src: _vm.gym.photo_url,
-                                width: "180",
-                                height: "",
-                                alt: ""
-                              }
-                            })
-                          : _c("img", {
-                              attrs: {
-                                src: "/images/anonym.jpg",
-                                alt: "",
-                                width: "120",
-                                height: "160"
-                              }
-                            })
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(subprobleme.text) +
+                            "\n                        "
+                        ),
+                        _vm._m(0, true)
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
+                  ])
+                }),
+                0
+              )
+            }),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
                   _c(
-                    "b-button",
-                    {
-                      directives: [
-                        {
-                          name: "b-modal",
-                          rawName: "v-b-modal.photoupload",
-                          modifiers: { photoupload: true }
-                        }
-                      ],
-                      attrs: { variant: "success" }
-                    },
-                    [_vm._v("Envoyer Une Photo")]
-                  ),
-                  _vm._v(" "),
-                  _vm.admin
-                    ? _c(
+                    "div",
+                    { staticClass: "col-md-4 col-sm-2 text-center" },
+                    [
+                      _c("div", { staticClass: "row text-center" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-md-12 col-sm-2 text-center" },
+                          [
+                            _vm.gym.photo
+                              ? _c("img", {
+                                  attrs: {
+                                    src: _vm.gym.photo_url,
+                                    width: "180",
+                                    height: "",
+                                    alt: ""
+                                  }
+                                })
+                              : _c("img", {
+                                  attrs: {
+                                    src: "/images/anonym.jpg",
+                                    alt: "",
+                                    width: "120",
+                                    height: "160"
+                                  }
+                                })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
                         "b-button",
                         {
-                          attrs: {
-                            variant: "success",
-                            href:
-                              "/inscription/gymnastes/" +
-                              _vm.gym.id +
-                              "/photo/take"
-                          }
+                          directives: [
+                            {
+                              name: "b-modal",
+                              rawName: "v-b-modal.photoupload",
+                              modifiers: { photoupload: true }
+                            }
+                          ],
+                          attrs: { variant: "success" }
                         },
-                        [_vm._v("Prendre Une Photo")]
+                        [_vm._v("Envoyer Une Photo")]
+                      ),
+                      _vm._v(" "),
+                      _vm.admin
+                        ? _c(
+                            "b-button",
+                            {
+                              attrs: {
+                                variant: "success",
+                                href:
+                                  "/inscription/gymnastes/" +
+                                  _vm.gym.id +
+                                  "/photo/take"
+                              }
+                            },
+                            [_vm._v("Prendre Une Photo")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("H3", [
+                        _vm.admin
+                          ? _c(
+                              "span",
+                              [
+                                _c(
+                                  "b-button",
+                                  {
+                                    attrs: {
+                                      href:
+                                        "/inscription/gymnastes/" +
+                                        _vm.gym.id +
+                                        "/photo/crop",
+                                      variant: "info"
+                                    }
+                                  },
+                                  [_vm._v("Recadrer")]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "b-modal",
+                        { attrs: { id: "photoupload", "hide-footer": "" } },
+                        [
+                          _c(
+                            "form",
+                            {
+                              attrs: {
+                                method: "post",
+                                action: "/gymnastes/" + _vm.gym.id + "/photo",
+                                enctype: "multipart/form-data"
+                              }
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.csrf }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: {
+                                  id: "laphoto",
+                                  name: "laphoto",
+                                  type: "file",
+                                  "data-filename-placement": "inside"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit", value: "Envoyer" }
+                              })
+                            ]
+                          )
+                        ]
                       )
-                    : _vm._e(),
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
-                  _c("H3", [
-                    _vm.admin
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 col-sm-12 text-left flex-fill" },
+                    [
+                      _c("h2", { staticClass: "card-title" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.gym.nom) +
+                            " " +
+                            _vm._s(_vm.gym.prenom) +
+                            "\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "H3",
+                        _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
+                          return _c("span", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "badge badge-primary",
+                                attrs: { href: "/equipes/" + id }
+                              },
+                              [_vm._v(_vm._s(niveau))]
+                            ),
+                            _vm._v(" ")
+                          ])
+                        }),
+                        0
+                      ),
+                      _vm._v(" "),
+                      _c("H3", [
+                        _vm.admin
+                          ? _c(
+                              "span",
+                              [
+                                _c(
+                                  "b-button",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-modal",
+                                        rawName: "v-b-modal.equipes",
+                                        modifiers: { equipes: true }
+                                      }
+                                    ],
+                                    attrs: { variant: "success" }
+                                  },
+                                  [_vm._v("Gérer Equipes")]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
+                      _vm._v(" "),
+                      _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
+                      _vm._v(" "),
+                      _c(
+                        "H3",
+                        [
+                          _vm.gym.genre.id === 1
+                            ? _c("b-badge", { attrs: { variant: "info" } }, [
+                                _vm._v(_vm._s(_vm.gym.genre.description))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.gym.genre.id === 2
+                            ? _c("b-badge", { attrs: { variant: "warning" } }, [
+                                _vm._v(_vm._s(_vm.gym.genre.description))
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-modal",
+                    {
+                      attrs: {
+                        id: "equipes",
+                        "hide-header-close": "",
+                        "hide-footer": "",
+                        title: "Equipes du Gymnaste Pour la saison Actuelle"
+                      }
+                    },
+                    [
+                      _c("gymnaste-equipe", {
+                        attrs: {
+                          gymnaste_id: _vm.gym.id,
+                          saison_id: _vm.saison_id
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("b-button", { on: { click: _vm.hideModalTeam } }, [
+                        _vm._v("Fermer")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.contact
+                    ? _c(
+                        "div",
+                        { staticClass: "col-md-4 col-sm-12 text-right" },
+                        [
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c("h3", [_vm._v("Responsable")]),
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.gym.responsable.nom) +
+                              " " +
+                              _vm._s(_vm.gym.responsable.prenom) +
+                              "  "
+                          ),
+                          _c("span", { staticClass: "fa fa-user mr-3" }),
+                          _c("br"),
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.gym.responsable.adresse) +
+                              " " +
+                              _vm._s(_vm.gym.responsable.cp) +
+                              " " +
+                              _vm._s(_vm.gym.responsable.ville) +
+                              " "
+                          ),
+                          _c("span", { staticClass: "fa fa-home mr-3" }),
+                          _c("br"),
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.gym.responsable.email) +
+                              "  "
+                          ),
+                          _c("span", { staticClass: "fa fa-envelope mr-3" }),
+                          _c("br"),
+                          _vm._v(
+                            "\n                        0" +
+                              _vm._s(_vm.gym.responsable.telephone1) +
+                              "  "
+                          ),
+                          _c("span", { staticClass: "fa fa-phone mr-3" }),
+                          _c("br"),
+                          _vm._v(
+                            "\n                        0" +
+                              _vm._s(_vm.gym.responsable.telephone2) +
+                              "  "
+                          ),
+                          _c("span", { staticClass: "fa fa-phone mr-3" }),
+                          _c("br")
+                        ]
+                      )
+                    : _vm._e()
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content " }, [
+                _vm.admin
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-md-4 bg-warning align-self-center text-center  mh-100"
+                      },
+                      [_c("h1", [_vm._v("Validations")])]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-8 text-right" },
+                  [
+                    _vm.admin && _vm.gym.problemes.paiement
                       ? _c(
                           "span",
                           [
                             _c(
                               "b-button",
                               {
-                                attrs: {
-                                  href:
-                                    "/inscription/gymnastes/" +
-                                    _vm.gym.id +
-                                    "/photo/crop",
-                                  variant: "info"
+                                attrs: { variant: "success" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.validpaiement(_vm.gym.tarif)
+                                  }
                                 }
                               },
-                              [_vm._v("Recadrer")]
+                              [
+                                _vm._v(
+                                  "Valider le tarif de " +
+                                    _vm._s(_vm.gym.tarif) +
+                                    "€"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-button",
+                              {
+                                attrs: { variant: "success" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.validpaiement(_vm.gym.tarif - 5)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "Valider le tarif de " +
+                                    _vm._s(_vm.gym.tarif - 10) +
+                                    "€ (Réduction Familiale à partir du 2eme inscrit)"
+                                )
+                              ]
                             )
                           ],
                           1
                         )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-modal",
-                    { attrs: { id: "photoupload", "hide-footer": "" } },
-                    [
-                      _c(
-                        "form",
-                        {
-                          attrs: {
-                            method: "post",
-                            action: "/gymnastes/" + _vm.gym.id + "/photo",
-                            enctype: "multipart/form-data"
-                          }
-                        },
-                        [
-                          _c("input", {
-                            attrs: { type: "hidden", name: "_token" },
-                            domProps: { value: _vm.csrf }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            attrs: {
-                              id: "laphoto",
-                              name: "laphoto",
-                              type: "file",
-                              "data-filename-placement": "inside"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            staticClass: "btn btn-success",
-                            attrs: { type: "submit", value: "Envoyer" }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-md-4 col-sm-12 text-left flex-fill" },
-                [
-                  _c("h2", { staticClass: "card-title" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.gym.nom) +
-                        " " +
-                        _vm._s(_vm.gym.prenom) +
-                        "\n                    "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "H3",
-                    _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
-                      return _c("span", [
-                        _c(
-                          "a",
+                      : _vm.admin && !_vm.gym.problemes.Groupe
+                      ? _c(
+                          "b-button",
                           {
-                            staticClass: "badge badge-primary",
-                            attrs: { href: "/equipes/" + id }
+                            attrs: { variant: "info" },
+                            on: {
+                              click: function($event) {
+                                return _vm.annulpaiement()
+                              }
+                            }
                           },
-                          [_vm._v(_vm._s(niveau))]
-                        ),
-                        _vm._v(" ")
-                      ])
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("H3", [
-                    _vm.admin
+                          [_vm._v("Annuler le tarif enregistré")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.admin && _vm.gym.problemes.Groupe
                       ? _c(
                           "span",
                           [
@@ -84090,472 +84497,292 @@ var render = function() {
                           1
                         )
                       : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
-                  _vm._v(" "),
-                  _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
-                  _vm._v(" "),
-                  _c(
-                    "H3",
-                    [
-                      _vm.gym.genre.id === 1
-                        ? _c("b-badge", { attrs: { variant: "info" } }, [
-                            _vm._v(_vm._s(_vm.gym.genre.description))
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.gym.genre.id === 2
-                        ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                            _vm._v(_vm._s(_vm.gym.genre.description))
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-modal",
-                {
-                  attrs: {
-                    id: "equipes",
-                    "hide-header-close": "",
-                    "hide-footer": "",
-                    title: "Equipes du Gymnaste Pour la saison Actuelle"
-                  }
-                },
-                [
-                  _c("gymnaste-equipe", {
-                    attrs: { gymnaste_id: _vm.gym.id, saison_id: _vm.saison_id }
-                  }),
-                  _vm._v(" "),
-                  _c("b-button", { on: { click: _vm.hideModalTeam } }, [
-                    _vm._v("Fermer")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm.contact
-                ? _c("div", { staticClass: "col-md-4 col-sm-12 text-right" }, [
-                    _c("hr"),
-                    _vm._v(" "),
-                    _c("h3", [_vm._v("Responsable")]),
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.gym.responsable.nom) +
-                        " " +
-                        _vm._s(_vm.gym.responsable.prenom) +
-                        "  "
-                    ),
-                    _c("span", { staticClass: "fa fa-user mr-3" }),
-                    _c("br"),
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.gym.responsable.adresse) +
-                        " " +
-                        _vm._s(_vm.gym.responsable.cp) +
-                        " " +
-                        _vm._s(_vm.gym.responsable.ville) +
-                        " "
-                    ),
-                    _c("span", { staticClass: "fa fa-home mr-3" }),
-                    _c("br"),
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.gym.responsable.email) +
-                        "  "
-                    ),
-                    _c("span", { staticClass: "fa fa-envelope mr-3" }),
-                    _c("br"),
-                    _vm._v(
-                      "\n                        0" +
-                        _vm._s(_vm.gym.responsable.telephone1) +
-                        "  "
-                    ),
-                    _c("span", { staticClass: "fa fa-phone mr-3" }),
-                    _c("br"),
-                    _vm._v(
-                      "\n                        0" +
-                        _vm._s(_vm.gym.responsable.telephone2) +
-                        "  "
-                    ),
-                    _c("span", { staticClass: "fa fa-phone mr-3" }),
-                    _c("br")
-                  ])
-                : _vm._e()
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content " }, [
-            _vm.admin
-              ? _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-md-4 bg-warning align-self-center text-center  mh-100"
-                  },
-                  [_c("h1", [_vm._v("Validations")])]
+                  ],
+                  1
                 )
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-8 text-right" },
-              [
-                _vm.admin && _vm.gym.problemes.paiement
-                  ? _c(
-                      "span",
-                      [
-                        _c(
-                          "b-button",
-                          {
-                            attrs: { variant: "success" },
-                            on: {
-                              click: function($event) {
-                                return _vm.validpaiement(_vm.gym.tarif)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "Valider le tarif de " +
-                                _vm._s(_vm.gym.tarif) +
-                                "€"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-button",
-                          {
-                            attrs: { variant: "success" },
-                            on: {
-                              click: function($event) {
-                                return _vm.validpaiement(_vm.gym.tarif - 5)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "Valider le tarif de " +
-                                _vm._s(_vm.gym.tarif - 10) +
-                                "€ (Réduction Familiale à partir du 2eme inscrit)"
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  : _vm.admin && !_vm.gym.problemes.Groupe
-                  ? _c(
-                      "b-button",
-                      {
-                        attrs: { variant: "info" },
-                        on: {
-                          click: function($event) {
-                            return _vm.annulpaiement()
-                          }
-                        }
-                      },
-                      [_vm._v("Annuler le tarif enregistré")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.admin && _vm.gym.problemes.Groupe
-                  ? _c(
-                      "span",
-                      [
-                        _c(
-                          "b-button",
-                          {
-                            directives: [
-                              {
-                                name: "b-modal",
-                                rawName: "v-b-modal.equipes",
-                                modifiers: { equipes: true }
-                              }
-                            ],
-                            attrs: { variant: "success" }
-                          },
-                          [_vm._v("Gérer Equipes")]
-                        )
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content " }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-8 text-right" },
-              [
-                _vm.gym.certificat_medical == null
-                  ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
-                      _vm._v("Aucun Certificat Medical")
-                    ])
-                  : _c(
-                      "b-alert",
-                      { attrs: { show: "", variant: "info" } },
-                      [
-                        _c(
-                          "a",
-                          { attrs: { href: _vm.gym.certificat_medical_url } },
-                          [
-                            _c("i", { staticClass: "fas fa-file-alt" }),
-                            _vm._v(
-                              " Certificat Medical du " +
-                                _vm._s(_vm.gym.certificat_medical_date_fr) +
-                                " valable jusqu'au " +
-                                _vm._s(_vm.gym.certificat_medical_fin_fr) +
-                                " "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.gym.certificat_medical_check == 0 && _vm.admin
-                          ? _c(
-                              "b-badge",
-                              {
-                                attrs: { variant: "success" },
-                                on: { click: _vm.validcertif }
-                              },
-                              [_vm._v("Valider le certificat")]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.gym.certificat_medical_check == 0
-                          ? _c("b-badge", { attrs: { variant: "warning" } }, [
-                              _vm._v("Attente Validation")
-                            ])
-                          : _c("b-badge", { attrs: { variant: "success" } }, [
-                              _vm._v("Vérifié")
-                            ])
-                      ],
-                      1
-                    ),
-                _vm._v(" "),
-                _vm.gym.certificat_medical_age >= 3
-                  ? _c("b-alert", { attrs: { show: "", variant: "warning" } }, [
-                      _vm._v("Certificat dépassé")
-                    ])
-                  : _vm._e(),
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content " }, [
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
-                  "b-button",
-                  {
-                    directives: [
-                      {
-                        name: "b-modal",
-                        rawName: "v-b-modal.certifupload",
-                        modifiers: { certifupload: true }
-                      }
-                    ],
-                    attrs: { variant: "success" }
-                  },
-                  [_vm._v("Envoyer Un certificat Medical")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-modal",
-                  {
-                    attrs: {
-                      id: "certifupload",
-                      "hide-footer": "",
-                      title: "Envoyer un Certificat Médical"
-                    }
-                  },
+                  "div",
+                  { staticClass: "col-md-8 text-right" },
                   [
-                    _c(
-                      "form",
-                      {
-                        attrs: {
-                          method: "post",
-                          action: "/gymnastes/" + _vm.gym.id + "/certif",
-                          enctype: "multipart/form-data"
-                        }
-                      },
-                      [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "_token" },
-                          domProps: { value: _vm.csrf }
-                        }),
-                        _vm._v(" "),
-                        _c("b-form-file", {
-                          attrs: {
-                            state: Boolean(_vm.file),
-                            placeholder: "Choisir un fichier",
-                            id: "lecertif",
-                            name: "lecertif",
-                            "drop-placeholder": "Drop file here...",
-                            accept: ".png, .jpg, .pdf"
-                          },
-                          model: {
-                            value: _vm.file,
-                            callback: function($$v) {
-                              _vm.file = $$v
-                            },
-                            expression: "file"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          { attrs: { for: "certificat_medical_date" } },
-                          [_vm._v("Date du Certificat Medical:")]
+                    _vm.gym.certificat_medical == null
+                      ? _c(
+                          "b-alert",
+                          { attrs: { show: "", variant: "warning" } },
+                          [_vm._v("Aucun Certificat Medical")]
+                        )
+                      : _c(
+                          "b-alert",
+                          { attrs: { show: "", variant: "info" } },
+                          [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: _vm.gym.certificat_medical_url }
+                              },
+                              [
+                                _c("i", { staticClass: "fas fa-file-alt" }),
+                                _vm._v(
+                                  " Certificat Medical du " +
+                                    _vm._s(_vm.gym.certificat_medical_date_fr) +
+                                    " valable jusqu'au " +
+                                    _vm._s(_vm.gym.certificat_medical_fin_fr) +
+                                    " "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.gym.certificat_medical_check == 0 && _vm.admin
+                              ? _c(
+                                  "b-badge",
+                                  {
+                                    attrs: { variant: "success" },
+                                    on: { click: _vm.validcertif }
+                                  },
+                                  [_vm._v("Valider le certificat")]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.gym.certificat_medical_check == 0
+                              ? _c(
+                                  "b-badge",
+                                  { attrs: { variant: "warning" } },
+                                  [_vm._v("Attente Validation")]
+                                )
+                              : _c(
+                                  "b-badge",
+                                  { attrs: { variant: "success" } },
+                                  [_vm._v("Vérifié")]
+                                )
+                          ],
+                          1
                         ),
-                        _vm._v(" "),
-                        _c("b-form-input", {
-                          attrs: {
-                            id: "certificat_medical_date",
-                            name: "certificat_medical_date",
-                            type: "date"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "btn btn-success",
-                          attrs: { type: "submit", value: "Envoyer" }
-                        })
-                      ],
-                      1
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center " }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-8 col-sm-12 text-right" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "list-group" },
-                  _vm._l(_vm.gym.saisons, function(saison) {
-                    return _c(
-                      "li",
-                      { staticClass: "list-inline" },
-                      [
-                        saison.pivot.complet == 1
-                          ? _c(
-                              "b-button",
-                              { attrs: { variant: "success" } },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(saison.nom) +
-                                    " "
-                                ),
-                                _c("b-badge", { attrs: { variant: "light" } }, [
-                                  _vm._v("Complet")
-                                ])
-                              ],
-                              1
-                            )
-                          : _c(
-                              "b-button",
-                              { attrs: { variant: "info" } },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(saison.nom) +
-                                    " "
-                                ),
-                                _c("b-badge", { attrs: { variant: "light" } }, [
-                                  _vm._v("Préinscrit")
-                                ]),
-                                _vm._v(" "),
-                                _vm._l(_vm.gym.problemes, function(
-                                  probleme,
-                                  index
-                                ) {
-                                  return _c(
-                                    "span",
-                                    {
-                                      key: probleme,
-                                      attrs: { variant: "light" }
-                                    },
-                                    _vm._l(probleme, function(
-                                      subprobleme,
-                                      index2
-                                    ) {
-                                      return _c(
-                                        "b-badge",
-                                        {
-                                          key: subprobleme,
-                                          attrs: { variant: subprobleme.class }
-                                        },
-                                        [_vm._v(_vm._s(subprobleme.text))]
-                                      )
-                                    }),
-                                    1
-                                  )
-                                })
-                              ],
-                              2
-                            )
-                      ],
-                      1
-                    )
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _vm.gym.reinscrit.statut == 0 && _vm.gym.reinscrit.saison != 0
-                  ? _c(
+                    _vm._v(" "),
+                    _vm.gym.certificat_medical_age >= 3
+                      ? _c(
+                          "b-alert",
+                          { attrs: { show: "", variant: "warning" } },
+                          [_vm._v("Certificat dépassé")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
                       "b-button",
                       {
+                        directives: [
+                          {
+                            name: "b-modal",
+                            rawName: "v-b-modal.certifupload",
+                            modifiers: { certifupload: true }
+                          }
+                        ],
+                        attrs: { variant: "success" }
+                      },
+                      [_vm._v("Envoyer Un certificat Medical")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-modal",
+                      {
                         attrs: {
-                          href:
-                            "/responsable/gymnaste/" +
-                            _vm.gym.id +
-                            "/reinscrire/" +
-                            _vm.gym.reinscrit.saison.id,
-                          variant: "warning"
+                          id: "certifupload",
+                          "hide-footer": "",
+                          title: "Envoyer un Certificat Médical"
                         }
                       },
                       [
-                        _vm._v(
-                          "\n                            + Re-inscrire pour " +
-                            _vm._s(_vm.gym.reinscrit.saison.nom) +
-                            "\n                        "
+                        _c(
+                          "form",
+                          {
+                            attrs: {
+                              method: "post",
+                              action: "/gymnastes/" + _vm.gym.id + "/certif",
+                              enctype: "multipart/form-data"
+                            }
+                          },
+                          [
+                            _c("input", {
+                              attrs: { type: "hidden", name: "_token" },
+                              domProps: { value: _vm.csrf }
+                            }),
+                            _vm._v(" "),
+                            _c("b-form-file", {
+                              attrs: {
+                                state: Boolean(_vm.file),
+                                placeholder: "Choisir un fichier",
+                                id: "lecertif",
+                                name: "lecertif",
+                                "drop-placeholder": "Drop file here...",
+                                accept: ".png, .jpg, .pdf"
+                              },
+                              model: {
+                                value: _vm.file,
+                                callback: function($$v) {
+                                  _vm.file = $$v
+                                },
+                                expression: "file"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              { attrs: { for: "certificat_medical_date" } },
+                              [_vm._v("Date du Certificat Medical:")]
+                            ),
+                            _vm._v(" "),
+                            _c("b-form-input", {
+                              attrs: {
+                                id: "certificat_medical_date",
+                                name: "certificat_medical_date",
+                                type: "date"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "btn btn-success",
+                              attrs: { type: "submit", value: "Envoyer" }
+                            })
+                          ],
+                          1
                         )
                       ]
                     )
-                  : _vm._e()
-              ],
-              1
-            )
-          ])
-        ])
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c("hr")
-  ])
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center " }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-8 col-sm-12 text-right" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "list-group" },
+                      _vm._l(_vm.gym.saisons, function(saison) {
+                        return _c(
+                          "li",
+                          { staticClass: "list-inline" },
+                          [
+                            saison.pivot.complet == 1
+                              ? _c(
+                                  "b-button",
+                                  { attrs: { variant: "success" } },
+                                  [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(saison.nom) +
+                                        " "
+                                    ),
+                                    _c(
+                                      "b-badge",
+                                      { attrs: { variant: "light" } },
+                                      [_vm._v("Complet")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _c(
+                                  "b-button",
+                                  { attrs: { variant: "info" } },
+                                  [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(saison.nom) +
+                                        " "
+                                    ),
+                                    _c(
+                                      "b-badge",
+                                      { attrs: { variant: "light" } },
+                                      [_vm._v("Préinscrit")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.gym.problemes, function(
+                                      probleme,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "span",
+                                        {
+                                          key: probleme,
+                                          attrs: { variant: "light" }
+                                        },
+                                        _vm._l(probleme, function(
+                                          subprobleme,
+                                          index2
+                                        ) {
+                                          return _c(
+                                            "b-badge",
+                                            {
+                                              key: subprobleme,
+                                              attrs: {
+                                                variant: subprobleme.class
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(subprobleme.text))]
+                                          )
+                                        }),
+                                        1
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                          ],
+                          1
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _vm.gym.reinscrit.statut == 0 &&
+                    _vm.gym.reinscrit.saison != 0
+                      ? _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              href:
+                                "/responsable/gymnaste/" +
+                                _vm.gym.id +
+                                "/reinscrire/" +
+                                _vm.gym.reinscrit.saison.id,
+                              variant: "warning"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            + Re-inscrire pour " +
+                                _vm._s(_vm.gym.reinscrit.saison.nom) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ])
+            ])
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("hr")
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
