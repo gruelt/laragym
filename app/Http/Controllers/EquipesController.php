@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Equipe;
 use App\Saison;
+use App\Http\Controllers\GymnastesController;
 
 class EquipesController extends Controller
 {
@@ -134,6 +135,19 @@ class EquipesController extends Controller
 
 
         return $this->formatEquipes($equipe)[0];
+    }
+
+    //retourne une equipe par API
+    public  function getmembers($equipe_id)
+    {
+        $return=array();
+
+        $equipe = Equipe::find($equipe_id)->gymnastes()->get();
+
+        $gc = new GymnastesController;
+
+
+        return $gc->formatGyms($equipe);
     }
 
 }

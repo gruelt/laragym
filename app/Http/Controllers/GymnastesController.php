@@ -162,7 +162,7 @@ class GymnastesController extends Controller
      * @param $gyms
      * @return mixed
      */
-    private function formatGyms($gyms,$extend=1)
+    public function formatGyms($gyms,$extend=1)
     {
         foreach ($gyms as $key => $gymnaste)
         {

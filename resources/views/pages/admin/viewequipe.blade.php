@@ -2,7 +2,8 @@
 
 
 @section('title')
-    <H5><a href="/admin/equipes">Retour Liste</a>  </H5>
+    <H5><a href="javascript:history.back()">Retour Liste</a>  </H5>
+
 @stop
 
 @section('content')

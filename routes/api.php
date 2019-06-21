@@ -49,6 +49,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/equipes/{id}', 'EquipesController@get');
 
+    Route::get('/equipes/{id}/members', 'EquipesController@getmembers');
+
 
 
 

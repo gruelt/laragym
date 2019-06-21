@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <saison-select ></saison-select>
+        <saison-select v-if="equipe_id == Null"></saison-select>
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Affichage Photos</button>
         <b-table
                 id="table-transition-example"
@@ -65,7 +65,12 @@
             debug:{
                 type: Boolean,
                 default:false
-            }
+            },
+            equipe_id:
+                {
+                    default: null,
+                    type: Number,
+                },
         },
         methods: {
 
@@ -79,6 +84,12 @@
             update: function() {
                 axios
                     .get('/api/admin/gymnastes/saison/'+this.saison_id)
+                    .then(response => (this.gyms = response.data));
+
+            },
+            updateteam: function() {
+                axios
+                    .get('/api/admin/equipes/'+this.equipe_id+'/members')
                     .then(response => (this.gyms = response.data));
 
             },
@@ -103,6 +114,7 @@
 
         data() {
             return {
+
                 saison_id: "9999",
                 gyms: [],
                 withphotos: false,
@@ -171,8 +183,16 @@
         },
 
         mounted(){
-            this.getcurrentseason();
-            this.update();
+            if(this.equipe_id == null)
+            {
+                this.getcurrentseason();
+                this.update();
+            }
+            else {
+                this.withphotos=true;
+                this.updateteam();
+            }
+
         },
 
         computed: {

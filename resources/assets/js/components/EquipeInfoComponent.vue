@@ -1,137 +1,139 @@
 <template>
 
 
+    <b-container fluid class="bv-example-row">
+        <b-row>
+            <!--Carte ID du groupe-->
+            <b-col sm="12" lg="2">
+                            <b-card
 
+                                    :title="equipe.nom"
+                                    img-src="/images/team.jpg"
+                                    img-alt="Image"
+                                    img-top
+                                    tag="article"
 
+                                    class="mb-12"
+                            >
+                                <b-card-text>
+                                    <h5 v-html="equipe.genre_libelle"></h5>
+                                    <h5>{{equipe.categorie}}</h5>
 
-    <div class="container-fluid d-flex h-100">
 
+                                    <H3>{{equipe.nbgyms.length}} Membres</H3>
+                                </b-card-text>
 
-                        <!--Info synthèse groupe-->
-                        <div class="card col-md-4 col-xs-12">
 
+                            </b-card>
+            </b-col>
 
-                            <div class="col-md-4 col-sm-12 text-left flex-fill">
-                                <h2 class="card-title">
-                                    {{equipe.nom}}
-                                </h2>
 
-                                <h5 v-html="equipe.genre_libelle"></h5>
-                                <h5>{{equipe.categorie}}</h5>
 
+            <!--Horaires-->
+            <b-col lg="3" sm="12">
 
-                                <H3>{{equipe.nbgyms.length}} Gyms</H3>
+                <b-card
+                        title="Horaires"
 
+                        img-alt="Image"
+                        img-top
+                        tag="article"
 
+                        class="mb-12"
+                >
+                    <b-card-text>
 
 
+                        <b-list-group>
+                            <b-list-group-item>Cras justo odio</b-list-group-item>
+                            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
+                            <b-list-group-item>Morbi leo risus</b-list-group-item>
+                            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
+                            <b-list-group-item>Vestibulum at eros</b-list-group-item>
+                        </b-list-group>
+                    </b-card-text>
 
-                            </div>
 
+                </b-card>
+            </b-col>
+            <!--Coach(s)-->
 
+            <b-col lg="3" sm="6">
+                <b-card
+                        title="Entraineur(s)"
 
+                        img-alt="Image"
+                        img-top
+                        tag="article"
 
+                        class="mb-12"
+                >
+                    <b-card-text>
 
 
-                        </div>
+                        <b-list-group>
+                            <b-list-group-item>Cras justo odio</b-list-group-item>
+                            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
+                            <b-list-group-item>Morbi leo risus</b-list-group-item>
+                            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
+                            <b-list-group-item>Vestibulum at eros</b-list-group-item>
+                        </b-list-group>
+                    </b-card-text>
 
-                        <!--Fin Info synthèse groupe-->
 
+                </b-card>
+            </b-col>
 
+            <!--Fin coach-->
+            <!--Compétitions-->
 
+            <b-col lg="3" sm="6">
+                <b-card
+                        title="Compétitions"
 
-                        <!--Horaires groupe-->
-                        <div class="card col-md-4 col-sm-12">
+                        img-alt="Image"
+                        img-top
+                        tag="article"
 
+                        class="mb-12"
+                >
+                    <b-card-text>
 
-                            <div class="col-md-4 col-sm-12 text-left flex-fill">
-                                <h3 class="card-title">
-                                    Horaires
-                                </h3>
 
-                                <span>Lundi</span><br>
-                                <span>Lundi</span><br>
-                                <span>Lundi</span><br>
+                        <b-list-group>
+                            <b-list-group-item>Cras justo odio</b-list-group-item>
+                            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
+                            <b-list-group-item>Morbi leo risus</b-list-group-item>
+                            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
+                            <b-list-group-item>Vestibulum at eros</b-list-group-item>
+                        </b-list-group>
+                    </b-card-text>
 
 
+                </b-card>
+            </b-col>
 
+            <!--Compétitions-->
 
 
 
-                            </div>
+        </b-row>
 
+                <b-col col="12">
+                        <gymnaste-table :equipe_id="equipe_id"></gymnaste-table>
+                </b-col>
 
+        <b-row>
 
+        </b-row>
 
+    </b-container>
 
 
-                        </div>
 
-                        <!--Fin horaires groupe-->
 
-                        <!--Coach-->
-                        <div class="card col-md-4 col-sm-12">
 
 
-                            <div class="col-md-4 col-sm-12 text-left flex-fill">
-                                <h3 class="card-title">
-                                    Coach
-                                </h3>
-
-                                <span>Lundi</span><br>
-                                <span>Lundi</span><br>
-                                <span>Lundi</span><br>
-
-
-
-
-
-
-                            </div>
-
-
-
-
-
-
-                        </div>
-
-                        <!--Fin Coach-->
-
-
-        <!--Liste Gyms-->
-
-        <div class="card col-md-12">
-
-
-            <div class="col-md-4 col-sm-12 text-left flex-fill">
-                <h3 class="card-title">
-                    Coach
-                </h3>
-
-                <span>Lundi</span><br>
-                <span>Lundi</span><br>
-                <span>Lundi</span><br>
-
-
-
-
-
-
-            </div>
-
-
-
-
-
-
-        </div>
-
-
-                                    <
-
-
-        </div>
 
 
 

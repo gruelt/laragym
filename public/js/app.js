@@ -84689,7 +84689,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -84766,6 +84766,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         debug: {
             type: Boolean,
             default: false
+        },
+        equipe_id: {
+            default: null,
+            type: Number
         }
     },
     methods: {
@@ -84784,16 +84788,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return _this.gyms = response.data;
             });
         },
+        updateteam: function updateteam() {
+            var _this2 = this;
+
+            axios.get('/api/admin/equipes/' + this.equipe_id + '/members').then(function (response) {
+                return _this2.gyms = response.data;
+            });
+        },
         updatesaison: function updatesaison(saison_id) {
             this.saison_id = saison_id;
             this.update();
         },
 
         getcurrentseason: function getcurrentseason() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.get('/api/saisons/actuelle').then(function (response) {
-                return _this2.saison_id = response.data;
+                return _this3.saison_id = response.data;
             });
         }
 
@@ -84801,6 +84812,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+
             saison_id: "9999",
             gyms: [],
             withphotos: false,
@@ -84856,18 +84868,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.getcurrentseason();
-        this.update();
+        if (this.equipe_id == null) {
+            this.getcurrentseason();
+            this.update();
+        } else {
+            this.withphotos = true;
+            this.updateteam();
+        }
     },
 
 
     computed: {
         filteredgyms: function filteredgyms() {
-            var _this3 = this;
+            var _this4 = this;
 
             var filtered = this.gyms.filter(function (item) {
-                return Object.keys(_this3.filters).every(function (key) {
-                    return String(item[key]).toLowerCase().includes(_this3.filters[key].toLowerCase());
+                return Object.keys(_this4.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this4.filters[key].toLowerCase());
                 });
             });
             return filtered.length > 0 ? filtered : [{
@@ -84891,7 +84908,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("saison-select"),
+      _vm.equipe_id == _vm.Null ? _c("saison-select") : _vm._e(),
       _vm._v(" "),
       _c(
         "button",
@@ -113301,6 +113318,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -113352,109 +113371,220 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid d-flex h-100" }, [
-    _c("div", { staticClass: "card col-md-4 col-xs-12" }, [
+  return _c(
+    "b-container",
+    { staticClass: "bv-example-row", attrs: { fluid: "" } },
+    [
       _c(
-        "div",
-        { staticClass: "col-md-4 col-sm-12 text-left flex-fill" },
+        "b-row",
         [
-          _c("h2", { staticClass: "card-title" }, [
-            _vm._v(
-              "\n                                " +
-                _vm._s(_vm.equipe.nom) +
-                "\n                            "
-            )
-          ]),
+          _c(
+            "b-col",
+            { attrs: { sm: "12", lg: "2" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: {
+                    title: _vm.equipe.nom,
+                    "img-src": "/images/team.jpg",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-text",
+                    [
+                      _c("h5", {
+                        domProps: {
+                          innerHTML: _vm._s(_vm.equipe.genre_libelle)
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h5", [_vm._v(_vm._s(_vm.equipe.categorie))]),
+                      _vm._v(" "),
+                      _c("H3", [
+                        _vm._v(_vm._s(_vm.equipe.nbgyms.length) + " Membres")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("h5", {
-            domProps: { innerHTML: _vm._s(_vm.equipe.genre_libelle) }
-          }),
+          _c(
+            "b-col",
+            { attrs: { lg: "3", sm: "12" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: {
+                    title: "Horaires",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-text",
+                    [
+                      _c(
+                        "b-list-group",
+                        [
+                          _c("b-list-group-item", [_vm._v("Cras justo odio")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Dapibus ac facilisis in")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [_vm._v("Morbi leo risus")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Porta ac consectetur ac")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Vestibulum at eros")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("h5", [_vm._v(_vm._s(_vm.equipe.categorie))]),
+          _c(
+            "b-col",
+            { attrs: { lg: "3", sm: "6" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: {
+                    title: "Entraineur(s)",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-text",
+                    [
+                      _c(
+                        "b-list-group",
+                        [
+                          _c("b-list-group-item", [_vm._v("Cras justo odio")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Dapibus ac facilisis in")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [_vm._v("Morbi leo risus")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Porta ac consectetur ac")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Vestibulum at eros")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("H3", [_vm._v(_vm._s(_vm.equipe.nbgyms.length) + " Gyms")])
+          _c(
+            "b-col",
+            { attrs: { lg: "3", sm: "6" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: {
+                    title: "Compétitions",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-text",
+                    [
+                      _c(
+                        "b-list-group",
+                        [
+                          _c("b-list-group-item", [_vm._v("Cras justo odio")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Dapibus ac facilisis in")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [_vm._v("Morbi leo risus")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Porta ac consectetur ac")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Vestibulum at eros")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
         1
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v("\n\n\n                                <\n\n\n    ")
-  ])
+      ),
+      _vm._v(" "),
+      _c(
+        "b-col",
+        { attrs: { col: "12" } },
+        [_c("gymnaste-table", { attrs: { equipe_id: _vm.equipe_id } })],
+        1
+      ),
+      _vm._v(" "),
+      _c("b-row")
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card col-md-4 col-sm-12" }, [
-      _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
-        _c("h3", { staticClass: "card-title" }, [
-          _vm._v(
-            "\n                                Horaires\n                            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card col-md-4 col-sm-12" }, [
-      _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
-        _c("h3", { staticClass: "card-title" }, [
-          _vm._v(
-            "\n                                Coach\n                            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card col-md-12" }, [
-      _c("div", { staticClass: "col-md-4 col-sm-12 text-left flex-fill" }, [
-        _c("h3", { staticClass: "card-title" }, [
-          _vm._v("\n                Coach\n            ")
-        ]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v("Lundi")]),
-        _c("br")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
