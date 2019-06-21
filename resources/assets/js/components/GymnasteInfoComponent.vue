@@ -8,27 +8,18 @@
         <b-row>
             <!--Photo-->
             <b-col sm="12" lg="2">
-                <b-card
-
-
-
-
-
-                        tag="article"
+                <b-card tag="article"
 
                         class="mb-12 text-center"
                 >
                     <b-card-text>
                         <b-img thumbnail fluid :src="gym.photo_url" alt="ID" width="180"></b-img>
                         <b-button v-b-modal.photoupload variant="success">Envoyer</b-button>
-                        <b-button v-if="admin" variant="success" :href="'/inscription/gymnastes/'+ gym.id+'/photo/take'">Webcam</b-button>
-                        <H3><span v-if="(admin)"><b-button :href="'/inscription/gymnastes/'+ gym.id+'/photo/crop'" variant="info">Recadrer</b-button></span></H3>
-
-
-
-
-
-
+                        <b-button v-if="admin" variant="success"
+                                  :href="'/inscription/gymnastes/'+ gym.id+'/photo/take'">Webcam
+                        </b-button>
+                        <H3><span v-if="(admin)"><b-button :href="'/inscription/gymnastes/'+ gym.id+'/photo/crop'"
+                                                           variant="info">Recadrer</b-button></span></H3>
 
 
                     </b-card-text>
@@ -37,11 +28,14 @@
                 </b-card>
             </b-col>
 
-
-
+        </b-row>
+        test col 2
+        <b-row>
 
 
         </b-row>
+
+
 
 
 
