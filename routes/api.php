@@ -94,3 +94,4 @@ Route::get('/saisons','SaisonsController@allplucked');
 
 Route::get('/saisons/actuelle','SaisonsController@current');
 Route::get('/saisons/ouverte','SaisonsController@opened');
+

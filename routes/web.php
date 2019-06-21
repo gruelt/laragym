@@ -186,6 +186,9 @@ Route::post('/gymnastes/{id}/photo64', 'GymnastesController@uploadPhoto64');
 Route::post('/gymnastes/{id}/photo64/{redirect}', 'GymnastesController@uploadPhoto64');
 Route::post('/gymnastes/{id}/certif', 'GymnastesController@uploadCertif');
 
+//Montre l'equipe
+Route::get('/equipes/{id}', 'EquipesController@showequipe')->middleware(['privileges:admin']);
+
 Route::get('/noie',  function () {
     return view('pages.noie');
 });
