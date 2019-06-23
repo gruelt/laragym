@@ -1,7 +1,7 @@
 <div>
     <b-navbar toggleable="lg"  type="light" style="background-color: #e74c3c;" > <!--  #e74c3c; -->
-        <b-navbar-brand href="/home"><img src="/images/gamn.png" class="h-100">{{env('APP_NAME')}}<img src="/images/gafn.png" class="h-100"></b-navbar-brand>
-
+        {{--<b-navbar-brand href="/home"><img src="/images/gamn.png" class="h-100">{{env('APP_NAME')}}<img src="/images/gafn.png" class="h-100"></b-navbar-brand>--}}
+        <b-img src="/images/full.png" fluid thumbnail  width="100px" alt="Responsive image"></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
