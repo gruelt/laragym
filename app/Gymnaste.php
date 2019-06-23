@@ -55,9 +55,14 @@ class Gymnaste extends Model
         $s = new Saison;
         $saison = $s->inscriptionOuverte();
 
-        $tarif = $this->saisons()->find($saison->id)->pivot->paye;
+        $tarif = $this->saisons()->find($saison->id);
 
-        return $tarif;
+        if ($tarif == null )
+        {
+            return 0;
+        }
+
+        return $tarif->pivot->paye;
     }
 
     //pour un gymnaste , on retoruve combien doit être paye par le responsable pour tous ces gymnastes
