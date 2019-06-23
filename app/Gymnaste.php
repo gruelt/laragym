@@ -82,4 +82,10 @@ class Gymnaste extends Model
 
     }
 
+    //récupère les horaires du gymnaste
+    public function horaires()
+    {
+        //TODO recup liste horaires
+    }
+
 }

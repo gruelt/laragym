@@ -38,4 +38,10 @@ class Equipe extends Model
         return $this->belongsToMany('App\User','coach_equipe');
     }
 
+    //récupère les horaires de lequipe
+    public function horaires()
+    {
+        return $this->hasMany('App\Horaire')->with('jour');
+    }
+
 }

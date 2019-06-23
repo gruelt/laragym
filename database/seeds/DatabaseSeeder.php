@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EquipesTableSeeder::class);
         $this->call(GymnastesTableSeeder::class);
         $this->call(SaisonTableSeeder::class);
+        $this->call(JoursTableSeeder::class);
+        $this->call(HorairesTableSeeder::class);
         //$this->call(EquipesGymnastesTableSeeder::class);
 
         if(env('DB_CONNECTION')!='sqlite') {

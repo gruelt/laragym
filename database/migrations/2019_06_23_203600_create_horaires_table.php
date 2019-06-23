@@ -15,7 +15,7 @@ class CreateHorairesTable extends Migration
     {
         Schema::create('horaires', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('jour');
+            $table->string('jour_id');
             $table->integer('heure_debut');
             $table->integer('minute_debut');
             $table->integer('heure_fin');
@@ -24,8 +24,13 @@ class CreateHorairesTable extends Migration
             $table->timestamps();
 
 
-            #Fk vers la table gymnastes
+            #Fk vers la table equipes
             $table->foreign('equipe_id')->references('id')->on('equipes')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            #Fk vers la table jours
+            $table->foreign('jour_id')->references('id')->on('jours')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 

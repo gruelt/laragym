@@ -32,29 +32,7 @@
             <!--Horaires-->
             <b-col lg="3" sm="12">
 
-                <b-card
-                        title="Horaires"
-
-                        img-alt="Image"
-                        img-top
-                        tag="article"
-
-                        class="mb-12"
-                >
-                    <b-card-text>
-
-
-                        <b-list-group>
-                            <b-list-group-item>Cras justo odio</b-list-group-item>
-                            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-                            <b-list-group-item>Morbi leo risus</b-list-group-item>
-                            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-                            <b-list-group-item>Vestibulum at eros</b-list-group-item>
-                        </b-list-group>
-                    </b-card-text>
-
-
-                </b-card>
+                <horaires :horaires="equipe.horaires"></horaires>
             </b-col>
             <!--Coach(s)-->
 
@@ -124,7 +102,7 @@
                 </b-col>
 
         <b-row>
-
+            {{equipe}}
         </b-row>
 
     </b-container>

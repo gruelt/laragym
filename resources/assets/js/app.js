@@ -32,6 +32,8 @@ Vue.component('equipe-table', require('./components/EquipeTableComponent.vue'));
 
 Vue.component('equipe-info', require('./components/EquipeInfoComponent.vue'));
 
+Vue.component('horaires', require('./components/HorairesComponent.vue'));
+
 
 
 

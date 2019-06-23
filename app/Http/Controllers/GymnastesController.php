@@ -164,6 +164,7 @@ class GymnastesController extends Controller
      */
     public function formatGyms($gyms,$extend=1)
     {
+        $return=array();
         foreach ($gyms as $key => $gymnaste)
         {
 

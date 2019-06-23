@@ -1,0 +1,3 @@
+id,jour_id,heure_debut,minute_debut,heure_fin,minute_fin,equipe_id
+1,1,18,0,20,0,5
+2,2,18,15,20,15,5

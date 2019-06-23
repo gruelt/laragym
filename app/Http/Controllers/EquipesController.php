@@ -65,6 +65,12 @@ class EquipesController extends Controller
             }
             $return[$key]['coach']=$coachz;
 
+            /** Horaires */
+            $horaires=$equipe->horaires;
+
+            $return[$key]['horaires']=$horaires;
+
+
 
 
 
