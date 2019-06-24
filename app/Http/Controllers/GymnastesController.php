@@ -9,6 +9,7 @@ use App\Gymnaste;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Array_;
 use App\User;
+use App\Equipe;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 
@@ -180,12 +181,18 @@ class GymnastesController extends Controller
 
             //Gestion des Niveaux en display html et brut
             $noniv=1;
+            $horaires=array();
             foreach($niveaux as $niveau)
             {
                 $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
                 $return[$key]['niveaux_tab'][$niveau['id']]=$niveau->nom;
                 $noniv=0;
+
+                $horaires[$niveau['nom']]= Equipe::find($niveau->id)->horaires;
+
             }
+
+            $return[$key]['horaires']=$horaires;
 
             $return[$key]['niveaux']=$returnniv;
 

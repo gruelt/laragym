@@ -1,6 +1,6 @@
 <template>
     <b-card
-            title="Horaires"
+            :title="'Horaires ' + titre"
 
             img-alt="Image"
             img-top
@@ -9,7 +9,6 @@
             class="mb-12"
     >
         <b-card-text>
-
 
             <b-list-group>
                 <b-list-group-item v-for="horaire in horaires">{{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}}</b-list-group-item>
@@ -24,7 +23,11 @@
 <script>
     export default {
         props:{
-            horaires:[]
+            horaires:[],
+            titre:{
+                type: String,
+                default: ""
+            }
         },
         mounted() {
 

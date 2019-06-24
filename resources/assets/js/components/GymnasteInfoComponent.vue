@@ -171,6 +171,26 @@
 
 
 
+                <!--Horaires-->
+                <b-card tag="article"
+
+                        class="mb-12 "
+                >
+                    <b-card-text>
+
+
+                        <span v-for="(horaire,index) in gym.horaires"><horaires :horaires="horaire" :titre="index"></horaires></span>
+                        <!--<horaires :horaire="horaires"></horaires>-->
+
+
+                    </b-card-text>
+
+
+                </b-card>
+                <!--fin horaires-->
+
+
+
 
 
 
