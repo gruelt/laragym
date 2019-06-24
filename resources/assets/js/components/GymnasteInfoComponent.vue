@@ -302,7 +302,7 @@
 
 
         </b-row>
-        test col 2
+        
         <b-row>
 
 

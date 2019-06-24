@@ -575,7 +575,7 @@ class GymnastesController extends Controller
     {
         Gymnaste::find($gym_id)->equipesall()->sync($request->equipes);
 
-        Mail::send(new \App\Mail\AffectationEquipe(Gymnaste::find($gym_id)));
+        //Mail::send(new \App\Mail\AffectationEquipe(Gymnaste::find($gym_id)));
 
 
         return 1;
