@@ -83725,6 +83725,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84227,116 +84317,6 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _vm.admin
-                    ? _c(
-                        "b-card",
-                        {
-                          staticClass: "mb-12 ",
-                          attrs: { tag: "validations" }
-                        },
-                        [
-                          _c(
-                            "b-card-text",
-                            [
-                              _c("h2", [
-                                _vm._v(
-                                  "\n                                    Tarifs/Paiements\n                                "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm.admin && _vm.gym.problemes.paiement
-                                ? _c(
-                                    "span",
-                                    [
-                                      _c(
-                                        "b-button",
-                                        {
-                                          attrs: { variant: "success" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.validpaiement(
-                                                _vm.gym.tarif
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Valider le tarif de " +
-                                              _vm._s(_vm.gym.tarif) +
-                                              "€"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "b-button",
-                                        {
-                                          attrs: { variant: "success" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.validpaiement(
-                                                _vm.gym.tarif - 10
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Valider le tarif de " +
-                                              _vm._s(_vm.gym.tarif - 10) +
-                                              "€ (Réduction Familiale à partir du 2eme inscrit)"
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                : _vm.admin && !_vm.gym.problemes.Groupe
-                                ? _c(
-                                    "b-button",
-                                    {
-                                      attrs: { variant: "info" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.annulpaiement()
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "Annuler le tarif enregistré : " +
-                                          _vm._s(_vm.gym.paye) +
-                                          " €"
-                                      )
-                                    ]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("span", [
-                                _vm._v(
-                                  "Total Actuel à régler du responsable : " +
-                                    _vm._s(_vm.gym.totalapayer) +
-                                    " €"
-                                )
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-col",
-                { attrs: { lg: "3", xs: "12" } },
-                [
                   _c(
                     "b-card",
                     { staticClass: "mb-12 ", attrs: { tag: "article" } },
@@ -84426,6 +84406,254 @@ var render = function() {
                     ],
                     1
                   )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { lg: "3", xs: "12" } },
+                [
+                  _vm.admin
+                    ? _c(
+                        "b-card",
+                        { staticClass: "mb-12 ", attrs: { tag: "Saisons" } },
+                        [
+                          _c("b-card-text", [
+                            _c("h3", [_vm._v("Saisons")]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-8 col-sm-12 text-right" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "list-group" },
+                                  _vm._l(_vm.gym.saisons, function(saison) {
+                                    return _c(
+                                      "li",
+                                      { staticClass: "list-inline" },
+                                      [
+                                        saison.pivot.complet == 1
+                                          ? _c(
+                                              "b-button",
+                                              { attrs: { variant: "success" } },
+                                              [
+                                                _vm._v(
+                                                  "\n                                        " +
+                                                    _vm._s(saison.nom) +
+                                                    " "
+                                                ),
+                                                _c(
+                                                  "b-badge",
+                                                  {
+                                                    attrs: { variant: "light" }
+                                                  },
+                                                  [_vm._v("Complet")]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          : _c(
+                                              "b-button",
+                                              { attrs: { variant: "info" } },
+                                              [
+                                                _vm._v(
+                                                  "\n                                        " +
+                                                    _vm._s(saison.nom) +
+                                                    " "
+                                                ),
+                                                _c(
+                                                  "b-badge",
+                                                  {
+                                                    attrs: { variant: "light" }
+                                                  },
+                                                  [_vm._v("Préinscrit")]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm._l(
+                                                  _vm.gym.problemes,
+                                                  function(probleme, index) {
+                                                    return _c(
+                                                      "span",
+                                                      {
+                                                        key: probleme,
+                                                        attrs: {
+                                                          variant: "light"
+                                                        }
+                                                      },
+                                                      _vm._l(probleme, function(
+                                                        subprobleme,
+                                                        index2
+                                                      ) {
+                                                        return _c(
+                                                          "b-badge",
+                                                          {
+                                                            key: subprobleme,
+                                                            attrs: {
+                                                              variant:
+                                                                subprobleme.class
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                subprobleme.text
+                                                              )
+                                                            )
+                                                          ]
+                                                        )
+                                                      }),
+                                                      1
+                                                    )
+                                                  }
+                                                )
+                                              ],
+                                              2
+                                            )
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                  0
+                                ),
+                                _vm._v(" "),
+                                _vm.gym.reinscrit.statut == 0 &&
+                                _vm.gym.reinscrit.saison != 0
+                                  ? _c(
+                                      "b-button",
+                                      {
+                                        attrs: {
+                                          href:
+                                            "/responsable/gymnaste/" +
+                                            _vm.gym.id +
+                                            "/reinscrire/" +
+                                            _vm.gym.reinscrit.saison.id,
+                                          variant: "warning"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                + Re-inscrire pour " +
+                                            _vm._s(
+                                              _vm.gym.reinscrit.saison.nom
+                                            ) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.admin
+                    ? _c(
+                        "b-card",
+                        {
+                          staticClass: "mb-12 ",
+                          attrs: { tag: "validations" }
+                        },
+                        [
+                          _c(
+                            "b-card-text",
+                            [
+                              _c("h2", [
+                                _vm._v(
+                                  "\n                            Tarifs/Paiements\n                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm.admin && _vm.gym.problemes.paiement
+                                ? _c(
+                                    "span",
+                                    [
+                                      _c(
+                                        "b-button",
+                                        {
+                                          attrs: { variant: "success" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.validpaiement(
+                                                _vm.gym.tarif
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Valider le tarif de " +
+                                              _vm._s(_vm.gym.tarif) +
+                                              "€"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "b-button",
+                                        {
+                                          attrs: { variant: "success" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.validpaiement(
+                                                _vm.gym.tarif - 10
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Valider le tarif de " +
+                                              _vm._s(_vm.gym.tarif - 10) +
+                                              "€ (Réduction Familiale à partir du 2eme inscrit)"
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm.admin && !_vm.gym.problemes.Groupe
+                                ? _c(
+                                    "b-button",
+                                    {
+                                      attrs: { variant: "info" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.annulpaiement()
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "Annuler le tarif enregistré : " +
+                                          _vm._s(_vm.gym.paye) +
+                                          " €"
+                                      )
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "Total Actuel à régler du responsable : " +
+                                    _vm._s(_vm.gym.totalapayer) +
+                                    " €"
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ],
                 1
               ),

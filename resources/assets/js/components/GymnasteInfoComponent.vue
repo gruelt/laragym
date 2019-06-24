@@ -114,6 +114,13 @@
 
             <!-- Fiche synthese -->
             <b-col lg="3" xs="12">
+
+
+
+
+
+
+
                         <b-card tag="article"
 
                                 class="mb-12 "
@@ -136,35 +143,11 @@
 
                         </b-card>
 
-                        <b-card v-if="admin" tag="validations"
-
-                                class="mb-12 "
-                        >
-                            <b-card-text>
-                                <h2 >
-                                    Tarifs/Paiements
-                                </h2>
-
-                                <span  v-if="admin && gym.problemes.paiement">
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
-                            </span>
-                                <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré : {{gym.paye}} €</b-button>
-<br>
-                                <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
 
 
 
-                            </b-card-text>
 
 
-                </b-card>
-            </b-col>
-
-            <!--Fin  Fiche synthese -->
-
-            <!-- fiche niveau/groupe -->
-            <b-col lg="3" xs="12">
                 <b-card tag="article"
 
                         class="mb-12 "
@@ -184,6 +167,113 @@
 
 
                 </b-card>
+
+
+
+
+
+
+
+            </b-col>
+
+            <!--Fin  Fiche synthese -->
+
+            <!-- fiche niveau/groupe -->
+            <b-col lg="3" xs="12">
+
+
+
+
+
+
+                <b-card v-if="admin" tag="Saisons"
+
+                        class="mb-12 "
+                >
+                    <b-card-text>
+
+
+
+
+
+
+
+                        <h3>Saisons</h3>
+
+
+                        <div class="col-md-8 col-sm-12 text-right">
+                            <div class="list-group" >
+
+                                <li class="list-inline" v-for="saison in gym.saisons ">
+                                    <b-button v-if="saison.pivot.complet ==1"  variant="success">
+                                        {{saison.nom}} <b-badge variant="light">Complet</b-badge>
+                                    </b-button>
+                                    <b-button v-else  variant="info">
+                                        {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
+                                        <span v-for="(probleme, index) in gym.problemes" variant="light" v-bind:key="probleme">
+
+                                        <b-badge  v-for="(subprobleme, index2) in probleme" :variant="subprobleme.class" :key="subprobleme">{{subprobleme.text}}</b-badge>
+                                    </span>
+                                    </b-button>
+
+                                </li>
+
+
+                            </div>
+                            <b-button v-if="gym.reinscrit.statut ==0 && gym.reinscrit.saison !=0 "  :href="'/responsable/gymnaste/' + gym.id +'/reinscrire/'+ gym.reinscrit.saison.id" variant="warning">
+                                + Re-inscrire pour {{gym.reinscrit.saison.nom}}
+                            </b-button>
+                        </div>
+
+
+
+
+
+
+
+                    </b-card-text>
+
+
+                </b-card>
+
+
+
+
+                <b-card v-if="admin" tag="validations"
+
+                        class="mb-12 "
+                >
+                    <b-card-text>
+                        <h2 >
+                            Tarifs/Paiements
+                        </h2>
+
+                        <span  v-if="admin && gym.problemes.paiement">
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
+                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
+                            </span>
+                        <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré : {{gym.paye}} €</b-button>
+                        <br>
+                        <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
+
+
+
+                    </b-card-text>
+
+
+                </b-card>
+
+
+
+
+
+
+
+
+
+
+
+
             </b-col>
             <!-- fin fiche niveau/groupe-->
 
