@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Array_;
 use App\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class GymnastesController extends Controller
 {
@@ -573,6 +574,9 @@ class GymnastesController extends Controller
     public function setgymequipesbyseason($gym_id,$saison_id,Request $request)
     {
         Gymnaste::find($gym_id)->equipesall()->sync($request->equipes);
+
+        Mail::send(new \App\Mail\AffectationEquipe(Gymnaste::find($gym_id)));
+
 
         return 1;
     }
