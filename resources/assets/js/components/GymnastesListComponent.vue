@@ -39,7 +39,7 @@
         data() {
             return {
 
-                gyms: [],
+                gyms: null,
 
 
             }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use JeroenZwart\CsvSeeder\CsvSeeder;
+use App\Horaire;
 
 class HorairesTableSeeder extends  CsvSeeder
 {
@@ -27,6 +28,7 @@ class HorairesTableSeeder extends  CsvSeeder
                  */
                 public function run()
             {
+                Horaire::truncate();
                 DB::disableQueryLog();
                 parent::run();
             }
