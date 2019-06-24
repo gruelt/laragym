@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Gymnaste;
 
 class AffectationEquipe extends Mailable
 {
@@ -20,17 +21,19 @@ class AffectationEquipe extends Mailable
     public $nom;
     public $prenom;
     public $id;
+    public $mailresponsable;
 
 
     public function __construct( $gym)
     {
         $gymnaste = json_decode($gym);
 
-        print $gymnaste->nom;
+        print $gym;
 
         $this->nom = $gymnaste->nom;
         $this->prenom = $gymnaste->prenom;
         $this->id = $gymnaste->id;
+        $this->email = Gymnaste::find($gymnaste->id)->responsable->email;
     }
 
     /**
@@ -40,6 +43,6 @@ class AffectationEquipe extends Mailable
      */
     public function build()
     {
-        return $this->subject('[FJEP Gymnastique] Affectation de groupe')->to('gruelt@gmail.com')->view('mails.affectation');
+        return $this->subject('[FJEP Gymnastique] Affectation de groupe')->to($this->email)->view('mails.affectation');
     }
 }
