@@ -424,6 +424,10 @@ class GymnastesController extends Controller
         //dd($gym.$id);
         $filename = $id."_".$gym->nom."_".$gym->prenom.".".$ext;
 
+
+        //Supprime les anciennes
+        Storage::delete('public/'.$gym->photo);
+
         //Stocke en local
         $path = $request->laphoto->storeAs('', $filename, 'public');
 
@@ -454,6 +458,9 @@ class GymnastesController extends Controller
         $gym = Gymnaste::find($id);
         //dd($gym.$id);
         $filename = $id."_".$gym->nom."_".$gym->prenom.".".$ext;
+
+        //Supprime les anciennes
+        Storage::delete('public/'.$gym->photo);
 
         //Stocke en local
         //$path = $data->storeAs('', $filename, 'public');
@@ -500,6 +507,9 @@ class GymnastesController extends Controller
         $gym = Gymnaste::find($id);
         //dd($gym.$id);
         $filename = $id."_".$gym->nom."_".$gym->prenom.".".$ext;
+
+        //Supprime les anciennes
+        Storage::delete('public/'.$gym->certificat_medical);
 
         //Stocke en local
         $path = $request->lecertif->storeAs('certificats', $filename, 'public');
