@@ -138,6 +138,8 @@
                                     <b-badge v-if="gym.genre.id === 2" variant="warning">{{gym.genre.description}}</b-badge>
                                 </H3>
 
+                                <span v-if="gym.commentaire"><b-badge variant="danger">{{gym.commentaire}}</b-badge></span>
+
                             </b-card-text>
 
 
@@ -312,6 +314,7 @@
                         {{gym.responsable.email}} &nbsp;<span class="fa fa-envelope mr-3"></span><br>
                         0{{gym.responsable.telephone1}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
                         0{{gym.responsable.telephone2}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
+                        {{gym.responsable.profession}} &nbsp;<span class="fa fa-thumbs-up mr-3"></span><br>
 
                     </b-card-text>
 

@@ -47,15 +47,23 @@
                         class="mb-12"
                 >
                     <b-card-text>
+                        <span v-if="(admin)"><b-button v-b-modal.coachs variant="success" size="sm">Gérer</b-button></span><br>
+
+                        <span v-html="equipe.coach"></span>
 
 
-                        <b-list-group>
-                            <b-list-group-item>Cras justo odio</b-list-group-item>
-                            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-                            <b-list-group-item>Morbi leo risus</b-list-group-item>
-                            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-                            <b-list-group-item>Vestibulum at eros</b-list-group-item>
-                        </b-list-group>
+
+
+
+                        <b-modal id="coachs"  hide-footer title="Coachs">
+                            <coach-equipe :equipe_id="equipe.id"></coach-equipe>
+                            <b-button @click="hideModalcoach">Fermer</b-button>
+
+                        </b-modal>
+
+
+
+
                     </b-card-text>
 
 
@@ -102,7 +110,7 @@
                 </b-col>
 
         <b-row>
-            {{equipe}}
+
         </b-row>
 
     </b-container>
@@ -137,6 +145,10 @@
             gym:{
                 type: Object
             },
+            admin:{
+                type:Boolean,
+                default:false
+            }
 
 
         },
@@ -164,7 +176,11 @@
                  ;
 
 
-            }
+            },
+            hideModalcoach() {
+                this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
+                location.reload();
+            },
 
         },
 

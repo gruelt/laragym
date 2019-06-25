@@ -12,7 +12,7 @@
 
 
 
-    <equipe-info :equipe_id="{{$equipe_id}}"></equipe-info>
+    <equipe-info :equipe_id="{{$equipe_id}}" :admin="true"></equipe-info>
 
 
 

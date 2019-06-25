@@ -182,17 +182,27 @@ class GymnastesController extends Controller
             //Gestion des Niveaux en display html et brut
             $noniv=1;
             $horaires=array();
+            $horairescompact="";
             foreach($niveaux as $niveau)
             {
                 $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
                 $return[$key]['niveaux_tab'][$niveau['id']]=$niveau->nom;
                 $noniv=0;
 
-                $horaires[$niveau['nom']]= Equipe::find($niveau->id)->horaires;
+                $ho=Equipe::find($niveau->id);
+
+                $horaires[$niveau['nom']]= $ho->horaires;
+
+                foreach($ho->horaires as  $horaire)
+                {
+                    $horairescompact.=$horaire->jour->nom_jour."<br>" ;//.$horaire->heure_debut."h".$horaire->minute_debut;
+                }
 
             }
 
             $return[$key]['horaires']=$horaires;
+
+            $return[$key]['horairescompact']=$horairescompact;
 
             $return[$key]['niveaux']=$returnniv;
 

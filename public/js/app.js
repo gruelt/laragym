@@ -32592,6 +32592,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-table', __webpac
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-equipe', __webpack_require__(272));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('coach-equipe', __webpack_require__(642));
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('equipe-table', __webpack_require__(275));
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('equipe-info', __webpack_require__(280));
@@ -83835,6 +83837,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84329,7 +84334,21 @@ var render = function() {
                                 : _vm._e()
                             ],
                             1
-                          )
+                          ),
+                          _vm._v(" "),
+                          _vm.gym.commentaire
+                            ? _c(
+                                "span",
+                                [
+                                  _c(
+                                    "b-badge",
+                                    { attrs: { variant: "danger" } },
+                                    [_vm._v(_vm._s(_vm.gym.commentaire))]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
                         ],
                         1
                       )
@@ -84755,6 +84774,13 @@ var render = function() {
                                 "  "
                             ),
                             _c("span", { staticClass: "fa fa-phone mr-3" }),
+                            _c("br"),
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(_vm.gym.responsable.profession) +
+                                "  "
+                            ),
+                            _c("span", { staticClass: "fa fa-thumbs-up mr-3" }),
                             _c("br")
                           ])
                         ],
@@ -84905,7 +84931,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -84973,6 +84999,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84981,7 +85010,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         debug: {
             type: Boolean,
-            default: false
+            default: true
         },
         equipe_id: {
             default: null,
@@ -85022,8 +85051,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/saisons/actuelle').then(function (response) {
                 return _this3.saison_id = response.data;
             });
+        },
+        togglehoraires: function togglehoraires() {
+            this.withhoraires = !this.withhoraires;
         }
-
     },
 
     data: function data() {
@@ -85037,6 +85068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 issuedBy: '',
                 issuedTo: ''
             },
+            withhoraires: false,
             fields: [{
                 key: 'photo_url',
                 label: 'Photo',
@@ -85068,17 +85100,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // Variant applies to the whole column, including the header and footer
 
             }, {
+                key: 'horairescompact',
+                label: 'Horaires',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
                 key: 'problemes_short',
                 label: 'Problèmes',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
-            }, {
-                key: 'url',
-                label: 'Consulter'
-
-                // Variant applies to the whole column, including the header and footer
-
+                // ,
+                // {
+                //     key: 'url',
+                //     label: 'Consulter',
+                //
+                //     // Variant applies to the whole column, including the header and footer
+                //
+                // }
             }]
 
         };
@@ -85136,7 +85176,20 @@ var render = function() {
           },
           on: { click: _vm.togglephotos }
         },
-        [_vm._v("Affichage Photos")]
+        [_vm._v("Photos")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          class: {
+            "btn-primary": _vm.withhoraires,
+            "btn-secondary": !_vm.withhoraires
+          },
+          on: { click: _vm.togglehoraires }
+        },
+        [_vm._v("Horaires")]
       ),
       _vm._v(" "),
       _c("b-table", {
@@ -85150,114 +85203,128 @@ var render = function() {
           "primary-key": "a",
           "tbody-transition-props": _vm.transProps
         },
-        scopedSlots: _vm._u([
-          {
-            key: "nom",
-            fn: function(data) {
-              return _c("span", {}, [
-                _c(
-                  "a",
-                  { attrs: { href: "/admin/gymnastes/" + data.item.id } },
-                  [_vm._v(_vm._s(data.value))]
-                )
-              ])
-            }
-          },
-          {
-            key: "top-row",
-            fn: function(ref) {
-              var fields = ref.fields
-              return _vm._l(fields, function(field) {
-                return _c("td", { key: field.key }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.filters[field.key],
-                        expression: "filters[field.key]"
-                      }
-                    ],
-                    attrs: { placeholder: field.label },
-                    domProps: { value: _vm.filters[field.key] },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.filters, field.key, $event.target.value)
-                      }
-                    }
-                  })
+        scopedSlots: _vm._u(
+          [
+            {
+              key: "nom",
+              fn: function(data) {
+                return _c("span", {}, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                    [_vm._v(_vm._s(data.value))]
+                  )
                 ])
-              })
-            }
-          },
-          {
-            key: "photo_url",
-            fn: function(data) {
-              return _c("span", {}, [
-                _c(
-                  "a",
-                  { attrs: { href: "/admin/gymnastes/" + data.item.id } },
-                  [
-                    _vm.withphotos
-                      ? _c("img", {
-                          attrs: {
-                            src: data.value,
-                            width: "120",
-                            height: "160",
-                            alt: ""
+              }
+            },
+            {
+              key: "top-row",
+              fn: function(ref) {
+                var fields = ref.fields
+                return _vm._l(fields, function(field) {
+                  return _c("td", { key: field.key }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters[field.key],
+                          expression: "filters[field.key]"
+                        }
+                      ],
+                      attrs: { placeholder: field.label },
+                      domProps: { value: _vm.filters[field.key] },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        })
-                      : _vm._e()
-                  ]
+                          _vm.$set(_vm.filters, field.key, $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                })
+              }
+            },
+            {
+              key: "photo_url",
+              fn: function(data) {
+                return _c("span", {}, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                    [
+                      _vm.withphotos
+                        ? _c("img", {
+                            attrs: {
+                              src: data.value,
+                              width: "120",
+                              height: "160",
+                              alt: ""
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  )
+                ])
+              }
+            },
+            {
+              key: "problemes",
+              fn: function(data) {
+                return _c(
+                  "span",
+                  {},
+                  [
+                    _vm._l(data.value, function(prob, index) {
+                      return _c(
+                        "b-button",
+                        { key: index, attrs: { variant: "danger" } },
+                        [_vm._v(_vm._s(index))]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm._l(data.value, function(prob, index2) {
+                      return _c("h1", { key: index2 }, [_vm._v(_vm._s(index2))])
+                    })
+                  ],
+                  2
                 )
-              ])
+              }
+            },
+            {
+              key: "niveaux",
+              fn: function(data) {
+                return _c("span", {
+                  domProps: { innerHTML: _vm._s(data.value) }
+                })
+              }
+            },
+            {
+              key: "horairescompact",
+              fn: function(data) {
+                return _vm.withhoraires
+                  ? _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
+                  : _vm._e()
+              }
+            },
+            {
+              key: "url",
+              fn: function(data) {
+                return _c("span", {}, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                    [_vm._v("Consulter")]
+                  )
+                ])
+              }
             }
-          },
-          {
-            key: "problemes",
-            fn: function(data) {
-              return _c(
-                "span",
-                {},
-                [
-                  _vm._l(data.value, function(prob, index) {
-                    return _c(
-                      "b-button",
-                      { key: index, attrs: { variant: "danger" } },
-                      [_vm._v(_vm._s(index))]
-                    )
-                  }),
-                  _vm._v(" "),
-                  _vm._l(data.value, function(prob, index2) {
-                    return _c("h1", { key: index2 }, [_vm._v(_vm._s(index2))])
-                  })
-                ],
-                2
-              )
-            }
-          },
-          {
-            key: "niveaux",
-            fn: function(data) {
-              return _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
-            }
-          },
-          {
-            key: "url",
-            fn: function(data) {
-              return _c("span", {}, [
-                _c(
-                  "a",
-                  { attrs: { href: "/admin/gymnastes/" + data.item.id } },
-                  [_vm._v("Consulter")]
-                )
-              ])
-            }
-          }
-        ])
+          ],
+          null,
+          true
+        )
       }),
       _vm._v(" "),
       _vm.debug ? _c("span", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
@@ -85860,19 +85927,21 @@ var render = function() {
                   _c(
                     "b-list-group",
                     _vm._l(data.value, function(horaire) {
-                      return _c("b-list-group-item", [
-                        _vm._v(
-                          _vm._s(horaire.jour.nom_jour) +
-                            " : " +
-                            _vm._s(horaire.heure_debut) +
-                            "h" +
-                            _vm._s(horaire.minute_debut) +
-                            " / " +
-                            _vm._s(horaire.heure_fin) +
-                            "h" +
-                            _vm._s(horaire.minute_fin)
-                        )
-                      ])
+                      return _vm.withhoraires
+                        ? _c("b-list-group-item", [
+                            _vm._v(
+                              _vm._s(horaire.jour.nom_jour) +
+                                " : " +
+                                _vm._s(horaire.heure_debut) +
+                                "h" +
+                                _vm._s(horaire.minute_debut) +
+                                " / " +
+                                _vm._s(horaire.heure_fin) +
+                                "h" +
+                                _vm._s(horaire.minute_fin)
+                            )
+                          ])
+                        : _vm._e()
                     }),
                     1
                   )
@@ -86119,6 +86188,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -86131,6 +86208,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         gym: {
             type: Object
+        },
+        admin: {
+            type: Boolean,
+            default: false
         }
 
     },
@@ -86152,8 +86233,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/admin/equipes/' + this.equipe_id).then(function (response) {
                 return _this.equipe = response.data;
             });
+        },
+        hideModalcoach: function hideModalcoach() {
+            this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
+            location.reload();
         }
-
     },
 
     mounted: function mounted() {
@@ -86244,24 +86328,53 @@ var render = function() {
                   _c(
                     "b-card-text",
                     [
+                      _vm.admin
+                        ? _c(
+                            "span",
+                            [
+                              _c(
+                                "b-button",
+                                {
+                                  directives: [
+                                    {
+                                      name: "b-modal",
+                                      rawName: "v-b-modal.coachs",
+                                      modifiers: { coachs: true }
+                                    }
+                                  ],
+                                  attrs: { variant: "success", size: "sm" }
+                                },
+                                [_vm._v("Gérer")]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: { innerHTML: _vm._s(_vm.equipe.coach) }
+                      }),
+                      _vm._v(" "),
                       _c(
-                        "b-list-group",
+                        "b-modal",
+                        {
+                          attrs: {
+                            id: "coachs",
+                            "hide-footer": "",
+                            title: "Coachs"
+                          }
+                        },
                         [
-                          _c("b-list-group-item", [_vm._v("Cras justo odio")]),
+                          _c("coach-equipe", {
+                            attrs: { equipe_id: _vm.equipe.id }
+                          }),
                           _vm._v(" "),
-                          _c("b-list-group-item", [
-                            _vm._v("Dapibus ac facilisis in")
-                          ]),
-                          _vm._v(" "),
-                          _c("b-list-group-item", [_vm._v("Morbi leo risus")]),
-                          _vm._v(" "),
-                          _c("b-list-group-item", [
-                            _vm._v("Porta ac consectetur ac")
-                          ]),
-                          _vm._v(" "),
-                          _c("b-list-group-item", [
-                            _vm._v("Vestibulum at eros")
-                          ])
+                          _c(
+                            "b-button",
+                            { on: { click: _vm.hideModalcoach } },
+                            [_vm._v("Fermer")]
+                          )
                         ],
                         1
                       )
@@ -86335,7 +86448,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("b-row", [_vm._v("\n        " + _vm._s(_vm.equipe) + "\n    ")])
+      _c("b-row")
     ],
     1
   )
@@ -113944,6 +114057,201 @@ if (typeof Vue !== 'undefined') {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(14)
+/* script */
+var __vue_script__ = __webpack_require__(643)
+/* template */
+var __vue_template__ = __webpack_require__(644)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CoachEquipeComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5493bbf6", Component.options)
+  } else {
+    hotAPI.reload("data-v-5493bbf6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 643 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _mounted$props$method;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = (_mounted$props$method = {
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+
+    props: {
+        equipe_id: ""
+
+    },
+    methods: {
+        getselected: function getselected() {
+            var _this = this;
+
+            axios.get('/api/admin/equipes/' + this.equipe_id + '/coachs/ids').then(function (response) {
+                return _this.selected = response.data;
+            });
+        },
+        getlist: function getlist() {
+            var _this2 = this;
+
+            axios.get('/api/admin/coachs/pluck').then(function (response) {
+                return _this2.options = response.data;
+            });
+        },
+        save: function save() {
+            axios.post('/api/admin/equipes/' + this.equipe_id + '/coachs/', { coachs: this.selected });
+        },
+
+        reload: function reload() {
+            location.reload();
+        }
+
+    },
+
+    data: function data() {
+        return {
+            selected: null,
+            options: [{ value: null, text: 'Chargement en cours' }]
+        };
+    }
+}, _defineProperty(_mounted$props$method, 'mounted', function mounted() {
+    this.getselected();
+    this.getlist();
+}), _defineProperty(_mounted$props$method, 'watch', {
+    equipe_id: function equipe_id(val) {
+        this.getselected();
+        this.getlist();
+    },
+    selected: function selected(val) {
+        this.save();
+    }
+
+}), _mounted$props$method);
+
+/***/ }),
+/* 644 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("b-form-checkbox-group", {
+        attrs: {
+          id: "checkbox-group-1",
+          options: _vm.options,
+          name: "flavour-1",
+          stacked: ""
+        },
+        model: {
+          value: _vm.selected,
+          callback: function($$v) {
+            _vm.selected = $$v
+          },
+          expression: "selected"
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5493bbf6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

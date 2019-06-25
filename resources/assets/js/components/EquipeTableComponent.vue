@@ -35,7 +35,7 @@
 
             <span slot="horaires" slot-scope="data" >
                 <b-list-group>
-                <b-list-group-item v-for="horaire in data.value">{{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}}</b-list-group-item>
+                <b-list-group-item v-if="withhoraires" v-for="horaire in data.value">{{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}}</b-list-group-item>
 
                      </b-list-group>
             </span>

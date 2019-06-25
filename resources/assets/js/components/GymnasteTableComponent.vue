@@ -2,7 +2,8 @@
     <div>
 
         <saison-select v-if="equipe_id == Null"></saison-select>
-        <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Affichage Photos</button>
+        <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
+        <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
@@ -43,6 +44,8 @@
 
             <span slot="niveaux" slot-scope="data" v-html="data.value"></span>
 
+            <span v-if="withhoraires" slot="horairescompact" slot-scope="data" v-html="data.value"></span>
+
 
 
             <span slot="url" slot-scope="data" >
@@ -64,7 +67,7 @@
         props:{
             debug:{
                 type: Boolean,
-                default:false
+                default:true
             },
             equipe_id:
                 {
@@ -103,6 +106,9 @@
                     .then(response => (this.saison_id = response.data));
 
             },
+            togglehoraires(){
+                this.withhoraires = ! this.withhoraires;
+            },
 
 
 
@@ -123,6 +129,7 @@
                     issuedBy: '',
                     issuedTo: ''
                 },
+                withhoraires:false,
                 fields: [
 
                     {
@@ -163,20 +170,28 @@
                     }
                     ,
                     {
-                        key: 'problemes_short',
-                        label: 'Problèmes',
+                        key: 'horairescompact',
+                        label: 'Horaires',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
                     }
                     ,
                     {
-                        key: 'url',
-                        label: 'Consulter',
-
+                        key: 'problemes_short',
+                        label: 'Problèmes',
+                        sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
                     }
+                    // ,
+                    // {
+                    //     key: 'url',
+                    //     label: 'Consulter',
+                    //
+                    //     // Variant applies to the whole column, including the header and footer
+                    //
+                    // }
                 ],
 
             }

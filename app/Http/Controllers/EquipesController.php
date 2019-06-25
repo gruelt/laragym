@@ -156,4 +156,47 @@ class EquipesController extends Controller
         return $gc->formatGyms($equipe);
     }
 
+
+    /**
+     * Retourne les coachs affectés à l'équipe
+     * @return array
+     */
+    public function getcoachspluck()
+    {
+
+
+
+        $coachs = Equipe::find(32)->coach()->pluck('users.id');
+
+
+
+
+
+
+
+
+        return $coachs;
+
+        //return $gymnastes;
+    }
+
+    /**
+     * Affecte les coachs à l'equipe
+     * @param $equipe_id
+     * @param Request $request
+     * @return int
+     */
+    public function setcoachtoteam($equipe_id,Request $request)
+    {
+
+        Equipe::find($equipe_id)->coach()->sync($request->coachs);
+
+
+
+
+        return 1;
+    }
+
+
+
 }
