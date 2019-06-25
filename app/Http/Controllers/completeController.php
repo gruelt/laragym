@@ -32,6 +32,7 @@ class completeController extends Controller
             $user->telephone2 = $request->telephone2;
 
             $user->adresse = $request->adresse;
+            $user->profession =$request->profession;
             $user->complete =1;
 
 
