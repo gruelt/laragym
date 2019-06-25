@@ -85526,7 +85526,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85537,6 +85537,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -85600,6 +85611,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         toggle: function toggle(form) {
             console.log(form);
         },
+        togglehoraires: function togglehoraires() {
+            this.withhoraires = !this.withhoraires;
+        },
 
 
         update: function update() {
@@ -85626,6 +85640,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+            withhoraires: false,
             autoupdate: true,
             saison_id: "999",
             equipes: [],
@@ -85634,10 +85649,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 issuedBy: '',
                 issuedTo: ''
             },
-            fields: [{
-                key: 'id',
-                sortable: true
-            }, {
+            fields: [
+            // {
+            //     key: 'id',
+            //     sortable: true
+            // },
+            {
                 key: 'nom',
                 label: 'Nom',
                 sortable: true
@@ -85668,6 +85685,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 key: 'coach',
                 label: 'Coach',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
+                key: 'horaires',
+                label: 'Horaires',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -85726,6 +85749,19 @@ var render = function() {
     "div",
     [
       _c("saison-select"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          class: {
+            "btn-primary": _vm.withhoraires,
+            "btn-secondary": !_vm.withhoraires
+          },
+          on: { click: _vm.togglehoraires }
+        },
+        [_vm._v("Affichage Horaires")]
+      ),
       _vm._v(" "),
       _c("b-table", {
         attrs: {
@@ -85805,6 +85841,47 @@ var render = function() {
             }
           },
           {
+            key: "nom",
+            fn: function(data) {
+              return _c("span", {}, [
+                _c("a", { attrs: { href: "/admin/equipes/" + data.item.id } }, [
+                  _vm._v(_vm._s(data.value))
+                ])
+              ])
+            }
+          },
+          {
+            key: "horaires",
+            fn: function(data) {
+              return _c(
+                "span",
+                {},
+                [
+                  _c(
+                    "b-list-group",
+                    _vm._l(data.value, function(horaire) {
+                      return _c("b-list-group-item", [
+                        _vm._v(
+                          _vm._s(horaire.jour.nom_jour) +
+                            " : " +
+                            _vm._s(horaire.heure_debut) +
+                            "h" +
+                            _vm._s(horaire.minute_debut) +
+                            " / " +
+                            _vm._s(horaire.heure_fin) +
+                            "h" +
+                            _vm._s(horaire.minute_fin)
+                        )
+                      ])
+                    }),
+                    1
+                  )
+                ],
+                1
+              )
+            }
+          },
+          {
             key: "url",
             fn: function(data) {
               return _c("span", {}, [
@@ -85849,8 +85926,7 @@ var render = function() {
             }
           }
         ])
-      }),
-      _vm._v("\n    " + _vm._s(_vm.equipes) + "\n")
+      })
     ],
     1
   )

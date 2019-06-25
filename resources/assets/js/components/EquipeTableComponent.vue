@@ -1,6 +1,8 @@
 <template>
     <div>
         <saison-select ></saison-select>
+        <!--<button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>-->
+        <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Affichage Horaires</button>
         <b-table
                 id="table-transition-example"
                 :items="filteredequipes"
@@ -27,7 +29,16 @@
             <span slot="niveau_libelle" slot-scope="data" v-html="data.value"></span>
 
             <span slot="genre_libelle" slot-scope="data" v-html="data.value"></span>
+            <span slot="nom" slot-scope="data" >
+                <a :href="'/admin/equipes/'+ data.item.id">{{data.value}}</a>
+            </span>
 
+            <span slot="horaires" slot-scope="data" >
+                <b-list-group>
+                <b-list-group-item v-for="horaire in data.value">{{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}}</b-list-group-item>
+
+                     </b-list-group>
+            </span>
 
 
             <span slot="url" slot-scope="data" >
@@ -42,7 +53,7 @@
 
 
         </b-table>
-        {{equipes}}
+
     </div>
 </template>
 
@@ -62,6 +73,9 @@
 
             toggle(form){
                 console.log(form);
+            },
+            togglehoraires(){
+                this.withhoraires = ! this.withhoraires;
             },
 
             update: function() {
@@ -88,6 +102,7 @@
 
         data() {
             return {
+                withhoraires:false,
                 autoupdate:true,
                 saison_id: "999",
                 equipes: [],
@@ -97,10 +112,10 @@
                     issuedTo: ''
                 },
                 fields: [
-                    {
-                        key: 'id',
-                        sortable: true
-                    },
+                    // {
+                    //     key: 'id',
+                    //     sortable: true
+                    // },
                     {
                         key: 'nom',
                         label: 'Nom',
@@ -140,6 +155,13 @@
                     {
                         key: 'coach',
                         label: 'Coach',
+                        sortable: true,
+                        // Variant applies to the whole column, including the header and footer
+
+                    },
+                    {
+                        key: 'horaires',
+                        label: 'Horaires',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
