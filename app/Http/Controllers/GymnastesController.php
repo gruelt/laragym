@@ -414,10 +414,36 @@ class GymnastesController extends Controller
             'laphoto' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
 
+        ///Rotation ?
+        ///
+        ///
+
         //récupère la photo
         $photo= $request->laphoto;
+
+//        $exif = exif_read_data($request->file('laphoto'));
+//        if(!empty($exif['Orientation'])) {
+//            switch($exif['Orientation']) {
+//                case 8:
+//                    $image = imagerotate($laphoto,90,0);
+//                    break;
+//                case 3:
+//                    $image = imagerotate($laphoto,180,0);
+//                    break;
+//                case 6:
+//                    $image = imagerotate($laphoto,-90,0);
+//                    break;
+//            }
+//        }
+
+        $photo = \Image::make($request->file('laphoto')->getRealpath());
+        $photo->orientate();
+
+        //Fin rotation
+
+
         //récupère l'extension
-        $ext = $photo->getClientOriginalExtension();
+        $ext = $request->laphoto->getClientOriginalExtension();
 
         //Infos dy gym :
         $gym = Gymnaste::find($id);
