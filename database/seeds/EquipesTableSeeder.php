@@ -21,6 +21,7 @@ class EquipesTableSeeder extends CsvSeeder
      */
     public function run()
     {
+        Horaire::truncate();
         DB::disableQueryLog();
         parent::run();
     }

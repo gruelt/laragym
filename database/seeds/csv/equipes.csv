@@ -1,5 +1,5 @@
 nom,id,niveau_id,categorie_id,genre_id,saison_id,tarif
-Baby Plus GAF,1,13,10,1,2,160
+Baby Plus GAF,1,13,10,1,2,170
 Bureau,2,17,11,3,2,0
 Entraineur,3,16,11,3,2,0
 GAM-ME,4,9,1,1,2,260
@@ -17,22 +17,23 @@ GAF-N7 jeunes,14,7,1,2,2,260
 GAF-N7 11+,15,7,1,2,2,260
 GAF-N8 G2,16,8,1,2,2,260
 GAF-N8 G1,17,8,1,2,2,260
-Parcours GAF Lundi,18,11,10,2,2,180
-Parcours GAF Mardi,22,11,10,2,2,180
-Parcours GAF Mercredi,23,11,10,2,2,180
-Parcours GAF Vendredi,24,11,10,2,2,180
-Parcours GAM,19,11,10,1,2,180
+Parcours GAF Lundi,18,11,10,2,2,190
+Parcours GAF Mardi,22,11,10,2,2,190
+Parcours GAF Mercredi,23,11,10,2,2,190
+Parcours GAF Vendredi,24,11,10,2,2,190
+Parcours GAM,19,11,10,1,2,190
 Gym adulte entretien,20,14,10,3,2,120
-Loisirs Lundi,25,12,10,2,2,180
-Loisirs Mardi,26,12,10,2,2,180
-Loisirs Mercredi Matin,27,12,10,2,2,180
-Loisirs Mercredi Apres-Midi,28,12,10,2,2,180
-Loisirs Vendredi,29,12,10,2,2,180
-Baby Mini Mercredi Va,30,13,10,1,2,160
-Baby Mercredi Vl,31,13,10,1,2,160
-Baby Mercredi Ma,32,13,10,1,2,160
-Baby Mini Samedi Th,33,13,10,1,2,160
-Baby Samedi Vl,34,13,10,1,2,160
+Loisirs Lundi,25,12,10,2,2,190
+Loisirs Mardi,26,12,10,2,2,190
+Loisirs Mercredi Matin,27,12,10,2,2,190
+Loisirs Mercredi Apres-Midi,28,12,10,2,2,190
+Loisirs Vendredi,29,12,10,2,2,190
+Baby Mini Mercredi Va,30,13,10,1,2,170
+Baby Mercredi Vl,31,13,10,1,2,170
+Baby Mercredi Ma,32,13,10,1,2,170
+Baby Mini Samedi Th,33,13,10,1,2,170
+Baby Samedi Vl,34,13,10,1,2,170
 GAF-ME Prepa Espoir,36,10,1,2,2,260
 GAF 7/8 Espoir,37,10,1,2,2,260
 GAF-N8 11+ ,38,8,1,2,2,260
+Gym Adule Muscu,39,15,10,3,2,40
