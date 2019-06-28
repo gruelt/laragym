@@ -161,12 +161,12 @@ class EquipesController extends Controller
      * Retourne les coachs affectés à l'équipe
      * @return array
      */
-    public function getcoachspluck()
+    public function getcoachspluck($id_equipe)
     {
 
 
 
-        $coachs = Equipe::find(32)->coach()->pluck('users.id');
+        $coachs = Equipe::find($id_equipe)->coach()->pluck('users.id');
 
 
 

@@ -68,7 +68,7 @@ class Gymnaste extends Model
     //pour un gymnaste , on retoruve combien doit être paye par le responsable pour tous ces gymnastes
     public function totalapayer()
     {
-        $mesgyms = Gymnaste::find(1)->responsable()->first()->gymnastes()->get();
+        $mesgyms = $this->responsable()->first()->gymnastes()->get();
 
         $total=0;
 
