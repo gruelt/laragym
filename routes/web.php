@@ -116,6 +116,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     Route::get('/equipes/{id}', 'EquipesController@showequipe');
 
 
+    //Montre l'equipe
+    Route::get('/photo/test', 'PhotoController@formtest');
+
+
 });
 
 

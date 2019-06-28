@@ -409,10 +409,13 @@ class GymnastesController extends Controller
      * Upload File
      **/
     public function uploadPhoto($id,Request $request) {
+
         $request->validate([
 
             'laphoto' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
+
+
 
         //récupère la photo
         $photo= $request->laphoto;

@@ -17,4 +17,8 @@ class PhotoController extends Controller
         $gym = Gymnaste::find($gym_id);
         return view('pages.cropphoto',compact('gym'));
     }
+
+    public function formtest(){
+        return view('pages.testphoto');
+    }
 }
