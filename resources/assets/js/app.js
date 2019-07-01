@@ -36,12 +36,16 @@ Vue.component('equipe-info', require('./components/EquipeInfoComponent.vue'));
 
 Vue.component('horaires', require('./components/HorairesComponent.vue'));
 
+Vue.component('modify-modal', require('./components/ModifModalComponent.vue'));
+
 
 
 
 Vue.component('saison-select', require('./components/SaisonSelectComponent.vue'));
 
 Vue.component('passport-clients',require('./components/passport/Clients.vue'));
+
+
 
 Vue.component(
     'passport-authorized-clients',

@@ -67,6 +67,8 @@
                         <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
 
 
+                        <h5><modify-modal :display="gym.certificat_medical_date_fr" :admin="admin" type="date" field="certificat_medical_date" :id="gym.id" model="Gymnaste" :value="gym.certificat_medical_date"></modify-modal></h5>
+
                         <b-button v-b-modal.certifupload variant="success">Envoyer</b-button>
 
 
@@ -127,12 +129,15 @@
                         >
                             <b-card-text>
                                 <h2 >
-                                    {{gym.nom}} {{gym.prenom}}
+                                    <modify-modal :admin="admin" field="nom" :id="gym.id" model="Gymnaste" :value="gym.nom"></modify-modal>
                                 </h2>
 
 
+                                <h2><modify-modal :admin="admin" field="prenom" :id="gym.id" model="Gymnaste" :value="gym.prenom"></modify-modal></h2>
+
                                 <H3>{{gym.age}} ans</H3>
-                                <h5>{{gym.date_naissance_fr}}</h5>
+
+                                <h5><modify-modal :display="gym.date_naissance_fr" :admin="admin" type="date" field="date_naissance" :id="gym.id" model="Gymnaste" :value="gym.date_naissance"></modify-modal></h5>
                                 <H3>
                                     <b-badge v-if="gym.genre.id === 1" variant="info">{{gym.genre.description}}</b-badge>
                                     <b-badge v-if="gym.genre.id === 2" variant="warning">{{gym.genre.description}}</b-badge>
@@ -309,12 +314,21 @@
                     <b-card-text>
 
                         <h3>Responsable</h3>
-                        {{gym.responsable.nom}} {{gym.responsable.prenom}} &nbsp;<span class="fa fa-user mr-3"></span><br>
-                        {{gym.responsable.adresse}} {{gym.responsable.cp}} {{gym.responsable.ville}}&nbsp;<span class="fa fa-home mr-3"></span><br>
-                        {{gym.responsable.email}} &nbsp;<span class="fa fa-envelope mr-3"></span><br>
-                        0{{gym.responsable.telephone1}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
-                        0{{gym.responsable.telephone2}} &nbsp;<span class="fa fa-phone mr-3"></span><br>
-                        {{gym.responsable.profession}} &nbsp;<span class="fa fa-thumbs-up mr-3"></span><br>
+                        <modify-modal icon="fa fa-user mr-3" :admin="admin" field="nom" :id="gym.responsable.id" model="User" :value="gym.responsable.nom"></modify-modal>
+                        <modify-modal icon="fa fa-user mr-3" :admin="admin" field="prenom" :id="gym.responsable.id" model="User" :value="gym.responsable.prenom"></modify-modal>
+                        <modify-modal icon="fa fa-home mr-3" :admin="admin" field="adresse" :id="gym.responsable.id" model="User" :value="gym.responsable.adresse"></modify-modal>
+                        <modify-modal icon="fa fa-home mr-3" :admin="admin" field="cp" :id="gym.responsable.id" model="User" :value="gym.responsable.cp"></modify-modal>
+
+                        <modify-modal icon="fa fa-home mr-3" :admin="admin" field="ville" :id="gym.responsable.id" model="User" :value="gym.responsable.ville"></modify-modal>
+                        <modify-modal icon="fa fa-envelope mr-3" :admin="admin" field="email" :id="gym.responsable.id" model="User" :value="gym.responsable.email"></modify-modal>
+                        <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone1" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone1"></modify-modal>
+                        <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone2" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone2"></modify-modal>
+                        <modify-modal icon="fa fa-thumbs-up mr-3" :admin="admin" field="profession" :id="gym.responsable.id" model="User" :value="gym.responsable.profession"></modify-modal>
+
+
+
+
+
 
                     </b-card-text>
 

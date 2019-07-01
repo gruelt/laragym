@@ -32600,6 +32600,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('equipe-info', __webpack_r
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('horaires', __webpack_require__(286));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modify-modal', __webpack_require__(645));
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('saison-select', __webpack_require__(289));
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('passport-clients', __webpack_require__(292));
@@ -83840,6 +83842,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84196,6 +84212,24 @@ var render = function() {
                             : _vm._e(),
                           _vm._v(" "),
                           _c(
+                            "h5",
+                            [
+                              _c("modify-modal", {
+                                attrs: {
+                                  display: _vm.gym.certificat_medical_date_fr,
+                                  admin: _vm.admin,
+                                  type: "date",
+                                  field: "certificat_medical_date",
+                                  id: _vm.gym.id,
+                                  model: "Gymnaste",
+                                  value: _vm.gym.certificat_medical_date
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
                             "b-button",
                             {
                               directives: [
@@ -84300,19 +84334,57 @@ var render = function() {
                       _c(
                         "b-card-text",
                         [
-                          _c("h2", [
-                            _vm._v(
-                              "\n                                    " +
-                                _vm._s(_vm.gym.nom) +
-                                " " +
-                                _vm._s(_vm.gym.prenom) +
-                                "\n                                "
-                            )
-                          ]),
+                          _c(
+                            "h2",
+                            [
+                              _c("modify-modal", {
+                                attrs: {
+                                  admin: _vm.admin,
+                                  field: "nom",
+                                  id: _vm.gym.id,
+                                  model: "Gymnaste",
+                                  value: _vm.gym.nom
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "h2",
+                            [
+                              _c("modify-modal", {
+                                attrs: {
+                                  admin: _vm.admin,
+                                  field: "prenom",
+                                  id: _vm.gym.id,
+                                  model: "Gymnaste",
+                                  value: _vm.gym.prenom
+                                }
+                              })
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _c("H3", [_vm._v(_vm._s(_vm.gym.age) + " ans")]),
                           _vm._v(" "),
-                          _c("h5", [_vm._v(_vm._s(_vm.gym.date_naissance_fr))]),
+                          _c(
+                            "h5",
+                            [
+                              _c("modify-modal", {
+                                attrs: {
+                                  display: _vm.gym.date_naissance_fr,
+                                  admin: _vm.admin,
+                                  type: "date",
+                                  field: "date_naissance",
+                                  id: _vm.gym.id,
+                                  model: "Gymnaste",
+                                  value: _vm.gym.date_naissance
+                                }
+                              })
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _c(
                             "H3",
@@ -84732,57 +84804,112 @@ var render = function() {
                           attrs: { tag: "article" }
                         },
                         [
-                          _c("b-card-text", [
-                            _c("h3", [_vm._v("Responsable")]),
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(_vm.gym.responsable.nom) +
-                                " " +
-                                _vm._s(_vm.gym.responsable.prenom) +
-                                "  "
-                            ),
-                            _c("span", { staticClass: "fa fa-user mr-3" }),
-                            _c("br"),
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(_vm.gym.responsable.adresse) +
-                                " " +
-                                _vm._s(_vm.gym.responsable.cp) +
-                                " " +
-                                _vm._s(_vm.gym.responsable.ville) +
-                                " "
-                            ),
-                            _c("span", { staticClass: "fa fa-home mr-3" }),
-                            _c("br"),
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(_vm.gym.responsable.email) +
-                                "  "
-                            ),
-                            _c("span", { staticClass: "fa fa-envelope mr-3" }),
-                            _c("br"),
-                            _vm._v(
-                              "\n                        0" +
-                                _vm._s(_vm.gym.responsable.telephone1) +
-                                "  "
-                            ),
-                            _c("span", { staticClass: "fa fa-phone mr-3" }),
-                            _c("br"),
-                            _vm._v(
-                              "\n                        0" +
-                                _vm._s(_vm.gym.responsable.telephone2) +
-                                "  "
-                            ),
-                            _c("span", { staticClass: "fa fa-phone mr-3" }),
-                            _c("br"),
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(_vm.gym.responsable.profession) +
-                                "  "
-                            ),
-                            _c("span", { staticClass: "fa fa-thumbs-up mr-3" }),
-                            _c("br")
-                          ])
+                          _c(
+                            "b-card-text",
+                            [
+                              _c("h3", [_vm._v("Responsable")]),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-user mr-3",
+                                  admin: _vm.admin,
+                                  field: "nom",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.nom
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-user mr-3",
+                                  admin: _vm.admin,
+                                  field: "prenom",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.prenom
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-home mr-3",
+                                  admin: _vm.admin,
+                                  field: "adresse",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.adresse
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-home mr-3",
+                                  admin: _vm.admin,
+                                  field: "cp",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.cp
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-home mr-3",
+                                  admin: _vm.admin,
+                                  field: "ville",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.ville
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-envelope mr-3",
+                                  admin: _vm.admin,
+                                  field: "email",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.email
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-phone mr-3",
+                                  admin: _vm.admin,
+                                  field: "telephone1",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: "0" + _vm.gym.responsable.telephone1
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-phone mr-3",
+                                  admin: _vm.admin,
+                                  field: "telephone2",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: "0" + _vm.gym.responsable.telephone2
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("modify-modal", {
+                                attrs: {
+                                  icon: "fa fa-thumbs-up mr-3",
+                                  admin: _vm.admin,
+                                  field: "profession",
+                                  id: _vm.gym.responsable.id,
+                                  model: "User",
+                                  value: _vm.gym.responsable.profession
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -114225,6 +114352,256 @@ if (typeof Vue !== 'undefined') {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(12)
+/* script */
+var __vue_script__ = __webpack_require__(646)
+/* template */
+var __vue_template__ = __webpack_require__(647)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ModifModalComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5fbcc530", Component.options)
+  } else {
+    hotAPI.reload("data-v-5fbcc530", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 646 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        id: {
+            type: Number,
+            required: true
+        },
+        field: {
+            type: String,
+            required: true
+        },
+        model: {
+            type: String,
+            required: true
+        },
+        value: {
+            type: String,
+            required: true
+        },
+        type: {
+            type: String,
+            default: "text"
+        },
+        admin: {
+            type: Boolean,
+            default: false
+        },
+        icon: {
+            type: String,
+            default: ""
+        },
+        display: {
+            type: String,
+            default: ""
+        }
+
+    },
+    methods: {
+        toggle: function toggle(form) {
+            console.log(form);
+        },
+
+
+        pushupdate: function pushupdate() {
+            var _this = this;
+
+            axios.post('/api/admin/model/' + this.model + '/' + this.id + '/' + this.field, { value: this.value }).then(function (response) {
+                return _this.fields = response.data;
+            });
+            console.log('Update ' + this.id + this.model + this.field + this.value);
+
+            if (this.type == "date") {
+                location.reload();
+            }
+        }
+
+    },
+
+    mounted: function mounted() {
+
+        if (this.display == "") {
+
+            this.display = this.value;
+            console.log(display + value);
+        }
+    }
+});
+
+/***/ }),
+/* 647 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.admin
+      ? _c(
+          "div",
+          [
+            _vm._v("\n\n        " + _vm._s(_vm.display) + "  "),
+            _c("i", {
+              staticClass: "fas fa-pen fa-xs",
+              on: {
+                click: function($event) {
+                  return _vm.$bvModal.show(
+                    "modal-" + _vm.model + "-" + _vm.field
+                  )
+                }
+              }
+            }),
+            _vm._v("  "),
+            _c("span", { class: _vm.icon }),
+            _vm._v(" "),
+            _c(
+              "b-modal",
+              {
+                attrs: {
+                  id: "modal-" + _vm.model + "-" + _vm.field,
+                  title: "Modifier",
+                  "hide-footer": ""
+                }
+              },
+              [
+                _c("b-form-input", {
+                  attrs: { type: _vm.type, placeholder: "" },
+                  model: {
+                    value: _vm.value,
+                    callback: function($$v) {
+                      _vm.value = $$v
+                    },
+                    expression: "value"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: { variant: "success" },
+                    on: {
+                      click: function($event) {
+                        _vm.pushupdate()
+                        _vm.$bvModal.hide(
+                          "modal-" + _vm.model + "-" + _vm.field
+                        )
+                      }
+                    }
+                  },
+                  [_vm._v("Ok")]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      : _c("div", [_vm._v("\n    " + _vm._s(_vm.display) + "\n")])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5fbcc530", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

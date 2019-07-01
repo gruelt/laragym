@@ -58,6 +58,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/equipes/{id}/coachs/', 'EquipesController@setcoachtoteam');
 
 
+    //Update universelle pour tous es modeles (sans attach)
+
+    Route::post('/model/{model}/{id}/{field}','UpdateController@univupdate');
+
 
 
 
