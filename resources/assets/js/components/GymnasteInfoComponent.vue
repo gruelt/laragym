@@ -67,7 +67,7 @@
                         <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
 
 
-                        <h5><modify-modal :display="gym.certificat_medical_date_fr" :admin="admin" type="date" field="certificat_medical_date" :id="gym.id" model="Gymnaste" :value="gym.certificat_medical_date"></modify-modal></h5>
+                        <h5 v-if="gym.certificat_medical != null"><modify-modal :display="gym.certificat_medical_date_fr" :admin="admin" type="date" field="certificat_medical_date" :id="gym.id" model="Gymnaste" :value="gym.certificat_medical_date"></modify-modal></h5>
 
                         <b-button v-b-modal.certifupload variant="success">Envoyer</b-button>
 

@@ -7,7 +7,7 @@
             <b-col sm="12" lg="2">
                             <b-card
 
-                                    :title="equipe.nom"
+
                                     img-src="/images/team.jpg"
                                     img-alt="Image"
                                     img-top
@@ -16,6 +16,10 @@
                                     class="mb-12"
                             >
                                 <b-card-text>
+
+                                    <h2><modify-modal :admin="admin" field="nom" :id="equipe.id" model="Equipe" :value="equipe.nom"></modify-modal></h2>
+
+
                                     <h5 v-html="equipe.genre_libelle"></h5>
                                     <h5>{{equipe.categorie}}</h5>
 

@@ -84211,23 +84211,26 @@ var render = function() {
                               )
                             : _vm._e(),
                           _vm._v(" "),
-                          _c(
-                            "h5",
-                            [
-                              _c("modify-modal", {
-                                attrs: {
-                                  display: _vm.gym.certificat_medical_date_fr,
-                                  admin: _vm.admin,
-                                  type: "date",
-                                  field: "certificat_medical_date",
-                                  id: _vm.gym.id,
-                                  model: "Gymnaste",
-                                  value: _vm.gym.certificat_medical_date
-                                }
-                              })
-                            ],
-                            1
-                          ),
+                          _vm.gym.certificat_medical != null
+                            ? _c(
+                                "h5",
+                                [
+                                  _c("modify-modal", {
+                                    attrs: {
+                                      display:
+                                        _vm.gym.certificat_medical_date_fr,
+                                      admin: _vm.admin,
+                                      type: "date",
+                                      field: "certificat_medical_date",
+                                      id: _vm.gym.id,
+                                      model: "Gymnaste",
+                                      value: _vm.gym.certificat_medical_date
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e(),
                           _vm._v(" "),
                           _c(
                             "b-button",
@@ -86491,6 +86494,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -86565,7 +86572,6 @@ var render = function() {
                 {
                   staticClass: "mb-12",
                   attrs: {
-                    title: _vm.equipe.nom,
                     "img-src": "/images/team.jpg",
                     "img-alt": "Image",
                     "img-top": "",
@@ -86576,6 +86582,22 @@ var render = function() {
                   _c(
                     "b-card-text",
                     [
+                      _c(
+                        "h2",
+                        [
+                          _c("modify-modal", {
+                            attrs: {
+                              admin: _vm.admin,
+                              field: "nom",
+                              id: _vm.equipe.id,
+                              model: "Equipe",
+                              value: _vm.equipe.nom
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c("h5", {
                         domProps: {
                           innerHTML: _vm._s(_vm.equipe.genre_libelle)
