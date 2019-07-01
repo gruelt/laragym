@@ -173,7 +173,8 @@
                         <H3>
                             <span v-for="(niveau, id) in gym.niveaux_tab">
                                 <b-button variant="primary" block >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge></a>&nbsp;
-                                        <b-badge v-if="withattente && niveau['attente'] ==1" @click="validteam(id,0)" variant="danger">Valider </b-badge>
+                                    <b-badge v-if="niveau['attente'] ==0" variant="info">Ok </b-badge></a>
+                                        <b-badge v-if="withattente && niveau['attente'] ==1" @click="validteam(id,0)" variant="success">Intégrer au groupe </b-badge>
                                         <b-badge v-if="withattente && niveau['attente'] ==0" @click="validteam(id,1)" variant="danger">Mettre en attente </b-badge>
                                     <b-badge v-if="admin" :href="'/equipes/' + id ">Voir</b-badge>
                                 </b-button>
@@ -466,9 +467,10 @@
             validteam: function (equipe_id,attente) {
                 console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
                 axios
-                    .get('/api/admin/gymnastes/'+ this.gym.id +'/equipes/' + equipe_id +"/attente/"+attente );
+                    .get('/api/admin/gymnastes/'+ this.gym.id +'/equipes/' + equipe_id +"/attente/"+attente )
+                    .then(response => (this.update= response.data));
 
-                location.reload();
+
                 ;
 
 

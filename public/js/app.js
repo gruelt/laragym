@@ -83880,6 +83880,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -83942,10 +83943,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         validteam: function validteam(equipe_id, attente) {
-            console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
-            axios.get('/api/admin/gymnastes/' + this.gym.id + '/equipes/' + equipe_id + "/attente/" + attente);
+            var _this2 = this;
 
-            location.reload();
+            console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/equipes/' + equipe_id + "/attente/" + attente).then(function (response) {
+                return _this2.update = response.data;
+            });
+
             ;
         },
         validcertif: function validcertif() {
@@ -83954,31 +83958,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //location.reload();
         },
         validpaiement: function validpaiement(montant, saison_id) {
-            var _this2 = this;
+            var _this3 = this;
 
             console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
             axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + montant).then(function (response) {
-                return _this2.update = response.data;
+                return _this3.update = response.data;
             });
 
             //location.reload();
         },
         annulpaiement: function annulpaiement(montant, saison_id) {
-            var _this3 = this;
+            var _this4 = this;
 
             console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
             axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + 0).then(function (response) {
-                return _this3.update = response.data;
+                return _this4.update = response.data;
             });;
 
             //location.reload();
         },
 
         getcurrent: function getcurrent() {
-            var _this4 = this;
+            var _this5 = this;
 
             axios.get('/api/saisons/actuelle').then(function (response) {
-                return _this4.saison_id = response.data;
+                return _this5.saison_id = response.data;
             });
         },
         hideModalTeam: function hideModalTeam() {
@@ -84501,21 +84505,29 @@ var render = function() {
                                             )
                                           : _vm._e(),
                                         _vm._v(
-                                          " \n                                        "
+                                          " \n                                    "
                                         ),
+                                        niveau["attente"] == 0
+                                          ? _c(
+                                              "b-badge",
+                                              { attrs: { variant: "info" } },
+                                              [_vm._v("Ok ")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
                                         _vm.withattente &&
                                         niveau["attente"] == 1
                                           ? _c(
                                               "b-badge",
                                               {
-                                                attrs: { variant: "danger" },
+                                                attrs: { variant: "success" },
                                                 on: {
                                                   click: function($event) {
                                                     return _vm.validteam(id, 0)
                                                   }
                                                 }
                                               },
-                                              [_vm._v("Valider ")]
+                                              [_vm._v("Intégrer au groupe ")]
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
