@@ -164,8 +164,32 @@
                             Groupes / Niveaux
                         </h5>
 
-                        <H3><span v-for="(niveau, id) in gym.niveaux_tab"><a :href="'/equipes/' + id " class="badge badge-primary">{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Attente{{niveau['attente']}}</b-badge></a>&nbsp;</span></H3>
-                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span></H3>
+                        <!--<H3>-->
+                            <!--<span v-for="(niveau, id) in gym.niveaux_tab">-->
+                                <!--<a :href="'/equipes/' + id " class="badge badge-primary >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge></a>&nbsp;-->
+                                        <!--<b-badge v-if="withattente" variant="danger">Changer </b-badge>-->
+                            <!--</span><br></H3>-->
+
+                        <H3>
+                            <span v-for="(niveau, id) in gym.niveaux_tab">
+                                <b-button variant="primary" block >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge></a>&nbsp;
+                                        <b-badge v-if="withattente && niveau['attente'] ==1" @click="validteam(id,0)" variant="danger">Valider </b-badge>
+                                        <b-badge v-if="withattente && niveau['attente'] ==0" @click="validteam(id,1)" variant="danger">Mettre en attente </b-badge>
+                                    <b-badge v-if="admin" :href="'/equipes/' + id ">Voir</b-badge>
+                                </b-button>
+
+                            </span>
+                            <br>
+                        </H3>
+
+
+
+
+
+
+
+                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span>
+                            <br><button v-if="(admin)" v-on:click="toggleattente" class="btn" v-bind:class="{'btn-primary': withattente,'btn-secondary': !withattente}">Bascule Attente/Confirmé </button></H3>
                         <b-modal id="equipes" hide-header-close hide-footer title="Equipes du Gymnaste Pour la saison Actuelle">
                             <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
                             <b-button @click="hideModalTeam">Fermer</b-button>
@@ -418,6 +442,8 @@
                     issuedBy: '',
                     issuedTo: ''
                 },
+                withattente:false,
+
 
 
 
@@ -433,6 +459,16 @@
                 axios
                     .get('/api/admin/gymnastes/' + this.idgym)
                     .then(response => (this.gym = response.data))
+                ;
+
+
+            },
+            validteam: function (equipe_id,attente) {
+                console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
+                axios
+                    .get('/api/admin/gymnastes/'+ this.gym.id +'/equipes/' + equipe_id +"/attente/"+attente );
+
+                location.reload();
                 ;
 
 
@@ -473,6 +509,9 @@
             hideModalTeam() {
                 this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
                 location.reload();
+            },
+            toggleattente(){
+                this.withattente = ! this.withattente;
             },
 
         },

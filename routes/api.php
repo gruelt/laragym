@@ -62,6 +62,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/model/{model}/{id}/{field}','UpdateController@univupdate');
 
+    //Update pour la bascule liste d'attente/deginitive
+
+    Route::get('/gymnastes/{gym_id}/equipes/{equipe_id}/attente/{attente}','GymnastesController@updateequipeattente');
+
 
 
 

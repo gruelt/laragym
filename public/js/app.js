@@ -83856,6 +83856,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -83901,7 +83925,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: '',
                 issuedBy: '',
                 issuedTo: ''
-            }
+            },
+            withattente: false
 
         };
     },
@@ -83915,6 +83940,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/admin/gymnastes/' + this.idgym).then(function (response) {
                 return _this.gym = response.data;
             });
+        },
+        validteam: function validteam(equipe_id, attente) {
+            console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/equipes/' + equipe_id + "/attente/" + attente);
+
+            location.reload();
+            ;
         },
         validcertif: function validcertif() {
             console.log('clic le certif ');
@@ -83952,6 +83984,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         hideModalTeam: function hideModalTeam() {
             this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
             location.reload();
+        },
+        toggleattente: function toggleattente() {
+            this.withattente = !this.withattente;
         }
     },
 
@@ -84446,35 +84481,82 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "H3",
-                            _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
-                              return _c("span", [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "badge badge-primary",
-                                    attrs: { href: "/equipes/" + id }
-                                  },
+                            [
+                              _vm._l(_vm.gym.niveaux_tab, function(niveau, id) {
+                                return _c(
+                                  "span",
                                   [
-                                    _vm._v(_vm._s(niveau["nom"]) + " "),
-                                    niveau["attente"] == 1
-                                      ? _c(
-                                          "b-badge",
-                                          { attrs: { variant: "danger" } },
-                                          [
-                                            _vm._v(
-                                              "Attente" +
-                                                _vm._s(niveau["attente"])
+                                    _c(
+                                      "b-button",
+                                      {
+                                        attrs: { variant: "primary", block: "" }
+                                      },
+                                      [
+                                        _vm._v(_vm._s(niveau["nom"]) + " "),
+                                        niveau["attente"] == 1
+                                          ? _c(
+                                              "b-badge",
+                                              { attrs: { variant: "danger" } },
+                                              [_vm._v("Liste Attente ")]
                                             )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                          : _vm._e(),
+                                        _vm._v(
+                                          " \n                                        "
+                                        ),
+                                        _vm.withattente &&
+                                        niveau["attente"] == 1
+                                          ? _c(
+                                              "b-badge",
+                                              {
+                                                attrs: { variant: "danger" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.validteam(id, 0)
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Valider ")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.withattente &&
+                                        niveau["attente"] == 0
+                                          ? _c(
+                                              "b-badge",
+                                              {
+                                                attrs: { variant: "danger" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.validteam(id, 1)
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Mettre en attente ")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.admin
+                                          ? _c(
+                                              "b-badge",
+                                              {
+                                                attrs: {
+                                                  href: "/equipes/" + id
+                                                }
+                                              },
+                                              [_vm._v("Voir")]
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
-                                ),
-                                _vm._v(" ")
-                              ])
-                            }),
-                            0
+                                )
+                              }),
+                              _vm._v(" "),
+                              _c("br")
+                            ],
+                            2
                           ),
                           _vm._v(" "),
                           _c("H3", [
@@ -84498,6 +84580,22 @@ var render = function() {
                                     )
                                   ],
                                   1
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm.admin
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn",
+                                    class: {
+                                      "btn-primary": _vm.withattente,
+                                      "btn-secondary": !_vm.withattente
+                                    },
+                                    on: { click: _vm.toggleattente }
+                                  },
+                                  [_vm._v("Bascule Attente/Confirmé ")]
                                 )
                               : _vm._e()
                           ]),

@@ -185,7 +185,14 @@ class GymnastesController extends Controller
             $horairescompact="";
             foreach($niveaux as $niveau)
             {
-                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
+                $attente="";
+                $class="badge badge-info";
+                if($niveau->pivot->attente==1)
+                {
+                    $attente="<b>Liste d'Attente</b>";
+                    $class="badge badge-danger";
+                }
+                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"".$class."\">".$niveau->nom." ".$attente."</a>&nbsp;";
                 $return[$key]['niveaux_tab'][$niveau['id']]['nom']=$niveau->nom;
                 $return[$key]['niveaux_tab'][$niveau['id']]['attente']=$niveau->pivot->attente;
                 $noniv=0;
@@ -632,6 +639,19 @@ class GymnastesController extends Controller
         return 1;
     }
 
+    public function updateequipeattente($gym_id,$equipe_id,$attente)
+    {
+
+
+        $gym =   Gymnaste::find($gym_id)->equipes()->updateExistingPivot($equipe_id,['attente'=>$attente]);
+
+
+
+
+
+        return $gym;
+
+    }
 
 
 
