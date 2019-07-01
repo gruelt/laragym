@@ -84454,7 +84454,22 @@ var render = function() {
                                     staticClass: "badge badge-primary",
                                     attrs: { href: "/equipes/" + id }
                                   },
-                                  [_vm._v(_vm._s(niveau))]
+                                  [
+                                    _vm._v(_vm._s(niveau["nom"]) + " "),
+                                    niveau["attente"] == 1
+                                      ? _c(
+                                          "b-badge",
+                                          { attrs: { variant: "danger" } },
+                                          [
+                                            _vm._v(
+                                              "Attente" +
+                                                _vm._s(niveau["attente"])
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
                                 ),
                                 _vm._v(" ")
                               ])

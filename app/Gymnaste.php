@@ -18,7 +18,7 @@ class Gymnaste extends Model
     //Récupère toutes les équipes d'un gymnaste
     public function equipesall()
     {
-        return $this->belongsToMany('App\Equipe');
+        return $this->belongsToMany('App\Equipe')->withPivot('attente');
     }
 
     //récupère le "propriétaire" du gym

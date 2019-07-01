@@ -186,7 +186,8 @@ class GymnastesController extends Controller
             foreach($niveaux as $niveau)
             {
                 $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->nom."</a>&nbsp;";
-                $return[$key]['niveaux_tab'][$niveau['id']]=$niveau->nom;
+                $return[$key]['niveaux_tab'][$niveau['id']]['nom']=$niveau->nom;
+                $return[$key]['niveaux_tab'][$niveau['id']]['attente']=$niveau->pivot->attente;
                 $noniv=0;
 
                 $ho=Equipe::find($niveau->id);
