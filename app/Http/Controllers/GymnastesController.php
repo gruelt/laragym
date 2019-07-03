@@ -332,6 +332,20 @@ class GymnastesController extends Controller
                 if($saisoni != null) {
                     $reinscrire = $gymnaste->saisons()->find($saisoni->id);
                     $return[$key]['reinscrit']['saison']=$saisoni;
+                    //Si dossier non complet
+                    if($reinscrire->pivot->dossier==0)
+                    {
+                        $problemes['dossier']['absent']["text"] = "Dossier non complet, à remplir au gymnase ";
+                        $problemes['dossier']['absent']["class"] = "warning";
+                    }
+                    //Si complet on check l'affiligue
+                    else {
+                        if ($reinscrire->pivot->affiligue == 0) {
+                            $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
+                            $problemes['dossier']['nonsaisi']["class"] = "warning";
+                        }
+                    }
+
                 }
                 else{
                     $reinscrire = null;
@@ -357,7 +371,7 @@ class GymnastesController extends Controller
 
                 if($reinscrire != null) {
                     if (($reinscrire->pivot->paye == 0) && $tarif != null) {
-                        $problemes['paiement']['nonepaiement']["text"] = "Paiement " . $tarif . "€";
+                        $problemes['paiement']['nonepaiement']["text"] = "Tarif  " . $tarif . "€ à Valider par Gestionnaire";
                         $problemes['paiement']['nonepaiement']["class"] = "warning";
                     }
 
