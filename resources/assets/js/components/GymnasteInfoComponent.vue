@@ -315,6 +315,60 @@
 
                 </b-card>
 
+                <b-card v-if="admin" tag="Dossier"
+
+                        class="mb-12 "
+                >
+                    <b-card-text>
+                        <h2 >
+                            Dossier
+                        </h2>
+
+                        <span  v-if="admin && gym.problemes.dossier">
+                                <b-button  variant="success" v-on:click="validdossier(gym.id,1)">Valider dossier Ufolep</b-button>
+                                <b-button  variant="success" v-on:click="validdossier(gym.id,2)">Valider le Dossier Baby </b-button>
+                            </span>
+                        <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annuldossier(gym.id)" variant="info">Marquer le dossier comme incomplet</b-button>
+                        <br>
+                        <span></span>
+
+
+
+                    </b-card-text>
+
+
+                </b-card>
+
+
+
+                <b-card v-if="admin" tag="Affiligue"
+
+                        class="mb-12 "
+                >
+                    <b-card-text>
+                        <h2 >
+                            Affiligue
+                        </h2>
+
+                        <span  v-if="admin && gym.problemes.affiligue">
+                                <b-button  variant="success" v-on:click="validaffiligue(gym.id)">Valider dossier Ufolep</b-button>
+
+                            </span>
+                        <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulaffiligue(gym.id)" variant="info">Marquer comme non saisi</b-button>
+                        <br>
+                        <span></span>
+
+
+
+                    </b-card-text>
+
+
+                </b-card>
+
+
+
+
+
 
 
 
