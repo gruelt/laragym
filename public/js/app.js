@@ -86213,7 +86213,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86224,6 +86224,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86329,7 +86337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             withhoraires: false,
             autoupdate: true,
-            saison_id: "999",
+            saison_id: "9999",
             equipes: [],
             filters: {
                 id: '',
@@ -86358,7 +86366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: 'Filière',
                 sortable: true
             }, {
-                key: 'nbgyms',
+                key: 'nbgyms_count',
                 label: 'Effectif',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
@@ -86581,12 +86589,22 @@ var render = function() {
             }
           },
           {
-            key: "nbgyms",
+            key: "nbgyms_count",
             fn: function(data) {
               return _c(
                 "span",
                 {},
-                [_c("b-button", [_vm._v(_vm._s(data.value.length))])],
+                [
+                  _vm._v(_vm._s(data.value) + "\n            "),
+                  _c("b-progress", {
+                    attrs: {
+                      value: data.value,
+                      max: "10",
+                      "show-progress": "",
+                      animated: ""
+                    }
+                  })
+                ],
                 1
               )
             }

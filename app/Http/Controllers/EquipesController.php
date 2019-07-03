@@ -52,6 +52,7 @@ class EquipesController extends Controller
 
             //$return[$key]['nbgyms']=Equipe::find($key)->gymnastes();
             $return[$key]['nbgyms']=$equipe->gymnastes;
+            $return[$key]['nbgyms_count']=$equipe->gymnastes->count();
 
             /** Categorie  */
             $return[$key]['categorie']=$equipe->categorie->name;

@@ -45,7 +45,15 @@
                 <a :href="'/admin/equipes/'+ data.item.id">Consulter</a>
             </span>
 
-            <span slot="nbgyms" slot-scope="data" ><b-button>{{data.value.length}}</b-button></span>
+            <span slot="nbgyms_count" slot-scope="data">{{data.value}}
+                <b-progress :value="data.value" max="10" show-progress animated ></b-progress>
+                <!--<b-progress :value="data.value" max="10" show-progress animated ></b-progress>-->
+                <!--<b-button class="btn-warning" v-if="data.value >= 6 && data.value < 10">-->
+                <!--<b-button class="btn-warning" v-if="data.value == 10">Complet!</b-button>-->
+                <!--<b-button class="btn-warning" v-if="data.value > 10">Surchargé !</b-button>-->
+
+
+            </span>
             <span slot="coach" slot-scope="data" v-html="data.value"></span>
 
             <span slot="categorie" slot-scope="data" ><b-button>{{data.value}}</b-button></span>
@@ -104,7 +112,7 @@
             return {
                 withhoraires:false,
                 autoupdate:true,
-                saison_id: "999",
+                saison_id: "9999",
                 equipes: [],
                 filters: {
                     id: '',
@@ -137,7 +145,7 @@
                         sortable: true
                     },
                     {
-                        key: 'nbgyms',
+                        key: 'nbgyms_count',
                         label: 'Effectif',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer

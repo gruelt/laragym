@@ -216,7 +216,7 @@ class GymnastesController extends Controller
 
             if($noniv==1)
             {
-                $problemes['Groupe']['nonegroup']["text"]="Attente affectation groupe";
+                $problemes['Groupe']['nonegroup']["text"]="Attente affectation groupe. Pour les non compétitifs et les nouveaux inscrits , veuillez passer au gymnase !";
                 $problemes['Groupe']['nonegroup']["class"]="secondary";
             }
 
