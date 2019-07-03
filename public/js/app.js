@@ -86838,6 +86838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -86948,7 +86949,16 @@ var render = function() {
                       _vm._v(" "),
                       _c("H3", [
                         _vm._v(_vm._s(_vm.equipe.nbgyms.length) + " Membres")
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("b-progress", {
+                        attrs: {
+                          value: _vm.equipe.nbgyms_count,
+                          max: "10",
+                          "show-progress": "",
+                          animated: ""
+                        }
+                      })
                     ],
                     1
                   )

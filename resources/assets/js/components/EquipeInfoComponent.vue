@@ -25,6 +25,7 @@
 
 
                                     <H3>{{equipe.nbgyms.length}} Membres</H3>
+                                    <b-progress :value="equipe.nbgyms_count" max="10" show-progress animated ></b-progress>
                                 </b-card-text>
 
 
