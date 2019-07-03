@@ -32590,6 +32590,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-info', __webpack
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-table', __webpack_require__(267));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-table-quick', __webpack_require__(648));
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('gymnaste-equipe', __webpack_require__(272));
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('coach-equipe', __webpack_require__(275));
@@ -114982,6 +114984,499 @@ if (typeof Vue !== 'undefined') {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(649)
+}
+var normalizeComponent = __webpack_require__(12)
+/* script */
+var __vue_script__ = __webpack_require__(651)
+/* template */
+var __vue_template__ = __webpack_require__(652)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-41ff4c01"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/GymnasteTableQuickComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41ff4c01", Component.options)
+  } else {
+    hotAPI.reload("data-v-41ff4c01", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 649 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(650);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(25)("3c240d89", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-41ff4c01\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GymnasteTableQuickComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-41ff4c01\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GymnasteTableQuickComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 650 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(24)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 651 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "gymnastesTableComponent",
+
+    props: {
+        quick: {
+            type: Boolean,
+            default: false
+        },
+        debug: {
+            type: Boolean,
+            default: true
+        },
+        equipe_id: {
+            default: null,
+            type: Number
+        }
+    },
+    methods: {
+        toggle: function toggle(form) {
+            console.log(form);
+        },
+        togglephotos: function togglephotos() {
+            this.withphotos = !this.withphotos;
+        },
+
+
+        update: function update() {
+            var _this = this;
+
+            if (this.quick == false) {
+                axios.get('/api/admin/gymnastes/saison/' + this.saison_id).then(function (response) {
+                    return _this.gyms = response.data;
+                });
+            } else {
+                axios.get('/api/admin/gymnastes/saison/' + this.saison_id + "/quick").then(function (response) {
+                    return _this.gym = response.data;
+                });
+            }
+        },
+        updateteam: function updateteam() {
+            var _this2 = this;
+
+            axios.get('/api/admin/equipes/' + this.equipe_id + '/members').then(function (response) {
+                return _this2.gyms = response.data;
+            });
+        },
+        updatesaison: function updatesaison(saison_id) {
+            this.saison_id = saison_id;
+            this.update();
+        },
+
+        getcurrentseason: function getcurrentseason() {
+            var _this3 = this;
+
+            axios.get('/api/saisons/actuelle').then(function (response) {
+                return _this3.saison_id = response.data;
+            });
+        },
+        togglehoraires: function togglehoraires() {
+            this.withhoraires = !this.withhoraires;
+        }
+    },
+
+    data: function data() {
+        return {
+
+            saison_id: "2",
+            gyms: [],
+            withphotos: false,
+            filters: {
+                id: '',
+                issuedBy: '',
+                issuedTo: ''
+            },
+            withhoraires: false,
+            fields: [{
+                key: 'nom',
+                label: 'Nom',
+                sortable: true
+            }, {
+                key: 'prenom',
+                label: 'Prénom',
+                sortable: true
+            }]
+
+        };
+    },
+    mounted: function mounted() {
+        if (this.equipe_id == null) {
+            this.getcurrentseason();
+            //this.update();
+        } else {
+            this.withphotos = true;
+            this.updateteam();
+        }
+    },
+
+
+    computed: {
+        filteredgyms: function filteredgyms() {
+            var _this4 = this;
+
+            var filtered = this.gyms.filter(function (item) {
+                return Object.keys(_this4.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this4.filters[key].toLowerCase());
+                });
+            });
+            return filtered.length > 0 ? filtered : [{
+                id: '',
+                issuedBy: '',
+                issuedTo: ''
+            }];
+        }
+    }
+
+});
+
+/***/ }),
+/* 652 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._v("\n    quick = " + _vm._s(_vm.quick) + "\n    "),
+      _vm.equipe_id == _vm.Null ? _c("saison-select") : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          class: {
+            "btn-primary": _vm.withphotos,
+            "btn-secondary": !_vm.withphotos
+          },
+          on: { click: _vm.togglephotos }
+        },
+        [_vm._v("Photos")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          class: {
+            "btn-primary": _vm.withhoraires,
+            "btn-secondary": !_vm.withhoraires
+          },
+          on: { click: _vm.togglehoraires }
+        },
+        [_vm._v("Horaires")]
+      ),
+      _vm._v(" "),
+      _c("b-table", {
+        attrs: {
+          id: "table-transition-example",
+          items: _vm.filteredgyms,
+          fields: _vm.fields,
+          striped: "",
+          small: "",
+          responsive: "",
+          "primary-key": "a",
+          "tbody-transition-props": _vm.transProps
+        },
+        scopedSlots: _vm._u(
+          [
+            {
+              key: "nom",
+              fn: function(data) {
+                return _c("span", {}, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                    [_vm._v(_vm._s(data.value))]
+                  )
+                ])
+              }
+            },
+            {
+              key: "top-row",
+              fn: function(ref) {
+                var fields = ref.fields
+                return _vm._l(fields, function(field) {
+                  return _c("td", { key: field.key }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters[field.key],
+                          expression: "filters[field.key]"
+                        }
+                      ],
+                      attrs: { placeholder: field.label },
+                      domProps: { value: _vm.filters[field.key] },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.filters, field.key, $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                })
+              }
+            },
+            {
+              key: "photo_url",
+              fn: function(data) {
+                return _c("span", {}, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                    [
+                      _vm.withphotos
+                        ? _c("img", {
+                            attrs: {
+                              src: data.value,
+                              width: "120",
+                              height: "160",
+                              alt: ""
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  )
+                ])
+              }
+            },
+            {
+              key: "problemes",
+              fn: function(data) {
+                return _c(
+                  "span",
+                  {},
+                  [
+                    _vm._l(data.value, function(prob, index) {
+                      return _c(
+                        "b-button",
+                        { key: index, attrs: { variant: "danger" } },
+                        [_vm._v(_vm._s(index))]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm._l(data.value, function(prob, index2) {
+                      return _c("h1", { key: index2 }, [_vm._v(_vm._s(index2))])
+                    })
+                  ],
+                  2
+                )
+              }
+            },
+            {
+              key: "niveaux",
+              fn: function(data) {
+                return _c("span", {
+                  domProps: { innerHTML: _vm._s(data.value) }
+                })
+              }
+            },
+            {
+              key: "horairescompact",
+              fn: function(data) {
+                return _vm.withhoraires
+                  ? _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
+                  : _vm._e()
+              }
+            },
+            {
+              key: "url",
+              fn: function(data) {
+                return _c("span", {}, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                    [_vm._v("Consulter")]
+                  )
+                ])
+              }
+            }
+          ],
+          null,
+          true
+        )
+      }),
+      _vm._v(" "),
+      _vm.debug ? _c("span", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-41ff4c01", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
