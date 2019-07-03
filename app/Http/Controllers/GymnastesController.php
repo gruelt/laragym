@@ -333,7 +333,7 @@ class GymnastesController extends Controller
                     $reinscrire = $gymnaste->saisons()->find($saisoni->id);
                     $return[$key]['reinscrit']['saison']=$saisoni;
                     //Si dossier non complet
-                    if($reinscrire->pivot->dossier==0)
+                    if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)
                     {
                         $problemes['dossier']['absent']["text"] = "Dossier non complet, à remplir au gymnase ";
                         $problemes['dossier']['absent']["class"] = "warning";
@@ -342,7 +342,7 @@ class GymnastesController extends Controller
                     else {
                         if ($reinscrire->pivot->affiligue == 0) {
                             $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
-                            $problemes['dossier']['nonsaisi']["class"] = "warning";
+                            $problemes['affiligue']['nonsaisi']["class"] = "warning";
                         }
                     }
 
@@ -664,6 +664,24 @@ class GymnastesController extends Controller
 
 
         return $gym;
+
+    }
+
+    public function updatedossier($gym_id,$statut)
+    {
+        $sai= new Saison;
+        $saison = $sai->inscriptionOuverte()->id;
+        $return = Gymnaste::find($gym_id)->saisons()->updateExistingPivot($saison,['dossier'=>$statut]);
+        return $return;
+
+    }
+
+    public function updateaffiligue($gym_id,$statut)
+    {
+        $sai= new Saison;
+        $saison = $sai->inscriptionOuverte()->id;
+        $return = Gymnaste::find($gym_id)->saisons()->updateExistingPivot($saison,['affiligue'=>$statut]);
+        return $return;
 
     }
 

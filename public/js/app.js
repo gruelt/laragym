@@ -83935,6 +83935,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84011,32 +84013,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/admin/gymnastes/' + this.gym.id + '/certificatmedical/valid');
             //location.reload();
         },
-        validpaiement: function validpaiement(montant, saison_id) {
+        validdossier: function validdossier(gym_id, statut) {
             var _this3 = this;
+
+            console.log('clic le dossier ' + statut);
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/dossier/' + statut).then(function (response) {
+                return _this3.update = response.data;
+            });
+            //location.reload();
+        },
+        validaffiligue: function validaffiligue(gym_id, statut) {
+            var _this4 = this;
+
+            console.log('clic le dossier ' + statut);
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/affiligue/' + statut).then(function (response) {
+                return _this4.update = response.data;
+            });
+            //location.reload();
+        },
+        validpaiement: function validpaiement(montant, saison_id) {
+            var _this5 = this;
 
             console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
             axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + montant).then(function (response) {
-                return _this3.update = response.data;
+                return _this5.update = response.data;
             });
 
             //location.reload();
         },
         annulpaiement: function annulpaiement(montant, saison_id) {
-            var _this4 = this;
+            var _this6 = this;
 
             console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
             axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + 0).then(function (response) {
-                return _this4.update = response.data;
+                return _this6.update = response.data;
             });;
 
             //location.reload();
         },
 
         getcurrent: function getcurrent() {
-            var _this5 = this;
+            var _this7 = this;
 
             axios.get('/api/saisons/actuelle').then(function (response) {
-                return _this5.saison_id = response.data;
+                return _this7.saison_id = response.data;
             });
         },
         hideModalTeam: function hideModalTeam() {
@@ -84981,7 +85001,7 @@ var render = function() {
                             [
                               _c("h2", [
                                 _vm._v(
-                                  "\n                            Dossier\n                        "
+                                  "\n                            Dossier Papier\n                        "
                                 )
                               ]),
                               _vm._v(" "),
@@ -85023,14 +85043,13 @@ var render = function() {
                                     ],
                                     1
                                   )
-                                : _vm.admin && !_vm.gym.problemes.Groupe
-                                ? _c(
+                                : _c(
                                     "b-button",
                                     {
                                       attrs: { variant: "info" },
                                       on: {
                                         click: function($event) {
-                                          return _vm.annuldossier(_vm.gym.id)
+                                          return _vm.validdossier(_vm.gym.id, 0)
                                         }
                                       }
                                     },
@@ -85039,8 +85058,7 @@ var render = function() {
                                         "Marquer le dossier comme incomplet"
                                       )
                                     ]
-                                  )
-                                : _vm._e(),
+                                  ),
                               _vm._v(" "),
                               _c("br"),
                               _vm._v(" "),
@@ -85053,7 +85071,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.admin
+                  _vm.admin && !_vm.gym.problemes.dossier
                     ? _c(
                         "b-card",
                         { staticClass: "mb-12 ", attrs: { tag: "Affiligue" } },
@@ -85078,12 +85096,13 @@ var render = function() {
                                           on: {
                                             click: function($event) {
                                               return _vm.validaffiligue(
-                                                _vm.gym.id
+                                                _vm.gym.id,
+                                                1
                                               )
                                             }
                                           }
                                         },
-                                        [_vm._v("Valider dossier Ufolep")]
+                                        [_vm._v("Valider dossier Affiligue")]
                                       )
                                     ],
                                     1
@@ -85095,7 +85114,10 @@ var render = function() {
                                       attrs: { variant: "info" },
                                       on: {
                                         click: function($event) {
-                                          return _vm.annulaffiligue(_vm.gym.id)
+                                          return _vm.validaffiligue(
+                                            _vm.gym.id,
+                                            0
+                                          )
                                         }
                                       }
                                     },

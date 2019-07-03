@@ -66,7 +66,11 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/gymnastes/{gym_id}/equipes/{equipe_id}/attente/{attente}','GymnastesController@updateequipeattente');
 
+    //Valide ou non le dossier pour la saison actuelle
+    Route::get('/gymnastes/{id}/dossier/{statut}','GymnastesController@updatedossier');
 
+    //Valide ou non le dossier pour la saison actuelle
+    Route::get('/gymnastes/{id}/affiligue/{statut}','GymnastesController@updateaffiligue');
 
 
 });
