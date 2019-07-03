@@ -121,7 +121,7 @@
         data() {
             return {
 
-                saison_id: "9999",
+                saison_id: "2",
                 gyms: [],
                 withphotos: false,
                 filters: {
