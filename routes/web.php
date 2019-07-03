@@ -101,6 +101,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
         return view('pages.admin.adherents');
     });
 
+    Route::get('/gymnastes/quick', function () {
+        return view('pages.admin.adherents')->withQuick(1);
+    });
+
     Route::get('/passport', function () {
         return view('pages.admin.passport');
     });

@@ -83942,6 +83942,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     props: {
+
         admin: {
             type: Boolean,
             default: false
@@ -83994,6 +83995,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             console.log('Mise à jour DB pour ' + this.idgym);
+
             axios.get('/api/admin/gymnastes/' + this.idgym).then(function (response) {
                 return _this.gym = response.data;
             });
@@ -85405,7 +85407,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85482,6 +85484,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "gymnastesTableComponent",
 
     props: {
+        quick: {
+            type: Boolean,
+            default: false
+        },
         debug: {
             type: Boolean,
             default: true
@@ -85503,9 +85509,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            axios.get('/api/admin/gymnastes/saison/' + this.saison_id).then(function (response) {
-                return _this.gyms = response.data;
-            });
+            if (this.quick == false) {
+                axios.get('/api/admin/gymnastes/saison/' + this.saison_id).then(function (response) {
+                    return _this.gyms = response.data;
+                });
+            } else {
+                axios.get('/api/admin/gymnastes/saison/' + this.saison_id + "/quick").then(function (response) {
+                    return _this.gym = response.data;
+                });
+            }
         },
         updateteam: function updateteam() {
             var _this2 = this;
@@ -85600,7 +85612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         if (this.equipe_id == null) {
             this.getcurrentseason();
-            this.update();
+            //this.update();
         } else {
             this.withphotos = true;
             this.updateteam();
@@ -85638,6 +85650,7 @@ var render = function() {
   return _c(
     "div",
     [
+      _vm._v("\n    quick = " + _vm._s(_vm.quick) + "\n    "),
       _vm.equipe_id == _vm.Null ? _c("saison-select") : _vm._e(),
       _vm._v(" "),
       _c(

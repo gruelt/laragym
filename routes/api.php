@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason');
 
+    Route::get('/gymnastes/saison/{id}/quick', 'GymnastesController@getbyseasonquick');
+
 
     Route::get('/gymnastes/{id}/certificatmedical/valid', 'GymnastesController@validcertif');
 

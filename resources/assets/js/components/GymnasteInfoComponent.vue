@@ -455,6 +455,7 @@
 
 
         props: {
+
             admin:{
                 type: Boolean,
                 default: false
@@ -513,10 +514,12 @@
 
             update: function () {
                 console.log('Mise à jour DB pour ' + this.idgym);
-                axios
-                    .get('/api/admin/gymnastes/' + this.idgym)
-                    .then(response => (this.gym = response.data))
-                ;
+
+                    axios
+                        .get('/api/admin/gymnastes/' + this.idgym)
+                        .then(response => (this.gym = response.data))
+                    ;
+
 
 
             },

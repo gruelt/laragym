@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        quick = {{quick}}
         <saison-select v-if="equipe_id == Null"></saison-select>
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
@@ -65,6 +65,10 @@
 
         ,
         props:{
+            quick:{
+                type:Boolean,
+                default:false
+            },
             debug:{
                 type: Boolean,
                 default:true
@@ -85,9 +89,19 @@
             },
 
             update: function() {
+                if(this.quick==false)
+                {
                 axios
                     .get('/api/admin/gymnastes/saison/'+this.saison_id)
                     .then(response => (this.gyms = response.data));
+
+            }
+            else
+                {
+                    axios
+                    .get('/api/admin/gymnastes/saison/'+this.saison_id+"/quick")
+                    .then(response => (this.gym = response.data));
+                }
 
             },
             updateteam: function() {
@@ -201,7 +215,7 @@
             if(this.equipe_id == null)
             {
                 this.getcurrentseason();
-                this.update();
+                //this.update();
             }
             else {
                 this.withphotos=true;

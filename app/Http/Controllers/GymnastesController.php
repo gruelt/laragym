@@ -633,6 +633,40 @@ class GymnastesController extends Controller
         //return $gymnastes;
     }
 
+    /**
+     * récupère les gyms d'une saison
+     * @param $saison_id
+     *
+     * @return array|mixed
+     */
+    public function getbyseasonquick($saison_id)
+    {
+        $return=array();
+
+        //Si toutes les saisons confondues
+        if($saison_id == 9999)
+        {
+            return $this->getall();
+        }
+
+
+        $saison=  Saison::find($saison_id);
+
+        $gymnastes = $saison->gymnastes()->get();
+
+        if($gymnastes->count() == 0)
+        {
+            return $gymnastes;
+        }
+
+
+        $return = $gymnastes;
+
+        return $return;
+
+        //return $gymnastes;
+    }
+
 
     /**
      * Récupère les équipes pour une saison précise d'un gym
