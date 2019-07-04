@@ -8,7 +8,7 @@
 @section('content')
 
     @if(isset($quick))
-    Mode Turbo <gymnaste-table-quick :quick="true"></gymnaste-table-quick>
+    Rapide <gymnaste-table-quick :quick="true"></gymnaste-table-quick>
     @else
         <gymnaste-table></gymnaste-table>
     @endif

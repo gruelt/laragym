@@ -1,9 +1,9 @@
 <template>
     <div>
-        quick = {{quick}}
+
         <saison-select v-if="equipe_id == Null"></saison-select>
-        <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
-        <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
+        <!--<button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>-->
+        <!--<button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>-->
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
@@ -89,19 +89,11 @@
             },
 
             update: function() {
-                if(this.quick==false)
-                {
-                axios
-                    .get('/api/admin/gymnastes/saison/'+this.saison_id)
-                    .then(response => (this.gyms = response.data));
 
-            }
-            else
-                {
                     axios
                     .get('/api/admin/gymnastes/saison/'+this.saison_id+"/quick")
-                    .then(response => (this.gym = response.data));
-                }
+                    .then(response => (this.gyms = response.data));
+
 
             },
             updateteam: function() {

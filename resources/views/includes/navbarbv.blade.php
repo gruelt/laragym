@@ -30,6 +30,7 @@
                     <b-nav-item-dropdown text="Admin" right>
                         <b-dropdown-header>Gymnastes</b-dropdown-header>
                         <b-dropdown-item href="/admin/gymnastes/">Consulter</b-dropdown-item>
+                        <b-dropdown-item href="/admin/gymnastes/quick">Consulter rapide</b-dropdown-item>
 
 
                         <b-dropdown-divider></b-dropdown-divider>

@@ -85676,7 +85676,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm._v("\n    quick = " + _vm._s(_vm.quick) + "\n    "),
       _vm.equipe_id == _vm.Null ? _c("saison-select") : _vm._e(),
       _vm._v(" "),
       _c(
@@ -85838,9 +85837,7 @@ var render = function() {
           null,
           true
         )
-      }),
-      _vm._v(" "),
-      _vm.debug ? _c("span", [_vm._v(_vm._s(_vm.gyms))]) : _vm._e()
+      })
     ],
     1
   )
@@ -85941,7 +85938,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86043,15 +86040,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            if (this.quick == false) {
-                axios.get('/api/admin/gymnastes/saison/' + this.saison_id).then(function (response) {
-                    return _this.gyms = response.data;
-                });
-            } else {
-                axios.get('/api/admin/gymnastes/saison/' + this.saison_id + "/quick").then(function (response) {
-                    return _this.gym = response.data;
-                });
-            }
+            axios.get('/api/admin/gymnastes/saison/' + this.saison_id + "/quick").then(function (response) {
+                return _this.gyms = response.data;
+            });
         },
         updateteam: function updateteam() {
             var _this2 = this;
@@ -86142,34 +86133,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm._v("\n    quick = " + _vm._s(_vm.quick) + "\n    "),
       _vm.equipe_id == _vm.Null ? _c("saison-select") : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn",
-          class: {
-            "btn-primary": _vm.withphotos,
-            "btn-secondary": !_vm.withphotos
-          },
-          on: { click: _vm.togglephotos }
-        },
-        [_vm._v("Photos")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn",
-          class: {
-            "btn-primary": _vm.withhoraires,
-            "btn-secondary": !_vm.withhoraires
-          },
-          on: { click: _vm.togglehoraires }
-        },
-        [_vm._v("Horaires")]
-      ),
       _vm._v(" "),
       _c("b-table", {
         attrs: {

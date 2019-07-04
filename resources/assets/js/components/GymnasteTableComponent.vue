@@ -1,6 +1,6 @@
 <template>
     <div>
-        quick = {{quick}}
+
         <saison-select v-if="equipe_id == Null"></saison-select>
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
@@ -54,7 +54,7 @@
 
 
         </b-table>
-        <span v-if="debug">{{gyms}}</span>
+        <!--<span v-if="debug">{{gyms}}</span>-->
     </div>
 </template>
 
