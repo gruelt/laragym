@@ -62,6 +62,7 @@
                             <b-badge v-if="gym.certificat_medical_check == 0" variant="warning">Attente Validation</b-badge>
                             <b-badge v-else variant="success">Vérifié</b-badge>
 
+
                         </b-alert>
 
 
