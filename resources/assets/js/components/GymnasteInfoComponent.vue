@@ -52,9 +52,10 @@
                 >
                     <b-card-text>
 
-                        <b-alert v-if="gym.certificat_medical == null" show variant="warning">Aucun Certificat Medical</b-alert>
-                        <b-alert v-else show variant="info"><a :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical du {{gym.certificat_medical_date_fr}} valable jusqu'au {{gym.certificat_medical_fin_fr}} </a>
-
+                        <b-alert v-if="gym.certificat_medical == null && gym.certificat_medical_date == null" show variant="warning">Aucun Certificat Medical</b-alert>
+                        <b-alert v-else show variant="info">
+                            <a v-if="gym.certificat_medical != null && gym.certificat_medical_date !=null" :href="gym.certificat_medical_url"><i class="fas fa-file-alt"></i>&nbsp;Certificat Medical du {{gym.certificat_medical_date_fr}} valable jusqu'au {{gym.certificat_medical_fin_fr}} </a>
+                            <span v-if="gym.certificat_medical == null && gym.certificat_medical_date !=null">Certificat saison précédente du {{gym.certificat_medical_date_fr}} valable jusqu'au {{gym.certificat_medical_fin_fr}}</span>
 
 
                             <b-badge v-if="(gym.certificat_medical_check == 0 && admin)" v-on:click="validcertif" variant="success">Valider le certificat</b-badge>
@@ -67,7 +68,7 @@
                         <b-alert v-if="gym.certificat_medical_age >= 3" show variant="warning">Certificat dépassé</b-alert>
 
 
-                        <h5 v-if="gym.certificat_medical != null"><modify-modal :display="gym.certificat_medical_date_fr" :admin="admin" type="date" field="certificat_medical_date" :id="gym.id" model="Gymnaste" :value="gym.certificat_medical_date"></modify-modal></h5>
+                        <h5 v-if="gym.certificat_medical_date != null || admin"><modify-modal :display="gym.certificat_medical_date_fr" :admin="admin" type="date" field="certificat_medical_date" :id="gym.id" model="Gymnaste" :value="gym.certificat_medical_date"></modify-modal></h5>
 
                         <b-button v-b-modal.certifupload variant="success">Envoyer</b-button>
 

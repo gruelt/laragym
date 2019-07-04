@@ -278,19 +278,40 @@ class GymnastesController extends Controller
 
 
 
-                $datecertif = Carbon::parse($gymnaste['certificat_medical_date'])->format('d-m-Y');
+                if($gymnaste['certificat_medical_date']==null)
+                {
+                    $datecertif = "Entrer date certificat Affiligue";
 
-                $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
+                    $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
 
-                $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
+                    $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
 
-                $return[$key]['certificat_medical_date_fr']=$datecertif;
+                    $return[$key]['certificat_medical_date_fr']=$datecertif;
 
-                $return[$key]['certificat_medical_url']=$certif_url;
+                    $return[$key]['certificat_medical_url']=$certif_url;
 
-                $return[$key]['certificat_medical_age']=$agecertif;
+                    $return[$key]['certificat_medical_age']=$agecertif;
 
-                $return[$key]['certificat_medical_fin_fr']=$datefincertif;
+                    $return[$key]['certificat_medical_fin_fr']=$datefincertif;
+                }
+                else{
+
+
+                    $datecertif = Carbon::parse($gymnaste['certificat_medical_date'])->format('d-m-Y');
+
+                    $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
+
+                    $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
+
+                    $return[$key]['certificat_medical_date_fr']=$datecertif;
+
+                    $return[$key]['certificat_medical_url']=$certif_url;
+
+                    $return[$key]['certificat_medical_age']=$agecertif;
+
+                    $return[$key]['certificat_medical_fin_fr']=$datefincertif;
+                }
+
 
                 //Certificat dépassé
                 if($agecertif >= 3)
@@ -300,7 +321,7 @@ class GymnastesController extends Controller
                 }
 
                 //Certificat absent
-                if($gymnaste['certificat_medical'] === null)
+                if($gymnaste['certificat_medical'] === null && $gymnaste['certificat_medical_date'] == null)
                 {
                     $problemes['certificat']['nonecertif']["text"]="Aucun Certificat médical";
                     $problemes['certificat']['nonecertif']["class"]="warning";
