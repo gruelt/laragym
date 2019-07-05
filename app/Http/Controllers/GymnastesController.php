@@ -353,6 +353,7 @@ class GymnastesController extends Controller
                 if($saisoni != null) {
                     $reinscrire = $gymnaste->saisons()->find($saisoni->id);
                     $return[$key]['reinscrit']['saison']=$saisoni;
+                    $return[$key]['dossier']=$reinscrire->pivot->dossier;
                     //Si dossier non complet
                     if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)
                     {
@@ -361,7 +362,7 @@ class GymnastesController extends Controller
                     }
                     //Si complet on check l'affiligue
                     else {
-                        if ($reinscrire->pivot->affiligue == 0) {
+                        if ($reinscrire->pivot->affiligue == 0 && $reinscrire->pivot->dossier!=2) {
                             $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
                             $problemes['affiligue']['nonsaisi']["class"] = "warning";
                         }

@@ -49,15 +49,10 @@
 
 
 
-                                        <a href="/admin/gymnastes" class="btn btn-primary">Voir les Gymnastes</a>
+                                        <a href="/admin/gymnastes/quick" class="btn btn-primary"><i class="fas fa-shipping-fast"></i> Voir les Gymnastes Mode Rapide</a>
+                                        <a href="/admin/gymnastes/quick" class="btn btn-primary">Voir les Gymnastes </a>
 
-                                        <v-btn
-                                                class="mx-0"
-                                                color="primary"
-                                                large
-                                        >
 
-                                        </v-btn>
                                     @endif
 
                             </v-flex>

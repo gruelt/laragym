@@ -83941,6 +83941,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -85088,6 +85094,10 @@ var render = function() {
                                     ]
                                   ),
                               _vm._v(" "),
+                              _vm.gym.dossier == 2
+                                ? _c("b-badge", [_vm._v("Dossier Baby Gym")])
+                                : _vm._e(),
+                              _vm._v(" "),
                               _c("br"),
                               _vm._v(" "),
                               _c("span")
@@ -85151,6 +85161,10 @@ var render = function() {
                                     },
                                     [_vm._v("Marquer comme non saisi")]
                                   )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.gym.dossier == 2
+                                ? _c("b-badge", [_vm._v("Dossier Baby Gym")])
                                 : _vm._e(),
                               _vm._v(" "),
                               _c("br"),

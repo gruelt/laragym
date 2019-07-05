@@ -333,6 +333,9 @@
                                 <b-button  variant="success" v-on:click="validdossier(gym.id,2)">Valider le Dossier Baby </b-button>
                             </span>
                         <b-button v-else v-on:click="validdossier(gym.id,0)" variant="info">Marquer le dossier comme incomplet</b-button>
+
+                        <b-badge v-if="gym.dossier==2">Dossier Baby Gym</b-badge>
+
                         <br>
                         <span></span>
 
@@ -359,6 +362,9 @@
 
                             </span>
                         <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="validaffiligue(gym.id,0)" variant="info">Marquer comme non saisi</b-button>
+
+                        <b-badge v-if="gym.dossier==2">Dossier Baby Gym</b-badge>
+
                         <br>
                         <span></span>
 
