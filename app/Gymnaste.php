@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Imports\certifsImport;
 use Illuminate\Database\Eloquent\Model;
 
 class Gymnaste extends Model
@@ -86,6 +87,12 @@ class Gymnaste extends Model
     public function horaires()
     {
         //TODO recup liste horaires
+    }
+
+    //MOulinette piochant dans le storage/imports et qui tente de mettre les dates au bon endroit
+    public function moulinettecertif()
+    {
+        Excel::import(new certifsImport,'imports/certificatsmedic.csv');
     }
 
 }
