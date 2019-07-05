@@ -85145,7 +85145,9 @@ var render = function() {
                                     ],
                                     1
                                   )
-                                : _vm.admin && !_vm.gym.problemes.Groupe
+                                : _vm.admin &&
+                                  !_vm.gym.problemes.Groupe &&
+                                  _vm.gym.dossier != 2
                                 ? _c(
                                     "b-button",
                                     {

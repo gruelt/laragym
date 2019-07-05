@@ -361,7 +361,7 @@
                                 <b-button  variant="success" v-on:click="validaffiligue(gym.id,1)">Valider dossier Affiligue</b-button>
 
                             </span>
-                        <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="validaffiligue(gym.id,0)" variant="info">Marquer comme non saisi</b-button>
+                        <b-button v-else-if="admin && !gym.problemes.Groupe && gym.dossier!=2" v-on:click="validaffiligue(gym.id,0)" variant="info">Marquer comme non saisi</b-button>
 
                         <b-badge v-if="gym.dossier==2">Dossier Baby Gym</b-badge>
 
