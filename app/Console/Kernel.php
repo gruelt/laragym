@@ -26,6 +26,11 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function () {
+                             Excel::import(new CertifsImport,'imports/certificatsmedic.csv');
+        })->Hourly();
+
+
     }
 
     /**
