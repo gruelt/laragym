@@ -25,7 +25,7 @@ class CertifsImport implements ToModel
 
 
 
-       $gym = Gymnaste::where([['nom','like','%'.$nom.'%'],['prenom','like','%'.$prenom.'%']]);
+       $gym = Gymnaste::where([['nom','like',$nom],['prenom','like','%'.$prenom.'%']]);
 
       if($gym->count() ==1)
       {
@@ -42,7 +42,7 @@ class CertifsImport implements ToModel
               $zegym->certificat_medical_date = $date;
 
 
-              //    $zegym->save();
+                  $zegym->save();
 
           }
 
@@ -55,7 +55,7 @@ class CertifsImport implements ToModel
           print "Doublons pour $nom********************"."\n";
           foreach($gym->get() as $doublon)
           {
-              print $doublon->nom . " ".$doublon->prenom."\N";
+              print $doublon->nom . " ".$doublon->prenom.$doublon->id."\n";
           }
       }
 
