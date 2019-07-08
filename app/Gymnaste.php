@@ -49,6 +49,7 @@ class Gymnaste extends Model
         $tarif = $this->equipes()->where('saison_id',$saison->id)->wherePivot('attente',0)->sum('tarif');
 
         return $tarif;
+
     }
 
     public function paye()
