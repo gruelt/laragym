@@ -634,7 +634,8 @@ class GymnastesController extends Controller
         //Si toutes les saisons confondues
         if($saison_id == 9999)
         {
-            return $this->getall();
+            $return = $this->getall();
+            return $this->formatGyms($return);
         }
 
 
