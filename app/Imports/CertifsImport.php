@@ -25,7 +25,7 @@ class CertifsImport implements ToModel
 
 
 
-       $gym = Gymnaste::where('nom','like','%'.$nom.'%')->where('prenom','like','%'.$prenom.'%');
+       $gym = Gymnaste::where([['nom','like','%'.$nom.'%'],['prenom','like','%'.$prenom.'%']]);
 
       if($gym->count() ==1)
       {
