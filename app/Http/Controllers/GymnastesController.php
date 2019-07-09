@@ -352,7 +352,11 @@ class GymnastesController extends Controller
 
                 if($saisoni != null) {
                     $reinscrire = $gymnaste->saisons()->find($saisoni->id);
+
+
+
                     $return[$key]['reinscrit']['saison']=$saisoni;
+
                     $return[$key]['dossier']=$reinscrire->pivot->dossier;
                     //Si dossier non complet
                     if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)

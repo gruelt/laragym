@@ -402,7 +402,7 @@
                 >
                     <b-card-text>
 
-                        <h3>Responsable</h3>
+                        <h3>Responsable <b-badge v-if="admin" :href="'/admin/responsables/' + gym.responsable.id ">Voir</b-badge></h3>
                         <modify-modal icon="fa fa-user mr-3" :admin="admin" field="nom" :id="gym.responsable.id" model="User" :value="gym.responsable.nom"></modify-modal>
                         <modify-modal icon="fa fa-user mr-3" :admin="admin" field="prenom" :id="gym.responsable.id" model="User" :value="gym.responsable.prenom"></modify-modal>
                         <modify-modal icon="fa fa-home mr-3" :admin="admin" field="adresse" :id="gym.responsable.id" model="User" :value="gym.responsable.adresse"></modify-modal>

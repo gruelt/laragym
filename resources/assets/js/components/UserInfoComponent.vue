@@ -38,6 +38,9 @@
 
 
             </b-col>
+            <b-col sm="12" lg="2">
+                <b-button variant="sucess" class="btn btn-success" :href="'/admin/responsables/'+user_id+'/gymnastes/add'">+ Ajouter Un gymnaste à ce responsable</b-button>
+            </b-col>
 
 
 

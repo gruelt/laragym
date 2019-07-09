@@ -85202,7 +85202,26 @@ var render = function() {
                           _c(
                             "b-card-text",
                             [
-                              _c("h3", [_vm._v("Responsable")]),
+                              _c(
+                                "h3",
+                                [
+                                  _vm._v("Responsable "),
+                                  _vm.admin
+                                    ? _c(
+                                        "b-badge",
+                                        {
+                                          attrs: {
+                                            href:
+                                              "/admin/responsables/" +
+                                              _vm.gym.responsable.id
+                                          }
+                                        },
+                                        [_vm._v("Voir")]
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
                               _vm._v(" "),
                               _c("modify-modal", {
                                 attrs: {
@@ -116054,6 +116073,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -116235,6 +116257,26 @@ var render = function() {
                   )
                 ],
                 1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { sm: "12", lg: "2" } },
+            [
+              _c(
+                "b-button",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: {
+                    variant: "sucess",
+                    href:
+                      "/admin/responsables/" + _vm.user_id + "/gymnastes/add"
+                  }
+                },
+                [_vm._v("+ Ajouter Un gymnaste à ce responsable")]
               )
             ],
             1
