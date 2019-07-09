@@ -37,7 +37,7 @@ Route::group([ 'middleware' => ['verified','complete','privileges:user']], funct
 
 Route::middleware('verified')->get('/formcomplete',function()
 {
-    return view('forms.complete');
+    return view('forms.complete')->with('new',1);
 });
 Route::middleware('verified')->post('/formcomplete','completeController@store');
 
@@ -119,8 +119,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //Montre l'equipe
     Route::get('/equipes/{id}', 'EquipesController@showequipe');
 
+    //Montre les responsables
+    Route::get('/responsables/', function () {
+        return view('pages.admin.responsables');
+    });
 
-    //Montre l'equipe
+    //Montre les responsables
+    Route::get('/responsables/add', function () {
+        return view('forms.complete');
+    });
+
+
+    //test photo
     Route::get('/photo/test', 'PhotoController@formtest');
 
 

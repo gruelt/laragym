@@ -20,10 +20,18 @@ class completeController extends Controller
             'telephone2' => 'required|regex:/0[1-9][0-9]{8}/|max:10'
 
         ]);
+        if($request->new ==1) {
+            $user = new User;
 
-        $user = User::find(Auth::user()->id);
+            $user->name = $request->nom;
+            $user->email =  $request->email;
+            $user->password =  "bachibouzouk42133443zarma";
+        }
+        else
+        {
+            $user = User::find(Auth::user()->id);
+        }
 
-//dd($request);
             $user->nom = $request->nom;
             $user->prenom = $request->prenom;
             $user->ville= $request->ville;
@@ -40,10 +48,15 @@ class completeController extends Controller
             $user->save();
 
 
+        if($request->new ==1) {
+            return redirect('/admin/responsables')->withMessage("Nouveau Responsable créé");
+        }
+        else{
 
-        return redirect('/home')->withMessage("Vos Informations sont complétées ! Vous pouvez Inscrire vos gymnastes");
 
+            return redirect('/home')->withMessage("Vos Informations sont complétées ! Vous pouvez Inscrire vos gymnastes");
 
+        }
 
 
 

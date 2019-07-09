@@ -40,6 +40,8 @@ Vue.component('horaires', require('./components/HorairesComponent.vue'));
 
 Vue.component('modify-modal', require('./components/ModifModalComponent.vue'));
 
+Vue.component('responsables-table', require('./components/ResponsablesTableComponent.vue'));
+
 
 
 

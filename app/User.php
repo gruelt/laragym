@@ -48,7 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function gymnastes()
     {
-        return $this->hasMany(Gymnaste::class);
+        return $this->hasMany(Gymnaste::class)->with('saisons');
     }
 
 
@@ -60,6 +60,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function equipes()
     {
         return $this->belongsToMany('App\Equipe','coach_equipe');
+    }
+
+    public function saisons()
+    {
+
+
+
+
     }
 
 

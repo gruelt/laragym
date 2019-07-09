@@ -6,11 +6,45 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Compte du responsable légal</div>
+                    <div class="card-header">Compte du responsable légal
+                        @if (session()->has('admin'))
+                            <div class="alert alert-warning" role="alert">
+                                Le responsable ajouté n'ayant pas de gym, il n'apparaitra pas dans la liste de la saison actuelle ( choisir "toutes" dans la liste des saisons )
+                            </div>
+                        @endif
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="/formcomplete">
                             @csrf
+
+
+
+                            {{--Si on est en admin--}}
+                            @if (session()->has('admin'))
+
+                                <input type="hidden" name="new" id="new" value="1">
+
+
+
+
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+                            @endif
 
 
                             <div class="form-group row">
@@ -26,6 +60,7 @@
                                     @endif
                                 </div>
                             </div>
+
 
 
                             <div class="form-group row">
