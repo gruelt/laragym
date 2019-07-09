@@ -3,10 +3,8 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\CertifsImport;
 
 class Kernel extends ConsoleKernel
@@ -31,15 +29,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->call(function () {
-                             Excel::import(new CertifsImport,'imports/certificatsmedic.csv');
-        })->everyMinute();;
+
+Excel::import(new CertifsImport,'imports/certificatsmedic.csv');
+        })->everyTenMinutes();
 
 
-    }
-
-    public function __construct(Application $app, Dispatcher $events)
-    {
-        parent::__construct($app, $events);
     }
 
     /**

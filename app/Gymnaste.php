@@ -46,9 +46,10 @@ class Gymnaste extends Model
         $s = new Saison;
         $saison = $s->inscriptionOuverte();
 
-        $tarif = $this->equipes()->where('saison_id',$saison->id)->wherePivot('attente',0)->max('tarif');
+        $tarif = $this->equipes()->where('saison_id',$saison->id)->wherePivot('attente',0)->sum('tarif');
 
         return $tarif;
+
     }
 
     public function paye()
