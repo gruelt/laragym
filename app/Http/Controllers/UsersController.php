@@ -67,5 +67,51 @@ class UsersController extends Controller
         return $return;
     }
 
+    /**
+     * Vue pour récuprer le responsable
+     * @param $user_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showresponsable($user_id)
+    {
+        $return =array();
+
+        $equipe = User::find($user_id);
+
+        return view('pages.admin.viewresponsable')->with('user_id',$user_id);
+    }
+
+    //retourne un user par  par API
+    public  function get($user_id)
+    {
+        $return=array();
+
+        $equipe = User::find($user_id);
+
+
+        return $equipe;
+    }
+
+    //retourne les gyms par API
+    public  function getmembers($user_id)
+    {
+        $gyms=array();
+
+        $user = User::find($user_id);
+
+        if($user == null)
+        {
+            return null;
+        }
+        $gyms=$user->gymnastes()->get();
+
+        $gc = new GymnastesController;
+
+
+        return $gc->formatGyms($gyms);
+    }
+
+
+
 
 }

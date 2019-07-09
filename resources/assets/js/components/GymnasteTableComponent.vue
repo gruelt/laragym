@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <saison-select v-if="equipe_id == Null"></saison-select>
+        <saison-select v-if="equipe_id == Null && user_id ==Null"></saison-select>
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
         {{filteredgyms.length}}
@@ -79,6 +79,11 @@
                     default: null,
                     type: Number,
                 },
+            user_id:
+                {
+                    default: null,
+                    type: Number,
+                },
         },
         methods: {
 
@@ -108,6 +113,13 @@
             updateteam: function() {
                 axios
                     .get('/api/admin/equipes/'+this.equipe_id+'/members')
+                    .then(response => (this.gyms = response.data));
+
+            }
+            ,
+            updateuser: function() {
+                axios
+                    .get('/api/admin/responsables/'+this.user_id+'/members')
                     .then(response => (this.gyms = response.data));
 
             },
@@ -213,14 +225,23 @@
         },
 
         mounted(){
-            if(this.equipe_id == null)
+            if(this.equipe_id == null && this.user_id == null)
             {
                 this.getcurrentseason();
                 //this.update();
             }
             else {
+
                 this.withphotos=true;
-                this.updateteam();
+
+                if(this.equipe_id !=null) {
+                    this.updateteam();
+                }
+
+                if(this.user_id !=null) {
+                    this.updateuser();
+                }
+
             }
 
         },

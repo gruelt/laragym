@@ -76,6 +76,10 @@ Route::group(['prefix' => 'admin'], function () {
     //Valide ou non le dossier pour la saison actuelle
     Route::get('/gymnastes/{id}/affiligue/{statut}','GymnastesController@updateaffiligue');
 
+    Route::get('/responsables/{id}', 'UsersController@get');
+
+    Route::get('/responsables/{id}/members', 'UsersController@getmembers');
+
 
 });
 

@@ -42,6 +42,8 @@ Vue.component('modify-modal', require('./components/ModifModalComponent.vue'));
 
 Vue.component('responsables-table', require('./components/ResponsablesTableComponent.vue'));
 
+Vue.component('user-info', require('./components/UserInfoComponent'));
+
 
 
 

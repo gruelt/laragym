@@ -19,9 +19,9 @@
                 primary-key="a"
                 :tbody-transition-props="transProps"
         >
-            <!--<span slot="nom" slot-scope="data" >-->
-                <!--<a :href="'/admin/responsables/'+ data.item.id">{{data.value}}</a>-->
-            <!--</span>-->
+            <span slot="nom" slot-scope="data" >
+                <a :href="'/admin/responsables/'+ data.item.id">{{data.value}}</a>
+            </span>
 
             <template slot="top-row" slot-scope="{ fields }">
                 <td v-for="field in fields" :key="field.key">
