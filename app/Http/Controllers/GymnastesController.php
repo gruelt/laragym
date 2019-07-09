@@ -99,6 +99,7 @@ class GymnastesController extends Controller
         $gym->saisons()->attach($saison->inscriptionOuverte()->id);
 
 
+
         if($request->admin==1 && isset($request->user_id))
         {
             return redirect('/admin/responsables/' . $gym->user_id)->withMessage("Gymnaste ajouté !");
