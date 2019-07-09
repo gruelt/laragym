@@ -127,10 +127,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //Montre le responsable et ses infos/gyms
     Route::get('/responsables/{id}', 'UsersController@showresponsable');
 
-    //Montre les responsables
+    //ajoute un responsable par admin
     Route::get('/responsables/add', function () {
         return view('forms.complete');
     });
+
+    Route::get('/responsables/{user_id}/gymnastes/add', 'UsersController@addgymform');
 
 
     //test photo

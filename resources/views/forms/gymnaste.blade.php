@@ -14,11 +14,44 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Gymnaste à Inscrire</div>
+                    <div class="card-header">Gymnaste à Inscrire
+                        @if (session()->has('admin') && isset($user_id))
+                            <div class="alert alert-warning" role="alert">
+                                Le gymnaste sera ajouté au responsable # {{$user_id}} et inscrit à la saison actuelle
+                            </div>
+                        @endif
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="/responsable/gymnastes/add">
                             @csrf
+
+
+
+
+                            {{--Si on est en admin--}}
+                            @if (session()->has('admin') && isset($user_id))
+
+                                <input type="hidden" name="admin" id="admin" value="1">
+                                <input type="hidden" name="user_id" id="user_id" value="{{$user_id}}">
+
+
+
+
+
+
+
+
+
+
+                            @endif
+
+
+
+
+
+
+
 
 
                             <div class="form-group row">

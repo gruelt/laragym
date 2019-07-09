@@ -111,6 +111,11 @@ class UsersController extends Controller
         return $gc->formatGyms($gyms);
     }
 
+    public function addgymform($user_id)
+    {
+        return view('forms.gymnaste')->with('user_id',$user_id);
+    }
+
 
 
 

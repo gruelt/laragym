@@ -79,7 +79,13 @@ class GymnastesController extends Controller
         $gym->prenom = $request->prenom;
         $gym->date_naissance= $date;
         $gym->genre_id = $request->genre;
-        $gym->user_id = Auth::user()->id;
+        if($request->admin==1 && isset($request->user_id))
+        {
+            $gym->user_id = $request->user_id;
+        }
+        else {
+            $gym->user_id = Auth::user()->id;
+        }
         $gym->commentaire = $request->commentaire;
 
 
@@ -93,9 +99,13 @@ class GymnastesController extends Controller
         $gym->saisons()->attach($saison->inscriptionOuverte()->id);
 
 
-
-
-        return redirect('/responsable/gymnastes/'.$gym->id)->withMessage("Gymnaste ajouté !");
+        if($request->admin==1 && isset($request->user_id))
+        {
+            return redirect('/admin/responsables/' . $gym->user_id)->withMessage("Gymnaste ajouté !");
+        }
+        else {
+            return redirect('/responsable/gymnastes/' . $gym->id)->withMessage("Gymnaste ajouté !");
+        }
 
 
 
