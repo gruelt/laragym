@@ -5,6 +5,9 @@
         <!--<button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>-->
         <!--<button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>-->
         {{filteredgyms.length}} Responsables
+        <b-container fluid>
+            <b-col col lg="12">
+
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
@@ -12,7 +15,7 @@
                 striped
                 small
                 responsive
-
+                fixed
                 primary-key="a"
                 :tbody-transition-props="transProps"
         >
@@ -27,16 +30,17 @@
             </template>
 
             <span slot="telephone1" slot-scope="data" >
-                0{{data.value}}
-            </span>
-            <span slot="telephone2" slot-scope="data" >
-                0{{data.value}}
+                0{{data.item.telephone1}} | 0{{data.item.telephone2}}
             </span>
 
 
 
 
-        </b-table>{{gyms}}
+
+        </b-table>
+            </b-col>
+        </b-container>{{gyms}}
+
         <span v-if="debug">{{gyms}}</span>
     </div>
 </template>
@@ -154,14 +158,10 @@
                     },
                     {
                         key: 'telephone1',
-                        label: 'Telephone 1',
+                        label: 'Telephone',
                         sortable: true
                     },
-                    {
-                        key: 'telephone2',
-                        label: 'Telephone 2',
-                        sortable: true
-                    },
+
                     {
                         key: 'profession',
                         label: 'Profession',
