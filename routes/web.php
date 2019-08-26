@@ -124,13 +124,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
         return view('pages.admin.responsables');
     });
 
-    //Montre le responsable et ses infos/gyms
-    Route::get('/responsables/{id}', 'UsersController@showresponsable');
-
     //ajoute un responsable par admin
     Route::get('/responsables/add', function () {
         return view('forms.complete');
     });
+
+    //Montre le responsable et ses infos/gyms
+    Route::get('/responsables/{id}', 'UsersController@showresponsable')->where('id', '[0-9]+');
+
+
 
     Route::get('/responsables/{user_id}/gymnastes/add', 'UsersController@addgymform');
 
