@@ -85474,7 +85474,7 @@ exports = module.exports = __webpack_require__(22)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85485,6 +85485,30 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -85620,12 +85644,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         togglehoraires: function togglehoraires() {
             this.withhoraires = !this.withhoraires;
+        },
+
+        // Génere la liste des mails du listing
+        makemail: function makemail() {
+            var _this5 = this;
+
+            // for (var gym in this.gyms) {
+            //     this.maillist+= gym.responsable;
+            // }
+            this.maillist = "";
+            this.filteredgyms.forEach(function (gym) {
+                _this5.maillist += gym.responsable.email + ",";
+            });
         }
     },
 
     data: function data() {
         return {
-
+            maillist: "Wait",
             saison_id: "2",
             gyms: [],
             withphotos: false,
@@ -85710,11 +85747,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         filteredgyms: function filteredgyms() {
-            var _this5 = this;
+            var _this6 = this;
 
             var filtered = this.gyms.filter(function (item) {
-                return Object.keys(_this5.filters).every(function (key) {
-                    return String(item[key]).toLowerCase().includes(_this5.filters[key].toLowerCase());
+                return Object.keys(_this6.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this6.filters[key].toLowerCase());
                 });
             });
             return filtered.length > 0 ? filtered : [{
@@ -85767,7 +85804,46 @@ var render = function() {
         },
         [_vm._v("Horaires")]
       ),
-      _vm._v("\n    " + _vm._s(_vm.filteredgyms.length) + "\n    "),
+      _vm._v("\n    " + _vm._s(_vm.filteredgyms.length) + "\n\n\n    "),
+      _c(
+        "b-button",
+        {
+          attrs: { variant: "success" },
+          on: {
+            click: function($event) {
+              _vm.$bvModal.show("modal-mail")
+              _vm.makemail()
+            }
+          }
+        },
+        [_c("i", { staticClass: "fas fa-mail-bulk" }), _vm._v("Mail à liste")]
+      ),
+      _vm._v(" "),
+      _c("b-modal", { attrs: { id: "modal-mail", title: "mail" } }, [
+        _c(
+          "p",
+          { staticClass: "my-4" },
+          [
+            _c("b-form-textarea", {
+              attrs: {
+                id: "textarea",
+                placeholder: "Enter something...",
+                rows: "3",
+                "max-rows": "6"
+              },
+              model: {
+                value: _vm.maillist,
+                callback: function($$v) {
+                  _vm.maillist = $$v
+                },
+                expression: "maillist"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
       _c("b-table", {
         attrs: {
           id: "table-transition-example",
@@ -85901,7 +85977,9 @@ var render = function() {
           null,
           true
         )
-      })
+      }),
+      _vm._v(" "),
+      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
     ],
     1
   )

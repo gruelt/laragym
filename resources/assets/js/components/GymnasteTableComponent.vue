@@ -5,6 +5,29 @@
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
         {{filteredgyms.length}}
+
+
+        <b-button @click="$bvModal.show('modal-mail');makemail()"  variant="success"><i class="fas fa-mail-bulk"></i>Mail à liste</b-button>
+
+        <b-modal id="modal-mail" title="mail">
+            <p class="my-4">
+
+                <b-form-textarea
+                        id="textarea"
+                        v-model="maillist"
+                        placeholder="Enter something..."
+                        rows="3"
+                        max-rows="6"
+                >
+
+
+
+                </b-form-textarea>
+
+            </p>
+        </b-modal>
+
+
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
@@ -56,6 +79,7 @@
 
         </b-table>
         <!--<span v-if="debug">{{gyms}}</span>-->
+        {{gyms}}
     </div>
 </template>
 
@@ -136,6 +160,19 @@
             togglehoraires(){
                 this.withhoraires = ! this.withhoraires;
             },
+            // Génere la liste des mails du listing
+            makemail(){
+
+                // for (var gym in this.gyms) {
+                //     this.maillist+= gym.responsable;
+                // }
+                this.maillist="";
+                this.filteredgyms.forEach((gym) => {
+                    this.maillist+= gym.responsable.email+",";
+                });
+                }
+
+
 
 
 
@@ -147,7 +184,7 @@
 
         data() {
             return {
-
+                maillist: "Wait",
                 saison_id: "2",
                 gyms: [],
                 withphotos: false,
@@ -247,7 +284,7 @@
         },
 
         computed: {
-            filteredgyms () {
+            filteredgyms() {
                 const filtered = this.gyms.filter(item => {
                     return Object.keys(this.filters).every(key =>
                         String(item[key]).toLowerCase().includes(this.filters[key].toLowerCase()))
@@ -257,7 +294,14 @@
                     issuedBy: '',
                     issuedTo: ''
                 }]
-            }
+            },
+
+
+
+
+
+
+
         }
 
 
