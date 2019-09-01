@@ -3,10 +3,10 @@
         <div v-if="admin">
 
 
-            {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;<i class="fas fa-pen fa-xs" @click="$bvModal.show('modal-'+model+'-'+field)"></i>&nbsp;&nbsp;<span :class="icon"></span>
+            {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;<i class="fas fa-pen fa-xs" @click="$bvModal.show('modal-horaire-'+horaire.id)"></i>&nbsp;&nbsp;<span :class="icon"></span>
 
 
-            <b-modal :id="'modal-'+model+'-'+field" title="Modifier" hide-footer>
+            <b-modal :id="'modal-horaire-'+ horaire.id" title="Modifier" hide-footer>
 
 
                 <!-- Jour-->
@@ -27,7 +27,7 @@
                     <b-form-input v-model="horaire.heure_fin" id="heure_fin">  </b-form-input>
                     <b-form-input  v-model="horaire.minute_fin" id="minute_fin">  </b-form-input>
 
-                <b-button @click="pushupdate();$bvModal.hide('modal-'+model+'-'+field);"  variant="success">Ok</b-button>
+                <b-button @click="pushupdate();$bvModal.hide('modal-horaire-'+horaire.id);"  variant="success">Ok</b-button>
                 <!--<b-button @click="pushupdate();"  variant="success">Push</b-button>-->
             </b-modal>
         </div>

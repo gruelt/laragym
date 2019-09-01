@@ -116505,9 +116505,7 @@ var render = function() {
               staticClass: "fas fa-pen fa-xs",
               on: {
                 click: function($event) {
-                  return _vm.$bvModal.show(
-                    "modal-" + _vm.model + "-" + _vm.field
-                  )
+                  return _vm.$bvModal.show("modal-horaire-" + _vm.horaire.id)
                 }
               }
             }),
@@ -116518,7 +116516,7 @@ var render = function() {
               "b-modal",
               {
                 attrs: {
-                  id: "modal-" + _vm.model + "-" + _vm.field,
+                  id: "modal-horaire-" + _vm.horaire.id,
                   title: "Modifier",
                   "hide-footer": ""
                 }
@@ -116595,9 +116593,7 @@ var render = function() {
                     on: {
                       click: function($event) {
                         _vm.pushupdate()
-                        _vm.$bvModal.hide(
-                          "modal-" + _vm.model + "-" + _vm.field
-                        )
+                        _vm.$bvModal.hide("modal-horaire-" + _vm.horaire.id)
                       }
                     }
                   },
