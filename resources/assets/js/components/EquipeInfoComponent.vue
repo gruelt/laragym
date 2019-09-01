@@ -37,7 +37,7 @@
             <!--Horaires-->
             <b-col lg="3" sm="12">
 
-                <horaires :horaires="equipe.horaires"></horaires>
+                <horaires :admin="admin" :horaires="equipe.horaires"></horaires>
             </b-col>
             <!--Coach(s)-->
 
@@ -92,7 +92,7 @@
 
 
                         <b-list-group>
-                            <b-list-group-item>Cras justo odio</b-list-group-item>
+                            <b-list-group-item>Cras justo odioz</b-list-group-item>
                             <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
                             <b-list-group-item>Morbi leo risus</b-list-group-item>
                             <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
