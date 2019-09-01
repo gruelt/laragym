@@ -116410,6 +116410,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -116435,7 +116436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
 
-            jours: [{ value: 1, text: 'Lundi' }, { value: 2, text: 'Mardi' }, { value: 3, text: 'Mercredi' }, { value: 4, text: 'Jeudi' }, { value: 5, text: 'Vendredi' }, { value: 6, text: 'Samedi' }],
+            jours: [{ value: 1, text: 'Lundi' }, { value: 2, text: 'Mardi' }, { value: 3, text: 'Mercredi' }, { value: 4, text: 'Jeudi' }, { value: 5, text: 'Vendredi' }, { value: 6, text: 'Samedi' }, { value: 7, text: 'Dimanche' }],
 
             jour: {
                 Type: Number
@@ -116454,14 +116455,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         pushupdate: function pushupdate() {
             var _this = this;
 
-            axios.post('/api/admin/model/' + this.model + '/' + this.id + '/' + this.field, { value: this.value }).then(function (response) {
+            axios.post('/api/admin/equipes/' + this.horaire.equipe_id + "/horaires/", { horaire: this.horaire }).then(function (response) {
                 return _this.fields = response.data;
             });
-            console.log('Update ' + this.id + this.model + this.field + this.value);
+            console.log('Update ' + this.horaire.equipe_id + this.horaire);
 
-            if (this.type == "date") {
-                location.reload();
-            }
+            location.reload();
         }
 
     },

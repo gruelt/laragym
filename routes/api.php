@@ -61,6 +61,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/equipes/{id}/coachs/', 'EquipesController@setcoachtoteam');
 
+    Route::post('/equipes/{id}/horaires/', 'EquipesController@setHoraire');
+
 
     //Update universelle pour tous es modeles (sans attach)
 

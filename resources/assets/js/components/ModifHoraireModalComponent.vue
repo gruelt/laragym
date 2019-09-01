@@ -28,6 +28,7 @@
                     <b-form-input  v-model="horaire.minute_fin" id="minute_fin">  </b-form-input>
 
                 <b-button @click="pushupdate();$bvModal.hide('modal-'+model+'-'+field);"  variant="success">Ok</b-button>
+                <!--<b-button @click="pushupdate();"  variant="success">Push</b-button>-->
             </b-modal>
         </div>
     <div v-else>
@@ -69,6 +70,7 @@
                     { value: 4, text: 'Jeudi' },
                     { value: 5, text: 'Vendredi' },
                     { value: 6, text: 'Samedi' },
+                    { value: 7, text: 'Dimanche' },
 
 
                 ],
@@ -97,14 +99,14 @@
 
             pushupdate: function() {
                 axios
-                    .post('/api/admin/model/'+ this.model+'/'+this.id+'/'+this.field ,  { value: this.value })
+                    .post('/api/admin/equipes/'+ this.horaire.equipe_id + "/horaires/",
+                        { horaire: this.horaire })
                     .then(response => (this.fields = response.data));
-                console.log('Update '+this.id + this.model + this.field+this.value);
+                console.log('Update '+this.horaire.equipe_id + this.horaire  );
 
-                if(this.type=="date")
-                {
+
                     location.reload();
-                }
+
 
 
             },

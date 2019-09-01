@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Horaire;
 use Illuminate\Http\Request;
 use App\Equipe;
 use App\Saison;
@@ -237,6 +238,33 @@ class EquipesController extends Controller
 
 
         return 1;
+    }
+
+    /**Met à jour un horaire pour une équipe
+     * @param $equipe_id
+     * @param Request $request
+     */
+
+    public function setHoraire($equipe_id,Request $request)
+    {
+        $id_horaire = $request->horaire['id'];
+        $jour_id =  $request->horaire['jour_id'];
+        $heure_debut =  $request->horaire['heure_debut'];
+        $minute_debut =  $request->horaire['minute_debut'];
+        $heure_fin =  $request->horaire['heure_fin'];
+        $minute_fin =  $request->horaire['minute_fin'];
+
+        $horaire = Horaire::find($id_horaire);
+
+        $horaire->jour_id= $jour_id;
+        $horaire->heure_debut=$heure_debut;
+        $horaire->minute_debut=$minute_debut;
+        $horaire->heure_fin=$heure_fin;
+        $horaire->minute_fin=$minute_fin;
+
+        $horaire->save();
+
+        return $horaire;
     }
 
 
