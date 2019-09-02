@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use JeroenZwart\CsvSeeder\CsvSeeder;
+use App\Horaire;
 
 class EquipesTableSeeder extends CsvSeeder
 {
