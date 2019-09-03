@@ -37,7 +37,7 @@
             <!--Horaires-->
             <b-col lg="3" sm="12">
 
-                <horaires :admin="admin" :horaires="equipe.horaires"></horaires>
+                <horaires :admin="admin" :horaires="equipe.horaires" :equipe_id="equipe_id"></horaires>
             </b-col>
             <!--Coach(s)-->
 

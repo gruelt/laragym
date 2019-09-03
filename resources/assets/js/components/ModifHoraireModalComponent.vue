@@ -30,6 +30,18 @@
                 <b-button @click="pushupdate();$bvModal.hide('modal-horaire-'+horaire.id);"  variant="success">Ok</b-button>
                 <!--<b-button @click="pushupdate();"  variant="success">Push</b-button>-->
             </b-modal>
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     <div v-else>
         {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;

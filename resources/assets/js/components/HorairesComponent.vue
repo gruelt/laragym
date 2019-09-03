@@ -18,7 +18,11 @@
 
                 </b-list-group-item>
 
-                <b-button v-if="admin" href="#" variant="success">Ajouter</b-button>
+                <b-button-group v-if="equipe_id!=0" size="xs">
+                    <b-button variant="success" :href="'/admin/equipes/'+equipe_id+'/horaires/add'">+</b-button>
+
+
+                </b-button-group>
 
             </b-list-group>
         </b-card-text>
@@ -38,6 +42,10 @@
             titre:{
                 type: String,
                 default: ""
+            },
+            equipe_id:{
+                type: Number,
+                default: "0"
             }
         },
         mounted() {

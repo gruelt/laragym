@@ -87609,7 +87609,11 @@ var render = function() {
             { attrs: { lg: "3", sm: "12" } },
             [
               _c("horaires", {
-                attrs: { admin: _vm.admin, horaires: _vm.equipe.horaires }
+                attrs: {
+                  admin: _vm.admin,
+                  horaires: _vm.equipe.horaires,
+                  equipe_id: _vm.equipe_id
+                }
               })
             ],
             1
@@ -87853,6 +87857,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
     props: {
@@ -87864,6 +87872,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         titre: {
             type: String,
             default: ""
+        },
+        equipe_id: {
+            type: Number,
+            default: "0"
         }
     },
     mounted: function mounted() {},
@@ -87910,10 +87922,27 @@ var render = function() {
                 )
               }),
               _vm._v(" "),
-              _vm.admin
-                ? _c("b-button", { attrs: { href: "#", variant: "success" } }, [
-                    _vm._v("Ajouter")
-                  ])
+              _vm.equipe_id != 0
+                ? _c(
+                    "b-button-group",
+                    { attrs: { size: "xs" } },
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          attrs: {
+                            variant: "success",
+                            href:
+                              "/admin/equipes/" +
+                              _vm.equipe_id +
+                              "/horaires/add"
+                          }
+                        },
+                        [_vm._v("+")]
+                      )
+                    ],
+                    1
+                  )
                 : _vm._e()
             ],
             2
@@ -88211,6 +88240,18 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //

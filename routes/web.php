@@ -119,6 +119,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //Montre l'equipe
     Route::get('/equipes/{id}', 'EquipesController@showequipe');
 
+    //test photo
+    Route::get('/equipes/{id}/horaires/add', 'EquipesController@addhoraire');
+
     //Montre les responsables
     Route::get('/responsables/', function () {
         return view('pages.admin.responsables');
@@ -135,6 +138,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 
 
     Route::get('/responsables/{user_id}/gymnastes/add', 'UsersController@addgymform');
+
+
 
 
     //test photo

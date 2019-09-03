@@ -267,6 +267,22 @@ class EquipesController extends Controller
         return $horaire;
     }
 
+    public function addhoraire($equipe_id)
+    {
+        $horaire = new Horaire;
+
+        $horaire->jour_id=1;
+        $horaire->heure_debut=6;
+        $horaire->minute_debut=0;
+        $horaire->heure_fin=7;
+        $horaire->minute_fin=0;
+        $horaire->equipe_id=$equipe_id;
+
+        $horaire->save();
+
+        //return back();
+    }
+
 
 
 }
