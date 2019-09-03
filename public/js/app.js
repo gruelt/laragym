@@ -87851,6 +87851,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
     props: {
@@ -87895,18 +87897,26 @@ var render = function() {
         [
           _c(
             "b-list-group",
-            _vm._l(_vm.horaires, function(horaire) {
-              return _c(
-                "b-list-group-item",
-                [
-                  _c("modify-horaire-modal", {
-                    attrs: { admin: _vm.admin, horaire: horaire }
-                  })
-                ],
-                1
-              )
-            }),
-            1
+            [
+              _vm._l(_vm.horaires, function(horaire) {
+                return _c(
+                  "b-list-group-item",
+                  [
+                    _c("modify-horaire-modal", {
+                      attrs: { admin: _vm.admin, horaire: horaire }
+                    })
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              _vm.admin
+                ? _c("b-button", { attrs: { href: "#", variant: "success" } }, [
+                    _vm._v("Ajouter")
+                  ])
+                : _vm._e()
+            ],
+            2
           )
         ],
         1
@@ -88447,18 +88457,8 @@ var render = function() {
               _vm._s(_vm.horaire.heure_fin) +
               "h" +
               _vm._s(_vm.horaire.minute_fin) +
-              "  "
-          ),
-          _c("i", {
-            staticClass: "fas fa-pen fa-xs",
-            on: {
-              click: function($event) {
-                return _vm.$bvModal.show("modal-" + _vm.model + "-" + _vm.field)
-              }
-            }
-          }),
-          _vm._v("  "),
-          _c("span", { class: _vm.icon })
+              "  \n\n"
+          )
         ])
   ])
 }

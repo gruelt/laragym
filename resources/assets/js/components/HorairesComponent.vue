@@ -1,6 +1,6 @@
 <template>
     <b-card
-            :title="'Horaires ' + titre"
+            :title="'Horaires ' + titre "
 
             img-alt="Image"
             img-top
@@ -17,6 +17,8 @@
                     <!--<modify-modal :admin="admin" field="nom" :id="equipe.id" model="Equipe" :value="equipe.nom"></modify-modal>-->
 
                 </b-list-group-item>
+
+                <b-button v-if="admin" href="#" variant="success">Ajouter</b-button>
 
             </b-list-group>
         </b-card-text>

@@ -32,7 +32,7 @@
             </b-modal>
         </div>
     <div v-else>
-        {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;<i class="fas fa-pen fa-xs" @click="$bvModal.show('modal-'+model+'-'+field)"></i>&nbsp;&nbsp;<span :class="icon"></span>
+        {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;
 
     </div>
     </div>

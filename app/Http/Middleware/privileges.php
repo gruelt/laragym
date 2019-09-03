@@ -93,7 +93,7 @@ class privileges
         {
 
             $request->session()->put($possibleDroits[$iddroit], 1);
-            //session()->save();
+            session()->save();
         }
 
 
@@ -104,6 +104,7 @@ class privileges
         //if(in_array($idDroitRequis,$IdDroitsActifs))
         if(array_intersect($idDroitRequis,$IdDroitsActifs))
         {
+
             return $next($request);
         }
         else {
