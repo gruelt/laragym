@@ -3,8 +3,19 @@
         <div v-if="admin">
 
 
-            {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;<i class="fas fa-pen fa-xs" @click="$bvModal.show('modal-horaire-'+horaire.id)"></i>&nbsp;&nbsp;<span :class="icon"></span>
+            {{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}} &nbsp;
 
+
+            <i v-if="lock" @click="togglelock" class="fas fa-lock fa-xs" ></i>
+
+            <i v-if="!lock" @click="togglelock" class="fas fa-unlock fa-xs" ></i>&nbsp;&nbsp;&nbsp;
+            <i v-if="!lock" style="color:blue" class="fas fa-pen fa-xs" @click="$bvModal.show('modal-horaire-'+horaire.id)"></i>&nbsp;&nbsp;<span :class="icon"></span>&nbsp;
+            <i v-if="!lock" style="color:red" class="fas fa-trash fa-xs" @click="$bvModal.show('modal-horairedel-'+horaire.id)"></i>&nbsp;&nbsp;<span :class="icon"></span>
+
+            <b-modal :id="'modal-horairedel-'+ horaire.id" title="Supprimer" hide-footer>
+                <b-button :href="'/admin/horaires/'+ horaire.id + '/delete'" variant="danger">Supprimer cet horaire</b-button>
+                <b-button  variant="info" @click="$bvModal.hide('modal-horairedel-'+horaire.id)">Annuler</b-button>
+            </b-modal>
 
             <b-modal :id="'modal-horaire-'+ horaire.id" title="Modifier" hide-footer>
 
@@ -89,6 +100,10 @@
 
                 jour:{
                     Type: Number
+                },
+                lock:{
+                    Type: Boolean,
+                    default:true
                 }
 
 
@@ -107,6 +122,9 @@
 
             toggle(form){
                 console.log(form);
+            },
+            togglelock(){
+                this.lock = ! this.lock;
             },
 
             pushupdate: function() {

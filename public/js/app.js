@@ -88292,6 +88292,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -88321,6 +88332,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             jour: {
                 Type: Number
+            },
+            lock: {
+                Type: Boolean,
+                default: true
             }
 
         };
@@ -88330,6 +88345,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         toggle: function toggle(form) {
             console.log(form);
+        },
+        togglelock: function togglelock() {
+            this.lock = !this.lock;
         },
 
 
@@ -88380,18 +88398,92 @@ var render = function() {
                 _vm._s(_vm.horaire.heure_fin) +
                 "h" +
                 _vm._s(_vm.horaire.minute_fin) +
-                "  "
+                "  \n\n\n        "
             ),
-            _c("i", {
-              staticClass: "fas fa-pen fa-xs",
-              on: {
-                click: function($event) {
-                  return _vm.$bvModal.show("modal-horaire-" + _vm.horaire.id)
-                }
-              }
-            }),
+            _vm.lock
+              ? _c("i", {
+                  staticClass: "fas fa-lock fa-xs",
+                  on: { click: _vm.togglelock }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.lock
+              ? _c("i", {
+                  staticClass: "fas fa-unlock fa-xs",
+                  on: { click: _vm.togglelock }
+                })
+              : _vm._e(),
+            _vm._v("   \n        "),
+            !_vm.lock
+              ? _c("i", {
+                  staticClass: "fas fa-pen fa-xs",
+                  staticStyle: { color: "blue" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$bvModal.show(
+                        "modal-horaire-" + _vm.horaire.id
+                      )
+                    }
+                  }
+                })
+              : _vm._e(),
             _vm._v("  "),
             _c("span", { class: _vm.icon }),
+            _vm._v(" \n        "),
+            !_vm.lock
+              ? _c("i", {
+                  staticClass: "fas fa-trash fa-xs",
+                  staticStyle: { color: "red" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$bvModal.show(
+                        "modal-horairedel-" + _vm.horaire.id
+                      )
+                    }
+                  }
+                })
+              : _vm._e(),
+            _vm._v("  "),
+            _c("span", { class: _vm.icon }),
+            _vm._v(" "),
+            _c(
+              "b-modal",
+              {
+                attrs: {
+                  id: "modal-horairedel-" + _vm.horaire.id,
+                  title: "Supprimer",
+                  "hide-footer": ""
+                }
+              },
+              [
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "/admin/horaires/" + _vm.horaire.id + "/delete",
+                      variant: "danger"
+                    }
+                  },
+                  [_vm._v("Supprimer cet horaire")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: { variant: "info" },
+                    on: {
+                      click: function($event) {
+                        return _vm.$bvModal.hide(
+                          "modal-horairedel-" + _vm.horaire.id
+                        )
+                      }
+                    }
+                  },
+                  [_vm._v("Annuler")]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _c(
               "b-modal",
