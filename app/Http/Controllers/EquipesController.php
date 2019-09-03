@@ -267,6 +267,11 @@ class EquipesController extends Controller
         return $horaire;
     }
 
+    /**
+     * Ajoute un horaire à un groupe
+     *
+     * @param $equipe_id
+     */
     public function addhoraire($equipe_id)
     {
         $horaire = new Horaire;
@@ -280,7 +285,21 @@ class EquipesController extends Controller
 
         $horaire->save();
 
-        //return back();
+        return back();
+    }
+
+    /**
+     * Hard delete de l'id
+     * @param $horaire_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deletehoraire($horaire_id)
+    {
+        $horaire = Horaire::find($horaire_id);
+
+        $horaire->delete();
+
+        return back();
     }
 
 

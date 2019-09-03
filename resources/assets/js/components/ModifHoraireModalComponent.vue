@@ -13,7 +13,7 @@
             <i v-if="!lock" style="color:red" class="fas fa-trash fa-xs" @click="$bvModal.show('modal-horairedel-'+horaire.id)"></i>&nbsp;&nbsp;<span :class="icon"></span>
 
             <b-modal :id="'modal-horairedel-'+ horaire.id" title="Supprimer" hide-footer>
-                <b-button :href="'/admin/horaires/'+ horaire.id + '/delete'" variant="danger">Supprimer cet horaire</b-button>
+                <b-button :href="'/admin/horaires/'+ horaire.id + '/delete'" variant="danger">Supprimer cet horaire {{horaire.id}}</b-button>
                 <b-button  variant="info" @click="$bvModal.hide('modal-horairedel-'+horaire.id)">Annuler</b-button>
             </b-modal>
 

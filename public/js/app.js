@@ -32678,7 +32678,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 });
 
 window.axios.defaults.headers.common = {
-
+    'Accept': 'application/json',
     'X-Requested-With': 'XMLHttpRequest'
 };
 
@@ -88464,7 +88464,7 @@ var render = function() {
                       variant: "danger"
                     }
                   },
-                  [_vm._v("Supprimer cet horaire")]
+                  [_vm._v("Supprimer cet horaire " + _vm._s(_vm.horaire.id))]
                 ),
                 _vm._v(" "),
                 _c(

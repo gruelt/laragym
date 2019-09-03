@@ -140,6 +140,6 @@ var app = new Vue({
 
 
 window.axios.defaults.headers.common = {
-
+    'Accept' :'application/json',
     'X-Requested-With': 'XMLHttpRequest'
 };

@@ -108,6 +108,7 @@ class privileges
             return $next($request);
         }
         else {
+            return "Droits insuffisants";
             return back()->withErrors("Droits insuffisants pour /".$request->path());
             //return redirect('/')->withErrors("Droits insuffisants pour /".$request->path());
         }

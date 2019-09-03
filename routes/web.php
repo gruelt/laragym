@@ -119,8 +119,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //Montre l'equipe
     Route::get('/equipes/{id}', 'EquipesController@showequipe');
 
-    //test photo
+    //Ajout d'un horaire
     Route::get('/equipes/{id}/horaires/add', 'EquipesController@addhoraire');
+
+    //suppr d'un horaire
+    Route::get('/horaires/{id}/delete', 'EquipesController@deletehoraire');
 
     //Montre les responsables
     Route::get('/responsables/', function () {
