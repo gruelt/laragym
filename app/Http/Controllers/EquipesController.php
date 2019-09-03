@@ -68,7 +68,7 @@ class EquipesController extends Controller
             $return[$key]['coach']=$coachz;
 
             /** Horaires */
-            $horaires=$equipe->horaires;
+            $horaires=$equipe->horaires()->orderBy('jour_id')->get();
 
             $return[$key]['horaires']=$horaires;
 

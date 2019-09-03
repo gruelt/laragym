@@ -88464,7 +88464,7 @@ var render = function() {
                       variant: "danger"
                     }
                   },
-                  [_vm._v("Supprimer cet horaire " + _vm._s(_vm.horaire.id))]
+                  [_vm._v("Supprimer cet horaire ")]
                 ),
                 _vm._v(" "),
                 _c(
