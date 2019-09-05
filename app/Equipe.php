@@ -9,7 +9,7 @@ class Equipe extends Model
     //récupère les équipes du gymnaste
     public function gymnastes()
     {
-        return $this->belongsToMany('App\Gymnaste')->withPivot('attente');
+        return $this->belongsToMany('App\Gymnaste')->withPivot('attente')->orderBy('nom');
     }
 
 

@@ -87474,6 +87474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -87593,7 +87594,21 @@ var render = function() {
                           "show-progress": "",
                           animated: ""
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          attrs: {
+                            href: "/equipes/" + _vm.equipe_id + "/appel",
+                            size: "sm"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-file-pdf" }),
+                          _vm._v(" Présence")
+                        ]
+                      )
                     ],
                     1
                   )

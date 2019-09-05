@@ -309,6 +309,18 @@ class EquipesController extends Controller
 
         $equipe=$this->formatEquipes($equipebrut);
         $equipe=$equipe[0];
+
+        switch ($equipe['genre']['id'])
+        {
+            case 1: $genrecolor="blue";break;
+
+            case 2: $genrecolor="#ff42ca";break;
+
+            case 3: $genrecolor="Black";break;
+        }
+
+
+
         if($html)
         dd($equipe);
 
@@ -317,7 +329,8 @@ class EquipesController extends Controller
             'heading' => $equipe['nom'],
             'equipe' => $equipe,
             'gyms' => $equipe['nbgyms'],
-            'horaires'=> $equipe['horaires']
+            'horaires'=> $equipe['horaires'],
+            'genre_color' => $genrecolor
         ];
 
         $pdf = PDF::loadView('PDF.appel', $data);

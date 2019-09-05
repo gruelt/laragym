@@ -21,11 +21,27 @@
         width:20;
     }
 
+    div.inline{
+        display:inline;
+    }
+
+    h2.titre{
+        color:{{$genre_color}};
+    }
+
+    tr.grey{
+        background-color: #9BA2AB;
+    }
+
 </style>
 
 @php
     //Nombre de colonnes
     $colonnes=30;
+
+    $lignes=22;
+
+    $ligne=0;
 
     //array des jours
     $jours[1]="Lundi";
@@ -39,16 +55,16 @@
 
 @endphp
 <body>
-<h1>{{ $heading}}</h1>
 
-<h2></h2>
+
+
 
 <div >
-    <h2>{!!  $equipe['niveau_libelle']!!}</h2>
-    <h4>Entraineur :<br>{!!  $equipe['coach']!!}</h4>
+    <h2 class="titre">{{$heading}} | {!!  $equipe['niveau']['description']." ".$equipe['genre']['name'] !!}</h2>
+    <h4>Coach: {!!  $equipe['coach']!!}</h4>
 </div>
 
-<div align="right">
+<div lass="inline">
 
     @foreach ($horaires as $horaire)
         {{$jours[$horaire->jour_id]}} - {{$horaire->heure_debut}}H{{$horaire->minute_debut}} / {{$horaire->heure_fin}}H{{$horaire->minute_fin}} <br>
@@ -70,7 +86,7 @@
 @foreach ($gyms as $gym)
         @php
     $year = explode('-',$gym->date_naissance);
-
+    $ligne++;
 @endphp
 
     <tr>
@@ -85,6 +101,19 @@
 
     </tr>
 @endforeach
+
+    @while($ligne<$lignes)
+        <tr>
+
+            @for ($i = 0; $i < $colonnes+3; $i++)
+                <td class="vide">&nbsp;</td>
+            @endfor
+            @php
+        $ligne++;
+        @endphp
+        </tr>
+        @endwhile
+
 </table>
 
 </body>
