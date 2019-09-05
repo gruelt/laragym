@@ -195,6 +195,7 @@ Route::group(['prefix' => 'inscription', 'middleware' => 'privileges:admin'], fu
 
 
 
+
 //  _______
 // (_______)
 //  _       ___  ____  ____  _   _ ____
@@ -225,3 +226,8 @@ Route::get('/equipes/{id}', 'EquipesController@showequipe')->middleware(['privil
 Route::get('/noie',  function () {
     return view('pages.noie');
 });
+
+Route::get("/equipes/{id}/appel",'EquipesController@PDFAppel');
+
+Route::get("/equipes/{id}/appel/{h}",'EquipesController@PDFAppel');
+

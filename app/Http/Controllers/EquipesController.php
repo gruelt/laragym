@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Equipe;
 use App\Saison;
 use App\Http\Controllers\GymnastesController;
+use PDF;
 
 class EquipesController extends Controller
 {
@@ -300,6 +301,33 @@ class EquipesController extends Controller
         $horaire->delete();
 
         return back();
+    }
+
+    public function PDFAppel($id_equipe,$html=0)
+    {
+        $equipebrut[0]=Equipe::find($id_equipe);
+
+        $equipe=$this->formatEquipes($equipebrut);
+        $equipe=$equipe[0];
+        if($html)
+        dd($equipe);
+
+        $data = [
+            'title' => $equipe['nom'],
+            'heading' => $equipe['nom'],
+            'equipe' => $equipe,
+            'gyms' => $equipe['nbgyms'],
+            'horaires'=> $equipe['horaires']
+        ];
+
+        $pdf = PDF::loadView('PDF.appel', $data);
+        if($html==0) {
+            $pdf->setPaper('a4', 'landscape');
+            return $pdf->stream($equipe['nom'] . '.pdf');
+        }
+        else{
+            return view('PDF.appel',$data)->setPaper('a4', 'landscape');
+        }
     }
 
 
