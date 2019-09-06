@@ -39,7 +39,7 @@
     //Nombre de colonnes
     $colonnes=30;
 
-    $lignes=20;
+    $lignes=18;
 
     $ligne=0;
 
