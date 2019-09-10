@@ -35,7 +35,7 @@ public function view(): View
                 $niveau.=$groupe['nom'] ."|";
             }
         }
-
+        //dd($gym);
         $data[$key]=[
             //'lien myfjep'=>'<a href=\"'.$url."/".$gym['id']."\">Voir fiche</a>",
             'id'=>$gym['id'],
@@ -45,6 +45,9 @@ public function view(): View
             'prenom'=>$gym['prenom'],
 
             'date naissance'=>$gym['date_naissance_fr'],
+
+            'responsable'=>$gym['responsable']->nom." ".$gym['responsable']->prenom,
+
 
             'tarif'=>$gym['tarif'],
             'paye a inscription'=>$gym['paye'],
