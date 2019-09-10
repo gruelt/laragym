@@ -41,6 +41,11 @@
                         <b-dropdown-header>Responsables</b-dropdown-header>
                         <b-dropdown-item href="/admin/responsables/">Consulter</b-dropdown-item>
 
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-header>Export Trésorier</b-dropdown-header>
+                        <b-dropdown-item href="/admin/gymnastes/export/1">Saison Actuelle</b-dropdown-item>
+
+
 
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-header>Technique</b-dropdown-header>

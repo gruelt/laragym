@@ -148,6 +148,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //test photo
     Route::get('/photo/test', 'PhotoController@formtest');
 
+    Route::get('/gymnastes/export/{saison_id}', 'GymnastesController@export');
+
+
 
 });
 

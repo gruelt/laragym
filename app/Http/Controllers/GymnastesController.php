@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\GymnastesExport;
+use App\Exports\GymnastessaisonExport;
 use App\Saison;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,6 +14,7 @@ use App\User;
 use App\Equipe;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GymnastesController extends Controller
 {
@@ -644,6 +647,8 @@ class GymnastesController extends Controller
      */
     public function getbyseason($saison_id)
     {
+
+
         $return=array();
 
         //Si toutes les saisons confondues
@@ -657,6 +662,7 @@ class GymnastesController extends Controller
         $saison=  Saison::find($saison_id);
 
         $gymnastes = $saison->gymnastes()->get();
+
 
         if($gymnastes->count() == 0)
         {
@@ -755,6 +761,17 @@ class GymnastesController extends Controller
         $return = Gymnaste::find($gym_id)->saisons()->updateExistingPivot($saison,['affiligue'=>$statut]);
         return $return;
 
+    }
+
+    /**
+     * @param $saison_id
+     * @return Excel|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function export($saison_id)
+    {
+        return Excel::download(new GymnastessaisonExport, 'gymnastes.xlsx');
     }
 
 
