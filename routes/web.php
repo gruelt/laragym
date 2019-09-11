@@ -79,7 +79,8 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['verified','privileges
     //Inscrit le gym à une saison
     Route::get('/gymnaste/{gymnasteid}/reinscrire/{saisonid}','GymnastesController@inscrire');
 
-
+    //
+    Route::get("/gymnastes/{gymnasteid}/facture",'GymnastesController@PDFFacture');
 
 
 
@@ -230,7 +231,8 @@ Route::get('/noie',  function () {
     return view('pages.noie');
 });
 
+//
 Route::get("/equipes/{id}/appel",'EquipesController@PDFAppel');
 
-Route::get("/equipes/{id}/appel/{h}",'EquipesController@PDFAppel');
+
 

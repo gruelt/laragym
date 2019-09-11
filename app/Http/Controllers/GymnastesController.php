@@ -15,6 +15,7 @@ use App\Equipe;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class GymnastesController extends Controller
 {
@@ -772,6 +773,29 @@ class GymnastesController extends Controller
     public function export($saison_id)
     {
         return Excel::download(new GymnastessaisonExport, 'gymnastes.xlsx');
+    }
+
+
+
+    public function PDFFacture($gymnaste_id)
+    {
+        $gymnaste=Gymnaste::find($gymnaste_id);
+
+            //dd($gymnaste->responsable);
+        $data=[
+            'nom' => $gymnaste->nom,
+            'prenom' => $gymnaste->prenom,
+            'adresse' => $gymnaste->responsable->adresse,
+            'ville' => $gymnaste->responsable->ville,
+            'cp' => $gymnaste->responsable->cp,
+            'nom_responsable' =>  $gymnaste->responsable->nom,
+            'prenom_responsable' => $gymnaste->responsable->prenom
+    ];
+
+
+        $pdf = PDF::loadView('PDF.attestation2019', $data);
+        //dd($data);
+        return $pdf->stream($data['nom'] . '.pdf');
     }
 
 
