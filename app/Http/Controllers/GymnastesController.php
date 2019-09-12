@@ -781,7 +781,14 @@ class GymnastesController extends Controller
     {
         $gymnaste=Gymnaste::find($gymnaste_id);
 
-            //dd($gymnaste->responsable);
+        $paye =  $gymnaste->paye();
+    //vérifie que le montant est payé
+        if($paye==0)
+        {
+            return redirect("/");
+        }
+
+            //dd($gymnaste);
         $data=[
             'nom' => $gymnaste->nom,
             'prenom' => $gymnaste->prenom,
@@ -789,13 +796,14 @@ class GymnastesController extends Controller
             'ville' => $gymnaste->responsable->ville,
             'cp' => $gymnaste->responsable->cp,
             'nom_responsable' =>  $gymnaste->responsable->nom,
-            'prenom_responsable' => $gymnaste->responsable->prenom
+            'prenom_responsable' => $gymnaste->responsable->prenom,
+            'montant' => $paye
     ];
 
 
         $pdf = PDF::loadView('PDF.attestation2019', $data);
         //dd($data);
-        return $pdf->stream($data['nom'] . '.pdf');
+        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2019.pdf');
     }
 
 
