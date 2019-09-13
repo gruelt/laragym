@@ -151,7 +151,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 
     Route::get('/gymnastes/export/{saison_id}', 'GymnastesController@export');
 
-
+    Route::get("/gymnastes/{gymnasteid}/facture/{admin}",'GymnastesController@PDFFacture');
 
 });
 

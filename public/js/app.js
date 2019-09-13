@@ -83953,6 +83953,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84472,6 +84486,64 @@ var render = function() {
                         ],
                         1
                       )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-card",
+                    {
+                      staticClass: "mb-12 text-center",
+                      attrs: { tag: "Facture", title: "Facture" }
+                    },
+                    [
+                      _vm.gym.paye != 0 && _vm.admin
+                        ? _c(
+                            "b-btn",
+                            {
+                              attrs: {
+                                href:
+                                  "/admin/gymnastes/" +
+                                  _vm.gym.id +
+                                  "/facture/1",
+                                variant: "info"
+                              }
+                            },
+                            [
+                              _c("i", { staticClass: "far fa-file-pdf" }),
+                              _vm._v(" Consulter la facture")
+                            ]
+                          )
+                        : _c(
+                            "p",
+                            [
+                              _vm.gym.certificat_medical != null &&
+                              _vm.gym.paye != 0 &&
+                              !_vm.admin
+                                ? _c(
+                                    "b-btn",
+                                    {
+                                      attrs: {
+                                        href:
+                                          "/responsable/gymnastes/" +
+                                          _vm.gym.id +
+                                          "/facture",
+                                        variant: "info"
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "far fa-file-pdf"
+                                      }),
+                                      _vm._v(" Consulter la facture")
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                      _vm._v(" "),
+                      _c("p")
                     ],
                     1
                   )

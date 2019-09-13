@@ -777,9 +777,15 @@ class GymnastesController extends Controller
 
 
 
-    public function PDFFacture($gymnaste_id)
+    public function PDFFacture($gymnaste_id,$admin=0)
     {
         $gymnaste=Gymnaste::find($gymnaste_id);
+
+        if ($admin ==0 && Auth::user()->id != Gymnaste::find($gymnaste_id)->responsable()->first()->id ) // && User::find(Auth::user()->id)->count()==0
+        {
+            return redirect('responsable/gymnastes/');
+        }
+
 
         $paye =  $gymnaste->paye();
     //vérifie que le montant est payé
