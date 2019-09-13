@@ -83967,6 +83967,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84517,9 +84519,7 @@ var render = function() {
                         : _c(
                             "p",
                             [
-                              _vm.gym.certificat_medical != null &&
-                              _vm.gym.paye != 0 &&
-                              !_vm.admin
+                              _vm.gym.paye != 0 && !_vm.admin
                                 ? _c(
                                     "b-btn",
                                     {
@@ -84543,7 +84543,9 @@ var render = function() {
                             1
                           ),
                       _vm._v(" "),
-                      _c("p")
+                      _vm.gym.paye == 0
+                        ? _c("p", [_vm._v("Paiement non validé.")])
+                        : _vm._e()
                     ],
                     1
                   )

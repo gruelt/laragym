@@ -115,9 +115,11 @@
 <!--                    -->
                     <b-btn v-if=" (  gym.paye !=0 ) && admin" :href="'/admin/gymnastes/'+ gym.id + '/facture/1'" variant="info"><i class="far fa-file-pdf"></i> Consulter la facture</b-btn>
                     <p v-else>
-                        <b-btn v-if=" ( gym.certificat_medical != null && gym.paye !=0 ) && !admin " :href="'/responsable/gymnastes/'+ gym.id + '/facture'" variant="info"><i class="far fa-file-pdf"></i> Consulter la facture</b-btn>
-                        <p v-else>Facture disponible une fois le dossier complet : photo / certificat médical / paiement validé.</p>
+                        <b-btn v-if=" (  gym.paye !=0 ) && !admin " :href="'/responsable/gymnastes/'+ gym.id + '/facture'" variant="info"><i class="far fa-file-pdf"></i> Consulter la facture</b-btn>
+
                     </p>
+
+                    <p v-if="gym.paye == 0">Paiement non validé.</p>
                 </b-card>
 
                 <!-- Fin Facture -->
