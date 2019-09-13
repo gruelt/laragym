@@ -342,11 +342,11 @@ class GymnastesController extends Controller
                     $problemes['certificat']['nonecertif']["class"]="warning";
                 }
 
-                //Certificat absent
+                //Certificat non verifié
                 if($gymnaste['certificat_medical_check'] == 0 && $gymnaste['certificat_medical_date'] != null)
                 {
-                    $problemes['certificat']['verifcertif']["text"]="Certificat medical à verifier";
-                    $problemes['certificat']['verifcertif']["class"]="warning";
+                    $problemes['verif_certificat']['verifcertif']["text"]="Certificat medical à verifier";
+                    $problemes['verif_certificat']['verifcertif']["class"]="warning";
                 }
 
 
