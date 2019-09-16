@@ -46,6 +46,8 @@ public function view(): View
 
             'date naissance'=>$gym['date_naissance_fr'],
 
+            'mail' => $gym['responsable']->email,
+
             'responsable'=>$gym['responsable']->nom." ".$gym['responsable']->prenom,
 
 
