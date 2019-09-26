@@ -25,6 +25,7 @@
 
 
                                     <H3>{{equipe.nbgyms.length}} Membres</H3>
+
                                     <b-progress :value="equipe.nbgyms_count" max="10" show-progress animated ></b-progress>
                                     <b-button :href="'/equipes/'+ equipe_id +'/appel'" size="sm"><i class="far fa-file-pdf"></i> Présence</b-button>
                                 </b-card-text>
@@ -35,8 +36,23 @@
 
 
 
-            <!--Horaires-->
+            <!--Horaires + tarifs-->
             <b-col lg="3" sm="12">
+
+                <b-card
+
+
+                    title="Tarif €"
+
+                    tag="article"
+
+                    class="mb-12"
+                >
+
+                <b-card-text>
+                <h4><modify-modal :admin="admin" field="tarif" :id="equipe.id" model="Equipe" :value="equipe.tarif"></modify-modal></h4>
+                </b-card-text>
+                </b-card>
 
                 <horaires :admin="admin" :horaires="equipe.horaires" :equipe_id="equipe_id"></horaires>
             </b-col>

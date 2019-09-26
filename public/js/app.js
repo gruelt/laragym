@@ -85878,7 +85878,7 @@ var render = function() {
         },
         [_vm._v("Horaires")]
       ),
-      _vm._v("\n    " + _vm._s(_vm.filteredgyms.length) + "\n\n\n    "),
+      _vm._v(" "),
       _c(
         "b-button",
         {
@@ -86053,7 +86053,7 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
+      _vm._v("\n        " + _vm._s(_vm.gyms) + "\n    ")
     ],
     1
   )
@@ -87549,6 +87549,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -87697,6 +87713,34 @@ var render = function() {
             "b-col",
             { attrs: { lg: "3", sm: "12" } },
             [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: { title: "Tarif €", tag: "article" }
+                },
+                [
+                  _c("b-card-text", [
+                    _c(
+                      "h4",
+                      [
+                        _c("modify-modal", {
+                          attrs: {
+                            admin: _vm.admin,
+                            field: "tarif",
+                            id: _vm.equipe.id,
+                            model: "Equipe",
+                            value: _vm.equipe.tarif
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
               _c("horaires", {
                 attrs: {
                   admin: _vm.admin,
