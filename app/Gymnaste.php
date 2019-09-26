@@ -125,7 +125,7 @@ class Gymnaste extends Model
     /**
      * désinscrit le gymnaste pour la saison actuelle
      */
-    public function annuleGym()
+    public function remove()
     {
 
         $this->annuleSaison();
