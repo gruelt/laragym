@@ -190,6 +190,10 @@ class GymnastesController extends Controller
             //dd($gymnaste);
             $return[$key]=$gymnaste->toArray();
 
+            //competitif ou non
+
+            $return[$key]['competitifsaison']=$gymnaste->competitif();
+
             $niveaux=Gymnaste::find($gymnaste->id)->equipes()->get();
 
             $returnniv='';
@@ -228,6 +232,8 @@ class GymnastesController extends Controller
             $return[$key]['horairescompact']=$horairescompact;
 
             $return[$key]['niveaux']=$returnniv;
+
+
 
             if($noniv==1)
             {
@@ -268,14 +274,18 @@ class GymnastesController extends Controller
                 $photo_url="/images/anonym.jpg";
             }
 
-
-            //Photo basente
-            if($gymnaste['photo'] == null )
+            //dd($gymnaste);
+            //Photo absente pour compétitif
+            if($gymnaste['photo'] == null && Gymnaste::find($gymnaste['id'])->competitif() > 0 )
             {
                 $problemes['photo']['nonephoto']["text"]="Aucune photo";
                 $problemes['photo']['nonephoto']["class"]="warning";
 
             }
+
+
+
+
 
 
 
