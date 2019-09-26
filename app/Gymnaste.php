@@ -107,6 +107,9 @@ class Gymnaste extends Model
         return $equipes;
     }
 
+    /**
+     * désinscrit le gymnaste pour la saison actuelle
+     */
     public function annuleSaison()
     {
 
@@ -118,5 +121,7 @@ class Gymnaste extends Model
         $this->saisons()->detach($saison_id);
 
     }
+
+
 
 }
