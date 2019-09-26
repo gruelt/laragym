@@ -410,7 +410,7 @@ class GymnastesController extends Controller
                     if($saisoni != null)
                     {
                         $return[$key]['reinscrit']['saison']=$saisoni;
-                        $problemes['reinscription']['nonsfait']["text"] = "Pas de reinscription ";
+                        $problemes['reinscription']['nonfait']["text"] = "Pas de reinscription ";
                         $problemes['reinscription']['nonfait']["class"] = "warning";
                     }
                     else{
