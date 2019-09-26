@@ -85878,7 +85878,7 @@ var render = function() {
         },
         [_vm._v("Horaires")]
       ),
-      _vm._v(" "),
+      _vm._v("\n    " + _vm._s(_vm.filteredgyms.length) + "\n\n\n    "),
       _c(
         "b-button",
         {
@@ -86053,7 +86053,7 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _vm._v("\n        " + _vm._s(_vm.gyms) + "\n    ")
+      _vm._v("\n    " + _vm._s(_vm.gyms) + "\n")
     ],
     1
   )

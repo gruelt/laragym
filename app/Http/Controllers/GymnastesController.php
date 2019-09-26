@@ -829,7 +829,10 @@ class GymnastesController extends Controller
         return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2019.pdf');
     }
 
+    public function annuleSaison($gym_id,$saison_id)
+    {
 
+    }
 
 
 
