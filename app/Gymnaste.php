@@ -107,4 +107,16 @@ class Gymnaste extends Model
         return $equipes;
     }
 
+    public function annuleSaison()
+    {
+
+        //récupère les saison
+        $saison= new Saison;
+        $saison_id = $saison->actuelle()->id;
+
+        $this->equipes()->detach();
+        $this->saisons()->detach($saison_id);
+
+    }
+
 }

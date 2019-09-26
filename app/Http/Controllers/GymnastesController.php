@@ -382,27 +382,28 @@ class GymnastesController extends Controller
 
                 $saisoni= $saisonInscription->inscriptionOuverte();
 
-                if($saisoni != null) {
+                if($saisoni != null ) {
                     $reinscrire = $gymnaste->saisons()->find($saisoni->id);
 
 
 
                     $return[$key]['reinscrit']['saison']=$saisoni;
-
+                    //dd($reinscrire);
                     $return[$key]['dossier']=$reinscrire->pivot->dossier;
-                    //Si dossier non complet
-                    if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)
-                    {
-                        $problemes['dossier']['absent']["text"] = "Dossier non complet, à remplir au gymnase ";
-                        $problemes['dossier']['absent']["class"] = "warning";
-                    }
-                    //Si complet on check l'affiligue
-                    else {
-                        if ($reinscrire->pivot->affiligue == 0 && $reinscrire->pivot->dossier!=2) {
-                            $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
-                            $problemes['affiligue']['nonsaisi']["class"] = "warning";
-                        }
-                    }
+                            //Si dossier non complet
+                            if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)
+                            {
+                                $problemes['dossier']['absent']["text"] = "Dossier non complet, à remplir au gymnase ";
+                                $problemes['dossier']['absent']["class"] = "warning";
+                            }
+                            //Si complet on check l'affiligue
+                            else {
+
+                                if ($reinscrire->pivot->affiligue == 0 && $reinscrire->pivot->dossier!=2) {
+                                    $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
+                                    $problemes['affiligue']['nonsaisi']["class"] = "warning";
+                                }
+                            }
 
                 }
                 else{
@@ -829,10 +830,7 @@ class GymnastesController extends Controller
         return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2019.pdf');
     }
 
-    public function annuleSaison($gym_id,$saison_id)
-    {
 
-    }
 
 
 
