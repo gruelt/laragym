@@ -95,7 +95,8 @@
 
 
                                 </div>
-                            <b-button v-if="gym.reinscrit.statut ==0 && gym.reinscrit.saison !=0 " :href="'/responsable/gymnaste/' + gym.id +'/reinscrire/'+ gym.reinscrit.saison.id" variant="warning">
+
+                            <b-button v-if="gym.reinscrit.statut == 0 && gym.reinscrit.saison !=0 " :href="'/responsable/gymnaste/' + gym.id +'/reinscrire/'+ gym.reinscrit.saison.id" variant="warning">
                                 + Re-inscrire pour {{gym.reinscrit.saison.nom}}
                             </b-button>
                         </td>

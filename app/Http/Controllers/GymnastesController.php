@@ -235,11 +235,7 @@ class GymnastesController extends Controller
 
 
 
-            if($noniv==1)
-            {
-                $problemes['Groupe']['nonegroup']["text"]="Attente affectation groupe. Pour les non compétitifs et les nouveaux inscrits , veuillez passer au gymnase !";
-                $problemes['Groupe']['nonegroup']["class"]="secondary";
-            }
+
 
 
             //Gestion des saisons
@@ -382,13 +378,15 @@ class GymnastesController extends Controller
 
                 $saisoni= $saisonInscription->inscriptionOuverte();
 
-                if($saisoni != null ) {
+                $reinscrire=null;
+
+                if($saisoni != null && $gymnaste->saisons()->find($saisoni->id) != null ) {
                     $reinscrire = $gymnaste->saisons()->find($saisoni->id);
 
 
 
                     $return[$key]['reinscrit']['saison']=$saisoni;
-                    //dd($reinscrire);
+
                     $return[$key]['dossier']=$reinscrire->pivot->dossier;
                             //Si dossier non complet
                             if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)
@@ -408,7 +406,18 @@ class GymnastesController extends Controller
                 }
                 else{
                     $reinscrire = null;
-                    $return[$key]['reinscrit']['saison']="0";
+
+                    if($saisoni != null)
+                    {
+                        $return[$key]['reinscrit']['saison']=$saisoni;
+                        $problemes['reinscription']['nonsfait']["text"] = "Pas de reinscription ";
+                        $problemes['reinscription']['nonfait']["class"] = "warning";
+                    }
+                    else{
+                        $return[$key]['reinscrit']['saison']=0;
+
+                    }
+
                 }
 
                 if($reinscrire == null)
@@ -419,6 +428,11 @@ class GymnastesController extends Controller
                 }
                 else{
                     $return[$key]['reinscrit']['statut']=1;
+                    if($noniv==1 )
+                    {
+                        $problemes['Groupe']['nonegroup']["text"]="Attente affectation groupe. Pour les non compétitifs et les nouveaux inscrits , veuillez passer au gymnase !";
+                        $problemes['Groupe']['nonegroup']["class"]="secondary";
+                    }
 
                 }
 
