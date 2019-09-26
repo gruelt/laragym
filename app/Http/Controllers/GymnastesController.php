@@ -270,7 +270,7 @@ class GymnastesController extends Controller
 
 
             //Photo basente
-            if($gymnaste['photo'] == null)
+            if($gymnaste['photo'] == null )
             {
                 $problemes['photo']['nonephoto']["text"]="Aucune photo";
                 $problemes['photo']['nonephoto']["class"]="warning";

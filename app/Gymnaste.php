@@ -96,4 +96,15 @@ class Gymnaste extends Model
         Excel::import(new certifsImport,'imports/certificatsmedic.csv');
     }
 
+    /**
+     * Renvoie si le gymnaste est compétitif
+     * retourne le nombre d'équipes compétitives ou il est(>=1 ) ou pas (0)
+     */
+    public function competitif()
+    {
+        $equipes = $this->equipes()->whereNotIn('categorie_id',[10,11])->count();
+
+        return $equipes;
+    }
+
 }
