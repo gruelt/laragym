@@ -4,6 +4,7 @@ namespace App;
 
 use App\Imports\certifsImport;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Gymnaste extends Model
 {
@@ -132,6 +133,22 @@ class Gymnaste extends Model
 
         $this->delete();
 
+    }
+
+    /**
+     * renvoie si c'est l'anniversaire du gym
+     * @return int|string
+     */
+
+    public function birthday()
+    {
+        if (Carbon::parse($this->date_naissance)->isBirthday()) {
+            return true;
+
+        }
+        else {
+            return false;
+        }
     }
 
 
