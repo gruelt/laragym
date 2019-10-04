@@ -46,7 +46,7 @@
 
 <div id="texte" class="texte">
 
-    Je soussignée CHEVALIER Charlène, Trésorière de l’association : <br>  <b><h3>FJEP Gymnastique St Just-St Rambert</h3></b>  Certifie l'adhésion au club, afin de suivre des <b>cours de gymnastique</b> de
+    Je soussignée CHEVALIER Charlène, Trésorière de l’association : <br>  <b><h3>FJEP Gymnastique St Just-St Rambert</h3></b>  Certifie l'adhésion au club, afin de suivre des <b>cours de gymnastique</b>, de
     <b>{{$nom}} {{$prenom}}</b> résidant {{$adresse}} , {{$cp}} {{$ville}}.<br><br>
 
     Pour la saison du 02/09/2019 au 04/07/2020 le montant  de {{$montant}} € à été réglé en totalité par {{$nom_responsable}} {{$prenom_responsable}}.<br><br>
