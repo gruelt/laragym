@@ -185,6 +185,7 @@ class GymnastesController extends Controller
     public function formatGyms($gyms,$extend=1)
     {
         $return=array();
+	$refresh=false;
 
         if(count($gyms)==1)
         {
@@ -193,7 +194,7 @@ class GymnastesController extends Controller
 
         foreach ($gyms as $key => $gymnaste)
         {
-            $cache=Redis::get('gymnaste.'.$key);
+            $cache=Redis::get('gymnaste.'.$gymnaste->id);
 
             if($cache && $refresh!=true) {
 
@@ -463,7 +464,7 @@ class GymnastesController extends Controller
                 }
 
                 //met en place la key dans redis
-                Redis::set('gymnaste.' . $key, json_encode($return[$key]),'EX',3600);
+                Redis::set('gymnaste.' . $gymnaste->id, json_encode($return[$key]),'EX',3600);
 
 
             }
