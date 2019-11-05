@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Illuminate\Support\Facades\Redis;
 
 class GymnastesController extends Controller
 {
@@ -31,6 +32,8 @@ class GymnastesController extends Controller
 
 
         $return = $this->formatGyms($all);
+
+
 
         return $return;
 
@@ -182,321 +185,292 @@ class GymnastesController extends Controller
     public function formatGyms($gyms,$extend=1)
     {
         $return=array();
+
+        if(count($gyms)==1)
+        {
+            $refresh=true;
+        }
+
         foreach ($gyms as $key => $gymnaste)
         {
+            $cache=Redis::get('gymnaste.'.$key);
 
-            $problemes=array();
+            if($cache && $refresh!=true) {
 
-            //dd($gymnaste);
-            $return[$key]=$gymnaste->toArray();
-
-            //competitif ou non
-
-            $return[$key]['competitifsaison']=$gymnaste->competitif();
-
-            $niveaux=Gymnaste::find($gymnaste->id)->equipes()->get();
-
-            $returnniv='';
-
-            //Gestion des Niveaux en display html et brut
-            $noniv=1;
-            $horaires=array();
-            $horairescompact="";
-            foreach($niveaux as $niveau)
+                $return[$key] = json_decode($cache,true);
+            }
+            else
             {
-                $attente="";
-                $class="badge badge-info";
-                if($niveau->pivot->attente==1)
-                {
-                    $attente="<b>Liste d'Attente</b>";
-                    $class="badge badge-danger";
+
+                $problemes = array();
+
+                //dd($gymnaste);
+                $return[$key] = $gymnaste->toArray();
+
+                //competitif ou non
+
+                $return[$key]['competitifsaison'] = $gymnaste->competitif();
+
+                $niveaux = Gymnaste::find($gymnaste->id)->equipes()->get();
+
+                $returnniv = '';
+
+                //Gestion des Niveaux en display html et brut
+                $noniv = 1;
+                $horaires = array();
+                $horairescompact = "";
+                foreach ($niveaux as $niveau) {
+                    $attente = "";
+                    $class = "badge badge-info";
+                    if ($niveau->pivot->attente == 1) {
+                        $attente = "<b>Liste d'Attente</b>";
+                        $class = "badge badge-danger";
+                    }
+                    $returnniv .= "<a href=\"/equipes/" . $niveau['id'] . "\" class=\"" . $class . "\">" . $niveau->nom . " " . $attente . "</a>&nbsp;";
+                    $return[$key]['niveaux_tab'][$niveau['id']]['nom'] = $niveau->nom;
+                    $return[$key]['niveaux_tab'][$niveau['id']]['attente'] = $niveau->pivot->attente;
+                    $noniv = 0;
+
+                    $ho = Equipe::find($niveau->id);
+
+                    $horaires[$niveau['nom']] = $ho->horaires;
+
+                    foreach ($ho->horaires as $horaire) {
+                        $horairescompact .= $horaire->jour->nom_jour . "<br>";//.$horaire->heure_debut."h".$horaire->minute_debut;
+                    }
+
                 }
-                $returnniv.="<a href=\"/equipes/".$niveau['id']."\" class=\"".$class."\">".$niveau->nom." ".$attente."</a>&nbsp;";
-                $return[$key]['niveaux_tab'][$niveau['id']]['nom']=$niveau->nom;
-                $return[$key]['niveaux_tab'][$niveau['id']]['attente']=$niveau->pivot->attente;
-                $noniv=0;
 
-                $ho=Equipe::find($niveau->id);
+                $return[$key]['horaires'] = $horaires;
 
-                $horaires[$niveau['nom']]= $ho->horaires;
+                $return[$key]['horairescompact'] = $horairescompact;
 
-                foreach($ho->horaires as  $horaire)
-                {
-                    $horairescompact.=$horaire->jour->nom_jour."<br>" ;//.$horaire->heure_debut."h".$horaire->minute_debut;
-                }
-
-            }
-
-            $return[$key]['horaires']=$horaires;
-
-            $return[$key]['horairescompact']=$horairescompact;
-
-            $return[$key]['niveaux']=$returnniv;
+                $return[$key]['niveaux'] = $returnniv;
 
 
+                //Gestion des saisons
 
 
+                $saisons = $gymnaste->saisons()->get();
+
+                $return[$key]['saisons'] = $saisons;
 
 
-            //Gestion des saisons
+                if ($gymnaste->birthday()) {
+                    $problemes['anniversaire']['anniv']["text"] = "Bon anniversaire";
+                    $problemes['anniversaire']['anniv']["class"] = "info";
 
-
-
-            $saisons= $gymnaste->saisons()->get();
-
-            $return[$key]['saisons']=$saisons;
-
-
-            if ($gymnaste->birthday() ) {
-                $problemes['anniversaire']['anniv']["text"]="Bon anniversaire";
-                $problemes['anniversaire']['anniv']["class"]="info";
-
-            }
-
-
-
-
-            //Date de Naissanc En Français
-            $date = Carbon::parse($gymnaste['date_naissance'])->format('d-m-Y');
-
-            $age = Carbon::parse($gymnaste['date_naissance'])->age;
-
-            $return[$key]['date_naissance_fr']=$date;
-
-            $return[$key]['age']=$age;
-
-            //Gestion Photo
-            if($gymnaste['photo']!= null)
-            {
-                $photo_url=Storage::disk('public')->url($gymnaste['photo']);
-            }
-            else{
-                $photo_url="/images/anonym.jpg";
-            }
-
-            //dd($gymnaste);
-            //Photo absente pour compétitif
-            if($gymnaste['photo'] == null && Gymnaste::find($gymnaste['id'])->competitif() > 0 )
-            {
-                $problemes['photo']['nonephoto']["text"]="Aucune photo";
-                $problemes['photo']['nonephoto']["class"]="warning";
-
-            }
-
-
-
-
-
-
-
-            $return[$key]['photo_url']=$photo_url;
-
-
-
-
-
-            //Infos Etendues
-            if($extend==1)
-            {
-                //Gestion Certificat
-                $certif_url=Storage::disk('public')->url($gymnaste['certificat_medical']);
-
-
-
-                if($gymnaste['certificat_medical_date']==null)
-                {
-                    $datecertif = "Entrer date certificat Affiligue";
-
-                    $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
-
-                    $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
-
-                    $return[$key]['certificat_medical_date_fr']=$datecertif;
-
-                    $return[$key]['certificat_medical_url']=$certif_url;
-
-                    $return[$key]['certificat_medical_age']=$agecertif;
-
-                    $return[$key]['certificat_medical_fin_fr']=$datefincertif;
-                }
-                else{
-
-
-                    $datecertif = Carbon::parse($gymnaste['certificat_medical_date'])->format('d-m-Y');
-
-                    $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
-
-                    $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
-
-                    $return[$key]['certificat_medical_date_fr']=$datecertif;
-
-                    $return[$key]['certificat_medical_url']=$certif_url;
-
-                    $return[$key]['certificat_medical_age']=$agecertif;
-
-                    $return[$key]['certificat_medical_fin_fr']=$datefincertif;
                 }
 
 
-                //Certificat dépassé
-                if($agecertif >= 3)
-                {
-                    $problemes['certificat']['age']["text"]="Certificat médical expiré";
-                    $problemes['certificat']['age']["class"]="warning";
+                //Date de Naissanc En Français
+                $date = Carbon::parse($gymnaste['date_naissance'])->format('d-m-Y');
+
+                $age = Carbon::parse($gymnaste['date_naissance'])->age;
+
+                $return[$key]['date_naissance_fr'] = $date;
+
+                $return[$key]['age'] = $age;
+
+                //Gestion Photo
+                if ($gymnaste['photo'] != null) {
+                    $photo_url = Storage::disk('public')->url($gymnaste['photo']);
+                } else {
+                    $photo_url = "/images/anonym.jpg";
                 }
 
-                //Certificat absent
-                if($gymnaste['certificat_medical'] === null && $gymnaste['certificat_medical_date'] == null)
-                {
-                    $problemes['certificat']['nonecertif']["text"]="Aucun Certificat médical";
-                    $problemes['certificat']['nonecertif']["class"]="warning";
-                }
-
-                //Certificat non verifié
-                if($gymnaste['certificat_medical_check'] == 0 && $gymnaste['certificat_medical_date'] != null)
-                {
-                    $problemes['verif_certificat']['verifcertif']["text"]="Certificat medical à verifier";
-                    $problemes['verif_certificat']['verifcertif']["class"]="warning";
-                }
-
-
-
-
-                //Responsable
-
-                $responsable= $gymnaste->responsable()->first();
-
-                $return[$key]['responsable']=$responsable;
-
-                //Genres
-
-                $genre= $gymnaste->genre;
-
-                $return[$key]['genre']=$genre;
-
-                $return[$key]['genre_libelle']=$genre->name;
-
-                //A reinscrire
-
-                $saisonInscription = new Saison;
-
-                $saisoni= $saisonInscription->inscriptionOuverte();
-
-                $reinscrire=null;
-
-                if($saisoni != null && $gymnaste->saisons()->find($saisoni->id) != null ) {
-                    $reinscrire = $gymnaste->saisons()->find($saisoni->id);
-
-
-
-                    $return[$key]['reinscrit']['saison']=$saisoni;
-
-                    $return[$key]['dossier']=$reinscrire->pivot->dossier;
-                            //Si dossier non complet
-                            if($reinscrire->pivot->dossier==0 || $reinscrire->pivot->dossier == null)
-                            {
-                                $problemes['dossier']['absent']["text"] = "Dossier non complet, à remplir au gymnase ";
-                                $problemes['dossier']['absent']["class"] = "warning";
-                            }
-                            //Si complet on check l'affiligue
-                            else {
-
-                                if ($reinscrire->pivot->affiligue == 0 && $reinscrire->pivot->dossier!=2) {
-                                    $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
-                                    $problemes['affiligue']['nonsaisi']["class"] = "warning";
-                                }
-                            }
+                //dd($gymnaste);
+                //Photo absente pour compétitif
+                if ($gymnaste['photo'] == null && Gymnaste::find($gymnaste['id'])->competitif() > 0) {
+                    $problemes['photo']['nonephoto']["text"] = "Aucune photo";
+                    $problemes['photo']['nonephoto']["class"] = "warning";
 
                 }
-                else{
+
+
+                $return[$key]['photo_url'] = $photo_url;
+
+
+                //Infos Etendues
+                if ($extend == 1) {
+                    //Gestion Certificat
+                    $certif_url = Storage::disk('public')->url($gymnaste['certificat_medical']);
+
+
+                    if ($gymnaste['certificat_medical_date'] == null) {
+                        $datecertif = "Entrer date certificat Affiligue";
+
+                        $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
+
+                        $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
+
+                        $return[$key]['certificat_medical_date_fr'] = $datecertif;
+
+                        $return[$key]['certificat_medical_url'] = $certif_url;
+
+                        $return[$key]['certificat_medical_age'] = $agecertif;
+
+                        $return[$key]['certificat_medical_fin_fr'] = $datefincertif;
+                    } else {
+
+
+                        $datecertif = Carbon::parse($gymnaste['certificat_medical_date'])->format('d-m-Y');
+
+                        $datefincertif = Carbon::parse($gymnaste['certificat_medical_date'])->addYears(3)->format('d-m-Y');
+
+                        $agecertif = Carbon::parse($gymnaste['certificat_medical_date'])->age;
+
+                        $return[$key]['certificat_medical_date_fr'] = $datecertif;
+
+                        $return[$key]['certificat_medical_url'] = $certif_url;
+
+                        $return[$key]['certificat_medical_age'] = $agecertif;
+
+                        $return[$key]['certificat_medical_fin_fr'] = $datefincertif;
+                    }
+
+
+                    //Certificat dépassé
+                    if ($agecertif >= 3) {
+                        $problemes['certificat']['age']["text"] = "Certificat médical expiré";
+                        $problemes['certificat']['age']["class"] = "warning";
+                    }
+
+                    //Certificat absent
+                    if ($gymnaste['certificat_medical'] === null && $gymnaste['certificat_medical_date'] == null) {
+                        $problemes['certificat']['nonecertif']["text"] = "Aucun Certificat médical";
+                        $problemes['certificat']['nonecertif']["class"] = "warning";
+                    }
+
+                    //Certificat non verifié
+                    if ($gymnaste['certificat_medical_check'] == 0 && $gymnaste['certificat_medical_date'] != null) {
+                        $problemes['verif_certificat']['verifcertif']["text"] = "Certificat medical à verifier";
+                        $problemes['verif_certificat']['verifcertif']["class"] = "warning";
+                    }
+
+
+                    //Responsable
+
+                    $responsable = $gymnaste->responsable()->first();
+
+                    $return[$key]['responsable'] = $responsable;
+
+                    //Genres
+
+                    $genre = $gymnaste->genre;
+
+                    $return[$key]['genre'] = $genre;
+
+                    $return[$key]['genre_libelle'] = $genre->name;
+
+                    //A reinscrire
+
+                    $saisonInscription = new Saison;
+
+                    $saisoni = $saisonInscription->inscriptionOuverte();
+
                     $reinscrire = null;
 
-                    if($saisoni != null)
-                    {
-                        $return[$key]['reinscrit']['saison']=$saisoni;
-                        $problemes['reinscription']['nonfait']["text"] = "Pas de reinscription ";
-                        $problemes['reinscription']['nonfait']["class"] = "warning";
-                    }
-                    else{
-                        $return[$key]['reinscrit']['saison']=0;
+                    if ($saisoni != null && $gymnaste->saisons()->find($saisoni->id) != null) {
+                        $reinscrire = $gymnaste->saisons()->find($saisoni->id);
+
+
+                        $return[$key]['reinscrit']['saison'] = $saisoni;
+
+                        $return[$key]['dossier'] = $reinscrire->pivot->dossier;
+                        //Si dossier non complet
+                        if ($reinscrire->pivot->dossier == 0 || $reinscrire->pivot->dossier == null) {
+                            $problemes['dossier']['absent']["text"] = "Dossier non complet, à remplir au gymnase ";
+                            $problemes['dossier']['absent']["class"] = "warning";
+                        } //Si complet on check l'affiligue
+                        else {
+
+                            if ($reinscrire->pivot->affiligue == 0 && $reinscrire->pivot->dossier != 2) {
+                                $problemes['affiligue']['nonsaisi']["text"] = "Validation affiligue à faire par gestionnaire ";
+                                $problemes['affiligue']['nonsaisi']["class"] = "warning";
+                            }
+                        }
+
+                    } else {
+                        $reinscrire = null;
+
+                        if ($saisoni != null) {
+                            $return[$key]['reinscrit']['saison'] = $saisoni;
+                            $problemes['reinscription']['nonfait']["text"] = "Pas de reinscription ";
+                            $problemes['reinscription']['nonfait']["class"] = "warning";
+                        } else {
+                            $return[$key]['reinscrit']['saison'] = 0;
+
+                        }
 
                     }
 
-                }
-
-                if($reinscrire == null)
-                {
-                    $return[$key]['reinscrit']['statut']=0;
+                    if ($reinscrire == null) {
+                        $return[$key]['reinscrit']['statut'] = 0;
 
 
-                }
-                else{
-                    $return[$key]['reinscrit']['statut']=1;
-                    if($noniv==1 )
-                    {
-                        $problemes['Groupe']['nonegroup']["text"]="Attente affectation groupe. Pour les non compétitifs et les nouveaux inscrits , veuillez passer au gymnase !";
-                        $problemes['Groupe']['nonegroup']["class"]="secondary";
+                    } else {
+                        $return[$key]['reinscrit']['statut'] = 1;
+                        if ($noniv == 1) {
+                            $problemes['Groupe']['nonegroup']["text"] = "Attente affectation groupe. Pour les non compétitifs et les nouveaux inscrits , veuillez passer au gymnase !";
+                            $problemes['Groupe']['nonegroup']["class"] = "secondary";
+                        }
+
                     }
 
-                }
+                    /** Gestion des tarifs et paiements */
 
-                /** Gestion des tarifs et paiements */
+                    $tarif = $gymnaste->tarif();
 
-                $tarif= $gymnaste->tarif();
+                    $return[$key]['tarif'] = $tarif;
 
-                $return[$key]['tarif']=$tarif;
+                    if ($reinscrire != null) {
+                        if (($reinscrire->pivot->paye == 0) && $tarif != null) {
+                            $problemes['paiement']['nonepaiement']["text"] = "Tarif  " . $tarif . "€ à Valider par Gestionnaire";
+                            $problemes['paiement']['nonepaiement']["class"] = "warning";
+                        }
 
-                if($reinscrire != null) {
-                    if (($reinscrire->pivot->paye == 0) && $tarif != null) {
-                        $problemes['paiement']['nonepaiement']["text"] = "Tarif  " . $tarif . "€ à Valider par Gestionnaire";
-                        $problemes['paiement']['nonepaiement']["class"] = "warning";
                     }
 
+                    // montant validé pour le gymnaste
+                    $paye = $gymnaste->paye();
+
+                    $return[$key]['paye'] = $paye;
+
+                    // montant total pour la famille du gymnaste
+                    $totalapayer = $gymnaste->totalapayer();
+
+                    $return[$key]['totalapayer'] = $totalapayer;
+
+
+                    #récupère les problèmes pour le dossier
+
+                    $return[$key]['problemes'] = $problemes;
+
+                    $problemes_short = "";
+
+                    foreach ($problemes as $lokey => $probleme) {
+                        $problemes_short .= $lokey . " ";
+                    }
+
+                    if (count($problemes) == 0) {
+                        $problemes_short = "OK";
+                    }
+
+                    $return[$key]['problemes_short'] = $problemes_short;
+
+
                 }
 
-                // montant validé pour le gymnaste
-                $paye= $gymnaste->paye();
-
-                $return[$key]['paye']=$paye;
-
-                // montant total pour la famille du gymnaste
-                $totalapayer= $gymnaste->totalapayer();
-
-                $return[$key]['totalapayer']=$totalapayer;
-
-
-
-
-
-
-
-
-                #récupère les problèmes pour le dossier
-
-                $return[$key]['problemes']=$problemes;
-
-                $problemes_short="";
-
-                foreach($problemes as $lokey => $probleme )
-                {
-                    $problemes_short.=$lokey." ";
-                }
-
-                if(count($problemes)==0)
-                {
-                    $problemes_short="OK";
-                }
-
-                $return[$key]['problemes_short']=$problemes_short;
-
-
+                //met en place la key dans redis
+                Redis::set('gymnaste.' . $key, json_encode($return[$key]),'EX',3600);
 
 
             }
 
-
-
         }
+
+
 
         return $return;
 
@@ -709,6 +683,8 @@ class GymnastesController extends Controller
 
         $return = $this->formatGyms($gymnastes);
 
+
+
         return $return;
 
         //return $gymnastes;
@@ -846,6 +822,18 @@ class GymnastesController extends Controller
         $pdf = PDF::loadView('PDF.attestation2019', $data);
         //dd($data);
         return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2019.pdf');
+    }
+
+    public function redis()
+    {
+        if(Redis::get('gymnaste.2'))
+        {
+            print "ok";
+        }
+        else{
+            print "not ok";
+        }
+        return Redis::get('gymnaste.2');
     }
 
 

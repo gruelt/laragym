@@ -67,10 +67,11 @@
                     .then(response => (this.fields = response.data));
                 console.log('Update '+this.id + this.model + this.field+this.value);
 
-                if(this.type=="date")
-                {
-                    location.reload();
-                }
+                location.reload();
+                // if(this.type=="date")
+                // {
+                //     location.reload();
+                // }
 
 
             },

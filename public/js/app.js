@@ -88222,9 +88222,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             console.log('Update ' + this.id + this.model + this.field + this.value);
 
-            if (this.type == "date") {
-                location.reload();
-            }
+            location.reload();
+            // if(this.type=="date")
+            // {
+            //     location.reload();
+            // }
+
         }
 
     },
