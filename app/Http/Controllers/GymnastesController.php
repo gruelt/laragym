@@ -464,7 +464,7 @@ class GymnastesController extends Controller
                 }
 
                 //met en place la key dans redis
-                Redis::set('gymnaste.' . $gymnaste->id, json_encode($return[$key]),'EX',3600);
+                Redis::set('gymnaste.' . $gymnaste->id, json_encode($return[$key]),'EX',3600*24*7);
 
 
             }
