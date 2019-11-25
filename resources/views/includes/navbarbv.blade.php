@@ -50,6 +50,7 @@
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-header>Technique</b-dropdown-header>
                         <b-dropdown-item href="/admin/passport">API</b-dropdown-item>
+                        <b-dropdown-item href="/panel">Gestion Tables</b-dropdown-item>
 
                     </b-nav-item-dropdown>
 

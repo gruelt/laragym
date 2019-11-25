@@ -237,3 +237,8 @@ Route::get("/equipes/{id}/appel",'EquipesController@PDFAppel');
 Route::get('/test',"GymnastesController@redis");
 
 
+
+
+Route::group(['prefix' => 'panel'], function () {
+    Voyager::routes();
+});
