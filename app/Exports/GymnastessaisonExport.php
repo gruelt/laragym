@@ -27,6 +27,7 @@ public function view(): View
     foreach($gymnastes as $key => $gym)
     {
         $niveau="";
+        //$gym=json_encode($gym);
         if(isset($gym['niveaux_tab']))
         {
             foreach($gym['niveaux_tab'] as $groupe)
@@ -46,9 +47,9 @@ public function view(): View
 
             'date naissance'=>$gym['date_naissance_fr'],
 
-            'mail' => $gym['responsable']->email,
+            'mail' => $gym['responsable']['email'],
 
-            'responsable'=>$gym['responsable']->nom." ".$gym['responsable']->prenom,
+            'responsable'=>$gym['responsable']['nom']." ".$gym['responsable']['prenom'],
 
 
             'tarif'=>$gym['tarif'],
