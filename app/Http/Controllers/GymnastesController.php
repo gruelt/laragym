@@ -55,7 +55,7 @@ class GymnastesController extends Controller
         $mygym =  User::find(Auth::user()->id)->gymnastes()->get();
 
 
-        $return = $this->formatGyms($mygym);
+        $return = $this->formatGyms($mygym,1,true);
 
 
         return $return;
@@ -182,10 +182,10 @@ class GymnastesController extends Controller
      * @param $gyms
      * @return mixed
      */
-    public function formatGyms($gyms,$extend=1)
+    public function formatGyms($gyms,$extend=1,$refresh=false)
     {
         $return=array();
-	$refresh=false;
+	//$refresh=false;
 
         if(count($gyms)==1)
         {
