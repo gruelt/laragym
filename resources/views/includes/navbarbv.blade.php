@@ -34,8 +34,9 @@
 
 
                         <b-dropdown-divider></b-dropdown-divider>
-                        <b-dropdown-header>Equipes</b-dropdown-header>
-                        <b-dropdown-item href="/admin/equipes/">Consulter</b-dropdown-item>
+                        <b-dropdown-header>Groupes</b-dropdown-header>
+                        <b-dropdown-item href="/admin/equipes/">Entrainement</b-dropdown-item>
+                        <b-dropdown-item href="/admin/competitifs/">Compétitifs</b-dropdown-item>
 
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-header>Responsables</b-dropdown-header>

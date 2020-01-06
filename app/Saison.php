@@ -18,6 +18,10 @@ class Saison extends Model
         return $this->hasMany('App\Equipe'); //
     }
 
+    public function competitifs(){
+        return $this->hasMany('App\Competitif'); //
+    }
+
     public function actuelle(){
         return $this->where('actuelle',1)->first();
     }

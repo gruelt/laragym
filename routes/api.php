@@ -49,6 +49,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/equipes/saison/{id}', 'EquipesController@getbyseason');
 
+    Route::get('/competitifs/saison/{id}', 'CompetitifsController@getbyseason');
+
     Route::get('/equipes/saison/{id}/{pluck}', 'EquipesController@getbyseason');
 
     Route::get('/equipes/{id}', 'EquipesController@get');

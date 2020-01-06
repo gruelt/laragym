@@ -2,11 +2,11 @@
 
 
 @section('title')
-    Liste des Groupes
+    Liste des Groupes Compétitifs
 @stop
 
 @section('content')
-    <equipe-table></equipe-table>
+    <competitif-table></competitif-table>
 
 
 @stop

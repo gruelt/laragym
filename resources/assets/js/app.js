@@ -46,7 +46,7 @@ Vue.component('responsables-table', require('./components/ResponsablesTableCompo
 
 Vue.component('user-info', require('./components/UserInfoComponent'));
 
-
+Vue.component('competitif-table', require('./components/CompetitifTableComponent.vue'));
 
 
 Vue.component('saison-select', require('./components/SaisonSelectComponent.vue'));

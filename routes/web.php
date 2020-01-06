@@ -114,6 +114,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
         return view('pages.admin.equipes');
     });
 
+    Route::get('/competitifs', function () {
+        return view('pages.admin.competitifs');
+    });
+
     //Montre le Gymnaste
     Route::get('/gymnastes/{id}', 'GymnastesController@showadmin');
 
