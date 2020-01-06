@@ -123,6 +123,7 @@ class CompetitifsController extends Controller
             if($equipe->gymnastes ==null)
             {
                 $return[$key]['nbgyms_count']=0;
+                $return[$key]['nbgyms']=0;
             }
             else{
                 $return[$key]['nbgyms_count']=$equipe->gymnastes->count();
@@ -154,6 +155,18 @@ class CompetitifsController extends Controller
         $equipe = Competitif::find($equipe_id);
 
         return view('pages.admin.viewcompetitif')->with('equipe_id',$equipe_id);
+    }
+
+
+    //retourne une equipe par API
+    public  function get($equipe_id)
+    {
+        $return=array();
+
+        $equipe = Competitif::where('id',$equipe_id)->get();
+
+
+        return $this->formatEquipes($equipe)[0];
     }
 
 

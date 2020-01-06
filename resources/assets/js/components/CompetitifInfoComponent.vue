@@ -193,7 +193,7 @@
             updateteam: function () {
                  console.log('Mise à jour DB pour ' + this.equipe_id);
                  axios
-                     .get('/api/admin/equipes/' + this.equipe_id)
+                     .get('/api/admin/competitifs/' + this.equipe_id)
                      .then(response => (this.equipe = response.data))
                  ;
 

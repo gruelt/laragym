@@ -55,6 +55,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/equipes/{id}', 'EquipesController@get');
 
+    Route::get('/competitifs/{id}', 'CompetitifsController@get');
+
     Route::get('/equipes/{id}/members', 'EquipesController@getmembers');
 
     Route::get('/coachs/pluck','UsersController@getcoachspluck');

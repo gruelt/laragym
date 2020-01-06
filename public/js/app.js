@@ -117717,7 +117717,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             console.log('Mise à jour DB pour ' + this.equipe_id);
-            axios.get('/api/admin/equipes/' + this.equipe_id).then(function (response) {
+            axios.get('/api/admin/competitifs/' + this.equipe_id).then(function (response) {
                 return _this.equipe = response.data;
             });
         },
