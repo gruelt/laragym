@@ -48,6 +48,8 @@ Vue.component('user-info', require('./components/UserInfoComponent'));
 
 Vue.component('competitif-table', require('./components/CompetitifTableComponent.vue'));
 
+Vue.component('competitif-info', require('./components/CompetitifInfoComponent.vue'));
+
 
 Vue.component('saison-select', require('./components/SaisonSelectComponent.vue'));
 

@@ -32612,6 +32612,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-info', __webpack_req
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('competitif-table', __webpack_require__(664));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('competitif-info', __webpack_require__(669));
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('saison-select', __webpack_require__(308));
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('passport-clients', __webpack_require__(311));
@@ -117078,7 +117080,7 @@ exports = module.exports = __webpack_require__(22)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -117151,20 +117153,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "competitifTableComponent",
+    name: "equipeTableComponent",
 
     props: {
         debug: {
@@ -117224,7 +117216,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: 'Nom',
                 sortable: true
             }, {
-                key: 'niveau',
+                key: 'niveau_libelle',
                 label: 'Niveau',
                 sortable: true
             }, {
@@ -117242,7 +117234,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // Variant applies to the whole column, including the header and footer
 
             }, {
-                key: 'genre',
+                key: 'genre_libelle',
                 label: 'Genre',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
@@ -117250,12 +117242,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 key: 'coach',
                 label: 'Coach',
-                sortable: true
-                // Variant applies to the whole column, including the header and footer
-
-            }, {
-                key: 'horaires',
-                label: 'Horaires',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -117394,15 +117380,15 @@ var render = function() {
             }
           },
           {
-            key: "niveau",
+            key: "niveau_libelle",
             fn: function(data) {
-              return _c("span", {}, [_vm._v(_vm._s(data.value.description))])
+              return _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
             }
           },
           {
-            key: "genre",
+            key: "genre_libelle",
             fn: function(data) {
-              return _c("span", {}, [_vm._v(_vm._s(data.value.name))])
+              return _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
             }
           },
           {
@@ -117418,45 +117404,14 @@ var render = function() {
             }
           },
           {
-            key: "horaires",
-            fn: function(data) {
-              return _c(
-                "span",
-                {},
-                [
-                  _c(
-                    "b-list-group",
-                    _vm._l(data.value, function(horaire) {
-                      return _vm.withhoraires
-                        ? _c("b-list-group-item", [
-                            _vm._v(
-                              _vm._s(horaire.jour.nom_jour) +
-                                " : " +
-                                _vm._s(horaire.heure_debut) +
-                                "h" +
-                                _vm._s(horaire.minute_debut) +
-                                " / " +
-                                _vm._s(horaire.heure_fin) +
-                                "h" +
-                                _vm._s(horaire.minute_fin)
-                            )
-                          ])
-                        : _vm._e()
-                    }),
-                    1
-                  )
-                ],
-                1
-              )
-            }
-          },
-          {
             key: "url",
             fn: function(data) {
               return _c("span", {}, [
-                _c("a", { attrs: { href: "/admin/equipes/" + data.item.id } }, [
-                  _vm._v("Consulter")
-                ])
+                _c(
+                  "a",
+                  { attrs: { href: "/admin/competitifs/" + data.item.id } },
+                  [_vm._v("Consulter")]
+                )
               ])
             }
           },
@@ -117493,11 +117448,7 @@ var render = function() {
               return _c(
                 "span",
                 {},
-                [
-                  _c("b-button", [
-                    _vm._v(_vm._s(data.value.name) + "\n\n            ")
-                  ])
-                ],
+                [_c("b-button", [_vm._v(_vm._s(data.value))])],
                 1
               )
             }
@@ -117509,8 +117460,7 @@ var render = function() {
             }
           }
         ])
-      }),
-      _vm._v("\n\n    " + _vm._s(_vm.equipes) + "\n\n")
+      })
     ],
     1
   )
@@ -117522,6 +117472,435 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-195c2bac", module.exports)
+  }
+}
+
+/***/ }),
+/* 669 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(670)
+/* template */
+var __vue_template__ = __webpack_require__(671)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CompetitifInfoComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-67ee7abc", Component.options)
+  } else {
+    hotAPI.reload("data-v-67ee7abc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 670 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+
+        equipe_id: {
+            type: Number
+
+        },
+        gym: {
+            type: Object
+        },
+        admin: {
+            type: Boolean,
+            default: false
+        }
+
+    },
+    data: function data() {
+        return {
+
+            update: "",
+            equipe: ""
+
+        };
+    },
+
+    methods: {
+
+        updateteam: function updateteam() {
+            var _this = this;
+
+            console.log('Mise à jour DB pour ' + this.equipe_id);
+            axios.get('/api/admin/equipes/' + this.equipe_id).then(function (response) {
+                return _this.equipe = response.data;
+            });
+        },
+        hideModalcoach: function hideModalcoach() {
+            this.$root.$emit('bv::hide::modal', 'equipes', '#btnShow');
+            location.reload();
+        }
+    },
+
+    mounted: function mounted() {
+
+        this.updateteam();
+    }
+});
+
+/***/ }),
+/* 671 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-container",
+    { staticClass: "bv-example-row", attrs: { fluid: "" } },
+    [
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            { attrs: { sm: "12", lg: "2" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: {
+                    "img-src": "/images/compet.png",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-text",
+                    [
+                      _c(
+                        "h2",
+                        [
+                          _c("modify-modal", {
+                            attrs: {
+                              admin: _vm.admin,
+                              field: "nom",
+                              id: _vm.equipe.id,
+                              model: "Equipe",
+                              value: _vm.equipe.nom
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("h5", {
+                        domProps: {
+                          innerHTML: _vm._s(_vm.equipe.genre_libelle)
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h5", [_vm._v(_vm._s(_vm.equipe.categorie))]),
+                      _vm._v(" "),
+                      _c("H3", [
+                        _vm._v(_vm._s(_vm.equipe.nbgyms.length) + " Membres")
+                      ]),
+                      _vm._v(" "),
+                      _c("b-progress", {
+                        attrs: {
+                          value: _vm.equipe.nbgyms_count,
+                          max: "10",
+                          "show-progress": "",
+                          animated: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          attrs: {
+                            href: "/equipes/" + _vm.equipe_id + "/appel",
+                            size: "sm"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-file-pdf" }),
+                          _vm._v(" Présence")
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("b-col", { attrs: { lg: "3", sm: "6" } }),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { lg: "3", sm: "6" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-12",
+                  attrs: {
+                    title: "Compétitions",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-text",
+                    [
+                      _c(
+                        "b-list-group",
+                        [
+                          _c("b-list-group-item", [_vm._v("Cras justo odioz")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Dapibus ac facilisis in")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [_vm._v("Morbi leo risus")]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Porta ac consectetur ac")
+                          ]),
+                          _vm._v(" "),
+                          _c("b-list-group-item", [
+                            _vm._v("Vestibulum at eros")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-col",
+        { attrs: { col: "12" } },
+        [_c("gymnaste-table", { attrs: { equipe_id: _vm.equipe_id } })],
+        1
+      ),
+      _vm._v(" "),
+      _c("b-row")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-67ee7abc", module.exports)
   }
 }
 

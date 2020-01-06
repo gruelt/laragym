@@ -124,6 +124,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
     //Montre l'equipe
     Route::get('/equipes/{id}', 'EquipesController@showequipe');
 
+    //Montre le groupe compétitif
+    Route::get('/competitifs/{id}', 'CompetitifsController@showequipe');
+
     //Ajout d'un horaire
     Route::get('/equipes/{id}/horaires/add', 'EquipesController@addhoraire');
 

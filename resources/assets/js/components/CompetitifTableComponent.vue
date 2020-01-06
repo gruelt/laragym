@@ -4,15 +4,15 @@
         <!--<button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>-->
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Affichage Horaires</button>
         <b-table
-                id="table-transition-example"
-                :items="filteredequipes"
-                :fields="fields"
-                striped
-                small
-                responsive
+            id="table-transition-example"
+            :items="filteredequipes"
+            :fields="fields"
+            striped
+            small
+            responsive
 
-                primary-key="a"
-                :tbody-transition-props="transProps"
+            primary-key="a"
+            :tbody-transition-props="transProps"
         >
             <template slot="top-row" slot-scope="{ fields }">
                 <td v-for="field in fields" :key="field.key">
@@ -26,23 +26,18 @@
                 <h1 v-for="(prob, index) in data.value">{{index}}</h1>
             </span>
 
-            <span slot="niveau" slot-scope="data" >{{data.value.description}}</span>
+            <span slot="niveau_libelle" slot-scope="data" v-html="data.value"></span>
 
-            <span slot="genre" slot-scope="data">{{data.value.name}}</span>
+            <span slot="genre_libelle" slot-scope="data" v-html="data.value"></span>
             <span slot="nom" slot-scope="data" >
                 <a :href="'/admin/competitifs/'+ data.item.id">{{data.value}}</a>
             </span>
 
-            <span slot="horaires" slot-scope="data" >
-                <b-list-group>
-                <b-list-group-item v-if="withhoraires" v-for="horaire in data.value">{{horaire.jour.nom_jour}} : {{horaire.heure_debut}}h{{horaire.minute_debut}} / {{horaire.heure_fin}}h{{horaire.minute_fin}}</b-list-group-item>
 
-                     </b-list-group>
-            </span>
 
 
             <span slot="url" slot-scope="data" >
-                <a :href="'/admin/equipes/'+ data.item.id">Consulter</a>
+                <a :href="'/admin/competitifs/'+ data.item.id">Consulter</a>
             </span>
 
             <span slot="nbgyms_count" slot-scope="data">{{data.value}}
@@ -56,16 +51,11 @@
             </span>
             <span slot="coach" slot-scope="data" v-html="data.value"></span>
 
-            <span slot="categorie" slot-scope="data" >
-                <b-button>{{data.value.name}}
-
-                </b-button></span>
+            <span slot="categorie" slot-scope="data" ><b-button>{{data.value}}</b-button></span>
             <span slot="filiere" slot-scope="data" >{{data.value}}</span>
 
 
         </b-table>
-
-        {{equipes}}
 
     </div>
 </template>
@@ -73,7 +63,7 @@
 <script>
 
     export default {
-        name: "competitifTableComponent"
+        name: "equipeTableComponent"
 
         ,
         props:{
@@ -135,7 +125,7 @@
                         sortable: true
                     },
                     {
-                        key: 'niveau',
+                        key: 'niveau_libelle',
                         label: 'Niveau',
                         sortable: true
                     },
@@ -158,13 +148,13 @@
                     },
 
                     {
-                        key: 'genre',
+                        key: 'genre_libelle',
                         label: 'Genre',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
                     }
-                                        ,
+                    ,
                     {
                         key: 'coach',
                         label: 'Coach',
@@ -172,14 +162,7 @@
                         // Variant applies to the whole column, including the header and footer
 
                     },
-                    {
-                        key: 'horaires',
-                        label: 'Horaires',
-                        sortable: true,
-                        // Variant applies to the whole column, including the header and footer
 
-                    }
-                    ,
                     {
                         key: 'url',
                         label: 'Consulter',

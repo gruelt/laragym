@@ -92,10 +92,71 @@ class CompetitifsController extends Controller
         //return $gymnastes;
     }
 
-    public function formatEquipes($equipes,$extend=1)
+    private function formatEquipes($equipes,$extend=1)
     {
-        return $equipes;
+        foreach ($equipes as $key => $equipe)
+        {
+            $return[$key]=$equipe->toArray();
+
+            /**  GENRE   */
+            $genre= $equipe->genre()->first();
+
+            $return[$key]['genre']=$genre;
+
+
+
+            $return[$key]['genre_libelle']="<span class=\"badge badge-".$genre->color()."\">".$genre->description."</span>";
+
+            /** Niveau */
+
+            $niveau = $equipe->niveau;
+
+            $return[$key]['niveau']=$niveau;
+
+            $returnniv="<a href=\"/admin/niveau/".$niveau['id']."\" class=\"badge badge-primary\">".$niveau->description."</a>&nbsp;";
+            $return[$key]['niveau_libelle']=$returnniv;
+
+            /** Nombre de Gyms */
+
+            //$return[$key]['nbgyms']=Equipe::find($key)->gymnastes();
+            $return[$key]['nbgyms']=$equipe->gymnastes;
+            if($equipe->gymnastes ==null)
+            {
+                $return[$key]['nbgyms_count']=0;
+            }
+            else{
+                $return[$key]['nbgyms_count']=$equipe->gymnastes->count();
+            }
+
+
+            /** Categorie  */
+            $return[$key]['categorie']=$equipe->categorie->name;
+            $return[$key]['filiere']=$equipe->categorie->filiere->name;
+
+
+
+
+
+
+
+
+        }
+
+        return $return;
+
     }
+
+
+    public function showequipe($equipe_id)
+    {
+        $return =array();
+
+        $equipe = Competitif::find($equipe_id);
+
+        return view('pages.admin.viewcompetitif')->with('equipe_id',$equipe_id);
+    }
+
+
 
 
 }
