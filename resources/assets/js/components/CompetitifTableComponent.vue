@@ -26,11 +26,11 @@
                 <h1 v-for="(prob, index) in data.value">{{index}}</h1>
             </span>
 
-            <span slot="niveau_libelle" slot-scope="data" v-html="data.value"></span>
+            <span slot="niveau" slot-scope="data" >{{data.value.description}}</span>
 
-            <span slot="genre_libelle" slot-scope="data" v-html="data.value"></span>
+            <span slot="genre" slot-scope="data">{{data.value.name}}</span>
             <span slot="nom" slot-scope="data" >
-                <a :href="'/admin/equipes/'+ data.item.id">{{data.value}}</a>
+                <a :href="'/admin/competitifs/'+ data.item.id">{{data.value}}</a>
             </span>
 
             <span slot="horaires" slot-scope="data" >
@@ -56,11 +56,16 @@
             </span>
             <span slot="coach" slot-scope="data" v-html="data.value"></span>
 
-            <span slot="categorie" slot-scope="data" ><b-button>{{data.value}}</b-button></span>
+            <span slot="categorie" slot-scope="data" >
+                <b-button>{{data.value.name}}
+
+                </b-button></span>
             <span slot="filiere" slot-scope="data" >{{data.value}}</span>
 
 
         </b-table>
+
+        {{equipes}}
 
     </div>
 </template>
@@ -130,7 +135,7 @@
                         sortable: true
                     },
                     {
-                        key: 'niveau_libelle',
+                        key: 'niveau',
                         label: 'Niveau',
                         sortable: true
                     },
@@ -153,7 +158,7 @@
                     },
 
                     {
-                        key: 'genre_libelle',
+                        key: 'genre',
                         label: 'Genre',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer

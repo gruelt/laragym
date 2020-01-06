@@ -89607,7 +89607,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -89618,6 +89618,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -89748,7 +89753,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: 'Nom',
                 sortable: true
             }, {
-                key: 'niveau_libelle',
+                key: 'niveau',
                 label: 'Niveau',
                 sortable: true
             }, {
@@ -89766,7 +89771,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // Variant applies to the whole column, including the header and footer
 
             }, {
-                key: 'genre_libelle',
+                key: 'genre',
                 label: 'Genre',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
@@ -89918,24 +89923,26 @@ var render = function() {
             }
           },
           {
-            key: "niveau_libelle",
+            key: "niveau",
             fn: function(data) {
-              return _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
+              return _c("span", {}, [_vm._v(_vm._s(data.value.description))])
             }
           },
           {
-            key: "genre_libelle",
+            key: "genre",
             fn: function(data) {
-              return _c("span", { domProps: { innerHTML: _vm._s(data.value) } })
+              return _c("span", {}, [_vm._v(_vm._s(data.value.name))])
             }
           },
           {
             key: "nom",
             fn: function(data) {
               return _c("span", {}, [
-                _c("a", { attrs: { href: "/admin/equipes/" + data.item.id } }, [
-                  _vm._v(_vm._s(data.value))
-                ])
+                _c(
+                  "a",
+                  { attrs: { href: "/admin/competitifs/" + data.item.id } },
+                  [_vm._v(_vm._s(data.value))]
+                )
               ])
             }
           },
@@ -90015,7 +90022,11 @@ var render = function() {
               return _c(
                 "span",
                 {},
-                [_c("b-button", [_vm._v(_vm._s(data.value))])],
+                [
+                  _c("b-button", [
+                    _vm._v(_vm._s(data.value.name) + "\n\n            ")
+                  ])
+                ],
                 1
               )
             }
@@ -90027,7 +90038,8 @@ var render = function() {
             }
           }
         ])
-      })
+      }),
+      _vm._v("\n\n    " + _vm._s(_vm.equipes) + "\n\n")
     ],
     1
   )

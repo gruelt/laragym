@@ -11,7 +11,7 @@ class CompetitifsController extends Controller
 
     public function getall()
     {
-        $equipes= Competitif::all();
+        $equipes= Competitif::with(['niveau','categorie','genre','saison'])->get();
 
         return $this->formatEquipes($equipes);
     }
@@ -31,7 +31,7 @@ class CompetitifsController extends Controller
 
         $saison=  Saison::find($saison_id);
 
-        $equipes = $saison->competitifs()->orderBy('nom')->get();
+        $equipes = $saison->competitifs()->with(['niveau','categorie','genre','saison'])->orderBy('nom')->get();
 
         if($equipes->count() == 0)
         {
