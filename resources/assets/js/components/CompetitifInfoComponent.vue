@@ -128,7 +128,7 @@
         </b-row>
 
                 <b-col col="12">
-                        <gymnaste-table :equipe_id="equipe_id"></gymnaste-table>
+                        <gymnaste-table :competitif_id="equipe_id"></gymnaste-table>
                 </b-col>
 
         <b-row>

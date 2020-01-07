@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <saison-select v-if="equipe_id == Null && user_id ==Null"></saison-select>
+        <saison-select v-if="equipe_id == Null && user_id ==Null && competitif_id == Null"></saison-select>
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
         {{filteredgyms.length}}
@@ -27,14 +27,15 @@
             </p>
         </b-modal>
 
-
         <b-table
                 id="table-transition-example"
                 :items="filteredgyms"
                 :fields="fields"
                 striped
                 small
-                responsive
+
+
+
 
                 primary-key="a"
                 :tbody-transition-props="transProps"
@@ -45,7 +46,7 @@
 
             <template slot="top-row" slot-scope="{ fields }">
                 <td v-for="field in fields" :key="field.key">
-                    <input v-model="filters[field.key]" :placeholder="field.label">
+                 <input sizev-model="filters[field.key]" :placeholder="field.label">
                 </td>
             </template>
 
@@ -78,6 +79,7 @@
 
 
         </b-table>
+
         <!--<span v-if="debug">{{gyms}}</span>-->
         {{gyms}}
     </div>
@@ -99,6 +101,11 @@
                 default:true
             },
             equipe_id:
+                {
+                    default: null,
+                    type: Number,
+                },
+            competitif_id:
                 {
                     default: null,
                     type: Number,
@@ -137,6 +144,13 @@
             updateteam: function() {
                 axios
                     .get('/api/admin/equipes/'+this.equipe_id+'/members')
+                    .then(response => (this.gyms = response.data));
+
+            }
+            ,
+            updatecompetitif: function() {
+                axios
+                    .get('/api/admin/competitifs/'+this.competitif_id+'/members')
                     .then(response => (this.gyms = response.data));
 
             }
@@ -215,12 +229,21 @@
                         key: 'age',
                         label: 'Age',
                         sortable: true,
+                        thStyle: { backgroundColor: '#FFef44', maxWidth: '10px'},
+
                         // Variant applies to the whole column, including the header and footer
 
                     },
                     {
                         key: 'niveaux',
-                        label: 'Equipes',
+                        label: 'Groupes',
+                        sortable: true,
+                        // Variant applies to the whole column, including the header and footer
+
+                    },
+                    {
+                        key: 'competitifs',
+                        label: 'Compétitif',
                         sortable: true,
                         // Variant applies to the whole column, including the header and footer
 
@@ -262,7 +285,7 @@
         },
 
         mounted(){
-            if(this.equipe_id == null && this.user_id == null)
+            if(this.equipe_id == null && this.user_id == null && this.competitif_id == null)
             {
                 this.getcurrentseason();
                 //this.update();
@@ -273,6 +296,10 @@
 
                 if(this.equipe_id !=null) {
                     this.updateteam();
+                }
+
+                if(this.competitif_id !=null) {
+                    this.updatecompetitif();
                 }
 
                 if(this.user_id !=null) {

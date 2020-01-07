@@ -170,6 +170,19 @@ class CompetitifsController extends Controller
     }
 
 
+    public  function getmembers($equipe_id)
+    {
+        $return=array();
+
+        $equipe = Competitif::find($equipe_id)->gymnastes()->get();
+
+        $gc = new GymnastesController;
+
+
+        return $gc->formatGyms($equipe);
+    }
+
+
 
 
 }

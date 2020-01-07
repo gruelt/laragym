@@ -83426,7 +83426,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Date Naissance")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Equipe")]),
+        _c("th", [_vm._v("Groupe(s)")]),
         _vm._v(" "),
         _c("th", [_vm._v("Statut")]),
         _vm._v(" "),
@@ -85553,7 +85553,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85564,6 +85564,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -85667,6 +85669,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             default: null,
             type: Number
         },
+        competitif_id: {
+            default: null,
+            type: Number
+        },
         user_id: {
             default: null,
             type: Number
@@ -85702,11 +85708,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        updateuser: function updateuser() {
+        updatecompetitif: function updatecompetitif() {
             var _this3 = this;
 
-            axios.get('/api/admin/responsables/' + this.user_id + '/members').then(function (response) {
+            axios.get('/api/admin/competitifs/' + this.competitif_id + '/members').then(function (response) {
                 return _this3.gyms = response.data;
+            });
+        },
+
+        updateuser: function updateuser() {
+            var _this4 = this;
+
+            axios.get('/api/admin/responsables/' + this.user_id + '/members').then(function (response) {
+                return _this4.gyms = response.data;
             });
         },
         updatesaison: function updatesaison(saison_id) {
@@ -85715,10 +85729,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         getcurrentseason: function getcurrentseason() {
-            var _this4 = this;
+            var _this5 = this;
 
             axios.get('/api/saisons/actuelle').then(function (response) {
-                return _this4.saison_id = response.data;
+                return _this5.saison_id = response.data;
             });
         },
         togglehoraires: function togglehoraires() {
@@ -85727,14 +85741,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // Génere la liste des mails du listing
         makemail: function makemail() {
-            var _this5 = this;
+            var _this6 = this;
 
             // for (var gym in this.gyms) {
             //     this.maillist+= gym.responsable;
             // }
             this.maillist = "";
             this.filteredgyms.forEach(function (gym) {
-                _this5.maillist += gym.responsable.email + ",";
+                _this6.maillist += gym.responsable.email + ",";
             });
         }
     },
@@ -85766,12 +85780,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 key: 'age',
                 label: 'Age',
-                sortable: true
+                sortable: true,
+                thStyle: { backgroundColor: '#FFef44', maxWidth: '10px' }
+
                 // Variant applies to the whole column, including the header and footer
 
             }, {
                 key: 'niveaux',
-                label: 'Equipes',
+                label: 'Groupes',
+                sortable: true
+                // Variant applies to the whole column, including the header and footer
+
+            }, {
+                key: 'competitifs',
+                label: 'Compétitif',
                 sortable: true
                 // Variant applies to the whole column, including the header and footer
 
@@ -85806,7 +85828,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        if (this.equipe_id == null && this.user_id == null) {
+        if (this.equipe_id == null && this.user_id == null && this.competitif_id == null) {
             this.getcurrentseason();
             //this.update();
         } else {
@@ -85815,6 +85837,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.equipe_id != null) {
                 this.updateteam();
+            }
+
+            if (this.competitif_id != null) {
+                this.updatecompetitif();
             }
 
             if (this.user_id != null) {
@@ -85826,11 +85852,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         filteredgyms: function filteredgyms() {
-            var _this6 = this;
+            var _this7 = this;
 
             var filtered = this.gyms.filter(function (item) {
-                return Object.keys(_this6.filters).every(function (key) {
-                    return String(item[key]).toLowerCase().includes(_this6.filters[key].toLowerCase());
+                return Object.keys(_this7.filters).every(function (key) {
+                    return String(item[key]).toLowerCase().includes(_this7.filters[key].toLowerCase());
                 });
             });
             return filtered.length > 0 ? filtered : [{
@@ -85854,7 +85880,9 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.equipe_id == _vm.Null && _vm.user_id == _vm.Null
+      _vm.equipe_id == _vm.Null &&
+      _vm.user_id == _vm.Null &&
+      _vm.competitif_id == _vm.Null
         ? _c("saison-select")
         : _vm._e(),
       _vm._v(" "),
@@ -85930,7 +85958,6 @@ var render = function() {
           fields: _vm.fields,
           striped: "",
           small: "",
-          responsive: "",
           "primary-key": "a",
           "tbody-transition-props": _vm.transProps
         },
@@ -85955,23 +85982,9 @@ var render = function() {
                 return _vm._l(fields, function(field) {
                   return _c("td", { key: field.key }, [
                     _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.filters[field.key],
-                          expression: "filters[field.key]"
-                        }
-                      ],
-                      attrs: { placeholder: field.label },
-                      domProps: { value: _vm.filters[field.key] },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.filters, field.key, $event.target.value)
-                        }
+                      attrs: {
+                        "sizev-model": "filters[field.key]",
+                        placeholder: field.label
                       }
                     })
                   ])
@@ -90414,7 +90427,7 @@ var render = function() {
       _c(
         "b-col",
         { attrs: { col: "12" } },
-        [_c("gymnaste-table", { attrs: { equipe_id: _vm.equipe_id } })],
+        [_c("gymnaste-table", { attrs: { competitif_id: _vm.equipe_id } })],
         1
       ),
       _vm._v(" "),

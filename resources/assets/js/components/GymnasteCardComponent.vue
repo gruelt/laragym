@@ -25,7 +25,7 @@
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Date Naissance</th>
-                        <th>Equipe</th>
+                        <th>Groupe(s)</th>
                         <th>Statut</th>
                         <th>Inscription</th>
 
