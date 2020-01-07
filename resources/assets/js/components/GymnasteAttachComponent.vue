@@ -88,7 +88,7 @@
 
             update: function() {
                 axios
-                    .get('/api/admin/gymnastes')
+                    .get('/api/admin/competitifs/'+this.equipe_id+'/gymnastes/eligibles') // /admin/gymnstates
                     .then(response => (this.gymnastes = response.data));
                 console.log('Chargement du type de compte '+this.idaccount);
             },

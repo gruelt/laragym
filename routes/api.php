@@ -29,6 +29,9 @@ Route::group(['prefix' => 'admin'], function () {
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getall');
 
+    //Gets all gymnastes eligibles to a competitive group
+    Route::get('/competitifs/{equipe_id}/gymnastes/eligibles', 'CompetitifsController@getgymnasteseligible');
+
     Route::get('/gymnastes/{id}', 'GymnastesController@get');
 
     Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason');

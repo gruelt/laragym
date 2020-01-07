@@ -118104,7 +118104,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         update: function update() {
             var _this = this;
 
-            axios.get('/api/admin/gymnastes').then(function (response) {
+            axios.get('/api/admin/competitifs/' + this.equipe_id + '/gymnastes/eligibles') // /admin/gymnstates
+            .then(function (response) {
                 return _this.gymnastes = response.data;
             });
             console.log('Chargement du type de compte ' + this.idaccount);

@@ -182,6 +182,20 @@ class CompetitifsController extends Controller
         return $gc->formatGyms($equipe);
     }
 
+    public function getgymnasteseligible($equipe_id)
+    {
+
+        $saison= new Saison;
+
+        $gyms=$saison->actuelle()->gymnastes()->whereDoesntHave('competitifs',function ($query) use ($equipe_id) {
+        $query->where('competitif_id', $equipe_id);
+         })->get();
+
+        $gc = new GymnastesController;
+
+
+        return $gc->formatGyms($gyms);
+    }
 
     public function setgymtocompetitif($equipe_id,$gym_id)
     {
