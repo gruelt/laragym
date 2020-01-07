@@ -2,7 +2,10 @@
     <div>
         <saison-select ></saison-select>
         <!--<button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>-->
-        <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Affichage Horaires</button>
+<!--        <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Affichage Horaires</button>-->
+
+
+
         <b-table
             id="table-transition-example"
             :items="filteredequipes"

@@ -31,6 +31,7 @@ Vue.component('gymnaste-equipe', require('./components/GymnasteEquipeComponent.v
 
 Vue.component('coach-equipe', require('./components/CoachEquipeComponent.vue'));
 
+Vue.component('gymnaste-attach', require('./components/GymnasteAttachComponent.vue'));
 
 Vue.component('equipe-table', require('./components/EquipeTableComponent.vue'));
 

@@ -37,59 +37,35 @@
 
 
             <!--Horaires + tarifs-->
-<!--            <b-col lg="3" sm="12">-->
+            <b-col lg="3" sm="12">
 
-<!--                <b-card-->
+                                <b-card
+                                        title="Ajouter Gymnaste"
+
+                                        img-alt="Image"
+                                        img-top
+                                        tag="article"
+
+                                        class="mb-12"
+                                >
+                                    <b-card-text>
 
 
-<!--                    title="Tarif €"-->
+                                        <gymnaste-attach to="competitif" :equipe_id="equipe_id"></gymnaste-attach>
 
-<!--                    tag="article"-->
 
-<!--                    class="mb-12"-->
-<!--                >-->
+                                    </b-card-text>
 
-<!--                <b-card-text>-->
-<!--                <h4><modify-modal :admin="admin" field="tarif" :id="equipe.id" model="Equipe" :value="equipe.tarif"></modify-modal></h4>-->
-<!--                </b-card-text>-->
-<!--                </b-card>-->
 
-<!--                <horaires :admin="admin" :horaires="equipe.horaires" :equipe_id="equipe_id"></horaires>-->
-<!--            </b-col>-->
+                                </b-card>
+
+
+
+            </b-col>
             <!--Coach(s)-->
 
             <b-col lg="3" sm="6">
-<!--                <b-card-->
-<!--                        title="Entraineur(s)"-->
 
-<!--                        img-alt="Image"-->
-<!--                        img-top-->
-<!--                        tag="article"-->
-
-<!--                        class="mb-12"-->
-<!--                >-->
-<!--                    <b-card-text>-->
-<!--                        <span v-if="(admin)"><b-button v-b-modal.coachs variant="success" size="sm">Gérer</b-button></span><br>-->
-
-<!--                        <span v-html="equipe.coach"></span>-->
-
-
-
-
-
-<!--                        <b-modal id="coachs"  hide-footer title="Coachs">-->
-<!--                            <coach-equipe :equipe_id="equipe.id"></coach-equipe>-->
-<!--                            <b-button @click="hideModalcoach">Fermer</b-button>-->
-
-<!--                        </b-modal>-->
-
-
-
-
-<!--                    </b-card-text>-->
-
-
-<!--                </b-card>-->
             </b-col>
 
             <!--Fin coach-->
@@ -128,7 +104,7 @@
         </b-row>
 
                 <b-col col="12">
-                        <gymnaste-table :competitif_id="equipe_id"></gymnaste-table>
+                        <gymnaste-table :competitif_id="equipe_id" :autoupdate="true"></gymnaste-table>
                 </b-col>
 
         <b-row>
@@ -170,6 +146,10 @@
             admin:{
                 type:Boolean,
                 default:false
+            },
+            autoupdate:{
+                type:Boolean,
+                default:true
             }
 
 
@@ -209,6 +189,8 @@
         mounted() {
 
             this.updateteam();
+
+
 
 
 

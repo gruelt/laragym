@@ -183,6 +183,22 @@ class CompetitifsController extends Controller
     }
 
 
+    public function setgymtocompetitif($equipe_id,$gym_id)
+    {
+
+
+        $gym =   Competitif::find($equipe_id)->gymnastes()->attach($gym_id);
+
+
+
+
+
+        return $gym;
+
+    }
+
+
+
 
 
 }

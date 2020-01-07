@@ -22,6 +22,9 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix' => 'admin'], function () {
 
 
+    //Add a user to a competitive group
+
+    Route::post('/competitifs/{id_groupe}/gymnastes/{id_gym}/add','CompetitifsController@setgymtocompetitif');
 
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getall');
@@ -94,6 +97,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'inscription'], function () {
 
     Route::get('/gymnastes/{gym_id}/saison/{saison_id}/paiement/valid/{montant}','SaisonsController@payesaison');
+
+
 
 
 

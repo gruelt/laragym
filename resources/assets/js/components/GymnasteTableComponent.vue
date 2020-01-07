@@ -46,7 +46,7 @@
 
             <template slot="top-row" slot-scope="{ fields }">
                 <td v-for="field in fields" :key="field.key">
-                 <input  type=text width="20px" size="sm" v-model="filters[field.key]" >
+                 <input  type=text  :size="field.size" v-model="filters[field.key]" >
 
 
                 </td>
@@ -94,6 +94,10 @@
 
         ,
         props:{
+            autoupdate:{
+                type:Boolean,
+                default:false
+            },
             quick:{
                 type:Boolean,
                 default:false
@@ -231,9 +235,11 @@
                         key: 'age',
                         label: 'Age',
                         sortable: true,
-                        thStyle: { backgroundColor: '#FFef44', maxWidth: '10px'},
+
+                        size: '2'
 
                         // Variant applies to the whole column, including the header and footer
+                        // thStyle: { backgroundColor: '#FFef44', maxWidth: '10px'},
 
                     },
                     {
@@ -254,6 +260,7 @@
                         key: 'genre_libelle',
                         label: 'Genre',
                         sortable: true,
+                        size: '2'
                         // Variant applies to the whole column, including the header and footer
 
                     }
@@ -302,6 +309,15 @@
 
                 if(this.competitif_id !=null) {
                     this.updatecompetitif();
+
+                    this.interval = setInterval(function () {
+                        if(this.autoupdate==true ) {
+
+                            this.updatecompetitif();
+
+                        }
+                    }.bind(this),  2000);
+
                 }
 
                 if(this.user_id !=null) {
