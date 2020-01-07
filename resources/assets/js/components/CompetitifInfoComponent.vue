@@ -17,7 +17,7 @@
                             >
                                 <b-card-text>
 
-                                    <h2><modify-modal :admin="admin" field="nom" :id="equipe.id" model="Equipe" :value="equipe.nom"></modify-modal></h2>
+                                    <h2><modify-modal :admin="admin" field="nom" :id="equipe.id" model="Competitif" :value="equipe.nom"></modify-modal></h2>
 
 
                                     <h5 v-html="equipe.genre_libelle"></h5>

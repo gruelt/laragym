@@ -23,6 +23,21 @@ class Gymnaste extends Model
         return $this->belongsToMany('App\Equipe')->withPivot('attente');
     }
 
+    public function competitifs()
+    {
+        $saison= new Saison;
+        $saison_id = $saison->actuelle()->id;
+
+        return $this->competitifsall()->where('saison_id',$saison_id);
+    }
+
+    //Récupère toutes les équipes d'un gymnaste
+    public function competitifsall()
+    {
+        return $this->belongsToMany('App\Competitif')->withPivot('individuel');
+    }
+
+
     //récupère le "propriétaire" du gym
     public function responsable()
     {
