@@ -46,7 +46,9 @@
 
             <template slot="top-row" slot-scope="{ fields }">
                 <td v-for="field in fields" :key="field.key">
-                 <input sizev-model="filters[field.key]" :placeholder="field.label">
+                 <input  type=text width="20px" size="sm" v-model="filters[field.key]" >
+
+
                 </td>
             </template>
 
