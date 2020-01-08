@@ -28,7 +28,7 @@ class Gymnaste extends Model
         $saison= new Saison;
         $saison_id = $saison->actuelle()->id;
 
-        return $this->competitifsall()->where('saison_id',$saison_id);
+        return $this->competitifsall()->where('saison_id',$saison_id)->withPivot('individuel');
     }
 
     //Récupère toutes les équipes d'un gymnaste

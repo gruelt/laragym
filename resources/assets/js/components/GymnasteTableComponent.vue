@@ -74,6 +74,8 @@
 
             <span slot="niveaux" slot-scope="data" v-html="data.value"></span>
 
+            <span slot="competitifs" slot-scope="data" v-html="data.value"></span>
+
             <span v-if="withhoraires" slot="horairescompact" slot-scope="data" v-html="data.value"></span>
 
 
@@ -200,6 +202,7 @@
                 axios
                     .delete('/api/admin/competitifs/'+idequipe+'/gymnastes/'+idgym+'/detach');
                 this.updatecompetitif();
+                this.$parent.updateteam();
 
 
                 console.log('Chargement ');

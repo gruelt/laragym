@@ -98,6 +98,7 @@
                 axios
                     .post('/api/admin/competitifs/'+this.equipe_id+'/gymnastes/'+idgym+'/add');
                 this.update();
+                this.$parent.updateteam();
 
 
                 console.log('Chargement du type de compte '+this.idaccount);

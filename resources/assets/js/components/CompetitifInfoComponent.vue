@@ -22,15 +22,20 @@
 
                                     <h5 v-html="equipe.genre_libelle"></h5>
                                     <h5>{{equipe.categorie}}</h5>
-
+                                    <H5>{{equipe.niveau.nb_gyms}} gyms / {{equipe.niveau.nb_notes}} notes</H5>
 
                                     <H3>{{equipe.nbgyms.length}} Membres
 
+                                        <b-badge v-if="equipe.nbgyms_count<equipe.niveau.nb_notes"pill variant="danger">Minimum {{equipe.niveau.nb_notes}} </H5>
+                                        Gyms</b-badge>
+                                        <b-badge v-if="equipe.nbgyms_count<equipe.niveau.nb_gyms"pill variant="warning">Possibilité {{equipe.niveau.nb_gyms}} </H5>
+                                            Gyms</b-badge>
+
                                     </H3>
-                                    <H5>{{equipe.niveau.nb_gyms}} gyms / {{equipe.niveau.nb_notes}} notes</H5>
 
 
-                                    <b-progress :value="equipe.nbgyms_count" :max="equipe.niveau.nb_gyms" show-progress animated ></b-progress>
+
+                                    <b-progress :value="equipe.nbgyms_count" :max="equipe.niveau.nb_gyms"  animated ></b-progress>
 
                                 </b-card-text>
 

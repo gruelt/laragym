@@ -214,6 +214,8 @@ class GymnastesController extends Controller
 
                 $niveaux = Gymnaste::find($gymnaste->id)->equipes()->get();
 
+                $competitifs = Gymnaste::find($gymnaste->id)->competitifs()->get();
+
                 $returnniv = '';
 
                 //Gestion des Niveaux en display html et brut
@@ -241,6 +243,31 @@ class GymnastesController extends Controller
                     }
 
                 }
+
+                $returncompet='';
+
+                foreach ($competitifs as $competitif) {
+                    $individuel = "";
+                    $class = "badge badge-info";
+
+                    $attente = "";
+                    $class = "badge badge-info";
+                    if ($competitif->individuel == 1) {
+                        $individuel = "<b>Individuel</b>";
+                        $class = "badge badge-secondary";
+                    }
+
+                    $returncompet .= "<a href=\"/admin/competitifs/" . $competitif['id'] . "\" class=\"" . $class . "\">" . $competitif->nom ."-".$individuel. "</a>&nbsp;";
+                    $return[$key]['competitif_tab'][$competitif['id']]['nom'] = $competitif->nom;
+
+
+
+
+
+                }
+
+                $return[$key]['competitifs'] = $returncompet;
+
 
                 $return[$key]['horaires'] = $horaires;
 
