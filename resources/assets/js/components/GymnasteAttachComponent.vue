@@ -2,7 +2,7 @@
     <div class="container">
 
 
-        <b-button v-b-modal.addgym variant="success">Ajouter Gymnaste</b-button>
+        <b-button v-b-modal.addgym variant="success" @click="update()">Ajouter Gymnaste</b-button>
 
 
 

@@ -207,6 +207,20 @@ class CompetitifsController extends Controller
 
 
 
+        return 1;
+
+    }
+
+    public function deletegymtocompetitif($equipe_id,$gym_id)
+    {
+
+
+        $gym =   Competitif::find($equipe_id)->gymnastes()->detach($gym_id);
+
+
+
+
+
         return $gym;
 
     }

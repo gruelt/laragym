@@ -24,10 +24,14 @@
                                     <h5>{{equipe.categorie}}</h5>
 
 
-                                    <H3>{{equipe.nbgyms.length}} Membres</H3>
+                                    <H3>{{equipe.nbgyms.length}} Membres
 
-                                    <b-progress :value="equipe.nbgyms_count" max="10" show-progress animated ></b-progress>
-                                    <b-button :href="'/equipes/'+ equipe_id +'/appel'" size="sm"><i class="far fa-file-pdf"></i> Présence</b-button>
+                                    </H3>
+                                    <H5>{{equipe.niveau.nb_gyms}} gyms / {{equipe.niveau.nb_notes}} notes</H5>
+
+
+                                    <b-progress :value="equipe.nbgyms_count" :max="equipe.niveau.nb_gyms" show-progress animated ></b-progress>
+
                                 </b-card-text>
 
 

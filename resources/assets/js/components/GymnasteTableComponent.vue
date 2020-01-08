@@ -4,10 +4,12 @@
         <saison-select v-if="equipe_id == Null && user_id ==Null && competitif_id == Null"></saison-select>
         <button v-on:click="togglephotos" class="btn" v-bind:class="{'btn-primary': withphotos,'btn-secondary': !withphotos}">Photos</button>
         <button v-on:click="togglehoraires" class="btn" v-bind:class="{'btn-primary': withhoraires,'btn-secondary': !withhoraires}">Horaires</button>
-        {{filteredgyms.length}}
+
 
 
         <b-button @click="$bvModal.show('modal-mail');makemail()"  variant="success"><i class="fas fa-mail-bulk"></i>Mail à liste</b-button>
+
+        {{filteredgyms.length}} Inscrits
 
         <b-modal id="modal-mail" title="mail">
             <p class="my-4">
@@ -41,6 +43,7 @@
                 :tbody-transition-props="transProps"
         >
             <span slot="nom" slot-scope="data" >
+                <b-button v-if="competitif_id" v-on:click="detachcompetitif(data.item.id,competitif_id)" variant="danger"><i class="fas fa-minus"></i></b-button>
                 <a :href="'/admin/gymnastes/'+ data.item.id">{{data.value}}</a>
             </span>
 
@@ -191,6 +194,16 @@
                     this.maillist+= gym.responsable.email+",";
                 });
                 }
+                ,
+            detachcompetitif: function(idgym,idequipe) {
+
+                axios
+                    .delete('/api/admin/competitifs/'+idequipe+'/gymnastes/'+idgym+'/detach');
+                this.updatecompetitif();
+
+
+                console.log('Chargement ');
+            },
 
 
 

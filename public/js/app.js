@@ -85555,7 +85555,7 @@ exports = module.exports = __webpack_require__(22)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85566,6 +85566,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -85758,7 +85761,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.filteredgyms.forEach(function (gym) {
                 _this6.maillist += gym.responsable.email + ",";
             });
+        },
+
+        detachcompetitif: function detachcompetitif(idgym, idequipe) {
+
+            axios.delete('/api/admin/competitifs/' + idequipe + '/gymnastes/' + idgym + '/detach');
+            this.updatecompetitif();
+
+            console.log('Chargement ');
         }
+
     },
 
     data: function data() {
@@ -85929,7 +85941,7 @@ var render = function() {
         },
         [_vm._v("Horaires")]
       ),
-      _vm._v("\n    " + _vm._s(_vm.filteredgyms.length) + "\n\n\n    "),
+      _vm._v(" "),
       _c(
         "b-button",
         {
@@ -85943,7 +85955,9 @@ var render = function() {
         },
         [_c("i", { staticClass: "fas fa-mail-bulk" }), _vm._v("Mail à liste")]
       ),
-      _vm._v(" "),
+      _vm._v(
+        "\n\n    " + _vm._s(_vm.filteredgyms.length) + " Inscrits\n\n    "
+      ),
       _c("b-modal", { attrs: { id: "modal-mail", title: "mail" } }, [
         _c(
           "p",
@@ -85984,13 +85998,36 @@ var render = function() {
             {
               key: "nom",
               fn: function(data) {
-                return _c("span", {}, [
-                  _c(
-                    "a",
-                    { attrs: { href: "/admin/gymnastes/" + data.item.id } },
-                    [_vm._v(_vm._s(data.value))]
-                  )
-                ])
+                return _c(
+                  "span",
+                  {},
+                  [
+                    _vm.competitif_id
+                      ? _c(
+                          "b-button",
+                          {
+                            attrs: { variant: "danger" },
+                            on: {
+                              click: function($event) {
+                                return _vm.detachcompetitif(
+                                  data.item.id,
+                                  _vm.competitif_id
+                                )
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-minus" })]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      { attrs: { href: "/admin/gymnastes/" + data.item.id } },
+                      [_vm._v(_vm._s(data.value))]
+                    )
+                  ],
+                  1
+                )
               }
             },
             {
@@ -117694,6 +117731,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -117807,31 +117848,29 @@ var render = function() {
                       _c("h5", [_vm._v(_vm._s(_vm.equipe.categorie))]),
                       _vm._v(" "),
                       _c("H3", [
-                        _vm._v(_vm._s(_vm.equipe.nbgyms.length) + " Membres")
+                        _vm._v(
+                          _vm._s(_vm.equipe.nbgyms.length) +
+                            " Membres\n\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("H5", [
+                        _vm._v(
+                          _vm._s(_vm.equipe.niveau.nb_gyms) +
+                            " gyms / " +
+                            _vm._s(_vm.equipe.niveau.nb_notes) +
+                            " notes"
+                        )
                       ]),
                       _vm._v(" "),
                       _c("b-progress", {
                         attrs: {
                           value: _vm.equipe.nbgyms_count,
-                          max: "10",
+                          max: _vm.equipe.niveau.nb_gyms,
                           "show-progress": "",
                           animated: ""
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "b-button",
-                        {
-                          attrs: {
-                            href: "/equipes/" + _vm.equipe_id + "/appel",
-                            size: "sm"
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "far fa-file-pdf" }),
-                          _vm._v(" Présence")
-                        ]
-                      )
+                      })
                     ],
                     1
                   )
@@ -118215,7 +118254,12 @@ var render = function() {
               modifiers: { addgym: true }
             }
           ],
-          attrs: { variant: "success" }
+          attrs: { variant: "success" },
+          on: {
+            click: function($event) {
+              return _vm.update()
+            }
+          }
         },
         [_vm._v("Ajouter Gymnaste")]
       ),

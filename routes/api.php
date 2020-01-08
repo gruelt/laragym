@@ -26,6 +26,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/competitifs/{id_groupe}/gymnastes/{id_gym}/add','CompetitifsController@setgymtocompetitif');
 
+    Route::delete('/competitifs/{id_groupe}/gymnastes/{id_gym}/detach','CompetitifsController@deletegymtocompetitif');
+
+
+
     //Gets all users
     Route::get('/gymnastes', 'GymnastesController@getall');
 
