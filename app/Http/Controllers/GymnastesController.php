@@ -139,7 +139,7 @@ class GymnastesController extends Controller
             return view('pages.responsables.adherents')->withMessage('Ce gymnaste n\'est pas sous votre responsabilité');
         }
 
-        $gym = $this->formatGyms($gym);
+        $gym = $this->formatGyms($gym,1,true);
 
 
         return view('pages.responsables.viewgymnaste')->with('gym',$gym[0]);
@@ -187,7 +187,7 @@ class GymnastesController extends Controller
         $return=array();
 	//$refresh=false;
 
-        if(count($gyms)==1)
+        if(count($gyms)<30)
         {
             $refresh=true;
         }
@@ -491,7 +491,7 @@ class GymnastesController extends Controller
                 }
 
                 //met en place la key dans redis
-                Redis::set('gymnaste.' . $gymnaste->id, json_encode($return[$key]),'EX',3600*24*7);
+                Redis::set('gymnaste.' . $gymnaste->id, json_encode($return[$key]),'EX',3600*24);
 
 
             }

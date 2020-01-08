@@ -179,7 +179,7 @@ class CompetitifsController extends Controller
         $gc = new GymnastesController;
 
 
-        return $gc->formatGyms($equipe);
+        return $gc->formatGyms($equipe,1,true);
     }
 
     public function getgymnasteseligible($equipe_id)
