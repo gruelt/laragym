@@ -90105,42 +90105,58 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  data.value < data.item.niveau.nb_notes
+                  data.item.individuel == 0
                     ? _c(
-                        "b-badge",
-                        { attrs: { pill: "", variant: "danger" } },
+                        "p",
                         [
-                          _vm._v(
-                            "Minimum " + _vm._s(data.item.niveau.nb_notes) + " "
-                          ),
-                          _vm._v("\n                    Gyms")
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  data.value < data.item.niveau.nb_gyms
-                    ? _c("b-badge", { attrs: { pill: "", variant: "info" } }, [
-                        _vm._v(
-                          "Possibilité " +
-                            _vm._s(data.item.niveau.nb_gyms) +
-                            " "
-                        ),
-                        _vm._v(
-                          "\n                                            Gyms"
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  data.value > data.item.niveau.nb_gyms
-                    ? _c(
-                        "b-badge",
-                        { attrs: { pill: "", variant: "danger" } },
-                        [
-                          _vm._v(
-                            "Max " + _vm._s(data.item.niveau.nb_gyms) + " "
-                          ),
-                          _vm._v("\n                    Gyms")
-                        ]
+                          data.value < data.item.niveau.nb_notes
+                            ? _c(
+                                "b-badge",
+                                { attrs: { pill: "", variant: "danger" } },
+                                [
+                                  _vm._v(
+                                    "Minimum " +
+                                      _vm._s(data.item.niveau.nb_notes) +
+                                      " "
+                                  ),
+                                  _vm._v("\n                        Gyms")
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          data.value < data.item.niveau.nb_gyms
+                            ? _c(
+                                "b-badge",
+                                { attrs: { pill: "", variant: "info" } },
+                                [
+                                  _vm._v(
+                                    "Possibilité " +
+                                      _vm._s(data.item.niveau.nb_gyms) +
+                                      " "
+                                  ),
+                                  _vm._v(
+                                    "\n                                                Gyms"
+                                  )
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          data.value > data.item.niveau.nb_gyms
+                            ? _c(
+                                "b-badge",
+                                { attrs: { pill: "", variant: "danger" } },
+                                [
+                                  _vm._v(
+                                    "Max " +
+                                      _vm._s(data.item.niveau.nb_gyms) +
+                                      " "
+                                  ),
+                                  _vm._v("\n                        Gyms")
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
                       )
                     : _vm._e()
                 ],
