@@ -90343,6 +90343,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -90497,6 +90500,23 @@ var render = function() {
                                     "Possibilité " +
                                       _vm._s(_vm.equipe.niveau.nb_gyms) +
                                       " "
+                                  ),
+                                  _vm._v(
+                                    "\n                                        Gyms"
+                                  )
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.equipe.nbgyms_count > _vm.equipe.niveau.nb_gyms
+                            ? _c(
+                                "b-badge",
+                                { attrs: { pill: "", variant: "danger" } },
+                                [
+                                  _vm._v(
+                                    "Trop de Gyms : " +
+                                      _vm._s(_vm.equipe.niveau.nb_gyms) +
+                                      " Max "
                                   ),
                                   _vm._v(
                                     "\n                                        Gyms"

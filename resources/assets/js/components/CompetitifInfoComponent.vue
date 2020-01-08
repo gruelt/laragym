@@ -31,6 +31,9 @@
                                         <b-badge v-if="equipe.nbgyms_count<equipe.niveau.nb_gyms"pill variant="warning">Possibilité {{equipe.niveau.nb_gyms}} </H5>
                                             Gyms</b-badge>
 
+                                        <b-badge v-if="equipe.nbgyms_count>equipe.niveau.nb_gyms"pill variant="danger">Trop de Gyms : {{equipe.niveau.nb_gyms}} Max </H5>
+                                            Gyms</b-badge>
+
                                     </H3>
 
 
