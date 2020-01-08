@@ -213,6 +213,30 @@
                             <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
                             <b-button @click="hideModalTeam">Fermer</b-button>
                         </b-modal>
+
+
+
+
+
+
+                        <h5 >
+                            Equipes en compétition
+                        </h5>
+
+                        <!--<H3>-->
+                        <!--<span v-for="(niveau, id) in gym.niveaux_tab">-->
+                        <!--<a :href="'/equipes/' + id " class="badge badge-primary >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge></a>&nbsp;-->
+                        <!--<b-badge v-if="withattente" variant="danger">Changer </b-badge>-->
+                        <!--</span><br></H3>-->
+
+                        <H3>
+                            <p v-html="gym.competitifs"></p>
+                        </H3>
+
+
+
+
+
                     </b-card-text>
 
 

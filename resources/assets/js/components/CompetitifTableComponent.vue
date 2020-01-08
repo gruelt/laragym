@@ -51,8 +51,10 @@
                                         <b-badge v-if="data.value<data.item.niveau.nb_gyms"pill variant="info">Possibilité {{data.item.niveau.nb_gyms}} </H5>
                                             Gyms</b-badge>
 
-                <b-badge v-if="data.value>data.item.niveau.nb_gyms"pill variant="warning">Possibilité {{data.item.niveau.nb_gyms}} </H5>
+                <b-badge v-if="data.value>data.item.niveau.nb_gyms"pill variant="danger">Max {{data.item.niveau.nb_gyms}} </H5>
                     Gyms</b-badge>
+
+
 
                 <!--<b-progress :value="data.value" max="10" show-progress animated ></b-progress>-->
                 <!--<b-button class="btn-warning" v-if="data.value >= 6 && data.value < 10">-->

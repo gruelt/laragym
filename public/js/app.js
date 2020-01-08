@@ -83988,6 +83988,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84845,7 +84869,21 @@ var render = function() {
                               )
                             ],
                             1
-                          )
+                          ),
+                          _vm._v(" "),
+                          _c("h5", [
+                            _vm._v(
+                              "\n                            Equipes en compétition\n                        "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("H3", [
+                            _c("p", {
+                              domProps: {
+                                innerHTML: _vm._s(_vm.gym.competitifs)
+                              }
+                            })
+                          ])
                         ],
                         1
                       )
@@ -89714,7 +89752,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -89725,6 +89763,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -90094,12 +90134,10 @@ var render = function() {
                   data.value > data.item.niveau.nb_gyms
                     ? _c(
                         "b-badge",
-                        { attrs: { pill: "", variant: "warning" } },
+                        { attrs: { pill: "", variant: "danger" } },
                         [
                           _vm._v(
-                            "Possibilité " +
-                              _vm._s(data.item.niveau.nb_gyms) +
-                              " "
+                            "Max " + _vm._s(data.item.niveau.nb_gyms) + " "
                           ),
                           _vm._v("\n                    Gyms")
                         ]
@@ -90514,9 +90552,9 @@ var render = function() {
                                 { attrs: { pill: "", variant: "danger" } },
                                 [
                                   _vm._v(
-                                    "Trop de Gyms : " +
+                                    "Max: " +
                                       _vm._s(_vm.equipe.niveau.nb_gyms) +
-                                      " Max "
+                                      "  "
                                   ),
                                   _vm._v(
                                     "\n                                        Gyms"
