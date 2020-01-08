@@ -83038,7 +83038,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -83049,6 +83049,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -83264,6 +83269,11 @@ var render = function() {
                   domProps: { innerHTML: _vm._s(gym.niveaux) }
                 }),
                 _vm._v(" "),
+                _c("td", {
+                  staticStyle: { "vertical-align": "middle" },
+                  domProps: { innerHTML: _vm._s(gym.competitifs) }
+                }),
+                _vm._v(" "),
                 _c(
                   "td",
                   _vm._l(gym.problemes, function(probleme, index) {
@@ -83429,6 +83439,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date Naissance")]),
         _vm._v(" "),
         _c("th", [_vm._v("Groupe(s)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Equipe Compétitive")]),
         _vm._v(" "),
         _c("th", [_vm._v("Statut")]),
         _vm._v(" "),
@@ -89702,7 +89714,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -89713,6 +89725,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -90044,11 +90059,52 @@ var render = function() {
                   _c("b-progress", {
                     attrs: {
                       value: data.value,
-                      max: "10",
+                      max: data.item.niveau.nb_gyms,
                       "show-progress": "",
                       animated: ""
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  data.value < data.item.niveau.nb_notes
+                    ? _c(
+                        "b-badge",
+                        { attrs: { pill: "", variant: "danger" } },
+                        [
+                          _vm._v(
+                            "Minimum " + _vm._s(data.item.niveau.nb_notes) + " "
+                          ),
+                          _vm._v("\n                    Gyms")
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  data.value < data.item.niveau.nb_gyms
+                    ? _c("b-badge", { attrs: { pill: "", variant: "info" } }, [
+                        _vm._v(
+                          "Possibilité " +
+                            _vm._s(data.item.niveau.nb_gyms) +
+                            " "
+                        ),
+                        _vm._v(
+                          "\n                                            Gyms"
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  data.value > data.item.niveau.nb_gyms
+                    ? _c(
+                        "b-badge",
+                        { attrs: { pill: "", variant: "warning" } },
+                        [
+                          _vm._v(
+                            "Possibilité " +
+                              _vm._s(data.item.niveau.nb_gyms) +
+                              " "
+                          ),
+                          _vm._v("\n                    Gyms")
+                        ]
+                      )
+                    : _vm._e()
                 ],
                 1
               )

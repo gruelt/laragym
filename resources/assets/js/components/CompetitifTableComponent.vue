@@ -44,12 +44,15 @@
             </span>
 
             <span slot="nbgyms_count" slot-scope="data">{{data.value}}
-                <b-progress :value="data.value" max="10" show-progress animated ></b-progress>
+                <b-progress :value="data.value" :max="data.item.niveau.nb_gyms" show-progress animated ></b-progress>
 
-<!--                <b-badge v-if="equipe.nbgyms_count<equipe.niveau.nb_notes"pill variant="danger">Minimum {{equipe.niveau.nb_notes}} </H5>-->
-<!--                    Gyms</b-badge>-->
-<!--                                        <b-badge v-if="equipe.nbgyms_count<equipe.niveau.nb_gyms"pill variant="warning">Possibilité {{equipe.niveau.nb_gyms}} </H5>-->
-<!--                                            Gyms</b-badge>-->
+                <b-badge v-if="data.value<data.item.niveau.nb_notes"pill variant="danger">Minimum {{data.item.niveau.nb_notes}} </H5>
+                    Gyms</b-badge>
+                                        <b-badge v-if="data.value<data.item.niveau.nb_gyms"pill variant="info">Possibilité {{data.item.niveau.nb_gyms}} </H5>
+                                            Gyms</b-badge>
+
+                <b-badge v-if="data.value>data.item.niveau.nb_gyms"pill variant="warning">Possibilité {{data.item.niveau.nb_gyms}} </H5>
+                    Gyms</b-badge>
 
                 <!--<b-progress :value="data.value" max="10" show-progress animated ></b-progress>-->
                 <!--<b-button class="btn-warning" v-if="data.value >= 6 && data.value < 10">-->

@@ -26,6 +26,7 @@
                         <th>Prenom</th>
                         <th>Date Naissance</th>
                         <th>Groupe(s)</th>
+                        <th>Equipe Compétitive</th>
                         <th>Statut</th>
                         <th>Inscription</th>
 
@@ -69,6 +70,10 @@
                         </td>
 
                         <td v-html="gym.niveaux" style="vertical-align: middle;">
+
+                        </td>
+
+                        <td v-html="gym.competitifs" style="vertical-align: middle;">
 
                         </td>
 
