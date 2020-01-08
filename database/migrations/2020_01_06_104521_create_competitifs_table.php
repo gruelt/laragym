@@ -21,8 +21,8 @@ class CreateCompetitifsTable extends Migration
                 $table->integer('categorie_id')->unsigned();
                 $table->integer('niveau_id')->unsigned();
                 $table->integer('genre_id')->unsigned();
-                $table->integer('individuel')->default(0);
-                $table->integer('saison_id')->default(0);
+                $table->integer('individuel')->default(0)->unsigned();
+                $table->integer('saison_id')->default(0)->unsigned();
 
 
                 $table->foreign('categorie_id', 'cat_com_fk')->references('id')->on('categories')
