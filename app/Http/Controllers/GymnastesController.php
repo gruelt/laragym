@@ -284,6 +284,8 @@ class GymnastesController extends Controller
                 $return[$key]['saisons'] = $saisons;
 
 
+
+
                 if ($gymnaste->birthday()) {
                     $problemes['anniversaire']['anniv']["text"] = "Bon anniversaire";
                     $problemes['anniversaire']['anniv']["class"] = "info";

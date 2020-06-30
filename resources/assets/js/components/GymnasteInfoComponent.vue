@@ -299,17 +299,25 @@
                             <div class="list-group" >
 
                                 <li class="list-inline" v-for="saison in gym.saisons ">
-                                    <b-button v-if="saison.pivot.complet ==1"  variant="success">
-                                        {{saison.nom}} <b-badge variant="light">Complet</b-badge>
-                                    </b-button>
-                                    <b-button v-else  variant="info">
-                                        {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
-                                        <span v-for="(probleme, index) in gym.problemes" variant="light" v-bind:key="probleme">
 
-                                        <b-badge  v-for="(subprobleme, index2) in probleme" :variant="subprobleme.class" :key="subprobleme">{{subprobleme.text}}</b-badge>
-                                    </span>
-                                    </b-button>
+                                       <p v-if="saison.id==saison_id">
+                                                <b-button v-if="saison.pivot.complet ==1"  variant="success">
+                                                    {{saison.nom}} <b-badge variant="light">Complet</b-badge>
+                                                </b-button>
+                                                <b-button v-else  variant="info">
+                                                    {{saison.nom}} <b-badge variant="light">Préinscrit</b-badge>
+                                                    <span v-for="(probleme, index) in gym.problemes" variant="light" v-bind:key="probleme">
 
+                                                    <b-badge  v-for="(subprobleme, index2) in probleme" :variant="subprobleme.class" :key="subprobleme">{{subprobleme.text}}</b-badge>
+                                                </span>
+                                                </b-button>
+                                       </p>
+
+                                        <p v-else>
+                                            <b-button   variant="info">
+                                                {{saison.nom}} <b-badge variant="light">Archive {{saison_id}} {{saison.id}}</b-badge>
+                                            </b-button>
+                                        </p>
                                 </li>
 
 
