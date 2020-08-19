@@ -81,27 +81,11 @@ class Helloasso
 
     }
 
-    public function getadhesions($adhesionslug="inscriptions-2019-2020")
+    public function getadhesions($mail=false,$adhesionslug="inscriptions-2019-2020")
     {
         $this->login();
 
-//        $headers = [
-//            'Authorization' => 'Bearer ' . $this->access_token,
-//            'Accept'        => 'application/json',
-//        ];
-//
-//        $client =new Client();
-//
-//        $url = $this->hurl."/".$this->api_version.'/organizations/'.$this->asso_slug."/forms/Membership/".$adhesionslug."/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
-//
-//
-//
-//        $response = $client->request('GET', $url, [
-//            'headers' => $headers
-//        ]);
 
-//        $response = $client->request('GET', $url
-//           );
 
         try {
 
@@ -118,7 +102,15 @@ class Helloasso
 
             ];
 
-$url="https://api.helloasso.com/v5/organizations/fjep-gymnastique-saint-just-saint-rambert/forms/Membership/inscriptions-2019-2020/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
+            if($mail)
+            {
+                $search= "userSearchKey=".urlencode($mail)."&";
+            }
+            else{
+                $search="";
+            }
+
+        $url="https://api.helloasso.com/v5/organizations/fjep-gymnastique-saint-just-saint-rambert/forms/Membership/inscriptions-2019-2020/orders?".$search."pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=true";
             $client = new Client();
 
             $res = $client->request('GET', $url ,$json);
@@ -129,9 +121,11 @@ $url="https://api.helloasso.com/v5/organizations/fjep-gymnastique-saint-just-sai
             return false;
         }
 
+        $data= $auth=$res->getBody()->getContents();
 
 
-        return $response;
+
+        return $data;
 
 
     }
