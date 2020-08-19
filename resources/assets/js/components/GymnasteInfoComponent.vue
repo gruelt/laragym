@@ -461,7 +461,7 @@
                         <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone1" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone1"></modify-modal>
                         <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone2" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone2"></modify-modal>
                         <modify-modal icon="fa fa-thumbs-up mr-3" :admin="admin" field="profession" :id="gym.responsable.id" model="User" :value="gym.responsable.profession"></modify-modal>
-
+                        {{helloasso}}
 
 
 
@@ -519,6 +519,9 @@
             idgym: {
                 type: Number
 
+            },
+            helloasso:{
+              type: Object
             },
             gym:{
                 type: Object

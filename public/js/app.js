@@ -84034,6 +84034,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Number
 
         },
+        helloasso: {
+            type: Object
+        },
         gym: {
             type: Object
         },
@@ -85524,7 +85527,12 @@ var render = function() {
                                   model: "User",
                                   value: _vm.gym.responsable.profession
                                 }
-                              })
+                              }),
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(_vm.helloasso) +
+                                  "\n\n\n\n\n\n                    "
+                              )
                             ],
                             1
                           )

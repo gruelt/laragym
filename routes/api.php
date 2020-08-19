@@ -22,6 +22,8 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix' => 'admin'], function () {
 
 
+
+
     //Add a user to a competitive group
 
     Route::post('/competitifs/{id_groupe}/gymnastes/{id_gym}/add','CompetitifsController@setgymtocompetitif');

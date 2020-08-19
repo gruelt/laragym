@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\GymnastesExport;
 use App\Exports\GymnastessaisonExport;
+use App\Gestion\Helloasso;
 use App\Saison;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -142,6 +143,7 @@ class GymnastesController extends Controller
         $gym = $this->formatGyms($gym,1,true);
 
 
+
         return view('pages.responsables.viewgymnaste')->with('gym',$gym[0]);
     }
 
@@ -154,11 +156,18 @@ class GymnastesController extends Controller
 
         //verifie qu ele gym appartient bien
 
+        $h = new Helloasso;
+
+        $helloasso = $h->getadhesions('');
 
         $gym = $this->formatGyms($gym);
 
+        $gym=$gym[0];
 
-        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
+
+//        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
+
+        return view('pages.admin.viewgymnaste')->with('gym',$gym)->with('helloasso',$helloasso);
     }
 
     public function get($id)
