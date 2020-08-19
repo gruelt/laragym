@@ -8,10 +8,14 @@
 @section('content')
 <div id="app">
     <br>
-<gymnaste-info csrf="{{ csrf_token() }}" :idgym="{{$gym['id']}}"  :gym="{{json_encode($gym)}}" :helloasso="{{json_encode($helloasso)}}" :write=false :contact=true :admin=true></gymnaste-info>
+<gymnaste-info csrf="{{ csrf_token() }}" :idgym="{{$gym['id']}}"  :gym="{{json_encode($gym)}}"  :write=false :contact=true :admin=true></gymnaste-info>
 
     @if(env('APP_DEBUG')==true)
+
+
+        <hr><hr>
         {{json_encode($gym)}}
+
         @endif
 </div>
 @stop

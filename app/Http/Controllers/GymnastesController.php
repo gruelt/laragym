@@ -164,10 +164,22 @@ class GymnastesController extends Controller
 
         $gym=$gym[0];
 
+//        $out = json_decode($helloasso);
+//
+//        print_r($out);dd();
 
 //        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
 
-        return view('pages.admin.viewgymnaste')->with('gym',$gym)->with('helloasso',$helloasso);
+        return view('pages.admin.viewgymnaste')->with('gym',$gym)->with('helloasso',json_decode($helloasso));
+    }
+
+    public function getadhesion($mail)
+    {
+        $h = new Helloasso;
+
+        return $h->getadhesions();
+
+
     }
 
     public function get($id)

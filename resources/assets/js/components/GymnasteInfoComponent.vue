@@ -352,12 +352,18 @@
 
                         <span  v-if="admin && gym.problemes.paiement">
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
+<!--                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>-->
                             </span>
                         <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré : {{gym.paye}} €</b-button>
                         <br>
                         <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
 
+                        <hr>
+
+
+
+                        <hr>
+<!--                            <span v-for="item in helloasso.data"> {{item}} </span>-->
 
 
                     </b-card-text>
@@ -461,7 +467,7 @@
                         <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone1" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone1"></modify-modal>
                         <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone2" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone2"></modify-modal>
                         <modify-modal icon="fa fa-thumbs-up mr-3" :admin="admin" field="profession" :id="gym.responsable.id" model="User" :value="gym.responsable.profession"></modify-modal>
-                        {{helloasso}}
+                        {{helloasso}} **
 
 
 
@@ -520,9 +526,7 @@
                 type: Number
 
             },
-            helloasso:{
-              type: Object
-            },
+
             gym:{
                 type: Object
             },
@@ -560,6 +564,7 @@
                     issuedTo: ''
                 },
                 withattente:false,
+                helloasso:"rien",
 
 
 
@@ -581,7 +586,16 @@
 
 
 
+
+
             },
+            updatehelloasso: function()
+                {
+                    axios
+                        .get('/api/admin/helloasso/adhesion/current/' + this.gym.responsable.email)
+                        .then(response => (this.helloasso = response.data))
+                    ;
+                },
             validteam: function (equipe_id,attente) {
                 console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
                 axios
@@ -653,7 +667,7 @@
         mounted() {
             this.getcurrent();
             //this.update();
-
+            this.updatehelloasso();
 
 
         },

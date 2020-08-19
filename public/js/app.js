@@ -84020,6 +84020,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84034,9 +84040,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Number
 
         },
-        helloasso: {
-            type: Object
-        },
+
         gym: {
             type: Object
         },
@@ -84070,7 +84074,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 issuedBy: '',
                 issuedTo: ''
             },
-            withattente: false
+            withattente: false,
+            helloasso: "rien"
 
         };
     },
@@ -84086,12 +84091,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return _this.gym = response.data;
             });
         },
-        validteam: function validteam(equipe_id, attente) {
+        updatehelloasso: function updatehelloasso() {
             var _this2 = this;
+
+            axios.get('/api/admin/helloasso/adhesion/current/' + this.gym.responsable.email).then(function (response) {
+                return _this2.helloasso = response.data;
+            });
+        },
+        validteam: function validteam(equipe_id, attente) {
+            var _this3 = this;
 
             console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
             axios.get('/api/admin/gymnastes/' + this.gym.id + '/equipes/' + equipe_id + "/attente/" + attente).then(function (response) {
-                return _this2.update = response.data;
+                return _this3.update = response.data;
             });
 
             ;
@@ -84102,49 +84114,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //location.reload();
         },
         validdossier: function validdossier(gym_id, statut) {
-            var _this3 = this;
-
-            console.log('clic le dossier ' + statut);
-            axios.get('/api/admin/gymnastes/' + this.gym.id + '/dossier/' + statut).then(function (response) {
-                return _this3.update = response.data;
-            });
-            //location.reload();
-        },
-        validaffiligue: function validaffiligue(gym_id, statut) {
             var _this4 = this;
 
             console.log('clic le dossier ' + statut);
-            axios.get('/api/admin/gymnastes/' + this.gym.id + '/affiligue/' + statut).then(function (response) {
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/dossier/' + statut).then(function (response) {
                 return _this4.update = response.data;
             });
             //location.reload();
         },
-        validpaiement: function validpaiement(montant, saison_id) {
+        validaffiligue: function validaffiligue(gym_id, statut) {
             var _this5 = this;
+
+            console.log('clic le dossier ' + statut);
+            axios.get('/api/admin/gymnastes/' + this.gym.id + '/affiligue/' + statut).then(function (response) {
+                return _this5.update = response.data;
+            });
+            //location.reload();
+        },
+        validpaiement: function validpaiement(montant, saison_id) {
+            var _this6 = this;
 
             console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
             axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + montant).then(function (response) {
-                return _this5.update = response.data;
+                return _this6.update = response.data;
             });
 
             //location.reload();
         },
         annulpaiement: function annulpaiement(montant, saison_id) {
-            var _this6 = this;
+            var _this7 = this;
 
             console.log('clic le paiement pour ' + montant + ' pour saison ' + this.saison_id);
             axios.get('/api/inscription/gymnastes/' + this.gym.id + '/saison/' + this.saison_id + '/paiement/valid/' + 0).then(function (response) {
-                return _this6.update = response.data;
+                return _this7.update = response.data;
             });;
 
             //location.reload();
         },
 
         getcurrent: function getcurrent() {
-            var _this7 = this;
+            var _this8 = this;
 
             axios.get('/api/saisons/actuelle').then(function (response) {
-                return _this7.saison_id = response.data;
+                return _this8.saison_id = response.data;
             });
         },
         hideModalTeam: function hideModalTeam() {
@@ -84159,7 +84171,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         this.getcurrent();
         //this.update();
-
+        this.updatehelloasso();
     },
 
 
@@ -85173,27 +85185,6 @@ var render = function() {
                                               "€"
                                           )
                                         ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "b-button",
-                                        {
-                                          attrs: { variant: "success" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.validpaiement(
-                                                _vm.gym.tarif - 10
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Valider le tarif de " +
-                                              _vm._s(_vm.gym.tarif - 10) +
-                                              "€ (Réduction Familiale à partir du 2eme inscrit)"
-                                          )
-                                        ]
                                       )
                                     ],
                                     1
@@ -85227,7 +85218,11 @@ var render = function() {
                                     _vm._s(_vm.gym.totalapayer) +
                                     " €"
                                 )
-                              ])
+                              ]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("hr")
                             ],
                             1
                           )
@@ -85531,7 +85526,7 @@ var render = function() {
                               _vm._v(
                                 "\n                        " +
                                   _vm._s(_vm.helloasso) +
-                                  "\n\n\n\n\n\n                    "
+                                  " **\n\n\n\n\n\n                    "
                               )
                             ],
                             1

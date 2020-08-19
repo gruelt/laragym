@@ -21,8 +21,8 @@ class Helloasso
 
     public function __construct()
     {
-        print "hello asso bonjour !";
-
+//        print "hello asso bonjour !";
+//
         $this->hid = env('HELLOASSO_ID');
 
         $this->hpass = env('HELLOASSO_PASS');
