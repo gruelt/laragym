@@ -27,7 +27,7 @@ class Helloasso
 
         $this->hpass = env('HELLOASSO_PASS');
 
-        $this->hurl = env('HELLOASSO_API_URL','https://api.helloasso.com/');
+        $this->hurl = env('HELLOASSO_API_URL','https://api.helloasso.com');
 
         $this->api_version = env('HELLOASSO_API_VERSION','V5');
 
@@ -92,7 +92,7 @@ class Helloasso
 
         $client =new Client();
 
-        $url = $this->hurl."/".$this->api_version.'/organizations/'.$this->asso_slug./forms/Membership/".$adhesionslug."/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
+        $url = $this->hurl."/".$this->api_version.'/organizations/'.$this->asso_slug."/forms/Membership/".$adhesionslug."/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
 
 
 
