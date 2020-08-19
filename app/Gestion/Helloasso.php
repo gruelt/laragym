@@ -85,23 +85,51 @@ class Helloasso
     {
         $this->login();
 
-        $headers = [
-            'Authorization' => 'Bearer ' . $this->access_token,
-            'Accept'        => 'application/json',
-        ];
-
-        $client =new Client();
-
-        $url = $this->hurl."/".$this->api_version.'/organizations/'.$this->asso_slug."/forms/Membership/".$adhesionslug."/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
-
-
-
-        $response = $client->request('GET', $url, [
-            'headers' => $headers
-        ]);
+//        $headers = [
+//            'Authorization' => 'Bearer ' . $this->access_token,
+//            'Accept'        => 'application/json',
+//        ];
+//
+//        $client =new Client();
+//
+//        $url = $this->hurl."/".$this->api_version.'/organizations/'.$this->asso_slug."/forms/Membership/".$adhesionslug."/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
+//
+//
+//
+//        $response = $client->request('GET', $url, [
+//            'headers' => $headers
+//        ]);
 
 //        $response = $client->request('GET', $url
 //           );
+
+        try {
+
+                    $url = $this->hurl."/".$this->api_version.'/organizations/'.$this->asso_slug."/forms/Membership/".$adhesionslug."/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
+
+
+            $json = [
+                'headers'  => [
+                                'accept' => 'application/json',
+
+                                'Authorization' => "Bearer ".$this->access_token
+                              ],
+
+
+            ];
+
+$url="https://api.helloasso.com/v5/organizations/fjep-gymnastique-saint-just-saint-rambert/forms/Membership/inscriptions-2019-2020/orders?pageIndex=1&pageSize=20&retrieveOfflineDonations=false&withDetails=false";
+            $client = new Client();
+
+            $res = $client->request('GET', $url ,$json);
+
+        }
+        catch(\GuzzleHttp\Exception\ServerException $e)
+        {
+            return false;
+        }
+
+
 
         return $response;
 
