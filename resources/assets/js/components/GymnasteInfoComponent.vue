@@ -362,8 +362,33 @@
 
 
 
+                        <b-card v-for="paiement in helloasso.data" :title="'HelloAsso '+paiement.amount.total +'€'" :sub-title="frontEndDateFormat(paiement.date)">
+                            <b-card-text v-for="adherent in paiement.items">
+
+                                <b-button variant="primary">
+                                    {{adherent.name}} <b-badge variant="light">{{adherent.amount}}</b-badge>
+                                </b-button>
+
+                                 {{adherent.user.firstName}} - {{adherent.user.lastName}}
+                            </b-card-text>
+
+                            <b-card-text>A second paragraph of text in the card.</b-card-text>
+
+                            <a href="#" class="card-link">Card link</a>
+                            <b-link href="#" class="card-link">Another link</b-link>
+                        </b-card>
+
+
+
                         <hr>
-<!--                            <span v-for="item in helloasso.data"> {{item}} </span>-->
+<!--                        {{helloasso.data}}-->
+                            <span v-for="paiement in helloasso.data">
+                                         <h2>Paiement {{paiement.amount.total}} € </h2>
+                                        <h4>du {{paiement.date}}</h4>
+                                <span v-for="adherent in paiement.items">{{adherent.name}} - {{adherent.user.firstName}} - {{adherent.user.lastName}} {{adherent.amount}}<br></span>
+                            </span>
+
+
 
 
                     </b-card-text>
@@ -422,7 +447,7 @@
                         <br>
                         <span></span>
 
-
+                        {{helloasso}}
 
                     </b-card-text>
 
@@ -467,7 +492,7 @@
                         <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone1" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone1"></modify-modal>
                         <modify-modal icon="fa fa-phone mr-3" :admin="admin" field="telephone2" :id="gym.responsable.id" model="User" :value="'0'+gym.responsable.telephone2"></modify-modal>
                         <modify-modal icon="fa fa-thumbs-up mr-3" :admin="admin" field="profession" :id="gym.responsable.id" model="User" :value="gym.responsable.profession"></modify-modal>
-                        {{helloasso}} **
+
 
 
 
@@ -661,6 +686,10 @@
             toggleattente(){
                 this.withattente = ! this.withattente;
             },
+            frontEndDateFormat: function(date) {
+                return moment(date).format('DD/MM/YYYY HH:mm');
+            },
+
 
         },
 

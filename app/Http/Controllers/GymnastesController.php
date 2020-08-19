@@ -156,9 +156,7 @@ class GymnastesController extends Controller
 
         //verifie qu ele gym appartient bien
 
-        $h = new Helloasso;
 
-        $helloasso = $h->getadhesions('');
 
         $gym = $this->formatGyms($gym);
 
@@ -170,14 +168,14 @@ class GymnastesController extends Controller
 
 //        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
 
-        return view('pages.admin.viewgymnaste')->with('gym',$gym)->with('helloasso',json_decode($helloasso));
+        return view('pages.admin.viewgymnaste')->with('gym',$gym);
     }
 
     public function getadhesion($mail)
     {
         $h = new Helloasso;
 
-        return $h->getadhesions();
+        return $h->getadhesions($mail);
 
 
     }

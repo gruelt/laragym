@@ -10,6 +10,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+window.moment = require('moment');
+
 //
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 // Vue.component('sidebar', require('./components/layout/sidebarComponent.vue'));
