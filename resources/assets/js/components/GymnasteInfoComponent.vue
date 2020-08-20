@@ -359,6 +359,75 @@
                         <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
 
                         <hr>
+                        <b-button v-b-modal="'modal-paiement'" block variant="success">Ajouter Paiement</b-button>
+
+
+
+                        <b-modal id="modal-paiement" size="xl" hide-footer>
+
+
+
+
+
+
+                            <b-card bg-variant="light">
+                                <b-form-group
+                                    label-cols-lg="3"
+                                    label="Ajouter Paiement ( 1 par chèque ) "
+                                    label-size="lg"
+                                    label-class="font-weight-bold pt-0"
+                                    class="mb-0"
+
+                                >
+                                        <b-form-group
+                                        label-cols-sm="3"
+                                        label="Mode"
+                                        label-align-sm="right" class="mb-0"
+
+                                         >
+                                        <b-form-radio-group
+                                            class="pt-2"
+                                            :options="['cheque', 'ancv', 'liquide']"
+                                            v-model="paiement.type"
+                                        ></b-form-radio-group>
+                                    </b-form-group>
+
+                                    <b-form-group
+                                        label-cols-sm="3"
+                                        label="Montant €"
+                                        label-align-sm="right"
+                                        label-for="montant"
+                                    >
+                                        <b-form-input id="montant" v-model="paiement.montant"></b-form-input>
+                                    </b-form-group>
+
+                                    <b-form-group
+                                        label-cols-sm="3"
+                                        label="Commentaire:"
+                                        label-align-sm="right"
+                                        label-for="commentaire"
+                                    >
+                                        <b-form-input v-model="paiement.commentaire" id="commentaire"></b-form-input>
+                                    </b-form-group>
+
+                                    <b-button @click="ajoutmoyenpaiement()">Ajouter</b-button>
+
+
+                                </b-form-group>
+                            </b-card>
+
+
+
+
+
+
+
+                        </b-modal>
+
+
+
+
+
 
 
 
@@ -369,24 +438,23 @@
                                     {{adherent.name}} <b-badge variant="light">{{adherent.amount}}</b-badge>
                                 </b-button>
 
+
+
+
+
+
                                  {{adherent.user.firstName}} - {{adherent.user.lastName}}
                             </b-card-text>
 
-                            <b-card-text>A second paragraph of text in the card.</b-card-text>
+<!--                            <b-card-text>A second paragraph of text in the card.</b-card-text>-->
 
-                            <a href="#" class="card-link">Card link</a>
-                            <b-link href="#" class="card-link">Another link</b-link>
+                            <a href="https://www.helloasso.com/associations/fjep-gymnastique-saint-just-saint-rambert/administration/statistiques" class="card-link">Helloasso</a>
+<!--                            <b-link href="#" class="card-link">Another link</b-link>-->
                         </b-card>
 
 
 
-                        <hr>
-<!--                        {{helloasso.data}}-->
-                            <span v-for="paiement in helloasso.data">
-                                         <h2>Paiement {{paiement.amount.total}} € </h2>
-                                        <h4>du {{paiement.date}}</h4>
-                                <span v-for="adherent in paiement.items">{{adherent.name}} - {{adherent.user.firstName}} - {{adherent.user.lastName}} {{adherent.amount}}<br></span>
-                            </span>
+
 
 
 
@@ -447,7 +515,7 @@
                         <br>
                         <span></span>
 
-                        {{helloasso}}
+<!--                        {{helloasso}}-->
 
                     </b-card-text>
 
@@ -543,6 +611,9 @@
 
         props: {
 
+            operateur:{
+               type:Number
+            },
             admin:{
                 type: Boolean,
                 default: false
@@ -591,6 +662,12 @@
                 withattente:false,
                 helloasso:"rien",
 
+
+                paiement:{
+                    type:"cheque",
+                    montant:"0",
+                    commentaire:"",
+                }
 
 
 
@@ -689,6 +766,33 @@
             frontEndDateFormat: function(date) {
                 return moment(date).format('DD/MM/YYYY HH:mm');
             },
+
+            ajoutmoyenpaiement: function()
+            {
+
+                console.log('responsable '+ this.gym.responsable.id +'clic ajout de '+ this.paiement.type +' pour '+ this.paiement.montant + ' avec commentaire ' + this.paiement.commentaire);
+
+                axios.post('/api/admin/responsable/'+ this.gym.responsable.id + '/paiement/add',
+
+                    {
+                        type: this.paiement.type,
+                        montant: this.paiement.montant,
+                        commentaire: this.paiement.commentaire,
+                        responsable_id: this.gym.responsable.id,
+                        saison_id: this.saison_id,
+                        operateur_id: this.operateur
+
+                    }
+                ).then(function (response) {
+                    that.getavailablegroups();
+                    that.getgroups();
+                    that.spinner=false;
+                    that.$bvModal.hide('modaltemp');
+                });
+
+
+                return 1;
+            }
 
 
         },
