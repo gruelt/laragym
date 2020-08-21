@@ -21,7 +21,9 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::post('/responsable/{responsable_id}/paiement/add','UsersController@paiementadd');
+    Route::post('/responsable/{responsable_id}/paiement/add','PaiementController@paiementadd');
+
+    Route::get('/responsable/{responsable_id}/paiement/saison/{saison_id}','PaiementController@paiementgetbysaison');
 
     //récupère les adhésions via helloasso
     Route::get('/helloasso/adhesion/current/{mail}','GymnastesController@getadhesion');

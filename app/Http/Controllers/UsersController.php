@@ -12,14 +12,6 @@ use phpDocumentor\Reflection\Types\Array_;
 class UsersController extends Controller
 {
 
-    public function paiementadd($responsable_id,Request $request)
-    {
-        $p= new Paiement;
-        $p->store($request);
-
-        return $request;
-    }
-
 
     /**
      * Retourne les users avec le profil coach

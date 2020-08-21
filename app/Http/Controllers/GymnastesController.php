@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\GymnastesExport;
 use App\Exports\GymnastessaisonExport;
 use App\Gestion\Helloasso;
+use App\Paiement;
 use App\Saison;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -154,6 +155,8 @@ class GymnastesController extends Controller
 
         $gym = Gymnaste::where('id',$id)->get();
 
+
+
         //verifie qu ele gym appartient bien
 
 
@@ -167,6 +170,10 @@ class GymnastesController extends Controller
 //        print_r($out);dd();
 
 //        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
+
+
+
+
 
         return view('pages.admin.viewgymnaste')->with('gym',$gym);
     }

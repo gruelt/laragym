@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paiement extends Model
 {
+    public function responsable()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function store($values)
     {
         $p = new Paiement;
