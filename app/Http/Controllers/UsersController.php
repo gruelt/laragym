@@ -6,7 +6,7 @@ use App\Privileges;
 use App\Saison;
 use App\User;
 use Illuminate\Http\Request;
-
+use App\Paiement;
 use phpDocumentor\Reflection\Types\Array_;
 
 class UsersController extends Controller
@@ -14,6 +14,9 @@ class UsersController extends Controller
 
     public function paiementadd($responsable_id,Request $request)
     {
+        $p= new Paiement;
+        $p->store($request);
+
         return $request;
     }
 
