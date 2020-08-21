@@ -783,12 +783,9 @@
                         operateur_id: this.operateur
 
                     }
-                ).then(function (response) {
-                    that.getavailablegroups();
-                    that.getgroups();
-                    that.spinner=false;
-                    that.$bvModal.hide('modaltemp');
-                });
+                );
+
+                this.update=1;
 
 
                 return 1;
