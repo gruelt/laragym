@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Psr\Log\NullLogger;
 
 class Paiement extends Model
 {
+    public function operateur()
+    {
+        return $this->belongsTo(User::class,'operateur_id');
+    }
+
+
     public function responsable()
     {
         return $this->belongsTo(User::class);
@@ -14,6 +21,11 @@ class Paiement extends Model
     public function store($values)
     {
         $p = new Paiement;
+
+        if(!isset($values->commentaire))
+        {
+            $values->commentaire='';
+        }
 
         $p->type=$values->type;
         $p->montant=$values->montant;

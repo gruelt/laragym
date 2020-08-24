@@ -426,6 +426,39 @@
 
 
 
+                        <b-card v-for="paiementmanuel in paiements" :title="paiementmanuel.type + ' '+ paiementmanuel.montant +'€'" :sub-title="frontEndDateFormat(paiementmanuel.created_at) + ' ' + paiementmanuel.operateur.nom+ ' ' + paiementmanuel.operateur.prenom">
+                        <b-row>
+                            <b-col lg="10" class="pb-2">
+
+                                                        <b-card-text v-if="paiementmanuel.commentaire"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                            {{paiementmanuel.commentaire}}</b-card-text>
+                            </b-col>
+                            <b-col lg="2" class="pb-2">
+                                <b-button size="xs" variant="danger" v-b-modal="'deletepaiement-'+paiementmanuel.id"><i class="fa fa-trash" aria-hidden="true"></i></b-button>
+
+                                <b-modal :id="'deletepaiement-'+paiementmanuel.id" hide-footer>
+
+
+                                    <b-card :title="paiementmanuel.type + ' '+ paiementmanuel.montant +'€'" :sub-title="frontEndDateFormat(paiementmanuel.created_at) + ' ' + paiementmanuel.operateur.nom+ ' ' + paiementmanuel.operateur.prenom">
+                                    </b-card>
+
+                                    <b-button  variant="danger" @click="paiementdelete(paiementmanuel.id)"><i class="fa fa-trash" aria-hidden="true"></i>Confirmer la suppression</b-button>
+
+                                </b-modal>
+
+
+                            </b-col>
+                        </b-row>
+                            <!--                            <b-link href="#" class="card-link">Another link</b-link>-->
+                        </b-card>
+
+
+
+
+
+
+
+
 
 
 
@@ -667,7 +700,9 @@
                     type:"cheque",
                     montant:"0",
                     commentaire:"",
-                }
+                },
+
+                paiements:"",
 
 
 
@@ -698,6 +733,13 @@
                         .then(response => (this.helloasso = response.data))
                     ;
                 },
+            updatepaiements: function()
+            {
+                axios
+                    .get('/api/admin/responsable/'+this.gym.responsable.id+'/paiement/saison/actuelle')
+                    .then(response => (this.paiements = response.data))
+                ;
+            },
             validteam: function (equipe_id,attente) {
                 console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
                 axios
@@ -798,6 +840,7 @@
             this.getcurrent();
             //this.update();
             this.updatehelloasso();
+            this.updatepaiements();
 
 
         },

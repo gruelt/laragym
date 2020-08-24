@@ -21,7 +21,10 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'admin'], function () {
 
+    //AJoute un paiement pour responsable/ saison
     Route::post('/responsable/{responsable_id}/paiement/add','PaiementController@paiementadd');
+
+
 
     Route::get('/responsable/{responsable_id}/paiement/saison/{saison_id}','PaiementController@paiementgetbysaison');
 
