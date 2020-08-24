@@ -13,7 +13,7 @@
 <script type="text/javascript">
     window.csrf_token = "{{ csrf_token() }}"
 </script>
-{{--<script src="https://embed.small.chat/TKWGASV9TGKWG762L8.js" async></script>--}}
+<script src="https://embed.small.chat/TKWGASV9TGKWG762L8.js" async></script>
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
 
