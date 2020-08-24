@@ -130,5 +130,10 @@ class Helloasso
 
     }
 
+    public function getcurrentadhurl()
+    {
+        return "https://www.helloasso.com/associations/fjep-gymnastique-saint-just-saint-rambert/adhesions/inscriptions-2019-2020";
+    }
+
 
 }

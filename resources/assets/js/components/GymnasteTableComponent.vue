@@ -88,7 +88,7 @@
         </b-table>
 
         <!--<span v-if="debug">{{gyms}}</span>-->
-        {{gyms}}
+<!--        {{gyms}}-->
     </div>
 </template>
 

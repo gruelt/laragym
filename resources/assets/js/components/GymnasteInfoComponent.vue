@@ -341,13 +341,13 @@
 
 
 
-                <b-card v-if="admin" tag="validations"
+                <b-card  tag="validations"
 
                         class="mb-12 "
                 >
                     <b-card-text>
                         <h2 >
-                            Tarifs/Paiements
+                            Tarifs
                         </h2>
 
                         <span  v-if="admin && gym.problemes.paiement">
@@ -356,10 +356,52 @@
                             </span>
                         <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré : {{gym.paye}} €</b-button>
                         <br>
-                        <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
+                        <span>Total Actuel à régler pour tous les gyms: {{gym.totalapayer}} €</span>
 
                         <hr>
-                        <b-button v-b-modal="'modal-paiement'" block variant="success">Ajouter Paiement</b-button>
+
+                        <b-button v-if="!gym.problemes.Groupe" v-b-modal="'paiementinfo'" variant="success"><i class="fas fa-shopping-cart"></i> Payer en ligne avec Helloasso</b-button>
+
+                        <b-modal id="paiementinfo" size="xl" hide-footer>
+
+                                    <h2>Pour le paiement en ligne</h2>
+                                        <ul>
+                                            <li>Au moment de renseigner l'adresse mail , utiliser <b>{{gym.responsable.email}}</b>.</li>
+                                            <li>La plateforme de paiement vous proposera de faire une donation , <b>ceci n'est pas obligatoire</b>.</li>
+                                            <li>Vous pouvez faire des paiements plusieurs fois si des inscrits se rajoutent.</li>
+<!--                                            <li>Les tarifs "en 3 fois" seront débités mensuellement.</li>-->
+                                            <li>Vous pouvez faire un paiement unique pour tous vos inscrits.</li>
+                                            <li>Choisir le tarif et le nombre d'inscrits dans chaque tarif.</li>
+                                            <li>Les paiements seront vérifiés : si un mauvais tarif est choisi vous devrez compléter.</li>
+                                            <li>Un paiement incomplet ne valide pas l'accés aux cours.</li>
+<!--                                            <li>Les Tarifs en 3X coûtent en général 2€ de plus ( arrondi technique obligatoire) .</li>-->
+
+                                            <li>Une fois validé , le paiement apparaitra sur cette page ( délai de 2 minutes possible ).</li>
+
+
+                                        </ul>
+                            <b-form-checkbox v-if="acceptpaiement==false"
+                                id="checkbox-1"
+                                v-model="acceptpaiement"
+                                name="checkbox-1"
+                                value=true
+                                unchecked-value=false
+                            >
+                                J'ai lu et compris les consignes.
+                            </b-form-checkbox>
+                            <br>
+                            <p v-for="saison in gym.saisons">
+                                <b-button variant="success"  v-if="acceptpaiement && saison.actuelle==1"  :href="saison.helloassoslug"><i class="fas fa-shopping-cart"></i> Payer en ligne</b-button>
+                            </p>
+
+                            </b-modal>
+
+
+                        <h2 >
+                            Paiements
+                        </h2>
+
+                        <b-button v-if="admin" v-b-modal="'modal-paiement'" block variant="success">Ajouter Paiement</b-button>
 
 
 
@@ -413,6 +455,8 @@
                                     <b-button @click="ajoutmoyenpaiement()">Ajouter</b-button>
 
 
+
+
                                 </b-form-group>
                             </b-card>
 
@@ -434,7 +478,7 @@
                                                             {{paiementmanuel.commentaire}}</b-card-text>
                             </b-col>
                             <b-col lg="2" class="pb-2">
-                                <b-button size="xs" variant="danger" v-b-modal="'deletepaiement-'+paiementmanuel.id"><i class="fa fa-trash" aria-hidden="true"></i></b-button>
+                                <b-button v-if="admin" size="xs" variant="danger" v-b-modal="'deletepaiement-'+paiementmanuel.id"><i class="fa fa-trash" aria-hidden="true"></i></b-button>
 
                                 <b-modal :id="'deletepaiement-'+paiementmanuel.id" hide-footer>
 
@@ -481,7 +525,7 @@
 
 <!--                            <b-card-text>A second paragraph of text in the card.</b-card-text>-->
 
-                            <a href="https://www.helloasso.com/associations/fjep-gymnastique-saint-just-saint-rambert/administration/statistiques" class="card-link">Helloasso</a>
+                            <a v-if="admin" href="https://www.helloasso.com/associations/fjep-gymnastique-saint-just-saint-rambert/administration/statistiques" class="card-link">Helloasso</a>
 <!--                            <b-link href="#" class="card-link">Another link</b-link>-->
                         </b-card>
 
@@ -643,7 +687,9 @@
 
 
         props: {
-
+            adhurl:{
+                type:String,
+            },
             operateur:{
                type:Number
             },
@@ -684,7 +730,7 @@
         },
         data() {
             return {
-
+                acceptpaiement:false,
                 update:"",
 
                 filters: {
