@@ -24,6 +24,9 @@ Route::group(['prefix' => 'admin'], function () {
     //AJoute un paiement pour responsable/ saison
     Route::post('/responsable/{responsable_id}/paiement/add','PaiementController@paiementadd');
 
+    //supprimme un paiement
+    Route::delete('/responsable/{responsable_id}/paiement/{id_paiement}','PaiementController@paiementdelete');
+
 
 
     Route::get('/responsable/{responsable_id}/paiement/saison/{saison_id}','PaiementController@paiementgetbysaison');

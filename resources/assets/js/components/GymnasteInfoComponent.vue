@@ -442,7 +442,7 @@
                                     <b-card :title="paiementmanuel.type + ' '+ paiementmanuel.montant +'€'" :sub-title="frontEndDateFormat(paiementmanuel.created_at) + ' ' + paiementmanuel.operateur.nom+ ' ' + paiementmanuel.operateur.prenom">
                                     </b-card>
 
-                                    <b-button  variant="danger" @click="paiementdelete(paiementmanuel.id)"><i class="fa fa-trash" aria-hidden="true"></i>Confirmer la suppression</b-button>
+                                    <b-button  variant="danger" @click="deletepaiement(paiementmanuel.id)"><i class="fa fa-trash" aria-hidden="true"></i>Confirmer la suppression</b-button>
 
                                 </b-modal>
 
@@ -739,6 +739,15 @@
                     .get('/api/admin/responsable/'+this.gym.responsable.id+'/paiement/saison/actuelle')
                     .then(response => (this.paiements = response.data))
                 ;
+            },
+            deletepaiement: function(id_paiement)
+            {
+                axios
+                    .delete('/api/admin/responsable/'+this.gym.responsable.id+'/paiement/'+id_paiement)
+                    .then(response => (this.paiements = response.data))
+                ;
+
+                this.update=1;
             },
             validteam: function (equipe_id,attente) {
                 console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);

@@ -29,4 +29,9 @@ class PaiementController extends Controller
         return User::find($responsable_id)->paiements()->where('saison_id',$saison_id)->with('operateur')->get();
     }
 
+    public function paiementdelete($id_responsable,$id_paiement)
+    {
+        return Paiement::find($id_paiement)->delete();
+    }
+
 }
