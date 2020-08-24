@@ -21,7 +21,7 @@ class CreatePaiementsTable extends Migration
             $table->integer('operateur_id')->unsigned();
             $table->integer('saison_id')->unsigned();
             $table->string('commentaire');
-            $table->boolean('valide_tresorier')->default('false');
+            $table->boolean('valide_tresorier')->default(false);
             $table->timestamps();
 
             #Fk vers la table users (responsable)
