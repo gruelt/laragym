@@ -508,11 +508,11 @@
 
 
 
-                        <b-card v-for="paiement in helloasso.data" :title="'HelloAsso '+paiement.amount.total +'€'" :sub-title="frontEndDateFormat(paiement.date)">
+                        <b-card v-for="paiement in helloasso.data" :title="'HelloAsso '+ paiement.amount.total/100 +'€'" :sub-title="frontEndDateFormat(paiement.date)">
                             <b-card-text v-for="adherent in paiement.items">
 
                                 <b-button variant="primary">
-                                    {{adherent.name}} <b-badge variant="light">{{adherent.amount}}</b-badge>
+                                    {{adherent.name}} <b-badge variant="light">{{adherent.amount/100}}</b-badge>
                                 </b-button>
 
 
