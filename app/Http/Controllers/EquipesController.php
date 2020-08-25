@@ -100,7 +100,7 @@ class EquipesController extends Controller
 
         $saison=  Saison::find($saison_id);
 
-        $equipes = $saison->equipes()->orderBy('nom')->get();
+        $equipes = $saison->equipes()->get();
 
         if($equipes->count() == 0)
         {
