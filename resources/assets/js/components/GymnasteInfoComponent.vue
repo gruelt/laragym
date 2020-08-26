@@ -190,8 +190,8 @@
 
                         <H3>
                             <span v-for="(niveau, id) in gym.niveaux_tab">
-                                <b-button variant="primary" block >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge></a>&nbsp;
-                                    <b-badge v-if="niveau['attente'] ==0" variant="info">Ok </b-badge></a>
+                                <b-button variant="primary" block >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge>
+                                    <b-badge v-if="niveau['attente'] ==0" variant="info">Ok </b-badge>
                                         <b-badge v-if="withattente && niveau['attente'] ==1" @click="validteam(id,0)" variant="success">Intégrer au groupe </b-badge>
                                         <b-badge v-if="withattente && niveau['attente'] ==0" @click="validteam(id,1)" variant="danger">Mettre en attente </b-badge>
                                     <b-badge v-if="admin" :href="'/equipes/' + id ">Voir</b-badge>
@@ -207,10 +207,15 @@
 
 
 
-                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span>
+                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button><b-button v-b-modal.equipesnew variant="success">Gérer Equipes 2</b-button></span>
                             <br><button v-if="(admin)" v-on:click="toggleattente" class="btn" v-bind:class="{'btn-primary': withattente,'btn-secondary': !withattente}">Bascule Attente/Confirmé </button></H3>
                         <b-modal id="equipes" hide-header-close hide-footer title="Equipes du Gymnaste Pour la saison Actuelle">
                             <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
+                            <b-button @click="hideModalTeam">Fermer</b-button>
+                        </b-modal>
+
+                        <b-modal size="xl" id="equipesnew"  hide-footer title="New Equipes du Gymnaste Pour la saison Actuelle">
+                            <gymnaste-equipe-new  :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe-new>
                             <b-button @click="hideModalTeam">Fermer</b-button>
                         </b-modal>
 
