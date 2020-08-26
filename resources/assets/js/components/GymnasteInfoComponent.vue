@@ -207,7 +207,9 @@
 
 
 
-                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button><b-button v-b-modal.equipesnew variant="success">Gérer Equipes 2</b-button></span>
+                        <H3><span v-if="(admin)">
+                            <b-button v-b-modal.equipesnew variant="success">Gérer Equipes</b-button>
+                            <b-button v-b-modal.equipes variant="success">Gérer Equipes Old</b-button></span>
                             <br><button v-if="(admin)" v-on:click="toggleattente" class="btn" v-bind:class="{'btn-primary': withattente,'btn-secondary': !withattente}">Bascule Attente/Confirmé </button></H3>
                         <b-modal id="equipes" hide-header-close hide-footer title="Equipes du Gymnaste Pour la saison Actuelle">
                             <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
