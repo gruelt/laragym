@@ -875,9 +875,9 @@ class GymnastesController extends Controller
     ];
 
 
-        $pdf = PDF::loadView('PDF.attestation2019', $data);
+        $pdf = PDF::loadView('PDF.attestation2020', $data);
         //dd($data);
-        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2019.pdf');
+        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2020.pdf');
     }
 
     public function redis()
