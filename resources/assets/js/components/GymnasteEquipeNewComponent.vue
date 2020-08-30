@@ -210,7 +210,7 @@
 
             },
             selected: function(val){
-                this.save();
+                //this.save();
             }
 
         },
