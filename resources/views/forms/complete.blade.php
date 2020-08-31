@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="https://embed.small.chat/TKWGASV9TGKWG762L8.js" async></script>
+{{--    <script src="https://embed.small.chat/TKWGASV9TGKWG762L8.js" async></script>--}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
