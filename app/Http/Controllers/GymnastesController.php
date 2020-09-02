@@ -894,10 +894,10 @@ class GymnastesController extends Controller
 
         $paye =  $gymnaste->paye();
         //vérifie que le montant est payé
-        if($paye==0)
-        {
-            return redirect("/");
-        }
+//        if($paye==0)
+//        {
+//            return redirect("/");
+//        }
 
         //dd($gymnaste);
         $data=[
