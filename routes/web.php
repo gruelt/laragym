@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 
 /*******  Verification Logins / Mail / complets */
-Auth::routes(['verify' => true,'register'=> false]);
+Auth::routes(['verify' => true]);
 
 //Route::middleware('privileges:user')->middleware('verified')->middleware('complete')->get('/home', function () {
 //    return view('pages.bienvenue');
