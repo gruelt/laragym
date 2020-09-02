@@ -880,6 +880,46 @@ class GymnastesController extends Controller
         return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2020.pdf');
     }
 
+
+
+    public function PDFFactureAPayer($gymnaste_id,$admin=0)
+    {
+        $gymnaste=Gymnaste::find($gymnaste_id);
+
+        if ($admin ==0 && Auth::user()->id != Gymnaste::find($gymnaste_id)->responsable()->first()->id ) // && User::find(Auth::user()->id)->count()==0
+        {
+            return redirect('responsable/gymnastes/');
+        }
+
+
+        $paye =  $gymnaste->paye();
+        //vérifie que le montant est payé
+        if($paye==0)
+        {
+            return redirect("/");
+        }
+
+        //dd($gymnaste);
+        $data=[
+            'nom' => $gymnaste->nom,
+            'prenom' => $gymnaste->prenom,
+            'adresse' => $gymnaste->responsable->adresse,
+            'ville' => $gymnaste->responsable->ville,
+            'cp' => $gymnaste->responsable->cp,
+            'nom_responsable' =>  $gymnaste->responsable->nom,
+            'prenom_responsable' => $gymnaste->responsable->prenom,
+            'montant' => $paye
+        ];
+
+
+        $pdf = PDF::loadView('PDF.attestationapayer2020', $data);
+        //dd($data);
+        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-apayer-2020.pdf');
+    }
+
+
+
+
     public function redis()
     {
         if(Redis::get('gymnaste.2'))

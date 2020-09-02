@@ -160,6 +160,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'privileges:admin'], function
 
     Route::get("/gymnastes/{gymnasteid}/facture/{admin}",'GymnastesController@PDFFacture');
 
+    Route::get("/gymnastes/{gymnasteid}/factureapayer/{admin}",'GymnastesController@PDFFactureAPayer');
+
 });
 
 
