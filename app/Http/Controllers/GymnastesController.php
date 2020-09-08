@@ -135,8 +135,11 @@ class GymnastesController extends Controller
 
         //verifie qu ele gym appartient bien
 
+//        print Auth::user()->id;
+//         print Gymnaste::find($id)->responsable()->first()->id;
+
         //Si ce n'est pas un des gymns du responsable , et qu'il n'à aucun droit.
-        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id && User::find(Auth::user()->id)->count()==0)
+        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id ) //&& User::find(Auth::user()->id)->count()==0
         {
             return view('pages.responsables.adherents')->withMessage('Ce gymnaste n\'est pas sous votre responsabilité');
         }
