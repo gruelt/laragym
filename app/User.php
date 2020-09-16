@@ -29,6 +29,12 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class,'responsable_id');
+    }
+
+
 
     /**
      * Retourne le(s) droits de l'utilisateur enregistré en base (n'inclue pas les droits auto).

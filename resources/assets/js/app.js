@@ -10,6 +10,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+window.moment = require('moment');
+
 //
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 // Vue.component('sidebar', require('./components/layout/sidebarComponent.vue'));
@@ -28,6 +31,8 @@ Vue.component('gymnaste-table', require('./components/GymnasteTableComponent.vue
 Vue.component('gymnaste-table-quick', require('./components/GymnasteTableQuickComponent.vue'));
 
 Vue.component('gymnaste-equipe', require('./components/GymnasteEquipeComponent.vue'));
+
+Vue.component('gymnaste-equipe-new', require('./components/GymnasteEquipeNewComponent.vue'));
 
 Vue.component('coach-equipe', require('./components/CoachEquipeComponent.vue'));
 

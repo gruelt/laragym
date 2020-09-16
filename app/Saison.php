@@ -15,7 +15,7 @@ class Saison extends Model
     }
 
     public function equipes(){
-        return $this->hasMany('App\Equipe'); //
+        return $this->hasMany('App\Equipe')->orderBy('nom'); //
     }
 
     public function competitifs(){

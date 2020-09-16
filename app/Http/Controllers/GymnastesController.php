@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Exports\GymnastesExport;
 use App\Exports\GymnastessaisonExport;
+use App\Gestion\Helloasso;
+use App\Paiement;
 use App\Saison;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -133,13 +135,17 @@ class GymnastesController extends Controller
 
         //verifie qu ele gym appartient bien
 
+//        print Auth::user()->id;
+//         print Gymnaste::find($id)->responsable()->first()->id;
+
         //Si ce n'est pas un des gymns du responsable , et qu'il n'à aucun droit.
-        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id && User::find(Auth::user()->id)->count()==0)
+        if (Auth::user()->id != Gymnaste::find($id)->responsable()->first()->id ) //&& User::find(Auth::user()->id)->count()==0
         {
             return view('pages.responsables.adherents')->withMessage('Ce gymnaste n\'est pas sous votre responsabilité');
         }
 
         $gym = $this->formatGyms($gym,1,true);
+
 
 
         return view('pages.responsables.viewgymnaste')->with('gym',$gym[0]);
@@ -152,13 +158,36 @@ class GymnastesController extends Controller
 
         $gym = Gymnaste::where('id',$id)->get();
 
+
+
         //verifie qu ele gym appartient bien
+
 
 
         $gym = $this->formatGyms($gym);
 
+        $gym=$gym[0];
 
-        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
+//        $out = json_decode($helloasso);
+//
+//        print_r($out);dd();
+
+//        return view('pages.admin.viewgymnaste')->with('gym',$gym[0]);
+
+
+
+
+
+        return view('pages.admin.viewgymnaste')->with('gym',$gym);
+    }
+
+    public function getadhesion($mail)
+    {
+        $h = new Helloasso;
+
+        return $h->getadhesions($mail);
+
+
     }
 
     public function get($id)
@@ -849,10 +878,50 @@ class GymnastesController extends Controller
     ];
 
 
-        $pdf = PDF::loadView('PDF.attestation2019', $data);
+        $pdf = PDF::loadView('PDF.attestation2020', $data);
         //dd($data);
-        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2019.pdf');
+        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-2020.pdf');
     }
+
+
+
+    public function PDFFactureAPayer($gymnaste_id,$admin=0)
+    {
+        $gymnaste=Gymnaste::find($gymnaste_id);
+
+        if ($admin ==0 && Auth::user()->id != Gymnaste::find($gymnaste_id)->responsable()->first()->id ) // && User::find(Auth::user()->id)->count()==0
+        {
+            return redirect('responsable/gymnastes/');
+        }
+
+
+        $paye =  $gymnaste->paye();
+        //vérifie que le montant est payé
+//        if($paye==0)
+//        {
+//            return redirect("/");
+//        }
+
+        //dd($gymnaste);
+        $data=[
+            'nom' => $gymnaste->nom,
+            'prenom' => $gymnaste->prenom,
+            'adresse' => $gymnaste->responsable->adresse,
+            'ville' => $gymnaste->responsable->ville,
+            'cp' => $gymnaste->responsable->cp,
+            'nom_responsable' =>  $gymnaste->responsable->nom,
+            'prenom_responsable' => $gymnaste->responsable->prenom,
+            'montant' => $paye
+        ];
+
+
+        $pdf = PDF::loadView('PDF.attestationapayer2020', $data);
+        //dd($data);
+        return $pdf->stream($data['nom'] ."_".$data['prenom']. '-apayer-2020.pdf');
+    }
+
+
+
 
     public function redis()
     {

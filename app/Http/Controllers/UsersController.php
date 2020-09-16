@@ -6,11 +6,12 @@ use App\Privileges;
 use App\Saison;
 use App\User;
 use Illuminate\Http\Request;
-
+use App\Paiement;
 use phpDocumentor\Reflection\Types\Array_;
 
 class UsersController extends Controller
 {
+
 
     /**
      * Retourne les users avec le profil coach

@@ -190,8 +190,8 @@
 
                         <H3>
                             <span v-for="(niveau, id) in gym.niveaux_tab">
-                                <b-button variant="primary" block >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge></a>&nbsp;
-                                    <b-badge v-if="niveau['attente'] ==0" variant="info">Ok </b-badge></a>
+                                <b-button variant="primary" block >{{niveau['nom']}} <b-badge v-if="niveau['attente'] ==1" variant="danger">Liste Attente </b-badge>
+                                    <b-badge v-if="niveau['attente'] ==0" variant="info">Ok </b-badge>
                                         <b-badge v-if="withattente && niveau['attente'] ==1" @click="validteam(id,0)" variant="success">Intégrer au groupe </b-badge>
                                         <b-badge v-if="withattente && niveau['attente'] ==0" @click="validteam(id,1)" variant="danger">Mettre en attente </b-badge>
                                     <b-badge v-if="admin" :href="'/equipes/' + id ">Voir</b-badge>
@@ -207,10 +207,17 @@
 
 
 
-                        <H3><span v-if="(admin)"><b-button v-b-modal.equipes variant="success">Gérer Equipes</b-button></span>
+                        <H3><span v-if="(admin)">
+                            <b-button v-b-modal.equipesnew variant="success">Gérer Equipes</b-button>
+                            <b-button v-b-modal.equipes variant="success">Gérer Equipes Old</b-button></span>
                             <br><button v-if="(admin)" v-on:click="toggleattente" class="btn" v-bind:class="{'btn-primary': withattente,'btn-secondary': !withattente}">Bascule Attente/Confirmé </button></H3>
                         <b-modal id="equipes" hide-header-close hide-footer title="Equipes du Gymnaste Pour la saison Actuelle">
                             <gymnaste-equipe :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe>
+                            <b-button @click="hideModalTeam">Fermer</b-button>
+                        </b-modal>
+
+                        <b-modal size="xl" id="equipesnew"  hide-footer title="New Equipes du Gymnaste Pour la saison Actuelle">
+                            <gymnaste-equipe-new  :gymnaste_id="gym.id" :saison_id="saison_id"></gymnaste-equipe-new>
                             <b-button @click="hideModalTeam">Fermer</b-button>
                         </b-modal>
 
@@ -341,22 +348,198 @@
 
 
 
-                <b-card v-if="admin" tag="validations"
+                <b-card  tag="validations"
 
                         class="mb-12 "
                 >
                     <b-card-text>
                         <h2 >
-                            Tarifs/Paiements
+                            Tarifs
                         </h2>
 
                         <span  v-if="admin && gym.problemes.paiement">
                                 <b-button  variant="success" v-on:click="validpaiement(gym.tarif)">Valider le tarif de {{gym.tarif}}€</b-button>
-                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>
+<!--                                <b-button  variant="success" v-on:click="validpaiement(gym.tarif-10)">Valider le tarif de {{gym.tarif-10}}€ (Réduction Familiale à partir du 2eme inscrit)</b-button>-->
                             </span>
                         <b-button v-else-if="admin && !gym.problemes.Groupe" v-on:click="annulpaiement()" variant="info">Annuler le tarif enregistré : {{gym.paye}} €</b-button>
                         <br>
-                        <span>Total Actuel à régler du responsable : {{gym.totalapayer}} €</span>
+                        <span>Total Actuel à régler pour tous les gyms: {{gym.totalapayer}} €</span>
+
+                        <hr>
+
+                        <b-button v-if="!gym.problemes.Groupe" v-b-modal="'paiementinfo'" variant="success"><i class="fas fa-shopping-cart"></i> Payer en ligne avec Helloasso</b-button>
+
+                        <b-modal id="paiementinfo" size="xl" hide-footer>
+
+                                    <h2>Pour le paiement en ligne</h2>
+                                        <ul>
+                                            <li>Au moment de renseigner l'adresse mail , utiliser <b>{{gym.responsable.email}}</b>.</li>
+                                            <li>La plateforme de paiement vous proposera de faire une donation , <b>ceci n'est pas obligatoire</b>.</li>
+                                            <li>Vous pouvez faire des paiements plusieurs fois si des inscrits se rajoutent.</li>
+<!--                                            <li>Les tarifs "en 3 fois" seront débités mensuellement.</li>-->
+                                            <li>Vous pouvez faire un paiement unique pour tous vos inscrits.</li>
+                                            <li>Choisir le tarif et le nombre d'inscrits dans chaque tarif.</li>
+                                            <li>Les paiements seront vérifiés : si un mauvais tarif est choisi vous devrez compléter.</li>
+                                            <li>Un paiement incomplet ne valide pas l'accés aux cours.</li>
+<!--                                            <li>Les Tarifs en 3X coûtent en général 2€ de plus ( arrondi technique obligatoire) .</li>-->
+
+                                            <li>Une fois validé , le paiement apparaitra sur cette page ( délai de 2 minutes possible ).</li>
+
+
+                                        </ul>
+                            <b-form-checkbox v-if="acceptpaiement==false"
+                                id="checkbox-1"
+                                v-model="acceptpaiement"
+                                name="checkbox-1"
+                                value=true
+                                unchecked-value=false
+                            >
+                                J'ai lu et compris les consignes.
+                            </b-form-checkbox>
+                            <br>
+                            <p v-for="saison in gym.saisons">
+                                <b-button variant="success"  v-if="acceptpaiement && saison.actuelle==1"  :href="saison.helloassoslug"><i class="fas fa-shopping-cart"></i> Payer en ligne</b-button>
+                            </p>
+
+                            </b-modal>
+
+
+                        <h2 >
+                            Paiements
+                        </h2>
+
+                        <b-button v-if="admin" v-b-modal="'modal-paiement'" block variant="success">Ajouter Paiement</b-button>
+
+
+
+                        <b-modal id="modal-paiement" size="xl" hide-footer>
+
+
+
+
+
+
+                            <b-card bg-variant="light">
+                                <b-form-group
+                                    label-cols-lg="3"
+                                    label="Ajouter Paiement ( 1 par chèque ) "
+                                    label-size="lg"
+                                    label-class="font-weight-bold pt-0"
+                                    class="mb-0"
+
+                                >
+                                        <b-form-group
+                                        label-cols-sm="3"
+                                        label="Mode"
+                                        label-align-sm="right" class="mb-0"
+
+                                         >
+                                        <b-form-radio-group
+                                            class="pt-2"
+                                            :options="['cheque', 'ancv', 'liquide']"
+                                            v-model="paiement.type"
+                                        ></b-form-radio-group>
+                                    </b-form-group>
+
+                                    <b-form-group
+                                        label-cols-sm="3"
+                                        label="Montant €"
+                                        label-align-sm="right"
+                                        label-for="montant"
+                                    >
+                                        <b-form-input id="montant" v-model="paiement.montant"></b-form-input>
+                                    </b-form-group>
+
+                                    <b-form-group
+                                        label-cols-sm="3"
+                                        label="Commentaire:"
+                                        label-align-sm="right"
+                                        label-for="commentaire"
+                                    >
+                                        <b-form-input v-model="paiement.commentaire" id="commentaire"></b-form-input>
+                                    </b-form-group>
+
+                                    <b-button @click="ajoutmoyenpaiement()">Ajouter</b-button>
+
+
+
+
+                                </b-form-group>
+                            </b-card>
+
+
+
+
+
+
+
+                        </b-modal>
+
+
+
+                        <b-card v-for="paiementmanuel in paiements" :title="paiementmanuel.type + ' '+ paiementmanuel.montant +'€'" :sub-title="frontEndDateFormat(paiementmanuel.created_at) + ' ' + paiementmanuel.operateur.nom+ ' ' + paiementmanuel.operateur.prenom">
+                        <b-row>
+                            <b-col lg="10" class="pb-2">
+
+                                                        <b-card-text v-if="paiementmanuel.commentaire"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                            {{paiementmanuel.commentaire}}</b-card-text>
+                            </b-col>
+                            <b-col lg="2" class="pb-2">
+                                <b-button v-if="admin" size="xs" variant="danger" v-b-modal="'deletepaiement-'+paiementmanuel.id"><i class="fa fa-trash" aria-hidden="true"></i></b-button>
+
+                                <b-modal :id="'deletepaiement-'+paiementmanuel.id" hide-footer>
+
+
+                                    <b-card :title="paiementmanuel.type + ' '+ paiementmanuel.montant +'€'" :sub-title="frontEndDateFormat(paiementmanuel.created_at) + ' ' + paiementmanuel.operateur.nom+ ' ' + paiementmanuel.operateur.prenom">
+                                    </b-card>
+
+                                    <b-button  variant="danger" @click="deletepaiement(paiementmanuel.id)"><i class="fa fa-trash" aria-hidden="true"></i>Confirmer la suppression</b-button>
+
+                                </b-modal>
+
+
+                            </b-col>
+                        </b-row>
+                            <!--                            <b-link href="#" class="card-link">Another link</b-link>-->
+                        </b-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <b-card v-for="paiement in helloasso.data" :title="'HelloAsso '+ paiement.amount.total/100 +'€'" :sub-title="frontEndDateFormat(paiement.date)">
+                            <b-card-text v-for="adherent in paiement.items">
+
+                                <b-button variant="primary">
+                                    {{adherent.name}} <b-badge variant="light">{{adherent.amount/100}}</b-badge>
+                                </b-button>
+
+
+
+
+
+
+                                 {{adherent.user.firstName}} - {{adherent.user.lastName}}
+                            </b-card-text>
+
+<!--                            <b-card-text>A second paragraph of text in the card.</b-card-text>-->
+
+                            <a v-if="admin" href="https://www.helloasso.com/associations/fjep-gymnastique-saint-just-saint-rambert/administration/statistiques" class="card-link">Helloasso</a>
+<!--                            <b-link href="#" class="card-link">Another link</b-link>-->
+                        </b-card>
+
+
+
+
+
 
 
 
@@ -416,7 +599,7 @@
                         <br>
                         <span></span>
 
-
+<!--                        {{helloasso}}-->
 
                     </b-card-text>
 
@@ -511,7 +694,12 @@
 
 
         props: {
-
+            adhurl:{
+                type:String,
+            },
+            operateur:{
+               type:Number
+            },
             admin:{
                 type: Boolean,
                 default: false
@@ -520,6 +708,7 @@
                 type: Number
 
             },
+
             gym:{
                 type: Object
             },
@@ -548,7 +737,7 @@
         },
         data() {
             return {
-
+                acceptpaiement:false,
                 update:"",
 
                 filters: {
@@ -557,7 +746,16 @@
                     issuedTo: ''
                 },
                 withattente:false,
+                helloasso:"rien",
 
+
+                paiement:{
+                    type:"cheque",
+                    montant:"0",
+                    commentaire:"",
+                },
+
+                paiements:"",
 
 
 
@@ -578,6 +776,31 @@
 
 
 
+
+
+            },
+            updatehelloasso: function()
+                {
+                    axios
+                        .get('/api/admin/helloasso/adhesion/current/' + this.gym.responsable.email)
+                        .then(response => (this.helloasso = response.data))
+                    ;
+                },
+            updatepaiements: function()
+            {
+                axios
+                    .get('/api/admin/responsable/'+this.gym.responsable.id+'/paiement/saison/actuelle')
+                    .then(response => (this.paiements = response.data))
+                ;
+            },
+            deletepaiement: function(id_paiement)
+            {
+                axios
+                    .delete('/api/admin/responsable/'+this.gym.responsable.id+'/paiement/'+id_paiement)
+                    .then(response => (this.paiements = response.data))
+                ;
+
+                this.update=1;
             },
             validteam: function (equipe_id,attente) {
                 console.log('Mise à jour DB team ' + equipe_id + ' à ' + attente);
@@ -644,13 +867,42 @@
             toggleattente(){
                 this.withattente = ! this.withattente;
             },
+            frontEndDateFormat: function(date) {
+                return moment(date).format('DD/MM/YYYY HH:mm');
+            },
+
+            ajoutmoyenpaiement: function()
+            {
+
+                console.log('responsable '+ this.gym.responsable.id +'clic ajout de '+ this.paiement.type +' pour '+ this.paiement.montant + ' avec commentaire ' + this.paiement.commentaire);
+
+                axios.post('/api/admin/responsable/'+ this.gym.responsable.id + '/paiement/add',
+
+                    {
+                        type: this.paiement.type,
+                        montant: this.paiement.montant,
+                        commentaire: this.paiement.commentaire,
+                        responsable_id: this.gym.responsable.id,
+                        saison_id: this.saison_id,
+                        operateur_id: this.operateur
+
+                    }
+                );
+
+                this.update=1;
+
+
+                return 1;
+            }
+
 
         },
 
         mounted() {
             this.getcurrent();
             //this.update();
-
+            this.updatehelloasso();
+            this.updatepaiements();
 
 
         },
