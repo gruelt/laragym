@@ -201,7 +201,7 @@
                 ,
             makeaffiligue(){
 
-                this.csv="Sexe,Nom,Prenom,Date_Naissance,Adresse,CP,Ville,Date_certificat,Attestation_questionnaire,Competitif,Affiligue\r";
+                this.csv="Sexe;Nom;Prenom;Date_Naissance;Adresse;CP;Ville;Date_certificat;Attestation_questionnaire;Competitif;Affiligue\r";
                 let certifdate="";
                 let affiligue="";
                 this.filteredgyms.forEach((gym) => {
@@ -221,17 +221,17 @@
 
                     this.csv+=
                         gym.genre.description
-                        + ","+ gym.nom
-                        + ","+ gym.prenom
-                        + ","+ gym.date_naissance_fr
-                        + ","+ gym.responsable.adresse
-                        + ","+ gym.responsable.cp
-                        + ","+ gym.responsable.ville
-                        + ","+ certifdate
-                        + ","
-                        + ","
-                        + ","
-                        + "," + affiligue
+                        + ";"+ gym.nom
+                        + ";"+ gym.prenom
+                        + ";"+ gym.date_naissance_fr
+                        + ";"+ gym.responsable.adresse
+                        + ";"+ gym.responsable.cp
+                        + ";"+  gym.responsable.ville
+                        + ";"+ certifdate
+                        + ";"
+                        + ";"
+                        + ";"
+                        + ";" + affiligue
                         + "\r";
 
                 });
