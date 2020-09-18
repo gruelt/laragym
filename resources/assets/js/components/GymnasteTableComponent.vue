@@ -8,7 +8,7 @@
 
 
         <b-button @click="$bvModal.show('modal-mail');makemail()"  variant="success"><i class="fas fa-mail-bulk"></i>Mail à liste</b-button>
-        <b-button @click="makeaffiligue();">Export Affiligue</b-button>
+        <b-button @click="makeaffiligue();"><i class="fas fa-file-csv"></i>Export Affiligue</b-button>
         <download-csv :data   = "test" >CSV</download-csv>
 
         {{filteredgyms.length}} Inscrits
