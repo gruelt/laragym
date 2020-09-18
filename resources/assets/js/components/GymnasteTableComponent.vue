@@ -201,18 +201,45 @@
                 ,
             makeaffiligue(){
 
-                this.csv=Array();
+                this.csv="Sexe,Nom,Prenom,Date_Naissance,Adresse,CP,Ville,Date_certificat,Attestation_questionnaire,Competitif,Affiligue\r";
+                let certifdate="";
+                let affiligue="";
                 this.filteredgyms.forEach((gym) => {
-                    let temp=Array();
-                    temp['id']=gym.id;
-                    temp['nom']=gym.prenom;
-                    this.csv.push(temp);
+
+
+                    if(gym.certificat_medical_date == null)
+                    {
+                        certifdate = "";
+                    }
+                    else
+                    {
+                        certifdate = gym.certificat_medical_date_fr;
+                    }
+
+
+
+
+                    this.csv+=
+                        gym.genre.description
+                        + ","+ gym.nom
+                        + ","+ gym.prenom
+                        + ","+ gym.date_naissance_fr
+                        + ","+ gym.responsable.adresse
+                        + ","+ gym.responsable.cp
+                        + ","+ gym.responsable.ville
+                        + ","+ certifdate
+                        + ","
+                        + ","
+                        + ","
+                        + "," + affiligue
+                        + "\r";
+
                 });
 
                 let blob = new Blob([this.csv], {type: 'text/csv'});
                 let link = document.createElement('a');
                 link.href = window.URL.createObjectURL(blob);
-                link.download = 'CSV_affiligue'+ moment()+'csv';
+                link.download = 'CSV_affiligue'+ moment()+'.csv';
                 link.click();
                 this.createExportLoading = false;
             }
