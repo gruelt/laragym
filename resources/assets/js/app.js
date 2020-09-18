@@ -88,9 +88,7 @@ import BootstrapVue from 'bootstrap-vue';
 
 Vue.use(BootstrapVue);
 
-import JsonCSV from 'vue-json-csv';
-Vue.use(JsonCSV);
-Vue.component('downloadCsv', JsonCSV);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
