@@ -8,6 +8,8 @@
 
 
         <b-button @click="$bvModal.show('modal-mail');makemail()"  variant="success"><i class="fas fa-mail-bulk"></i>Mail à liste</b-button>
+        <b-button @click="makeaffiligue();">Export Affiligue</b-button>
+        <download-csv :data   = "test" >CSV</download-csv>
 
         {{filteredgyms.length}} Inscrits
 
@@ -197,6 +199,24 @@
                 });
                 }
                 ,
+            makeaffiligue(){
+
+                this.csv=Array();
+                this.filteredgyms.forEach((gym) => {
+                    let temp=Array();
+                    temp['id']=gym.id;
+                    temp['nom']=gym.prenom;
+                    this.csv.push(temp);
+                });
+
+                let blob = new Blob([this.csv], {type: 'text/csv'});
+                let link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'CSV_affiligue'+ moment()+'csv';
+                link.click();
+                this.createExportLoading = false;
+            }
+            ,
             detachcompetitif: function(idgym,idequipe) {
 
                 axios
@@ -221,6 +241,7 @@
         data() {
             return {
                 maillist: "Wait",
+               csv: "Wait",
                 saison_id: "2",
                 gyms: [],
                 withphotos: false,
