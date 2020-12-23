@@ -512,8 +512,11 @@ class GymnastesController extends Controller
                         $problemes_short .= $lokey . " ";
                     }
 
-                    if (count($problemes) == 0) {
+                    $count= count($problemes);
+
+                    if ($count == 0 || ($count==1 && isset($return[$key]['problemes']['certificat']['age'])) ) {
                         $problemes_short = "OK";
+                        $return[$key]['problemes']=array();
                     }
 
                     $return[$key]['problemes_short'] = $problemes_short;
