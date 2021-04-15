@@ -10,27 +10,29 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.18",
-        "bootstrap": "^4.3.1",
-        "cross-env": "^5.1",
-        "jquery": "^3.4.0",
+        "axios": "^0.18.1",
+        "bootstrap": "^4.6.0",
+        "cross-env": "^5.2.1",
+        "jquery": "^3.6.0",
         "laravel-mix": "^2.0",
-        "lodash": "^4.17.5",
-        "popper.js": "^1.15.0",
-        "vue": "^2.6.10",
-        "vue-template-compiler": "^2.6.10"
+        "lodash": "^4.17.21",
+        "popper.js": "^1.16.1",
+        "vue": "^2.6.12",
+        "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.8.1",
-        "bootstrap-vue": "^2.0.0-rc.19",
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "ajv-keywords": "^5.0.0",
+        "bootstrap-vue": "^2.21.2",
         "datatables": "^1.10.18",
+        "img-loader": "^3.0.2",
         "material-design-icons-iconfont": "^4.0.5",
-        "moment": "^2.27.0",
+        "moment": "^2.29.1",
         "node-sass": "^4.12.0",
-        "vue-json-csv": "^1.2.11",
+        "vue-json-csv": "^1.2.12",
         "vue-schedule": "^2.0.4",
-        "vuejs-clipper": "^1.0.0",
-        "vuejs-datepicker": "^1.5.4",
-        "vuetify": "^1.5.13"
+        "vuejs-clipper": "^1.1.8",
+        "vuejs-datepicker": "^1.6.2",
+        "vuetify": "^1.5.24"
     }
 }
