@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/gymnastes/{id}', 'GymnastesController@get');
 
-    Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason');
+    Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason')->middleware('cors');
 
     Route::get('/responsables/saison/{id}', 'UsersController@getbyseason');
 

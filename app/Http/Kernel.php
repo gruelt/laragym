@@ -22,6 +22,7 @@ class Kernel extends HttpKernel
 
 //        \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
         //\App\Http\Middleware\privileges::class,
+
     ];
 
     /**
@@ -69,6 +70,7 @@ class Kernel extends HttpKernel
         'privileges' => \App\Http\Middleware\privileges::class,
         'complete' => \App\Http\Middleware\complete::class,
         'noie' => \App\Http\Middleware\NoIE::class,
+        'cors' => \App\Http\Middleware\Cors::class,
     ];
 
     /**
