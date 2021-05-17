@@ -22,7 +22,7 @@ class Cors
 //            $host = $domain['host'];
 //        }
 
-        return $next($request)->header('Access-Control-Allow-Origin', 'localhost:4200')
+        return $next($request)->header('Access-Control-Allow-Origin', '*')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
            -> header('Content-Type', 'application/json')
             ->header('Access-Control-Allow-Headers', 'Accept , X-Requested-With, Content-Type, X-Token-Auth, Authorization');
