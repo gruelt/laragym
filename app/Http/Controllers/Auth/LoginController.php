@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use http\Env\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -36,4 +37,26 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /** Login attempt by api
+     * @param Request $request
+     * @return Request
+     */
+    public function apiLogin()
+    {
+        return "ok";
+    }
+
+    /** Login attempt by api
+     * @param Request $request
+     * @return Request
+     */
+    public function whoAmI()
+    {
+        $reponse['username']="nobody";
+
+        return json_encode($reponse);
+    }
+
+
 }

@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/responsable/{responsable_id}/paiement/saison/{saison_id}','PaiementController@paiementgetbysaison');
 
     //récupère les adhésions via helloasso
-    Route::get('/helloasso/adhesion/current/{mail}','GymnastesController@getadhesion');
+    Route::get('/helloasso/adhesion/current/{mail}','GymnastesController@getadhesion')->middleware('cors');
 
     //Add a user to a competitive group
 
@@ -48,13 +48,15 @@ Route::group(['prefix' => 'admin'], function () {
     //Gets all gymnastes eligibles to a competitive group
     Route::get('/competitifs/{equipe_id}/gymnastes/eligibles', 'CompetitifsController@getgymnasteseligible');
 
-    Route::get('/gymnastes/{id}', 'GymnastesController@get');
+    Route::get('/gymnastes/{id}', 'GymnastesController@get')->middleware('cors');
 
     Route::get('/gymnastes/saison/{id}', 'GymnastesController@getbyseason')->middleware('cors');
 
+    Route::get('/gymnastes/saison/{id}/simple', 'GymnastesController@getbyseasonsimple')->middleware('cors');
+
     Route::get('/responsables/saison/{id}', 'UsersController@getbyseason');
 
-    Route::get('/gymnastes/saison/{id}/quick', 'GymnastesController@getbyseasonquick');
+    Route::get('/gymnastes/saison/{id}/quick', 'GymnastesController@getbyseasonquick')->middleware('cors');
 
 
     Route::get('/gymnastes/{id}/certificatmedical/valid', 'GymnastesController@validcertif');
@@ -67,7 +69,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-    Route::get('/equipes', 'EquipesController@getall');
+    Route::get('/equipes', 'EquipesController@getall')->middleware('cors');
 
     Route::get('/equipes/saison/{id}', 'EquipesController@getbyseason');
 
@@ -153,3 +155,10 @@ Route::get('/saisons','SaisonsController@allplucked');
 Route::get('/saisons/actuelle','SaisonsController@current');
 Route::get('/saisons/ouverte','SaisonsController@opened');
 
+
+
+//Login via api
+Route::group(['prefix' => 'auth', 'middleware' => 'cors'], function () {
+    Route::post('login', 'Auth\LoginController@apiLogin');
+    Route::get('login', 'Auth\LoginController@whoAmI');
+});

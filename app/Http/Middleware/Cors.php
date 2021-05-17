@@ -16,8 +16,16 @@ class Cors
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request)->header('Access-Control-Allow-Origin', '*')
+//        $domain = parse_url($_SERVER['HTTP_REFERER']);
+//        $host = '*';
+//        if (isset($domain['host'])) {
+//            $host = $domain['host'];
+//        }
+
+        return $next($request)->header('Access-Control-Allow-Origin', 'localhost:4200')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, X-Token-Auth, Authorization');
+           -> header('Content-Type', 'application/json')
+            ->header('Access-Control-Allow-Headers', 'Accept , X-Requested-With, Content-Type, X-Token-Auth, Authorization');
+
     }
 }
