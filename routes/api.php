@@ -160,5 +160,5 @@ Route::get('/saisons/ouverte','SaisonsController@opened');
 //Login via api
 Route::group(['prefix' => 'auth', 'middleware' => 'cors'], function () {
     Route::post('login', 'Auth\LoginController@apiLogin');
-    Route::get('login', 'Auth\LoginController@whoAmI');
+    Route::get('login', 'Auth\LoginController@whoAmI')->middleware('auth:api');
 });

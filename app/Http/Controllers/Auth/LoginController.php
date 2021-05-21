@@ -55,9 +55,12 @@ class LoginController extends Controller
      */
     public function whoAmI()
     {
-        $reponse['username']="nobody";
+        $reponse = Auth::user();
+        //dd(Auth::user());
 
-        return json_encode($reponse);
+//        $reponse['username']="nobody";
+
+        return $reponse;
     }
 
 
